@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('layouts.backend');
 });
+
+Route::get('/login', function () {
+    return view('auth.admin_login');
+});
