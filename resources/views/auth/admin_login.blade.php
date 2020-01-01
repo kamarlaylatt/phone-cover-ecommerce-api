@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="m-login__head">
 								<h3 class="m-login__title">Sign In To Admin</h3>	
 							</div>
-							<form class="m-login__form m-form" method="POST" action="{{ route('login') }}">
+							<form class="m-login__form m-form" method="POST" action="{{ route('admin.login.post') }}">
 								@csrf
 								<div class="form-group m-form__group">
 									<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">

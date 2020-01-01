@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.backend');
-});
+Route::get('/login', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
+Route::post('/login', 'Auth\LoginController@adminLogin')->name('admin.login.post');
+Route::get('/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
 
-Route::get('/login', function () {
-    return view('auth.admin_login');
+Route::middleware('auth:admin')->group(function(){
+
+	Route::get('/', function () {return view('layouts.backend');})->name('admin');
+
 });
