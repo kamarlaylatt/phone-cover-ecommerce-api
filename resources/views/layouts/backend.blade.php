@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>Dashboard | Sample</title>
+		<title>@yield('title')</title>
 		<meta name="description" content="Latest updates and statistic charts">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
@@ -217,25 +217,9 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="m-subheader ">
 						<div class="d-flex align-items-center">
 							<div class="mr-auto">
-								<h3 class="m-subheader__title m-subheader__title--separator">FAQ v1</h3>
+								<h3 class="m-subheader__title m-subheader__title--separator">@yield('head_title')</h3>
 								<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-									<li class="m-nav__item m-nav__item--home">
-										<a href="#" class="m-nav__link m-nav__link--icon">
-											<i class="m-nav__link-icon la la-home"></i>
-										</a>
-									</li>
-									<li class="m-nav__separator">-</li>
-									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
-											<span class="m-nav__link-text">FAQS</span>
-										</a>
-									</li>
-									<li class="m-nav__separator">-</li>
-									<li class="m-nav__item">
-										<a href="" class="m-nav__link">
-											<span class="m-nav__link-text">FAQ v1</span>
-										</a>
-									</li>
+									@yield('breadcrumbs')
 								</ul>
 							</div>
 						</div>
@@ -243,7 +227,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 					<!-- END: Subheader -->
 					<div class="m-content">
-
+						@yield('content')
 					</div>
 				</div>
 			</div>

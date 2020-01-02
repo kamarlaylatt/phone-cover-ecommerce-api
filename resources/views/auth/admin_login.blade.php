@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>Metronic | Login Page - 3</title>
+		<title>Sample | Login Page</title>
 		<meta name="description" content="Latest updates and statistic charts">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
@@ -68,12 +68,22 @@ License: You must have a valid license purchased only from themeforest(the above
 							<form class="m-login__form m-form" method="POST" action="{{ route('admin.login.post') }}">
 								@csrf
 								<div class="form-group m-form__group">
-									<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+									<input class="form-control m-input @error('email') is-invalid @enderror" type="text" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+									@error('email')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 								</div>
 								<div class="form-group m-form__group">
-									<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
+									<input class="form-control m-input m-login__form-input--last @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password">
+									@error('password')
+	                                    <span class="invalid-feedback" role="alert">
+	                                        <strong>{{ $message }}</strong>
+	                                    </span>
+	                                @enderror
 								</div>
-								<div class="row m-login__form-sub">
+								{{-- <div class="row m-login__form-sub">
 									<div class="col m--align-left m-login__form-left">
 										<label class="m-checkbox  m-checkbox--focus">
 											<input type="checkbox" name="remember"> Remember me
@@ -83,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="col m--align-right m-login__form-right">
 										<a href="javascript:;" id="m_login_forget_password" class="m-link">Forget Password ?</a>
 									</div>
-								</div>
+								</div> --}}
 								<div class="m-login__form-action">
 									<button type="submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">Sign In</button>
 								</div>
