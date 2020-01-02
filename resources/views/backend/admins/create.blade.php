@@ -66,8 +66,9 @@
                 <div class="form-group m-form__group">
                     <label for="exampleSelect1">Select Role</label>
                     <select name="role" class="form-control m-input m-input--air">
-                        <option value="Admin">Admin</option>
-                        <option value="Editor">Editor</option>
+                        @foreach($roles as $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
+                        @endforeach                        
                     </select>
                 </div>
                 <div class="form-group m-form__group">

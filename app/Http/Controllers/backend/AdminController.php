@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Admin;
+use App\AdminRole;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,7 +33,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('backend.admins.create');
+        $roles = AdminRole::all();
+        return view('backend.admins.create', compact('roles'));
     }
 
     /**
@@ -55,7 +57,7 @@ class AdminController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'role' => $request['role'],
+            'admin_role_id' => $request['role'],
         ]);
 
         return redirect()->route('admins.index');
@@ -82,7 +84,8 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admin = Admin::find($id);
-        return view('backend.admins.edit', compact('admin'));
+        $roles = AdminRole::all();
+        return view('backend.admins.edit', compact('admin','roles'));
     }
 
     /**
@@ -106,7 +109,7 @@ class AdminController extends Controller
             
             $admin->name = $request['name'];
             $admin->email = $request['email'];
-            $admin->role = $request['role'];
+            $admin->admin_role_id = $request['role'];
             $admin->update();
 
             return redirect()->route('admins.index');
@@ -122,7 +125,7 @@ class AdminController extends Controller
 
             $admin->name = $request['name'];
             $admin->email = $request['email'];
-            $admin->role = $request['role'];
+            $admin->admin_role_id = $request['role'];
             $admin->password = Hash::make($request['password']);
             $admin->update();
 

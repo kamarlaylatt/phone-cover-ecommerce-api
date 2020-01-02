@@ -18,7 +18,8 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role');
+            $table->unsignedBigInteger('admin_role_id');
+            $table->foreign('admin_role_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
     }

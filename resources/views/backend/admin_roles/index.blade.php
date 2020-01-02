@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('title','Sample | Admin Role')
 
-@section('head_title','Administrator')
+@section('head_title','Admin Role')
 
 @section('breadcrumbs')
     <li class="m-nav__item">

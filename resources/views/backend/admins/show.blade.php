@@ -33,6 +33,10 @@
                         <th> Description </th>
                         <td> {{$admin->email}} </td>
                     </tr>
+                    <tr>
+                        <th> Role </th>
+                        <td> {{$admin->admin_role->name}} </td>
+                    </tr>
                 </table>
             </div>
         </div>

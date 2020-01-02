@@ -89,6 +89,7 @@
                                 <th title="Field #1" data-field="No">No</th>
                                 <th title="Field #2" data-field="Name">Name</th>
                                 <th title="Field #3" data-field="Email">Email</th>
+                                <th title="Field #3" data-field="Role">Role</th>
                                 <th title="Field #4" data-field="Action">Action</th>
                             </tr>
                         </thead>
@@ -98,6 +99,7 @@
                                     <td>{{ $key+ $admins->firstItem() }}</td>
                                     <td>{{$admin->name}}</td>
                                     <td>{{$admin->email}}</td>
+                                    <td>{{$admin->admin_role->name}}</td>
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('admins.show', $admin->id)}}">
                                             <i class="fa fa-eye"></i>
