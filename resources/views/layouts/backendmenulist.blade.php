@@ -15,6 +15,7 @@
 						<li class="m-menu__item  m-menu__item--parent" aria-haspopup="true"><span class="m-menu__link"><span class="m-menu__link-text">Base</span></span></li>
 						<li class="m-menu__item " aria-haspopup="true"><a href="{{route('admins.index')}}" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Admin</span></a></li>
 						<li class="m-menu__item " aria-haspopup="true"><a href="{{route('users.index')}}" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">User</span></a></li>
+						<li class="m-menu__item " aria-haspopup="true"><a href="{{route('admin_roles.index')}}" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Admin Role</span></a></li>
 					</ul>
 				</div>
 			</li>

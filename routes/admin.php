@@ -18,7 +18,17 @@ Route::get('/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
 Route::middleware('auth:admin')->namespace('backend')->group(function(){
 
 	Route::get('/', function () {return view('layouts.backend');})->name('admin');
+
+	//admin_roles	
+	Route::resource('admin_roles', 'AdminRoleController');
+	Route::post('admin_roles/search', 'AdminRoleController@search')->name('admin_roles.search');
+	
+	//admins	
 	Route::resource('admins', 'AdminController');
+	Route::post('admins/search','AdminController@search')->name('admins.search');
+
+	//users
 	Route::resource('users', 'UserController');
+	Route::post('users/search','UserController@search')->name('users.search');
 
 });

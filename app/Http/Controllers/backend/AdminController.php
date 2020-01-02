@@ -143,4 +143,15 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        $search = $request['search'];
+
+        $admins = Admin::where('name','like', '%'.$search.'%')
+                        ->orwhere('email', 'like', '%'.$search.'%')
+                        ->paginate(10);
+
+        return view('backend.admins.index', compact('admins'));
+    }
 }

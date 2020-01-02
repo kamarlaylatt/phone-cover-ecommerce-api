@@ -48,12 +48,22 @@
                         <div class="col-xl-8 order-2 order-xl-1">
                             <div class="form-group m-form__group row align-items-center">
                                 <div class="col-md-4">
-                                    <div class="m-input-icon m-input-icon--left">
-                                        <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
-                                        <span class="m-input-icon__icon m-input-icon__icon--left">
-                                            <span><i class="la la-search"></i></span>
-                                        </span>
-                                    </div>
+                                    <form method="POST" action="{{route('admins.search')}}">
+                                        @csrf
+                                        <div class="m-input-icon m-input-icon--left">
+                                            <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
+                                            <span class="m-input-icon__icon m-input-icon__icon--left">
+                                                <span><i class="la la-search"></i></span>
+                                            </span>                                           
+                                        </div>                                        
+                                    
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-danger">Search</button>
+                                </div>
+                                </form>
+                                <div class="col-md-1">
+                                    <a href="{{route('admins.index')}}"><button class="btn btn-danger">Show All</button></a>
                                 </div>
                             </div>
                         </div>

@@ -1,12 +1,12 @@
 @extends('layouts.backend')
-@section('title','Category|View')
+@section('title','User|View')
 
 @section('head_title','User')
 
 @section('breadcrumbs')
     <li class="m-nav__item">
         <a href="{{route('users.index')}}" class="m-nav__link">
-            <span class="m-nav__link-text">user</span>
+            <span class="m-nav__link-text">User</span>
         </a>
     </li>
     <li class="m-nav__separator">-</li>
@@ -22,7 +22,7 @@
 <div class="container col-md-8">
     <div class="card">
         <div class="container">
-            <div class="card-title text-center mt-4 h3">user Detail</div>
+            <div class="card-title text-center mt-4 h3">User Detail</div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>

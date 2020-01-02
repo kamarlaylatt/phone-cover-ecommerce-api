@@ -11,7 +11,7 @@
     </li>
     <li class="m-nav__separator">-</li>
     <li class="m-nav__item">
-        <a href="{{route('users.index')}}" class="m-nav__link">
+        <a href="{{route('users.create')}}" class="m-nav__link">
             <span class="m-nav__link-text">Create</span>
         </a>
     </li>   

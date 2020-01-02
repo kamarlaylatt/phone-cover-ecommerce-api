@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Categories|Create')
+@section('title','Admin|Edit')
 
 @section('head_title','Administrator')
 
