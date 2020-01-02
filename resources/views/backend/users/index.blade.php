@@ -51,7 +51,7 @@
                                     <form method="POST" action="{{route('users.search')}}">
                                         @csrf
                                         <div class="m-input-icon m-input-icon--left">
-                                            <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
+                                            <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
                                             <span class="m-input-icon__icon m-input-icon__icon--left">
                                                 <span><i class="la la-search"></i></span>
                                             </span>                                           
