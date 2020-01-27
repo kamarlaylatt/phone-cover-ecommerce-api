@@ -39,5 +39,7 @@ class SetupProject extends Command
     public function handle()
     {
         Artisan::call('migrate:fresh --seed');
+        Artisan::call('key:generate');
+        $this->info('Successfully migrate and generate key');
     }
 }
