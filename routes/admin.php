@@ -15,7 +15,7 @@ Route::get('/login', 'Auth\LoginController@showAdminLoginForm')->name('admin.log
 Route::post('/login', 'Auth\LoginController@adminLogin')->name('admin.login.post');
 Route::get('/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
 
-Route::middleware('auth:admin')->namespace('backend')->group(function(){
+Route::namespace('backend')->group(function(){
 
 	Route::get('/', function () {return view('layouts.backend');})->name('admin');
 
@@ -30,5 +30,7 @@ Route::middleware('auth:admin')->namespace('backend')->group(function(){
 	//users
 	Route::resource('users', 'UserController');
 	Route::post('users/search','UserController@search')->name('users.search');
+
+	Route::get('/categories','CategoryController@index');
 
 });
