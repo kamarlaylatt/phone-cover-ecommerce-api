@@ -31,6 +31,6 @@ Route::namespace('backend')->group(function(){
 	Route::resource('users', 'UserController');
 	Route::post('users/search','UserController@search')->name('users.search');
 
-	Route::get('/categories','CategoryController@index');
+	Route::get('/categories','CategoryController@index')->name('categories.index');
 
 });

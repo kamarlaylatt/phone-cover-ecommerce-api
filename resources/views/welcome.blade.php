@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -83,6 +83,9 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <div id='app'>
+                    <example-component></example-component>
+                </div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
@@ -97,4 +100,5 @@
             </div>
         </div>
     </body>
+    <script src="{{ mix('js/app.js') }}"></script>
 </html>

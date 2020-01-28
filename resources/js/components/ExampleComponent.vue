@@ -6,7 +6,8 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        Hello
+                        <el-button type="primary">Primary</el-button>
                     </div>
                 </div>
             </div>
