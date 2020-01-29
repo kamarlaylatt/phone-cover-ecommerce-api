@@ -19,6 +19,8 @@ class ChildrenResource extends JsonResource
             'name' => $this->name,
             'parent' => $this->parents,
             'children'=> ChildrenResource::collection($this->children),
+            'description'=> $this->description,
+            'image'=> $this->image,
         ];
     }
 }

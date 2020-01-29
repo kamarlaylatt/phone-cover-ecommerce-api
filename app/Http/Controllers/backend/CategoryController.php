@@ -10,19 +10,20 @@ class CategoryController extends Controller
 {
     public function index()
     {
-    	// $categories = CategoryResource::collection(Category::all());
+    	$categories = CategoryResource::collection(Category::all());
 
-     //    $category_array = array();
+        $category_array = array();
 
-     //    foreach ($categories as $key => $category) {
-     //        if($category->parents == null)
-     //        {
-     //            array_push($category_array, $category);
-     //        }
-     //    }
-     //    return $category_array;
+        foreach ($categories as $key => $category) {
+            if($category->parents == null)
+            {
+                array_push($category_array, $category);
+            }
+        }
 
-        return view('backend.categories.index');
+        // return $category_array;
+
+        return view('backend.categories.index', compact('category_array'));
     	
     }
 }
