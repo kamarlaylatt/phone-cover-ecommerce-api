@@ -18,6 +18,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'icon' => 'fa fa-folder',
             'parent' => $this->parents,
             'children'=> ChildrenResource::collection($this->children),
             'description'=> $this->description,

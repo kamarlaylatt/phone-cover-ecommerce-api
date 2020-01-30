@@ -10,9 +10,12 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VTreeselect from 'vue-treeselect';
+import VJstree from 'vue-jstree';
 
 Vue.use(ElementUI);
-
+Vue.use(VTreeselect);
+Vue.use(VJstree);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,6 +29,7 @@ Vue.use(ElementUI);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('tree-component', require('./components/category/TreeComponent.vue').default);
+Vue.component('tree_edit-component', require('./components/category/TreeEditComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

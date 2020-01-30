@@ -297,10 +297,11 @@ License: You must have a valid license purchased only from themeforest(the above
 			<script src="{{asset('backend_asset/vendors/base/vendors.bundle.js')}}" type="text/javascript"></script>
 			<script src="{{asset('backend_asset/demo/default/base/scripts.bundle.js')}}" type="text/javascript"></script>
 
-			<script src="{{ mix('js/app.js') }}"></script>
+			
 
 			<!--end::Global Theme Bundle -->
 		</div>
+		<script src="{{ mix('js/app.js') }}"></script>
 	</body>
 
 	<!-- end::Body -->

@@ -10,7 +10,13 @@ class CategoryController extends Controller
 {
     public function index()
     {
-    	$categories = CategoryResource::collection(Category::all());
+    	
+    	
+    }
+
+    public function create()
+    {
+        $categories = CategoryResource::collection(Category::all());
 
         $category_array = array();
 
@@ -23,7 +29,21 @@ class CategoryController extends Controller
 
         // return $category_array;
 
-        return view('backend.categories.index', compact('category_array'));
-    	
+        return view('backend.categories.create', compact('category_array'));
+    }
+
+    public function store(Request $request)
+    {
+        Category::Create([
+            'name' => $request['name'],
+            'parents' => $request['category'],
+            'description' => $request['description'],
+            'image' => $request['image'],
+        ]);
+
+        $data = [
+            'success' => true,
+        ];
+        return response()->json($data);
     }
 }
