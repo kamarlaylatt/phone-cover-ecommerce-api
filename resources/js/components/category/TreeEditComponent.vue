@@ -22,7 +22,7 @@
 		  </el-form-item>
 		  <el-form-item>
 		    <el-button @click="create">Create</el-button>
-		    <el-button @click="resetForm('ruleForm')">Cancel</el-button>
+		    <el-button>Cancel</el-button>
 		  </el-form-item>
 		</el-form>
 	</div>

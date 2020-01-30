@@ -52,7 +52,7 @@
                         <div class="col-xl-3 col-lg-12 m--padding-top-20 m--padding-bottom-15">
 
                             <!--begin: Form Wizard Head -->
-                            <div class="m-wizard__head">
+                            <div class="container">
 
                                 <!--begin: Form Wizard Nav -->
                                 <div class="m-wizard__nav">

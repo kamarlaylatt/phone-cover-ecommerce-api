@@ -15,7 +15,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $category_array = ['category1','category2','category3','category4','category5','category6'];
-        $parent_array = ['','','','1','4','5,1'];
+        $parent_array = ['0','0','0','1','4','5,1'];
         $faker = Faker::create();
 
         $i=0;
