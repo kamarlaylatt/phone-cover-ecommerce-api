@@ -77,12 +77,17 @@
                         <tr>
                             <th title="Field #1" data-field="No">No</th>
                             <th title="Field #2" data-field="Name">Name</th>
-                            <th title="Field #3" data-field="Email">Email</th>
-                            <th title="Field #3" data-field="Role">Role</th>
-                            <th title="Field #4" data-field="Action">Action</th>
+                            <th title="Field #3" data-field="Email">Description</th>
+                            <th title="Field #3" data-field="Role">Photo</th>
                         </tr>
                     </thead>
                     <tbody>
+                    	<tr>
+                    		<td>1</td>
+                    		<td>Category1</td>
+                    		<td>Description1</td>
+                    		<td>img1</td>
+                    	</tr>
                     </tbody>                                     
                 </table>                    
             </div>

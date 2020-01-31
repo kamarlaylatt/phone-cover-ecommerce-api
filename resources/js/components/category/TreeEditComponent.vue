@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<div v-for="error in errors" class="alert alert-danger" role="alert">
+		  {{error.errorMessage}}
+		</div>
 		<el-form :model="ruleForm" status-icon  label-width="120px" class="demo-ruleForm">
 		  <el-form-item label="Category" prop="checkPass">
 		    <v-tree-select 
@@ -22,7 +25,7 @@
 		  </el-form-item>
 		  <el-form-item>
 		    <el-button @click="create">Create</el-button>
-		    <el-button>Cancel</el-button>
+		    <el-button @click="cancel">Cancel</el-button>
 		  </el-form-item>
 		</el-form>
 	</div>
@@ -39,7 +42,8 @@
 					description: '',
 					image: '',
 				},
-				
+
+				errors: '',
 			};
 		},
 
@@ -50,21 +54,34 @@
 
 		methods:{
 			create()
-			{
+			{				
 				axios.post('/admin/categories/store', this.form)
 				.then(response=> {
-					if(response.data.success == true)
+					if(response.data.validation == true)
 					{
 						setTimeout(()=>{
 
 						},2000)
 						var currentUrl = window.location.pathname;
-						window.location.href = currentUrl;	
+						// window.location.href = currentUrl;
+						history.back();	
+					}
+					else{
+						this.errors = response.data.errors;		
+						setTimeout(()=>{
+							this.errors = '';
+						},2000)				
 					}
 					
 				});
 				
 			},
+
+
+			cancel()
+			{
+				history.back();
+			}
 		},
 	}
 </script>

@@ -3573,6 +3573,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories'],
   data: function data() {
@@ -3582,7 +3585,8 @@ __webpack_require__.r(__webpack_exports__);
         category: '',
         description: '',
         image: ''
-      }
+      },
+      errors: ''
     };
   },
   mounted: function mounted() {
@@ -3590,13 +3594,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     create: function create() {
+      var _this = this;
+
       axios.post('/admin/categories/store', this.form).then(function (response) {
-        if (response.data.success == true) {
+        if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
-          var currentUrl = window.location.pathname;
-          window.location.href = currentUrl;
+          var currentUrl = window.location.pathname; // window.location.href = currentUrl;
+
+          history.back();
+        } else {
+          _this.errors = response.data.errors;
+          setTimeout(function () {
+            _this.errors = '';
+          }, 2000);
         }
       });
+    },
+    cancel: function cancel() {
+      history.back();
     }
   }
 });
@@ -100011,6 +100026,14 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
+      _vm._l(_vm.errors, function(error) {
+        return _c(
+          "div",
+          { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+          [_vm._v("\n\t  " + _vm._s(error.errorMessage) + "\n\t")]
+        )
+      }),
+      _vm._v(" "),
       _c(
         "el-form",
         {
@@ -100105,7 +100128,7 @@ var render = function() {
                 _vm._v("Create")
               ]),
               _vm._v(" "),
-              _c("el-button", [_vm._v("Cancel")])
+              _c("el-button", { on: { click: _vm.cancel } }, [_vm._v("Cancel")])
             ],
             1
           )
@@ -100113,7 +100136,7 @@ var render = function() {
         1
       )
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -112640,8 +112663,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
