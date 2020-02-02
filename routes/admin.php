@@ -31,11 +31,14 @@ Route::namespace('backend')->group(function(){
 	Route::resource('users', 'UserController');
 	Route::post('users/search','UserController@search')->name('users.search');
 
-	//categoriesf
+	//categories
 	Route::prefix('categories')->group(function(){
 		Route::get('/','CategoryController@index')->name('categories.index');
+		Route::get('{id}/show','CategoryController@show')->name('categories.show');
 		Route::get('/create','CategoryController@create')->name('categories.create');
 		Route::post('/store','CategoryController@store')->name('categories.store');
+		Route::get('/{id}/edit','CategoryController@edit')->name('categories.edit');
+		Route::post('/update','CategoryController@update')->name('categories.update');
 		Route::post('/search','CategoryController@search')->name('categories.search');
 	});
 	

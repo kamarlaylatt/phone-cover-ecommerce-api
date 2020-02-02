@@ -28,24 +28,15 @@ class Category extends Model
 
     public function getChildrenTree()
     {
-        $categories = CategoryResource::collection(Category::all());
-
-        $children_array = array();       
-
-        foreach ($categories as $key => $category) {
-            if($category->parents == 0)
-            {
-                array_push($children_array, $category);
-            }
-        }
+        $categories = CategoryResource::collection(Category::where('parents', 0)->get());
 
         $category_array = [
             [
-                'id' => '0',
+                'id' => 0,
                 'name' => 'root',
                 'icon' => 'fa fa-folder',
                 'parent' => '',
-                'children'=> $children_array,
+                'children'=> $categories,
                 'description'=> '',
                 'opened' => true,
                 'image'=> '',

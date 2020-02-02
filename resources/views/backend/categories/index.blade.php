@@ -102,15 +102,15 @@
                             @if(!$category->description)
                                 <td class="text-center"><span class="text-danger">null</span>
                             @else
-                    		  <td>{{$category->description}}</td>
+                    		  <td>{{Str::limit($category->description, 20)}}</td>
                             @endif
                     		<td>{{$category->image}}</td>
                             <td class="text-center">
-                            	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="">
+                            	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.show', $category->id)}}">
                                     <i class="fa fa-eye"></i>
                                 </a>
 
-                                <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href=""><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
 
                                 <form action="" method="POST" style="display:inline;">
                                                                               

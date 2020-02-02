@@ -6,7 +6,7 @@
 		<!--begin::Form-->
         <form class="m-form m-form--fit m-form--label-align-right">
             <div class="m-portlet__body">
-                <div class="form-group m-form__group">
+                <div class="form-group m-form__group">                    
                     <label>Parent</label>
                     <v-tree-select 
 					:data="categories" 
@@ -20,10 +20,10 @@
 					<label>Sub Category</label>
 					<input v-model="form.name" type="text" class="form-control" placeholder="Enter Sub Category">
 				</div>
-				<div class="form-group m-form__group">
-					<label>Description</label>
-					<input v-model="form.description" type="text" class="form-control" placeholder="Enter Description">
-				</div>
+                <div class="form-group m-form__group">
+                    <label for="comment">Description:</label>
+                    <textarea v-model="form.description" class="form-control" rows="5" id="comment"></textarea>
+                </div>
 				<div class="form-group m-form__group">
 					<label>Image</label>
 					<input v-model="form.image" type="text" class="form-control" placeholder="Enter Image">
@@ -31,7 +31,7 @@
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions">
-                    <button type="button" @click="create" class="btn btn-danger">Create</button>
+                    <button type="button" @click="update" class="btn btn-danger">Update</button>
 					 <button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
                 </div>
             </div>
@@ -43,10 +43,11 @@
 
 <script>
 	export default {
-		props: ['categories'],
+		props: ['categories','category'],
 		data(){
 			return{
 				form: {
+                    id: '',
 					name: '',
 					category: '',
 					description: '',
@@ -59,13 +60,23 @@
 
 		mounted()
 		{
-			this.form.category = this.categories[0].id;
+            // this.form.category = this.categories[0].id;
+            this.edit();
 		},
 
 		methods:{
-			create()
+            edit()
+            {
+                this.form.id = this.category.id;
+                this.form.name = this.category.name;
+                this.form.category = this.category.parents;
+                this.form.description =this.category.description;
+                this.form.image = this.category.image;
+            },
+
+			update()
 			{				
-				axios.post('/admin/categories/store', this.form)
+				axios.post('/admin/categories/update', this.form)
 				.then(response=> {
 					if(response.data.validation == true)
 					{

@@ -19,6 +19,12 @@ class CategoryController extends Controller
     	return view('backend.categories.index', compact('categories'));
     }
 
+    public function show($id)
+    {
+        $category = Category::find($id);
+        return view('backend.categories.show', compact('category'));
+    }
+
     public function create()
     {
         $categoryModel = new Category;
@@ -73,6 +79,65 @@ class CategoryController extends Controller
             'success' => true,
             'validation' => true,
         ];
+        return response()->json($data);
+    }
+
+    public function edit($id)
+    {
+        $categoryModel = new Category;
+        $category_array = $categoryModel->getChildrenTree();
+        $category = Category::find($id);
+        return view('backend.categories.edit', compact('category','category_array'));
+    }
+
+    public function update(Request $request)
+    {
+        $category = Category::find($request['id']);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'category' => 'required',
+            'image' => 'required',
+
+        ]);
+
+        if($validator->fails()){
+            
+            $errors_array = array(); 
+
+            $errors = $validator->errors();
+
+            foreach ($errors->all() as $error) {
+                $error_array = explode(" ", $error);
+                $data = [
+                    "fieldCode" => $error_array[1],
+                    "errorMessage" => $error,
+                ];
+
+                array_push($errors_array, $data);
+            }
+
+            return response()->json([
+                'success' => false,
+                'validation' => false,
+                'responseMessage' => 'Multiple Error',
+                'errors' => $errors_array,
+            ]);  
+            
+        }
+        
+        $category->name =  $request['name'];
+        $category->description = $request['description'];
+        $category->parents = $request['category'];
+        $category->image = $request['image'];
+
+        $category->save();
+
+        $data = [
+            'success' => true,
+            'validation' => true,
+        ];
+        
         return response()->json($data);
     }
 
