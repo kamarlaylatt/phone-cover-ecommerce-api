@@ -10,7 +10,9 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VTreeselect from 'vue-treeselect';
 import VJstree from 'vue-jstree';
+import ImageUploader from 'vue-image-upload-resize'
 
+Vue.use(ImageUploader);
 Vue.use(VTreeselect);
 Vue.use(VJstree);
 /**

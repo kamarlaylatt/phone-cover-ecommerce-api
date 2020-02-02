@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div v-for="error in errors" :key="error" class="alert alert-danger" role="alert">
+		<div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
 		  {{error.errorMessage}}
 		</div>
 		<!--begin::Form-->
@@ -26,7 +26,19 @@
                 </div>
 				<div class="form-group m-form__group">
 					<label>Image</label>
-					<input v-model="form.image" type="text" class="form-control" placeholder="Enter Image">
+					<image-uploader
+						:debug="1"
+						:maxWidth="512"
+						:quality="0.7"
+						:autoRotate=true
+						outputFormat="verbose"
+						:preview=true
+						:className="['fileinput', { 'fileinput--loaded' : hasImage }]"
+						:capture="false"
+						accept="video/*,image/*"
+						doNotResize="['gif', 'svg']"
+						@input="setImage"
+					></image-uploader>
 				</div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
@@ -42,6 +54,7 @@
 </template>
 
 <script>
+import ImageUploader from 'vue-image-upload-resize'
 	export default {
 		props: ['categories'],
 		data(){
@@ -55,7 +68,12 @@
 				},
 
 				errors: '',
+				hasImage: false,
 			};
+		},
+
+		components: {
+			ImageUploader
 		},
 
 		mounted()
@@ -86,6 +104,12 @@
 					
 				});
 				
+			},
+
+			setImage(output)
+			{
+				this.hasImage = true;
+      			this.form.image = output.info.name;
 			},
 
 
