@@ -8,12 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import VTreeselect from 'vue-treeselect';
 import VJstree from 'vue-jstree';
 
-Vue.use(ElementUI);
 Vue.use(VTreeselect);
 Vue.use(VJstree);
 /**

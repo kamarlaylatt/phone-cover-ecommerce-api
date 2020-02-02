@@ -1,33 +1,43 @@
 <template>
 	<div class="container">
-		<div v-for="error in errors" class="alert alert-danger" role="alert">
+		<div v-for="error in errors" :key="error" class="alert alert-danger" role="alert">
 		  {{error.errorMessage}}
 		</div>
-		<el-form :model="ruleForm" status-icon  label-width="120px" class="demo-ruleForm">
-		  <el-form-item label="Parent" prop="checkPass">
-		    <v-tree-select 
-				:data="categories" 
-				value-field-name="id" 
-				v-model="form.category"
-				text-field-name="name"
-				>
-					
-				</v-tree-select>
-		  </el-form-item>
-		  <el-form-item label="Sub Category">
-		    <el-input type="text" v-model="form.name"></el-input>
-		  </el-form-item>
-		  <el-form-item label="Description">
-		    <el-input type="text" v-model="form.description"></el-input>
-		  </el-form-item>
-		  <el-form-item label="Image">
-		    <el-input type="text" v-model="form.image"></el-input>
-		  </el-form-item>
-		  <el-form-item>
-		    <el-button @click="create">Create</el-button>
-		    <el-button @click="cancel">Cancel</el-button>
-		  </el-form-item>
-		</el-form>
+		<!--begin::Form-->
+        <form class="m-form m-form--fit m-form--label-align-right">
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group">
+                    <label>Parent</label>
+                    <v-tree-select 
+					:data="categories" 
+					value-field-name="id" 
+					v-model="form.category"
+					text-field-name="name"
+					>						
+					</v-tree-select>
+                </div>
+				<div class="form-group m-form__group">
+					<label>Sub Category</label>
+					<input v-model="form.name" type="text" class="form-control" placeholder="Enter Sub Category">
+				</div>
+				<div class="form-group m-form__group">
+					<label>Description</label>
+					<input v-model="form.description" type="text" class="form-control" placeholder="Enter Description">
+				</div>
+				<div class="form-group m-form__group">
+					<label>Image</label>
+					<input v-model="form.image" type="text" class="form-control" placeholder="Enter Image">
+				</div>
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <button type="button" @click="create" class="btn btn-danger">Create</button>
+					 <button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
 	</div>
 </template>
 
@@ -64,7 +74,7 @@
 						},2000)
 						var currentUrl = window.location.pathname;
 						// window.location.href = currentUrl;
-						history.back();	
+						window.location.href = '/admin/categories';
 					}
 					else{
 						this.errors = response.data.errors;		
@@ -80,7 +90,7 @@
 
 			cancel()
 			{
-				history.back();
+				window.location.href = '/admin/categories';
 			}
 		},
 	}

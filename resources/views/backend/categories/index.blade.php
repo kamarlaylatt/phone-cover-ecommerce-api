@@ -35,26 +35,27 @@
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                 <div class="row align-items-center">
                     <div class="col-xl-8 order-2 order-xl-1">
-                        <div class="form-group m-form__group row align-items-center">
-                            <div class="col-md-4">
-                                <form method="POST" action="{{route('categories.search')}}">
-                                    @csrf
-                                    <div class="m-input-icon m-input-icon--left">
-                                        <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
-                                        <span class="m-input-icon__icon m-input-icon__icon--left">
-                                            <span><i class="la la-search"></i></span>
-                                        </span>                         	                  
-                                    </div>                                        
-                                
-                            </div>
-                            <div class="col-xl-1 col-sm-6">
-                                <button type="submit" class="btn btn-danger">Search</button>
-                            </div>
-                            </form>
-                            <div class="col-xl-1 col-sm-6">
-                                <a href="{{route('categories.index')}}"><button class="btn btn-danger">Show All</button></a>
-                            </div>
+                        <div class="form-group">
+                        	<form method="POST" action="{{route('categories.search')}}">
+                        		@csrf
+		                            <div class="col-md-4">	                            
+		                                    <div class="m-input-icon m-input-icon--left">
+		                                        <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
+		                                        <span class="m-input-icon__icon m-input-icon__icon--left">
+		                                            <span><i class="la la-search"></i></span>
+		                                        </span>                         	                  
+		                                    </div>                      	                            	
+		                            </div>
+		                            <div class="col-md-4">                                      
+		                    			<button type="submit" class="btn btn-danger">Search</button>
+		                    		</div>
+                    		</form>
+                    		<div class="col-xl-1 col-sm-6">
+                            	<a href="{{route('categories.index')}}"><button class="btn btn-danger">Show All</button></a>
+                        	</div> 
+	                    	                         
                         </div>
+                        
                     </div>
                     <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                         <a href="{{route('categories.create')}}" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
