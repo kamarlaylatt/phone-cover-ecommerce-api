@@ -4,7 +4,7 @@
 		  {{error.errorMessage}}
 		</div>
 		<el-form :model="ruleForm" status-icon  label-width="120px" class="demo-ruleForm">
-		  <el-form-item label="Category" prop="checkPass">
+		  <el-form-item label="Parent" prop="checkPass">
 		    <v-tree-select 
 				:data="categories" 
 				value-field-name="id" 

@@ -21,7 +21,12 @@ class Category extends Model
     	return $this->hasMany('App\Category', 'parents');
     }
 
-    public function getTree()
+    public function parent()
+    {
+        return $this->belongsTo('App\Category', 'parents');
+    }
+
+    public function getChildrenTree()
     {
         $categories = CategoryResource::collection(Category::all());
 

@@ -100047,7 +100047,7 @@ var render = function() {
         [
           _c(
             "el-form-item",
-            { attrs: { label: "Category", prop: "checkPass" } },
+            { attrs: { label: "Parent", prop: "checkPass" } },
             [
               _c("v-tree-select", {
                 attrs: {
@@ -112663,8 +112663,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

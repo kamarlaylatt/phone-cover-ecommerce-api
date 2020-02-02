@@ -37,21 +37,21 @@
                     <div class="col-xl-8 order-2 order-xl-1">
                         <div class="form-group m-form__group row align-items-center">
                             <div class="col-md-4">
-                                <form method="POST" action="">
+                                <form method="POST" action="{{route('categories.search')}}">
                                     @csrf
                                     <div class="m-input-icon m-input-icon--left">
                                         <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
                                         <span class="m-input-icon__icon m-input-icon__icon--left">
                                             <span><i class="la la-search"></i></span>
-                                        </span>                                           
+                                        </span>                         	                  
                                     </div>                                        
                                 
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-xl-1 col-sm-6">
                                 <button type="submit" class="btn btn-danger">Search</button>
                             </div>
                             </form>
-                            <div class="col-md-1">
+                            <div class="col-xl-1 col-sm-6">
                                 <a href="{{route('categories.index')}}"><button class="btn btn-danger">Show All</button></a>
                             </div>
                         </div>
@@ -74,22 +74,54 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="html_table" width="100%">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th title="Field #1" data-field="No">No</th>
                             <th title="Field #2" data-field="Name">Name</th>
+                            <th title="Field #2" data-field="Name">Path</th>
                             <th title="Field #3" data-field="Email">Description</th>
                             <th title="Field #3" data-field="Role">Photo</th>
+                            <th title="Field #3" data-field="Role">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($categories as $key=>$category)
                     	<tr>
-                    		<td>1</td>
-                    		<td>Category1</td>
-                    		<td>Description1</td>
-                    		<td>img1</td>
+                    		<td class="text-center">{{ $key+ $categories->firstItem() }}</td>
+                            <td>{{$category->name}}</td>
+                            @if($category->parents == 0)
+                                <td>{{$category->name}}</td>
+                            @else
+                                <td>                            
+                            @if($category->parents != 0)
+                                @include('backend.categories.nested_parent', ['category' => $category->parent])
+                            @endif
+                                {{$category->name}}
+                                </td>
+                            @endif
+                            @if(!$category->description)
+                                <td class="text-center"><span class="text-danger">null</span>
+                            @else
+                    		  <td>{{$category->description}}</td>
+                            @endif
+                    		<td>{{$category->image}}</td>
+                            <td class="text-center">
+                            	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+
+                                <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href=""><i class="fa fa-edit"></i></a>
+
+                                <form action="" method="POST" style="display:inline;">
+                                                                              
+                                    <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
                     	</tr>
+                        @endforeach 
                     </tbody>                                     
-                </table>                    
+                </table>    
+                {{ $categories->links() }}                   
             </div>
 
             <!--end: Datatable -->

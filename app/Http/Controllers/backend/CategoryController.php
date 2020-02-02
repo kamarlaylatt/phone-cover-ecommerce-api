@@ -12,14 +12,17 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        // $categories = CategoryResource::collection(Category::all());
+        // $category = Category::find(5);
+        // return $category->parent->parent;
+        $categories = Category::paginate(20);
     	return view('backend.categories.index', compact('categories'));
     }
 
     public function create()
     {
         $categoryModel = new Category;
-        $category_array = $categoryModel->getTree();
+        $category_array = $categoryModel->getChildrenTree();
         // return $category_array;
 
         return view('backend.categories.create', compact('category_array'));
@@ -71,5 +74,16 @@ class CategoryController extends Controller
             'validation' => true,
         ];
         return response()->json($data);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request['search'];
+
+        $categories = Category::where('name','like', '%'.$search.'%')
+                        ->orwhere('description', 'like', '%'.$search.'%')
+                        ->paginate(20);
+
+        return view('backend.categories.index', compact('categories'));
     }
 }
