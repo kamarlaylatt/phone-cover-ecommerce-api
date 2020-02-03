@@ -1922,7 +1922,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories'],
@@ -1945,7 +1944,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.form.category = this.categories[0].id;
-    this.form.image = 'https://www.pngitem.com/pimgs/m/185-1850003_sample-png-transparent-png.png';
   },
   methods: {
     onImageChange: function onImageChange(e) {
@@ -1973,6 +1971,7 @@ __webpack_require__.r(__webpack_exports__);
 
           window.location.href = '/admin/categories';
         } else {
+          window.scrollTo(0, 0);
           _this.errors = response.data.errors;
           setTimeout(function () {
             _this.errors = '';
@@ -2044,8 +2043,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['categories', 'category'],
+  props: ['categories', 'category', 'img_url'],
   data: function data() {
     return {
       form: {
@@ -2068,7 +2073,22 @@ __webpack_require__.r(__webpack_exports__);
       this.form.name = this.category.name;
       this.form.category = this.category.parents;
       this.form.description = this.category.description;
-      this.form.image = this.category.image;
+      this.form.image = this.img_url;
+    },
+    onImageChange: function onImageChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.form.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
     },
     update: function update() {
       var _this = this;
@@ -2080,6 +2100,7 @@ __webpack_require__.r(__webpack_exports__);
 
           window.location.href = '/admin/categories';
         } else {
+          window.scrollTo(0, 0);
           _this.errors = response.data.errors;
           setTimeout(function () {
             _this.errors = '';
@@ -43232,7 +43253,6 @@ var render = function() {
           [_vm._v("\n\t\t  " + _vm._s(error.errorMessage) + "\n\t\t")]
         )
       }),
-      _vm._v("\n\t\t" + _vm._s(_vm.form.image) + "\n\t\t"),
       _vm._v(" "),
       _c(
         "form",
@@ -43409,6 +43429,7 @@ var render = function() {
         )
       }),
       _vm._v(" "),
+      _vm._v("\n\t\t" + _vm._s(_vm.form.image) + "\n        "),
       _c(
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
@@ -43495,27 +43516,25 @@ var render = function() {
             _c("div", { staticClass: "form-group m-form__group" }, [
               _c("label", [_vm._v("Image")]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.image,
-                    expression: "form.image"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Enter Image" },
-                domProps: { value: _vm.form.image },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "image", $event.target.value)
-                  }
-                }
-              })
+              _vm.form.image
+                ? _c("div", { staticClass: "col-md-3" }, [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: {
+                        src: _vm.form.image,
+                        height: "120",
+                        width: "120"
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  attrs: { type: "file" },
+                  on: { change: _vm.onImageChange }
+                })
+              ])
             ])
           ]),
           _vm._v(" "),
@@ -56189,8 +56208,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

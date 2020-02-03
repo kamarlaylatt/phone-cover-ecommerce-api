@@ -103,7 +103,8 @@ class CategoryController extends Controller
         $categoryModel = new Category;
         $category_array = $categoryModel->getChildrenTree();
         $category = Category::find($id);
-        return view('backend.categories.edit', compact('category','category_array'));
+        $img_url = url(Storage::url('uploads/category_imgs/'.$category->image));
+        return view('backend.categories.edit', compact('category','category_array','img_url'));
     }
 
     public function update(Request $request)
@@ -145,9 +146,22 @@ class CategoryController extends Controller
         $category->name =  $request['name'];
         $category->description = $request['description'];
         $category->parents = $request['category'];
-        $category->image = $request['image'];
-
+        // $category->image = $request['image'];
         $category->save();
+
+        if($request->get('image'))
+        {
+            if($category->image != $request['image'])
+            {
+                $image = $request->get('image');
+                $filename = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $file = \Image::make($request['image']);
+                Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
+                $category->image = $filename;
+                $category->save();
+            }
+                
+        }
 
         $data = [
             'success' => true,

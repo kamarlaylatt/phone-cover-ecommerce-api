@@ -4,6 +4,7 @@
 		  {{error.errorMessage}}
 		</div>
 		<!--begin::Form-->
+		{{form.image}}
         <form class="m-form m-form--fit m-form--label-align-right">
             <div class="m-portlet__body">
                 <div class="form-group m-form__group">                    
@@ -26,7 +27,12 @@
                 </div>
 				<div class="form-group m-form__group">
 					<label>Image</label>
-					<input v-model="form.image" type="text" class="form-control" placeholder="Enter Image">
+					<div class="col-md-3" v-if="form.image">
+						<img :src="form.image" class="img-responsive" height="120" width="120">
+					</div>
+					<div class="col-md-6">
+						<input type="file" v-on:change="onImageChange">
+					</div>
 				</div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
@@ -43,7 +49,7 @@
 
 <script>
 	export default {
-		props: ['categories','category'],
+		props: ['categories','category','img_url'],
 		data(){
 			return{
 				form: {
@@ -71,7 +77,23 @@
                 this.form.name = this.category.name;
                 this.form.category = this.category.parents;
                 this.form.description =this.category.description;
-                this.form.image = this.category.image;
+                this.form.image = this.img_url;
+			},
+			
+			onImageChange(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);					
+			},
+
+			createImage(file) {
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.form.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
             },
 
 			update()
@@ -88,6 +110,7 @@
 						window.location.href = '/admin/categories';
 					}
 					else{
+						window.scrollTo(0,0);
 						this.errors = response.data.errors;		
 						setTimeout(()=>{
 							this.errors = '';

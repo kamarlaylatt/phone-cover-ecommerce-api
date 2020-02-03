@@ -3,7 +3,6 @@
 		<div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
 		  {{error.errorMessage}}
 		</div>
-		{{form.image}}
 		<!--begin::Form-->
         <form class="m-form m-form--fit m-form--label-align-right">
             <div class="m-portlet__body">
@@ -75,7 +74,6 @@ import ImageUploader from 'vue-image-upload-resize'
 		mounted()
 		{
 			this.form.category = this.categories[0].id;
-			this.form.image = 'https://www.pngitem.com/pimgs/m/185-1850003_sample-png-transparent-png.png';
 		},
 
 		methods:{
@@ -109,6 +107,7 @@ import ImageUploader from 'vue-image-upload-resize'
 						window.location.href = '/admin/categories';
 					}
 					else{
+						window.scrollTo(0,0);
 						this.errors = response.data.errors;		
 						setTimeout(()=>{
 							this.errors = '';
