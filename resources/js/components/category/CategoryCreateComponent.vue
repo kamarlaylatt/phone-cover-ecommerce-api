@@ -3,6 +3,7 @@
 		<div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
 		  {{error.errorMessage}}
 		</div>
+		{{form.image}}
 		<!--begin::Form-->
         <form class="m-form m-form--fit m-form--label-align-right">
             <div class="m-portlet__body">
@@ -26,19 +27,12 @@
                 </div>
 				<div class="form-group m-form__group">
 					<label>Image</label>
-					<image-uploader
-						:debug="1"
-						:maxWidth="512"
-						:quality="0.7"
-						:autoRotate=true
-						outputFormat="verbose"
-						:preview=true
-						:className="['fileinput', { 'fileinput--loaded' : hasImage }]"
-						:capture="false"
-						accept="video/*,image/*"
-						doNotResize="['gif', 'svg']"
-						@input="setImage"
-					></image-uploader>
+					<div class="col-md-3" v-if="form.image">
+						<img :src="form.image" class="img-responsive" height="120" width="120">
+					</div>
+					<div class="col-md-6">
+						<input type="file" v-on:change="onImageChange">
+					</div>
 				</div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
@@ -67,6 +61,8 @@ import ImageUploader from 'vue-image-upload-resize'
 					image: '',
 				},
 
+				image:'',
+
 				errors: '',
 				hasImage: false,
 			};
@@ -79,9 +75,26 @@ import ImageUploader from 'vue-image-upload-resize'
 		mounted()
 		{
 			this.form.category = this.categories[0].id;
+			this.form.image = 'https://www.pngitem.com/pimgs/m/185-1850003_sample-png-transparent-png.png';
 		},
 
 		methods:{
+			onImageChange(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);					
+			},
+
+			createImage(file) {
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.form.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+			
 			create()
 			{				
 				axios.post('/admin/categories/store', this.form)

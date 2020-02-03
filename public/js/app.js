@@ -1923,12 +1923,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories'],
@@ -1941,6 +1935,7 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         image: ''
       },
+      image: '',
       errors: '',
       hasImage: false
     };
@@ -1950,8 +1945,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.form.category = this.categories[0].id;
+    this.form.image = 'https://www.pngitem.com/pimgs/m/185-1850003_sample-png-transparent-png.png';
   },
   methods: {
+    onImageChange: function onImageChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.form.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
     create: function create() {
       var _this = this;
 
@@ -43221,6 +43232,7 @@ var render = function() {
           [_vm._v("\n\t\t  " + _vm._s(error.errorMessage) + "\n\t\t")]
         )
       }),
+      _vm._v("\n\t\t" + _vm._s(_vm.form.image) + "\n\t\t"),
       _vm._v(" "),
       _c(
         "form",
@@ -43305,33 +43317,29 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "form-group m-form__group" },
-              [
-                _c("label", [_vm._v("Image")]),
-                _vm._v(" "),
-                _c("image-uploader", {
-                  attrs: {
-                    debug: 1,
-                    maxWidth: 512,
-                    quality: 0.7,
-                    autoRotate: true,
-                    outputFormat: "verbose",
-                    preview: true,
-                    className: [
-                      "fileinput",
-                      { "fileinput--loaded": _vm.hasImage }
-                    ],
-                    capture: false,
-                    accept: "video/*,image/*",
-                    doNotResize: "['gif', 'svg']"
-                  },
-                  on: { input: _vm.setImage }
+            _c("div", { staticClass: "form-group m-form__group" }, [
+              _c("label", [_vm._v("Image")]),
+              _vm._v(" "),
+              _vm.form.image
+                ? _c("div", { staticClass: "col-md-3" }, [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: {
+                        src: _vm.form.image,
+                        height: "120",
+                        width: "120"
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  attrs: { type: "file" },
+                  on: { change: _vm.onImageChange }
                 })
-              ],
-              1
-            )
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
@@ -56181,8 +56189,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

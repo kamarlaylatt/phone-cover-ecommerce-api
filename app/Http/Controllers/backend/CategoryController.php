@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Resources\CategoryResource;
 use App\Category;
 use Validator;
+use File;
+use Illuminate\Support\Facades\Storage;
 class CategoryController extends Controller
 {
 
@@ -68,12 +70,26 @@ class CategoryController extends Controller
             
         }
 
-        Category::Create([
+        $category = Category::Create([
             'name' => $request['name'],
             'parents' => $request['category'],
             'description' => $request['description'],
-            'image' => $request['image'],
+            // 'image' => $request['image'],
         ]);
+
+        if($request->get('image'))
+        {
+                // $file = $request->file('image');
+                // $filename = uniqid().'_'.$file->getClientOriginalName();
+                // Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
+                $image = $request->get('image');
+                $filename = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $file = \Image::make($request['image']);
+                // Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
+                Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
+                $category->image = $filename;
+                $category->save();
+        }
 
         $data = [
             'success' => true,
