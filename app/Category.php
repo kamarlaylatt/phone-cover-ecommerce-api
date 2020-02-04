@@ -8,8 +8,13 @@ use App\Http\Resources\CategoryResource;
 class Category extends Model
 {
     protected $fillable = [
-        'name', 'image', 'parents','description',
+        'image', 'parents',
     ];
+
+    public function category_infos()
+    {
+        return $this->hasMany('App\CategoryInfo');
+    }
 
     public function products()
     {

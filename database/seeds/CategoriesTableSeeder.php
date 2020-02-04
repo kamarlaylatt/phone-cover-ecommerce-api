@@ -22,10 +22,10 @@ class CategoriesTableSeeder extends Seeder
         foreach (range(1,6) as $index)
         {
             DB::table('categories')->insert([
-                'name' => $category_array[$i],
+                // 'name' => $category_array[$i],
                 'image' => $faker->word.$i.'.jpg',
                 'parents' => $parent_array[$i],
-                'description' => $faker->paragraph,
+                // 'description' => $faker->paragraph,
             ]);
             $i++;
         }
