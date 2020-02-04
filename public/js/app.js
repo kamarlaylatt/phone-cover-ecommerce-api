@@ -2049,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories', 'category', 'img_url'],
   data: function data() {
@@ -2060,7 +2061,9 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         image: ''
       },
-      errors: ''
+      image_change_status: false,
+      errors: '',
+      obj: ''
     };
   },
   mounted: function mounted() {
@@ -2068,6 +2071,10 @@ __webpack_require__.r(__webpack_exports__);
     this.edit();
   },
   methods: {
+    itemClick: function itemClick(node) {
+      alert('hello');
+      this.obj = node.model.text;
+    },
     edit: function edit() {
       this.form.id = this.category.id;
       this.form.name = this.category.name;
@@ -2076,6 +2083,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.image = this.img_url;
     },
     onImageChange: function onImageChange(e) {
+      this.image_change_status = true;
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
@@ -2093,6 +2101,10 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
+      if (this.image_change_status == false) {
+        this.form.image = '';
+      }
+
       axios.post('/admin/categories/update', this.form).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
@@ -2102,6 +2114,9 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
+          _this.form.image = _this.img_url;
+          _this.form.name = _this.category.name;
+          _this.form.category = _this.category.parents;
           setTimeout(function () {
             _this.errors = '';
           }, 2000);
@@ -43429,7 +43444,7 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _vm._v("\n\t\t" + _vm._s(_vm.form.image) + "\n        "),
+      _vm._v("\n\t\t" + _vm._s(_vm.obj) + "\n        "),
       _c(
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
@@ -43447,6 +43462,7 @@ var render = function() {
                     "value-field-name": "id",
                     "text-field-name": "name"
                   },
+                  on: { "item-click": _vm.itemClick },
                   model: {
                     value: _vm.form.category,
                     callback: function($$v) {
@@ -56208,8 +56224,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

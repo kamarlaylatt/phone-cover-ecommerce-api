@@ -4,7 +4,7 @@
 		  {{error.errorMessage}}
 		</div>
 		<!--begin::Form-->
-		{{form.image}}
+		{{obj}}
         <form class="m-form m-form--fit m-form--label-align-right">
             <div class="m-portlet__body">
                 <div class="form-group m-form__group">                    
@@ -14,6 +14,7 @@
 					value-field-name="id" 
 					v-model="form.category"
 					text-field-name="name"
+					@item-click="itemClick"
 					>						
 					</v-tree-select>
                 </div>
@@ -59,18 +60,24 @@
 					description: '',
 					image: '',
 				},
-
+				image_change_status: false,
 				errors: '',
+				obj: '',
 			};
 		},
 
 		mounted()
 		{
-            // this.form.category = this.categories[0].id;
-            this.edit();
+			// this.form.category = this.categories[0].id;
+			this.edit();
 		},
 
 		methods:{
+			itemClick(node)
+			{
+				alert('hello');
+				this.obj = node.model.text;
+			},
             edit()
             {
                 this.form.id = this.category.id;
@@ -81,6 +88,7 @@
 			},
 			
 			onImageChange(e) {
+				this.image_change_status = true;
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
@@ -91,13 +99,17 @@
                 let reader = new FileReader();
                 let vm = this;
                 reader.onload = (e) => {
-                    vm.form.image = e.target.result;
+					vm.form.image = e.target.result;
                 };
                 reader.readAsDataURL(file);
             },
 
 			update()
-			{				
+			{	
+				if(this.image_change_status == false)
+				{
+					this.form.image= '';
+				}			
 				axios.post('/admin/categories/update', this.form)
 				.then(response=> {
 					if(response.data.validation == true)
@@ -111,7 +123,10 @@
 					}
 					else{
 						window.scrollTo(0,0);
-						this.errors = response.data.errors;		
+						this.errors = response.data.errors;
+						this.form.image = this.img_url;
+						this.form.name = this.category.name;
+                		this.form.category = this.category.parents;	
 						setTimeout(()=>{
 							this.errors = '';
 						},2000)				

@@ -114,7 +114,6 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category' => 'required',
-            'image' => 'required',
 
         ]);
 
@@ -151,16 +150,12 @@ class CategoryController extends Controller
 
         if($request->get('image'))
         {
-            if($category->image != $request['image'])
-            {
-                $image = $request->get('image');
-                $filename = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                $file = \Image::make($request['image']);
-                Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
-                $category->image = $filename;
-                $category->save();
-            }
-                
+            $image = $request['image'];
+            $filename = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            $file = \Image::make($request['image']);
+            Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
+            $category->image = $filename;
+            $category->save();    
         }
 
         $data = [
