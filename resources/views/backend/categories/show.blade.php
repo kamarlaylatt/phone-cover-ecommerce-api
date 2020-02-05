@@ -23,11 +23,12 @@
     <div class="card">
         <div class="container">
             <div class="card-title text-center mt-4 h3">Category Detail</div>
+
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th> Name </th>
-                        <td> {{$category->category_infos[0]->name}} </td>
+                        <th> Image </th>
+                        <td> <img src="{{$img_url}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> </td>
                     </tr>
                     <tr>
                         <th> Path </th>
@@ -37,17 +38,44 @@
                             @endif
                             {{$category->category_infos[0]->name}}
                         </td>
+                    </tr>                    
+                </table>
+            </div>
+            
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th> Language </th>
+                        <th> English </th>
+                    </tr>
+                    <tr>
+                        <th> Name </th>
+                        <td> {{$category->category_infos[0]->name}} </td>
                     </tr>
                     <tr>
                         <th> Description </th>
                         <td> {{$category->category_infos[0]->description}} </td>
                     </tr>
+                </table>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered">
                     <tr>
-                        <th> Image </th>
-                        <td> {{$category->category_infos[0]->image}} </td>
+                        <th> Language </th>
+                        <th> Myanmar </th>
+                    </tr>
+                    <tr>
+                        <th> Name </th>
+                        <td> {{$category->category_infos[1]->name}} </td>
+                    </tr>
+                    <tr>
+                        <th> Description </th>
+                        <td> {{$category->category_infos[1]->description}} </td>
                     </tr>
                 </table>
             </div>
+
         </div>
     </div>
 </div>

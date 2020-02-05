@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoryResource;
 use App\Category;
+use App\CategoryInfo;
 use Validator;
 use File;
 use DB;
@@ -28,7 +29,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        return view('backend.categories.show', compact('category'));
+        $img_url = url(Storage::url('uploads/category_imgs/'.$category->image));
+        return view('backend.categories.show', compact('category','img_url'));
     }
 
     public function create()
@@ -43,9 +45,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'category' => 'required',
+            
+            'parent' => 'required',
             'image' => 'required|unique:categories',
+            'english.name' => 'required',
+            'myanmar.name' => 'required',
 
         ]);
 
@@ -75,10 +79,22 @@ class CategoryController extends Controller
         }
 
         $category = Category::Create([
-            'name' => $request['name'],
-            'parents' => $request['category'],
-            'description' => $request['description'],
+            'parents' => $request['parent'],
             // 'image' => $request['image'],
+        ]);
+
+        CategoryInfo::Create([
+            'category_id' => $category->id,
+            'language_id' => $request['english.language_id'],
+            'name' => $request['english.name'],
+            'description' => $request['english.description'],
+        ]);
+
+        CategoryInfo::Create([
+            'category_id' => $category->id,
+            'language_id' => $request['myanmar.language_id'],
+            'name' => $request['myanmar.name'],
+            'description' => $request['myanmar.description'],
         ]);
 
         if($request->get('image'))
@@ -116,8 +132,9 @@ class CategoryController extends Controller
         $category = Category::find($request['id']);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'category' => 'required',
+            'parent' => 'required',
+            'english.name' => 'required',
+            'myanmar.name' => 'required',
 
         ]);
 
@@ -145,10 +162,19 @@ class CategoryController extends Controller
             ]);  
             
         }
+        $category->parents = $request['parent'];
+
+        $eng_category = $category->category_infos->where('language_id',1)->first();
+        $myan_category = $category->category_infos->where('language_id',2)->first();
+
+        $eng_category->name =  $request['english.name'];
+        $eng_category->description = $request['english.description'];
+        $eng_category->save();
+
+        $myan_category->name =  $request['myanmar.name'];
+        $myan_category->description = $request['myanmar.description'];
+        $myan_category->save();
         
-        $category->name =  $request['name'];
-        $category->description = $request['description'];
-        $category->parents = $request['category'];
         // $category->image = $request['image'];
         $category->save();
 

@@ -41,7 +41,12 @@
 
         <!--begin::Form-->
         <div class="m-portlet__body">
-            <category_edit-component :img_url="{{json_encode($img_url)}}" :category="{{json_encode($category)}}" :categories="{{json_encode($category_array)}}"></category_edit-component>
+            <category_edit-component 
+                :img_url="{{json_encode($img_url)}}" 
+                :category="{{json_encode($category)}}" 
+                :category_infos="{{json_encode($category->category_infos)}}" 
+                :categories="{{json_encode($category_array)}}">
+            </category_edit-component>
         </div>
 
         <!--end::Form-->
