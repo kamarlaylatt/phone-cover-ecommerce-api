@@ -18,7 +18,7 @@ class CreateCategoryInfosTable extends Migration
             $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('category_id');
             $table->string('name',50);
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('language_id')->references('id')->on('languages');
             $table->timestamps();
