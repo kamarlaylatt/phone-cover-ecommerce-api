@@ -1922,6 +1922,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories'],
@@ -43265,7 +43296,7 @@ var render = function() {
             staticClass: "alert alert-danger",
             attrs: { role: "alert" }
           },
-          [_vm._v("\n\t\t  " + _vm._s(error.errorMessage) + "\n\t\t")]
+          [_vm._v("\n\t\t\t" + _vm._s(error.errorMessage) + "\n\t\t")]
         )
       }),
       _vm._v(" "),
@@ -43299,60 +43330,6 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("div", { staticClass: "form-group m-form__group" }, [
-              _c("label", [_vm._v("Sub Category")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.name,
-                    expression: "form.name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Enter Sub Category" },
-                domProps: { value: _vm.form.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "name", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group" }, [
-              _c("label", { attrs: { for: "comment" } }, [
-                _vm._v("Description:")
-              ]),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.description,
-                    expression: "form.description"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { rows: "5", id: "comment" },
-                domProps: { value: _vm.form.description },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "description", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group" }, [
               _c("label", [_vm._v("Image")]),
               _vm._v(" "),
               _vm.form.image
@@ -43373,6 +43350,123 @@ var render = function() {
                   attrs: { type: "file" },
                   on: { change: _vm.onImageChange }
                 })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "m-portlet" }, [
+            _c("div", { staticClass: "m-portlet__body" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "tab-content" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane active",
+                    attrs: { id: "m_tabs_1_1", role: "tabpanel" }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group m-form__group" }, [
+                      _c("label", [_vm._v("Sub Category")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.name,
+                            expression: "form.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Enter Sub Category"
+                        },
+                        domProps: { value: _vm.form.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group m-form__group" }, [
+                      _c("label", { attrs: { for: "comment" } }, [
+                        _vm._v("Description:")
+                      ]),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.description,
+                            expression: "form.description"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { rows: "5", id: "comment" },
+                        domProps: { value: _vm.form.description },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.form,
+                              "description",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane",
+                    attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t\t\tIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more\n\t\t\t\t\t\trecently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\t\t\t\t\t"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane",
+                    attrs: { id: "m_tabs_1_3", role: "tabpanel" }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t\t\tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type\n\t\t\t\t\t\tspecimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged\n\t\t\t\t\t"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane",
+                    attrs: { id: "m_tabs_1_4", role: "tabpanel" }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t\t\tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type\n\t\t\t\t\t\tspecimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the\n\t\t\t\t\t\tindustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and\n\t\t\t\t\t"
+                    )
+                  ]
+                )
               ])
             ])
           ]),
@@ -43406,7 +43500,44 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      { staticClass: "nav nav-tabs", attrs: { role: "tablist" } },
+      [
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link active",
+              attrs: {
+                "data-toggle": "tab",
+                href: "#",
+                "data-target": "#m_tabs_1_1"
+              }
+            },
+            [_vm._v("English")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: { "data-toggle": "tab", href: "#m_tabs_1_3" }
+            },
+            [_vm._v("Myanmar")]
+          )
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -56224,8 +56355,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,4 +1,4 @@
 @if($category->parents != 0)
     @include('backend.categories.nested_parent', ['category' => $category->parent])
 @endif
- {{$category->name}} >> 
+ {{$category->category_infos[0]->name}} >> 

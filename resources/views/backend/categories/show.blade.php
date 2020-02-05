@@ -27,7 +27,7 @@
                 <table class="table table-bordered">
                     <tr>
                         <th> Name </th>
-                        <td> {{$category->name}} </td>
+                        <td> {{$category->category_infos[0]->name}} </td>
                     </tr>
                     <tr>
                         <th> Path </th>
@@ -35,16 +35,16 @@
                             @if($category->parents != 0)
                                 @include('backend.categories.nested_parent', ['category' => $category->parent])
                             @endif
-                            {{$category->name}}
+                            {{$category->category_infos[0]->name}}
                         </td>
                     </tr>
                     <tr>
                         <th> Description </th>
-                        <td> {{$category->description}} </td>
+                        <td> {{$category->category_infos[0]->description}} </td>
                     </tr>
                     <tr>
                         <th> Image </th>
-                        <td> {{$category->image}} </td>
+                        <td> {{$category->category_infos[0]->image}} </td>
                     </tr>
                 </table>
             </div>

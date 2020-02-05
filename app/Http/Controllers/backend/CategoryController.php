@@ -14,11 +14,13 @@ class CategoryController extends Controller
 
     public function index()
     {
-        // $categories = CategoryResource::collection(Category::all());
+        // $language_id =1;
+        $categories = CategoryResource::collection(Category::all(), $language_id=1);
+        return response()->json($categories);
         // $category = Category::find(5);
         // return $category->parent->parent;
-        $categories = Category::paginate(20);
-    	return view('backend.categories.index', compact('categories'));
+        // $categories = Category::paginate(20);
+    	// return view('backend.categories.index', compact('categories'));
     }
 
     public function show($id)

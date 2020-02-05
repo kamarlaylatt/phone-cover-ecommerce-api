@@ -88,21 +88,21 @@
                         @foreach($categories as $key=>$category)
                     	<tr>
                     		<td class="text-center">{{ $key+ $categories->firstItem() }}</td>
-                            <td>{{$category->name}}</td>
+                            <td>{{$category->category_infos[0]->name}}  </td>
                             @if($category->parents == 0)
-                                <td>{{$category->name}}</td>
+                                <td>{{$category->category_infos[0]->name}}</td>
                             @else
                                 <td>                            
                             @if($category->parents != 0)
                                 @include('backend.categories.nested_parent', ['category' => $category->parent])
                             @endif
-                                {{$category->name}}
+                                {{$category->category_infos[0]->name}}
                                 </td>
                             @endif
-                            @if(!$category->description)
+                            @if(!$category->category_infos[0]->description)
                                 <td class="text-center"><span class="text-danger">null</span>
                             @else
-                    		  <td>{{Str::limit($category->description, 20)}}</td>
+                    		  <td>{{Str::limit($category->category_infos[0]->description, 20)}}</td>
                             @endif
                     		<td>{{$category->image}}</td>
                             <td class="text-center">
