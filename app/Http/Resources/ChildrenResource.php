@@ -14,23 +14,27 @@ class ChildrenResource extends JsonResource
      */
     protected $language_id;
 
-    public function __construct($resource, $value){
-        parent::__construct($resource);
-        $this->resource = $resource;
+    public function language_id($value){
         $this->language_id = $value;
-        return $this->language_id;
+        return $this;
     }
     public function toArray($request)
     {
+        $category_infos = $this->category_infos->where('language_id', $this->language_id)->first();
+
         return [
-            'id' => $this->id,
-            'name' => $this->category_infos[0]->name,
+            'id' => $this->id,            
             'icon' => 'fa fa-folder',
             'parent' => $this->parents,
-            'children'=> ChildrenResource::collection($this->children),
-            'description'=> $this->category_infos[0]->description,
-            'image'=> $this->category_infos[0]->image,
-            'language_id' => $this->language_id,
+            'name' => $category_infos->name,
+            'description' => $category_infos->description,
+            'image' => $this->image,
+            'children'=> ChildrenResource::collection($this->children)->language_id($this->language_id),
+            // 'language_id' => $this->language_id,
         ];
+    }
+
+    public static function collection($resource){
+        return new ChildrenResourceCollection($resource);
     }
 }

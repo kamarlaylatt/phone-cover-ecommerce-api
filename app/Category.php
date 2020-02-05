@@ -31,9 +31,9 @@ class Category extends Model
         return $this->belongsTo('App\Category', 'parents');
     }
 
-    public function getChildrenTree()
+    public function getChildrenTree($language_id = 1)
     {
-        $categories = CategoryResource::collection(Category::where('parents', 0)->get());
+        $categories = CategoryResource::collection(Category::where('parents', 0)->get())->language_id($language_id);
 
         $category_array = [
             [
