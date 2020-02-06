@@ -51,4 +51,27 @@ class Category extends Model
 
         return $category_array;
     }
+
+
+    public function recursiveChildId($id)
+    {
+        $return = [];
+        $categories = CategoryResource::collection(Category::where('id', $id)->get())->language_id(1);
+    
+        foreach($categories as $category)
+        {
+            if($category->children->count() != 0)
+            {
+                foreach($category->children as $subcat)
+                {
+                    $return = [$subcat->id];
+                    $return = array_merge( $return, $this->recursiveChildId($subcat->id));
+                }
+                
+            }
+        }
+
+        return $return;
+
+    }
 }

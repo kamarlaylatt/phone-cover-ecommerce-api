@@ -13,13 +13,26 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 class CategoryController extends Controller
 {
-    public function test()
-    {
-        $categories = CategoryResource::collection(Category::where('id', 1)->get())->language_id(1);
-        
-        
-        return response()->json($categories);
-    }
+    // // testing
+    // public function test()
+    // {
+    //     $categoryModel = new Category;
+
+    //     $data = $categoryModel->recursiveChildId(5);
+
+    //     array_unshift($data, 5);
+
+    //     $boo = '';
+
+    //     foreach($data as $dat)
+    //     {
+    //         $boo .= $dat;
+    //     }
+
+    //     return response()->json($boo);
+    // }
+
+
     public function index()
     {
         $categories = Category::paginate(20);
@@ -131,6 +144,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($request['id']);
 
+        $categoryModel = new Category;
+        $validation_childarray = $categoryModel->recursiveChildId($category->id);
+        array_unshift($validation_childarray, $category->id);
+
         $validator = Validator::make($request->all(), [
             'parent' => 'required',
             'english.name' => 'required',
@@ -138,9 +155,9 @@ class CategoryController extends Controller
 
         ]);
 
-        if($validator->fails()){
-            
-            $errors_array = array(); 
+        $errors_array = array(); 
+
+        if($validator->fails()){        
 
             $errors = $validator->errors();
 
@@ -162,6 +179,28 @@ class CategoryController extends Controller
             ]);  
             
         }
+
+        foreach($validation_childarray as $validation)
+        {
+            if($validation == $request['parent'])
+            {
+                $data = [
+                    "fieldCode" => 'parent repeat',
+                    "errorMessage" => 'Can\'nt use that parent',
+                ];
+                array_push($errors_array, $data);
+                return response()->json([
+                    'success' => false,
+                    'validation' => false,
+                    'responseMessage' => 'Multiple Error',
+                    'errors' => $errors_array,
+                ]);
+                break;
+            }
+            
+        }
+
+
         $category->parents = $request['parent'];
 
         $eng_category = $category->category_infos->where('language_id',1)->first();
