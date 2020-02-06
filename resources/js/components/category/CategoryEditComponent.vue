@@ -82,7 +82,7 @@
 			return{
 				form: {
 					id: '',
-					parent: '',
+					parent: '0',
 					image: '',
 					english: {
 						name: '',

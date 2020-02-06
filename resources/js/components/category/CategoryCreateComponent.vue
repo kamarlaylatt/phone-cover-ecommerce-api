@@ -4,6 +4,7 @@
 			{{error.errorMessage}}
 		</div>
 		<!--begin::Form-->
+		{{categories}}
         <form class="m-form m-form--fit m-form--label-align-right">
 			<div class="m-portlet__body">
 				<div class="form-group m-form__group">
@@ -82,7 +83,7 @@ import ImageUploader from 'vue-image-upload-resize'
 			return{
 				form: {
 					id: '',
-					parent: '',
+					parent: '0',
 					image: '',
 					english: {
 						name: '',
