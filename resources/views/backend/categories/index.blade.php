@@ -30,6 +30,12 @@
             </div>
         </div>
         <div class="m-portlet__body">
+            @if (Session::has('error'))
+                <div class="alert alert-danger">{{ Session::get('error') }}</div>
+            @endif
+            @if (Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
+            @endif
             
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
@@ -111,8 +117,8 @@
 
                                 <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
 
-                                <form action="" method="POST" style="display:inline;">
-                                                                              
+                                <form action="{{route('categories.destroy', $category->id)}}" method="POST" style="display:inline;">
+                                      @csrf                                        
                                     <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>
                                     </button>
                                 </form>

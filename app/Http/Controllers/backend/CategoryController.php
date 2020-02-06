@@ -13,13 +13,13 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 class CategoryController extends Controller
 {
-    public function test()
-    {
-        $categories = CategoryResource::collection(Category::where('id', 1)->get())->language_id(1);
+    // public function test()
+    // {
+    //     $categories = CategoryResource::collection(Category::where('id', 1)->get())->language_id(1);
         
-        
-        return response()->json($categories);
-    }
+    //     $category = Category::find(1);
+    //     return response()->json($category->children);
+    // }
     public function index()
     {
         $categories = Category::paginate(20);
@@ -103,7 +103,7 @@ class CategoryController extends Controller
                 // $filename = uniqid().'_'.$file->getClientOriginalName();
                 // Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
                 $image = $request->get('image');
-                $filename = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $filename = uniqid().'_'.$request['english.name'].'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
                 $file = \Image::make($request['image']);
                 // Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
                 Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
@@ -180,8 +180,10 @@ class CategoryController extends Controller
 
         if($request->get('image'))
         {
+            Storage::delete('public/uploads/category_imgs/'.$category->image); 
+                       
             $image = $request['image'];
-            $filename = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            $filename = uniqid().'_'.$request['english.name'].'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
             $file = \Image::make($request['image']);
             Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
             $category->image = $filename;
@@ -194,6 +196,21 @@ class CategoryController extends Controller
         ];
         
         return response()->json($data);
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        if($category->children->count() != 0)
+        {
+            return redirect()->back()->with('error', 'Sorry, this Category has child, can\'t delete!');   
+        }
+        else{
+            Storage::delete('public/uploads/category_imgs/'.$category->image);            
+            $category->delete();
+            return redirect()->back()->with('success', 'Successfully delete category'); 
+        }        
     }
 
     public function search(Request $request)

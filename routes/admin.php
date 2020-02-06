@@ -40,6 +40,7 @@ Route::namespace('backend')->group(function(){
 		Route::get('/{id}/edit','CategoryController@edit')->name('categories.edit');
 		Route::post('/update','CategoryController@update')->name('categories.update');
 		Route::post('/search','CategoryController@search')->name('categories.search');
+		Route::post('/destroy/{id}','CategoryController@destroy')->name('categories.destroy');
 	});
 	
 

@@ -19,7 +19,7 @@ class CreateCategoryInfosTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('name',50);
             $table->text('description')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('language_id')->references('id')->on('languages');
             $table->timestamps();
         });

@@ -64,8 +64,9 @@
 				
 			<div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">
-					<button type="button" @click="create" class="btn btn-danger">Create</button>
-						<button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
+					<button v-if="disabled_status==false" type="button" @click="create" class="btn btn-danger">Create</button>
+					<button v-if="disabled_status==true" type="button" disabled @click="create" class="btn btn-danger">Create</button>
+					<button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
         </form>
@@ -100,6 +101,7 @@ import ImageUploader from 'vue-image-upload-resize'
 
 				errors: '',
 				hasImage: false,
+				disabled_status: false,
 			};
 		},
 
@@ -130,7 +132,8 @@ import ImageUploader from 'vue-image-upload-resize'
             },
 			
 			create()
-			{				
+			{
+				this.disabled_status = true;				
 				axios.post('/admin/categories/store', this.form)
 				.then(response=> {
 					if(response.data.validation == true)
@@ -147,7 +150,8 @@ import ImageUploader from 'vue-image-upload-resize'
 						this.errors = response.data.errors;		
 						setTimeout(()=>{
 							this.errors = '';
-						},2000)				
+						},2000)
+						this.disabled_status = false;				
 					}
 					
 				});

@@ -65,7 +65,8 @@
 				
 			<div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">
-					<button type="button" @click="update" class="btn btn-danger">Update</button>
+					<button v-if="disabled_status==false" type="button" @click="update" class="btn btn-danger">Update</button>
+					<button v-if="disabled_status==true" type="button" disabled @click="update" class="btn btn-danger">Update</button>
 						<button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
@@ -97,6 +98,7 @@
 				image_change_status: false,
 				errors: '',
 				obj: '',
+				disabled_status: false,
 			};
 		},
 
@@ -145,6 +147,7 @@
 
 			update()
 			{	
+				this.disabled_status = true;
 				if(this.image_change_status == false)
 				{
 					this.form.image= '';
@@ -168,7 +171,8 @@
                 		this.form.category = this.category.parents;	
 						setTimeout(()=>{
 							this.errors = '';
-						},2000)				
+						},2000)	
+						this.disabled_status = false;			
 					}
 					
 				});
