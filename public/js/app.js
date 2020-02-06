@@ -2149,7 +2149,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     edit: function edit() {
       this.form.id = this.category.id;
-      this.form.parent = this.category.parents;
+      this.form.parent = parseInt(this.category.parents);
       this.form.english.name = this.category_infos[0].name;
       this.form.english.description = this.category_infos[0].description;
       this.form.myanmar.name = this.category_infos[1].name;
