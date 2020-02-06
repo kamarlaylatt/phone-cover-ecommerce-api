@@ -20,6 +20,7 @@ class CategoryController extends Controller
     //     $category = Category::find(1);
     //     return response()->json($category->children);
     // }
+    
     public function index()
     {
         $categories = Category::paginate(20);
@@ -131,6 +132,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($request['id']);
 
+        $categoryModel = new Category;
+        $validation_childarray = $categoryModel->recursiveChildId($category->id);
+        array_unshift($validation_childarray, $category->id);
+
         $validator = Validator::make($request->all(), [
             'parent' => 'required',
             'english.name' => 'required',
@@ -138,9 +143,9 @@ class CategoryController extends Controller
 
         ]);
 
-        if($validator->fails()){
-            
-            $errors_array = array(); 
+        $errors_array = array(); 
+
+        if($validator->fails()){        
 
             $errors = $validator->errors();
 
@@ -162,6 +167,28 @@ class CategoryController extends Controller
             ]);  
             
         }
+
+        foreach($validation_childarray as $validation)
+        {
+            if($validation == $request['parent'])
+            {
+                $data = [
+                    "fieldCode" => 'parent repeat',
+                    "errorMessage" => 'Can\'nt use that parent',
+                ];
+                array_push($errors_array, $data);
+                return response()->json([
+                    'success' => false,
+                    'validation' => false,
+                    'responseMessage' => 'Multiple Error',
+                    'errors' => $errors_array,
+                ]);
+                break;
+            }
+            
+        }
+
+
         $category->parents = $request['parent'];
 
         $eng_category = $category->category_infos->where('language_id',1)->first();
@@ -217,9 +244,11 @@ class CategoryController extends Controller
     {
         $search = $request['search'];
 
-        $categories = Category::where('name','like', '%'.$search.'%')
-                        ->orwhere('description', 'like', '%'.$search.'%')
-                        ->paginate(20);
+        $categories = Category::whereHas('category_infos', function ($query) use ($search){
+                            $query->where('name','like', '%' .$search. '%')
+                                    ->orwhere('description','like', '%' .$search. '%');
+                            })->paginate(20);
+
 
         return view('backend.categories.index', compact('categories'));
     }

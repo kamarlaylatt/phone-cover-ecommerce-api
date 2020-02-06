@@ -44,39 +44,39 @@
 
                 <!--begin: Search Form -->
                 <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-                    <div class="row align-items-center">
-                        <div class="col-xl-8 order-2 order-xl-1">
-                            <div class="form-group m-form__group row align-items-center">
-                                <div class="col-md-4">
-                                    <form method="POST" action="{{route('admin_roles.search')}}">
-                                        @csrf
-                                        <div class="m-input-icon m-input-icon--left">
-                                            <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
-                                            <span class="m-input-icon__icon m-input-icon__icon--left">
-                                                <span><i class="la la-search"></i></span>
-                                            </span>                                           
-                                        </div>                                        
-                                    
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="submit" class="btn btn-danger">Search</button>
-                                </div>
-                                </form>
-                                <div class="col-md-1">
-                                    <a href="{{route('admin_roles.index')}}"><button class="btn btn-danger">Show All</button></a>
+                    <form method="POST" action="{{route('admin_roles.search')}}">
+                        <div class="row align-items-center">
+                            <div class="col-xl-8 order-2 order-xl-1">
+                                <div class="form-group m-form__group row align-items-center">
+                                    <div class="col-md-4">                                    
+                                            @csrf
+                                            <div class="m-input-icon m-input-icon--left">
+                                                <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
+                                                <span class="m-input-icon__icon m-input-icon__icon--left">
+                                                    <span><i class="la la-search"></i></span>
+                                                </span>                                           
+                                            </div>                                        
+                                        
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="submit" class="btn btn-danger">Search</button>
+                                    </div>                                    
+                                    <div class="col-md-1">
+                                        <a href="{{route('admin_roles.index')}}" class="btn btn-danger">Show All</a>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                                <a href="{{route('admin_roles.create')}}" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                    <span>
+                                        <i class="la la-plus"></i>
+                                        <span>Create</span>
+                                    </span>
+                                </a>
+                                <div class="m-separator m-separator--dashed d-xl-none"></div>
+                            </div>
                         </div>
-                        <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                            <a href="{{route('admin_roles.create')}}" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
-                                <span>
-                                    <i class="la la-plus"></i>
-                                    <span>Create</span>
-                                </span>
-                            </a>
-                            <div class="m-separator m-separator--dashed d-xl-none"></div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
 
                 <!--end: Search Form -->

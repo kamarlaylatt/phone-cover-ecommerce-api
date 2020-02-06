@@ -83,7 +83,7 @@ import ImageUploader from 'vue-image-upload-resize'
 			return{
 				form: {
 					id: '',
-					parent: '',
+					parent: 1,
 					image: '',
 					english: {
 						name: '',

@@ -24,7 +24,7 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        Category Table<small>Control all of admin accounts</small>
+                        Category Table<small>List of categories</small>
                     </h3>
                 </div>
             </div>
@@ -39,11 +39,11 @@
             
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                <form method="POST" action="{{route('categories.search')}}">
                 <div class="row align-items-center">
                     <div class="col-xl-8 order-2 order-xl-1">
                         <div class="form-group m-form__group row align-items-center">
-                            <div class="col-md-4">
-                                <form method="POST" action="{{route('categories.search')}}">
+                            <div class="col-md-4">                                
                                     @csrf
                                     <div class="m-input-icon m-input-icon--left">
                                         <input type="text" name="search" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch" required>
@@ -56,10 +56,9 @@
                             <div class="col-md-1">
                                 <button type="submit" class="btn btn-danger">Search</button>
                             </div>
-                            </form>
                             <div class="col-md-1">
-                                <a href="{{route('categories.index')}}"><button class="btn btn-danger">Show All</button></a>
-                            </div>
+                                <a href="{{route('categories.index')}}" class="btn btn-danger">Show All</a>
+                            </div>                           
                         </div>
                     </div>
                     <div class="col-xl-4 order-1 order-xl-2 m--align-right">
@@ -72,6 +71,7 @@
                         <div class="m-separator m-separator--dashed d-xl-none"></div>
                     </div>
                 </div>
+                </form>
             </div>
 
             <!--end: Search Form -->
