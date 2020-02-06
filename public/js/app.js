@@ -1958,7 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: {
         id: '',
-        parent: '0',
+        parent: 1,
         image: '',
         english: {
           name: '',
@@ -2120,7 +2120,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: {
         id: '',
-        parent: '0',
+        parent: 1,
         image: '',
         english: {
           name: '',
