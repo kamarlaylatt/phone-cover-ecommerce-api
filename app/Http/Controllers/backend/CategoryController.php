@@ -200,9 +200,11 @@ class CategoryController extends Controller
     {
         $search = $request['search'];
 
-        $categories = Category::where('name','like', '%'.$search.'%')
-                        ->orwhere('description', 'like', '%'.$search.'%')
-                        ->paginate(20);
+        $categories = Category::whereHas('category_infos', function ($query) use ($search){
+                            $query->where('name','like', '%' .$search. '%')
+                                    ->orwhere('description','like', '%' .$search. '%');
+                            })->paginate(20);
+
 
         return view('backend.categories.index', compact('categories'));
     }
