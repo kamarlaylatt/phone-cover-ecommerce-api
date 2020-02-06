@@ -2112,6 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories', 'category', 'img_url', 'category_infos'],
   data: function data() {
@@ -43657,6 +43658,7 @@ var render = function() {
         )
       }),
       _vm._v(" "),
+      _vm._v("\n\t\t" + _vm._s(_vm.form) + "\n        "),
       _c(
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
@@ -56570,8 +56572,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
