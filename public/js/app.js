@@ -2117,7 +2117,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories', 'category', 'img_url', 'category_infos'],
   data: function data() {
@@ -43681,7 +43680,6 @@ var render = function() {
         )
       }),
       _vm._v(" "),
-      _vm._v("\n\t\t" + _vm._s(_vm.form) + "\n        "),
       _c(
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
