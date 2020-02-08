@@ -23,7 +23,7 @@ class CategoryController extends Controller
     
     public function index()
     {
-        $categories = Category::paginate(20);
+        $categories = Category::orderBy('id', 'asc')->paginate(20);
 
         $categoryModel = new Category;
         $category_array = $categoryModel->getChildrenTree();
@@ -254,12 +254,15 @@ class CategoryController extends Controller
     {
         $search = $request['search'];
 
+        $categoryModel = new Category;
+        $category_array = $categoryModel->getChildrenTree();
+
         $categories = Category::whereHas('category_infos', function ($query) use ($search){
                             $query->where('name','like', '%' .$search. '%')
                                     ->orwhere('description','like', '%' .$search. '%');
-                            })->paginate(20);
+                            })->orderBy('id', 'asc')->paginate(20);
 
 
-        return view('backend.categories.index', compact('categories'));
+        return view('backend.categories.index', compact('categories','category_array'));
     }
 }
