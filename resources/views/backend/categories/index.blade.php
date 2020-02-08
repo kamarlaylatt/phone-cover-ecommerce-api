@@ -38,7 +38,7 @@
             @endif
             
             <!--begin: Search Form -->
-            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-20">
                 <form method="POST" action="{{route('categories.search')}}">
                 <div class="row align-items-center">
                     <div class="col-xl-8 order-2 order-xl-1">
@@ -75,6 +75,13 @@
             </div>
 
             <!--end: Search Form -->
+
+
+            <!-- Tree Dialog Start -->
+            <div class="mb-4">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#treeView">Tree View</button>
+            </div>
+            <!-- Tree Dialog End -->
 
             <!--begin: Datatable -->
             <div class="table-responsive">
@@ -135,4 +142,29 @@
         
     </div>
 </div>
+
+
+<!-- Tree Modal -->
+
+<div class="modal fade" id="treeView" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Category Tree View</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <tree-component :categories="{{json_encode($category_array)}}"></tree-component>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Tree Modal -->
 @endsection

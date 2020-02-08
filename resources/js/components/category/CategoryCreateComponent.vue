@@ -19,11 +19,11 @@
 				
 				<div class="form-group m-form__group">
 					<label>Image</label>
-					<div class="col-md-3" v-if="form.image">
-						<img :src="form.image" class="img-responsive" height="120" width="120">
+					<div class="col-md-3" v-if="image">
+						<img :src="image" class="img-responsive" height="120" width="120">
 					</div>
 					<div class="col-md-6">
-						<input type="file" v-on:change="onImageChange">
+						<input type="file" ref="file" v-on:change="onImageChange">
 					</div>
 				</div>
 			</div>
@@ -116,6 +116,8 @@ import ImageUploader from 'vue-image-upload-resize'
 
 		methods:{
 			onImageChange(e) {
+				this.form.image = this.$refs.file.files[0];
+
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
@@ -126,15 +128,31 @@ import ImageUploader from 'vue-image-upload-resize'
                 let reader = new FileReader();
                 let vm = this;
                 reader.onload = (e) => {
-                    vm.form.image = e.target.result;
+                    vm.image = e.target.result;
                 };
                 reader.readAsDataURL(file);
             },
 			
 			create()
 			{
-				this.disabled_status = true;				
-				axios.post('/admin/categories/store', this.form)
+				this.disabled_status = true;
+				
+				let formData = new FormData();
+				let config = {
+									headers: {
+										'Content-Type': 'multipart/form-data'
+									}
+								};
+				formData.append('image', this.form.image);
+				formData.append('parent', this.form.parent);
+				formData.append('english_name', this.form.english.name);
+				formData.append('english_description', this.form.english.description);
+				formData.append('english_language_id', this.form.english.language_id);
+				formData.append('myanmar_name', this.form.myanmar.name);
+				formData.append('myanmar_description', this.form.myanmar.description);
+				formData.append('myanmar_language_id', this.form.myanmar.language_id);
+
+				axios.post('/admin/categories/store', formData, config)
 				.then(response=> {
 					if(response.data.validation == true)
 					{

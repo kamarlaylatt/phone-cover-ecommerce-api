@@ -21,10 +21,10 @@
 				<div class="form-group m-form__group">
 					<label>Image</label>
 					<div class="col-md-3">
-						<img :src="form.image" class="img-responsive" height="120" width="120">
+						<img :src="image"  class="img-responsive" height="120" width="120">
 					</div>
 					<div class="col-md-6">
-						<input type="file" v-on:change="onImageChange">
+						<input type="file" ref="file" v-on:change="onImageChange">
 					</div>
 				</div>
 			</div>
@@ -95,6 +95,8 @@
 						language_id: 2,
 					},										
 				},
+
+				image: '',
 				image_change_status: false,
 				errors: '',
 				obj: '',
@@ -125,10 +127,12 @@
 				this.form.myanmar.name = this.category_infos[1].name;
 				this.form.myanmar.description =this.category_infos[1].description;
 				
-                this.form.image = this.img_url;
+                this.image = this.img_url;
 			},
 			
 			onImageChange(e) {
+				this.form.image = this.$refs.file.files[0];
+
 				this.image_change_status = true;
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
@@ -140,7 +144,7 @@
                 let reader = new FileReader();
                 let vm = this;
                 reader.onload = (e) => {
-					vm.form.image = e.target.result;
+					vm.image = e.target.result;
                 };
                 reader.readAsDataURL(file);
             },
@@ -148,11 +152,30 @@
 			update()
 			{	
 				this.disabled_status = true;
+
+				let formData = new FormData();
+				let config = {
+									headers: {
+										'Content-Type': 'multipart/form-data'
+									}
+								};
+
 				if(this.image_change_status == false)
 				{
 					this.form.image= '';
 				}			
-				axios.post('/admin/categories/update', this.form)
+
+				formData.append('id', this.form.id);
+				formData.append('image', this.form.image);
+				formData.append('parent', this.form.parent);
+				formData.append('english_name', this.form.english.name);
+				formData.append('english_description', this.form.english.description);
+				formData.append('english_language_id', this.form.english.language_id);
+				formData.append('myanmar_name', this.form.myanmar.name);
+				formData.append('myanmar_description', this.form.english.description);
+				formData.append('myanmar_language_id', this.form.english.language_id);
+
+				axios.post('/admin/categories/update', formData, config)
 				.then(response=> {
 					if(response.data.validation == true)
 					{

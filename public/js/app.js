@@ -1985,6 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onImageChange: function onImageChange(e) {
+      this.form.image = this.$refs.file.files[0];
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
@@ -1994,7 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
       var vm = this;
 
       reader.onload = function (e) {
-        vm.form.image = e.target.result;
+        vm.image = e.target.result;
       };
 
       reader.readAsDataURL(file);
@@ -2003,7 +2004,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.disabled_status = true;
-      axios.post('/admin/categories/store', this.form).then(function (response) {
+      var formData = new FormData();
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
+      formData.append('image', this.form.image);
+      formData.append('parent', this.form.parent);
+      formData.append('english_name', this.form.english.name);
+      formData.append('english_description', this.form.english.description);
+      formData.append('english_language_id', this.form.english.language_id);
+      formData.append('myanmar_name', this.form.myanmar.name);
+      formData.append('myanmar_description', this.form.myanmar.description);
+      formData.append('myanmar_language_id', this.form.myanmar.language_id);
+      axios.post('/admin/categories/store', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
@@ -2136,6 +2151,7 @@ __webpack_require__.r(__webpack_exports__);
           language_id: 2
         }
       },
+      image: '',
       image_change_status: false,
       errors: '',
       obj: '',
@@ -2158,9 +2174,10 @@ __webpack_require__.r(__webpack_exports__);
       this.form.english.description = this.category_infos[0].description;
       this.form.myanmar.name = this.category_infos[1].name;
       this.form.myanmar.description = this.category_infos[1].description;
-      this.form.image = this.img_url;
+      this.image = this.img_url;
     },
     onImageChange: function onImageChange(e) {
+      this.form.image = this.$refs.file.files[0];
       this.image_change_status = true;
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -2171,7 +2188,7 @@ __webpack_require__.r(__webpack_exports__);
       var vm = this;
 
       reader.onload = function (e) {
-        vm.form.image = e.target.result;
+        vm.image = e.target.result;
       };
 
       reader.readAsDataURL(file);
@@ -2180,12 +2197,27 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.disabled_status = true;
+      var formData = new FormData();
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
 
       if (this.image_change_status == false) {
         this.form.image = '';
       }
 
-      axios.post('/admin/categories/update', this.form).then(function (response) {
+      formData.append('id', this.form.id);
+      formData.append('image', this.form.image);
+      formData.append('parent', this.form.parent);
+      formData.append('english_name', this.form.english.name);
+      formData.append('english_description', this.form.english.description);
+      formData.append('english_language_id', this.form.english.language_id);
+      formData.append('myanmar_name', this.form.myanmar.name);
+      formData.append('myanmar_description', this.form.english.description);
+      formData.append('myanmar_language_id', this.form.english.language_id);
+      axios.post('/admin/categories/update', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
@@ -43382,21 +43414,18 @@ var render = function() {
             _c("div", { staticClass: "form-group m-form__group" }, [
               _c("label", [_vm._v("Image")]),
               _vm._v(" "),
-              _vm.form.image
+              _vm.image
                 ? _c("div", { staticClass: "col-md-3" }, [
                     _c("img", {
                       staticClass: "img-responsive",
-                      attrs: {
-                        src: _vm.form.image,
-                        height: "120",
-                        width: "120"
-                      }
+                      attrs: { src: _vm.image, height: "120", width: "120" }
                     })
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6" }, [
                 _c("input", {
+                  ref: "file",
                   attrs: { type: "file" },
                   on: { change: _vm.onImageChange }
                 })
@@ -43715,12 +43744,13 @@ var render = function() {
               _c("div", { staticClass: "col-md-3" }, [
                 _c("img", {
                   staticClass: "img-responsive",
-                  attrs: { src: _vm.form.image, height: "120", width: "120" }
+                  attrs: { src: _vm.image, height: "120", width: "120" }
                 })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6" }, [
                 _c("input", {
+                  ref: "file",
                   attrs: { type: "file" },
                   on: { change: _vm.onImageChange }
                 })
@@ -56607,8 +56637,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

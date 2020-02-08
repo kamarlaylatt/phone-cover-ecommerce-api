@@ -24,7 +24,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(20);
-    	return view('backend.categories.index', compact('categories'));
+
+        $categoryModel = new Category;
+        $category_array = $categoryModel->getChildrenTree();
+    	return view('backend.categories.index', compact('categories','category_array'));
     }
 
     public function show($id)
@@ -45,14 +48,15 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            
-            'parent' => 'required',
-            'image' => 'required|unique:categories',
-            'english.name' => 'required',
-            'myanmar.name' => 'required',
 
-        ]);
+        $rules = [
+            'parent' => 'required',
+            'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'english_name' => 'required',
+            'myanmar_name' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails()){
             
@@ -86,28 +90,23 @@ class CategoryController extends Controller
 
         CategoryInfo::Create([
             'category_id' => $category->id,
-            'language_id' => $request['english.language_id'],
-            'name' => $request['english.name'],
-            'description' => $request['english.description'],
+            'language_id' => $request['english_language_id'],
+            'name' => $request['english_name'],
+            'description' => $request['english_description'],
         ]);
 
         CategoryInfo::Create([
             'category_id' => $category->id,
-            'language_id' => $request['myanmar.language_id'],
-            'name' => $request['myanmar.name'],
-            'description' => $request['myanmar.description'],
+            'language_id' => $request['myanmar_language_id'],
+            'name' => $request['myanmar_name'],
+            'description' => $request['myanmar_description'],
         ]);
 
-        if($request->get('image'))
+        if($request->file('image'))
         {
-                // $file = $request->file('image');
-                // $filename = uniqid().'_'.$file->getClientOriginalName();
-                // Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
-                $image = $request->get('image');
-                $filename = uniqid().'_'.$request['english.name'].'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                $file = \Image::make($request['image']);
-                // Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
-                Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
                 $category->image = $filename;
                 $category->save();
         }
@@ -136,12 +135,24 @@ class CategoryController extends Controller
         $validation_childarray = $categoryModel->recursiveChildId($category->id);
         array_unshift($validation_childarray, $category->id);
 
-        $validator = Validator::make($request->all(), [
-            'parent' => 'required',
-            'english.name' => 'required',
-            'myanmar.name' => 'required',
-
-        ]);
+        if($request->file('image'))
+        {
+            $rules = [
+                'parent' => 'required',
+                'image' => 'image',
+                'english_name' => 'required',
+                'myanmar_name' => 'required',
+            ];
+        }
+        else{
+            $rules = [
+                'parent' => 'required',
+                'english_name' => 'required',
+                'myanmar_name' => 'required',
+            ];
+        }
+            
+        $validator = Validator::make($request->all(), $rules);
 
         $errors_array = array(); 
 
@@ -194,25 +205,24 @@ class CategoryController extends Controller
         $eng_category = $category->category_infos->where('language_id',1)->first();
         $myan_category = $category->category_infos->where('language_id',2)->first();
 
-        $eng_category->name =  $request['english.name'];
-        $eng_category->description = $request['english.description'];
+        $eng_category->name =  $request['english_name'];
+        $eng_category->description = $request['english_description'];
         $eng_category->save();
 
-        $myan_category->name =  $request['myanmar.name'];
-        $myan_category->description = $request['myanmar.description'];
+        $myan_category->name =  $request['myanmar_name'];
+        $myan_category->description = $request['myanmar_description'];
         $myan_category->save();
         
         // $category->image = $request['image'];
         $category->save();
 
-        if($request->get('image'))
+        if($request->file('image'))
         {
             Storage::delete('public/uploads/category_imgs/'.$category->image); 
                        
-            $image = $request['image'];
-            $filename = uniqid().'_'.$request['english.name'].'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-            $file = \Image::make($request['image']);
-            Storage::put('public/uploads/category_imgs/' . $filename, $file->encode());
+            $file = $request->file('image');
+            $filename = uniqid().'_'.$file->getClientOriginalName();
+            Storage::disk('public')->putFileAs('/uploads/category_imgs/', $file, $filename);
             $category->image = $filename;
             $category->save();    
         }
