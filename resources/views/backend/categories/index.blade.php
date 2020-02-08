@@ -97,6 +97,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if($categories->count() < 1)
+                            <td colspan=6 class="text-center">
+                                There is no category
+                            </td>
+                        @endif
                         @foreach($categories as $key=>$category)
                     	<tr>
                     		<td class="text-center">{{ $key+ $categories->firstItem() }}</td>
