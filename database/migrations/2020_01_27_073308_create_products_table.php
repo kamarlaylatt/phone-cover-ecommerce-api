@@ -15,10 +15,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->decimal('price', 8, 2);
-            $table->string('image', 100)->unique();
-            $table->text('description')->nullable();
+            $table->decimal('price', 8, 2)->default(0);
+            $table->integer('qty')->default(0);
+            $table->integer('min_order')->default(0);
+            $table->integer('max_order')->default(0);
+            $table->integer('recomand')->default(0);
             $table->string('seo_key')->nullable();
             $table->string('fb_pixel')->nullable();
             $table->timestamps();
