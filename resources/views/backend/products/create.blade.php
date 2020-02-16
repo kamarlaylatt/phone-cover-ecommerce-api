@@ -41,7 +41,7 @@
 
         <!--begin::Form-->
         <div class="m-portlet__body">
-            <product_create-component></product_create-component>
+            <product_create-component :categories="{{json_encode($category_array)}}"></product_create-component>
         </div>
 
         <!--end::Form-->

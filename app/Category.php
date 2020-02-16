@@ -45,6 +45,7 @@ class Category extends Model
                 'description'=> '',
                 'opened' => true,
                 'image'=> '',
+                'isDisabled' => true,
             ],
             
         ];

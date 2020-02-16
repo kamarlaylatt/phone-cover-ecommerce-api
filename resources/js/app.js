@@ -11,7 +11,10 @@ import Vue from 'vue';
 import VTreeselect from 'vue-treeselect';
 import VJstree from 'vue-jstree';
 import ImageUploader from 'vue-image-upload-resize'
-
+import VueLazyload from 'vue-lazyload'
+import VueUploadMultipleImage from 'vue-upload-multiple-image'
+ 
+Vue.use(VueLazyload);
 Vue.use(ImageUploader);
 Vue.use(VTreeselect);
 Vue.use(VJstree);

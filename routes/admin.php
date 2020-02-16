@@ -43,9 +43,11 @@ Route::namespace('backend')->group(function(){
 		Route::post('/destroy/{id}','CategoryController@destroy')->name('categories.destroy');
 	});
 
+	//products
 	Route::prefix('products')->group(function(){
 		Route::get('/','ProductController@index')->name('products.index');
 		Route::get('/create','ProductController@create')->name('products.create');
+		Route::post('/store', 'ProductController@store')->name('products.store');
 	});
 	
 
