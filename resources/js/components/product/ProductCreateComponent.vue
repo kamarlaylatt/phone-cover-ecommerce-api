@@ -62,10 +62,10 @@
                     <label>Maximum Order</label>
                     <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
                 </div>
-
+                {{recommend}}
                 <div class="m-form__group form-check ml-4">
-                    <input v-model="recommand" type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Recommand</label>
+                    <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Recommend</label>
                 </div>
 			</div>
 
@@ -163,7 +163,7 @@ export default {
             quantity: '',
             minimum_order: '',
             maximum_order: '',
-            recommand: false,
+            recommend: false,
             english: {
                 name: '',
                 description: '',
@@ -218,6 +218,15 @@ export default {
                 formData.append('images[' + i + ']', file);
             }
 
+            if(this.recommend == false)
+            {
+                this.recommend = 0;
+            }
+            else
+            {
+                this.recommend = 1;
+            }
+
 
             formData.append('image', this.image);
             formData.append('category_array', this.category_array);
@@ -226,7 +235,7 @@ export default {
             formData.append('quantity', this.quantity);
             formData.append('minimum_order', this.minimum_order);
             formData.append('maximum_order', this.maximum_order);
-            formData.append('recommand', this.recommand);
+            formData.append('recommend', this.recommend);
             formData.append('english_name', this.english.name);
             formData.append('english_description', this.english.description);
             formData.append('english_additions', this.english.additions);
@@ -243,7 +252,7 @@ export default {
                     },2000)
                     var currentUrl = window.location.pathname;
                     // window.location.href = currentUrl;
-                    window.location.href = '/admin/products';
+                    window.location.href = '/admin/products/create';
                 }
                 else{
                     window.scrollTo(0,0);

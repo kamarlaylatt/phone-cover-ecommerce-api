@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('qty')->default(0);
             $table->integer('min_order')->default(0);
             $table->integer('max_order')->default(0);
-            $table->integer('recomand')->default(0);
+            $table->boolean('recommend')->default(false);
             $table->text('image')->nullable(); 
             $table->string('seo_key')->nullable();
             $table->string('fb_pixel')->nullable();

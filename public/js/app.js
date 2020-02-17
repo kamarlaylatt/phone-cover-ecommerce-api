@@ -6683,7 +6683,7 @@ __webpack_require__.r(__webpack_exports__);
       quantity: '',
       minimum_order: '',
       maximum_order: '',
-      recommand: false,
+      recommend: false,
       english: {
         name: '',
         description: '',
@@ -6730,6 +6730,12 @@ __webpack_require__.r(__webpack_exports__);
         formData.append('images[' + i + ']', file);
       }
 
+      if (this.recommend == false) {
+        this.recommend = 0;
+      } else {
+        this.recommend = 1;
+      }
+
       formData.append('image', this.image);
       formData.append('category_array', this.category_array);
       formData.append('code_number', this.code_number);
@@ -6737,7 +6743,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('quantity', this.quantity);
       formData.append('minimum_order', this.minimum_order);
       formData.append('maximum_order', this.maximum_order);
-      formData.append('recommand', this.recommand);
+      formData.append('recommend', this.recommend);
       formData.append('english_name', this.english.name);
       formData.append('english_description', this.english.description);
       formData.append('english_additions', this.english.additions);
@@ -6749,7 +6755,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
 
-          window.location.href = '/admin/products';
+          window.location.href = '/admin/products/create';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -62003,42 +62009,46 @@ var render = function() {
                 }
               })
             ]),
-            _vm._v(" "),
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.recommend) +
+                "\n                "
+            ),
             _c("div", { staticClass: "m-form__group form-check ml-4" }, [
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.recommand,
-                    expression: "recommand"
+                    value: _vm.recommend,
+                    expression: "recommend"
                   }
                 ],
                 staticClass: "form-check-input",
                 attrs: { type: "checkbox", id: "exampleCheck1" },
                 domProps: {
-                  checked: Array.isArray(_vm.recommand)
-                    ? _vm._i(_vm.recommand, null) > -1
-                    : _vm.recommand
+                  checked: Array.isArray(_vm.recommend)
+                    ? _vm._i(_vm.recommend, null) > -1
+                    : _vm.recommend
                 },
                 on: {
                   change: function($event) {
-                    var $$a = _vm.recommand,
+                    var $$a = _vm.recommend,
                       $$el = $event.target,
                       $$c = $$el.checked ? true : false
                     if (Array.isArray($$a)) {
                       var $$v = null,
                         $$i = _vm._i($$a, $$v)
                       if ($$el.checked) {
-                        $$i < 0 && (_vm.recommand = $$a.concat([$$v]))
+                        $$i < 0 && (_vm.recommend = $$a.concat([$$v]))
                       } else {
                         $$i > -1 &&
-                          (_vm.recommand = $$a
+                          (_vm.recommend = $$a
                             .slice(0, $$i)
                             .concat($$a.slice($$i + 1)))
                       }
                     } else {
-                      _vm.recommand = $$c
+                      _vm.recommend = $$c
                     }
                   }
                 }
@@ -62050,7 +62060,7 @@ var render = function() {
                   staticClass: "form-check-label",
                   attrs: { for: "exampleCheck1" }
                 },
-                [_vm._v("Recommand")]
+                [_vm._v("Recommend")]
               )
             ])
           ]),
