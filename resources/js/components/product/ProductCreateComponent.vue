@@ -132,6 +132,7 @@
             <div class="form-group m-form__group">
                 <button @click="add_addition" type="button" class="btn btn-danger">Add More</button>
             </div>
+            {{english.additions}}
 
             <div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">
@@ -227,6 +228,18 @@ export default {
                 this.recommend = 1;
             }
 
+            // for(var i=0; i<this.english.additions.length; i++)
+            // {
+            //     let additions =  this.english.additions[i];
+            //     formData.append('english_additions[' + i + ']', additions);
+            // }
+
+            // for(var i=0; i<this.myanmar.additions.length; i++)
+            // {
+            //     let additions =  this.myanmar.additions[i];
+            //     formData.append('myanmar_additions[' + i + ']', additions);
+            // }
+
 
             formData.append('image', this.image);
             formData.append('category_array', this.category_array);
@@ -245,6 +258,7 @@ export default {
 
             axios.post('/admin/products/store', formData, config)
             .then(response=> {
+                // console.log(JSON.stringify(response.data));
                 if(response.data.validation == true)
                 {
                     setTimeout(()=>{

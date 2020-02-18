@@ -6668,6 +6668,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -6734,7 +6735,17 @@ __webpack_require__.r(__webpack_exports__);
         this.recommend = 0;
       } else {
         this.recommend = 1;
-      }
+      } // for(var i=0; i<this.english.additions.length; i++)
+      // {
+      //     let additions =  this.english.additions[i];
+      //     formData.append('english_additions[' + i + ']', additions);
+      // }
+      // for(var i=0; i<this.myanmar.additions.length; i++)
+      // {
+      //     let additions =  this.myanmar.additions[i];
+      //     formData.append('myanmar_additions[' + i + ']', additions);
+      // }
+
 
       formData.append('image', this.image);
       formData.append('category_array', this.category_array);
@@ -6751,6 +6762,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('myanmar_description', this.myanmar.description);
       formData.append('myanmar_additions', this.myanmar.additions);
       axios.post('/admin/products/store', formData, config).then(function (response) {
+        // console.log(JSON.stringify(response.data));
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
@@ -62373,7 +62385,11 @@ var render = function() {
               [_vm._v("Add More")]
             )
           ]),
-          _vm._v(" "),
+          _vm._v(
+            "\n            " +
+              _vm._s(_vm.english.additions) +
+              "\n\n            "
+          ),
           _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
             _c("div", { staticClass: "m-form__actions" }, [
               _vm.disabled_status == false
@@ -77493,8 +77509,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
