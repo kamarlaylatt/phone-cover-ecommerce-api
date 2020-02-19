@@ -7,6 +7,7 @@ use App\ProductInfo;
 use App\ProductAddition;
 use App\Category;
 use App\ProductImage;
+use Storage;
 
 class Product extends Model
 {
@@ -78,7 +79,10 @@ class Product extends Model
         }
 
 
-    	return ['success' => true];
+    	return [
+            'success' => true,
+            'product_id' => $product->id,
+        ];
     }
 
 

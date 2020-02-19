@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use App\Http\Requests\backend\StoreProduct;
 use App\Http\Controllers\backend\BaseController as BaseController;
+use Storage;
 
 class ProductController extends BaseController
 {
@@ -27,7 +28,7 @@ class ProductController extends BaseController
     public function store(Request $request)
     {
         $rules = [
-            // 'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
             'category_array' => 'required',
             'code_number' => 'required',
             'price' => 'required|numeric',
@@ -49,6 +50,17 @@ class ProductController extends BaseController
 
         $productModel = new Product;
         $product_store = $productModel->storeProduct($request->all());
+
+        $product = Product::find($product_store['product_id']);
+
+        if($request->hasFile('image'))
+        {
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/product_imgs/thumbnail/', $file, $filename);
+                $product->image = $filename;
+                $product->save();
+        }
 
         if($product_store['success'] == true)
         {

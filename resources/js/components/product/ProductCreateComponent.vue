@@ -4,7 +4,7 @@
             {{error.errorMessage}}
         </div>
         <!-- begin form -->
-        <form class="m-form m-form--fit m-form--label-align-right" v-on:submit="create" method="post">
+        <form class="m-form m-form--fit m-form--label-align-right">
 			<div class="m-portlet__body">
                 <div class="form-group m-form__group">
 					<label>Thumbnail</label>
@@ -133,7 +133,7 @@
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">
-					<button type="submit" v-if="disabled_status==false" class="btn btn-danger">Create</button>
+					<button type="submit" @click="create" v-if="disabled_status==false" class="btn btn-danger">Create</button>
 					<button v-if="disabled_status==true" disabled class="btn btn-danger">Create</button>
 					<button type="button" class="btn btn-outline-danger">Cancel</button>
 				</div>
