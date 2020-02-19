@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\ProductInfo;
 use App\ProductAddition;
+use App\Category;
+use App\ProductImage;
 
 class Product extends Model
 {
@@ -28,6 +30,19 @@ class Product extends Model
     		'recommend' => $request['recommend'],
     	]);
 
+        $category = Category::find(json_decode($request['category_array']));
+        $product->categories()->attach($category);
+
+        $images = json_decode($request['images']);
+
+        foreach ($images as $key => $image) {
+            ProductImage::Create([
+                'product_id' => $product->id,
+                'image' => $image->name,
+                'sort_no' => $key+1,
+            ]);
+        }
+
         ProductInfo::Create([
             'product_id' => $product->id,
             'language_id' => 1,
@@ -42,23 +57,23 @@ class Product extends Model
             'description' => $request['myanmar_description'],
         ]);
 
-        $english_additions = $request['english_additions'];
+        $english_additions = json_decode($request['english_additions']);
         foreach ($english_additions as $addition) {
             ProductAddition::Create([
                 'product_id' => $product->id,
                 'language_id' => 1,
-                'key' => $addition['key'],
-                'value' => $addition['value'],
+                'key' => $addition->key,
+                'value' => $addition->value,
             ]);
         }
 
-        $myanmar_additions = $request['myanmar_additions'];
+        $myanmar_additions = json_decode($request['myanmar_additions']);
         foreach ($myanmar_additions as $addition) {
             ProductAddition::Create([
                 'product_id' => $product->id,
                 'language_id' => 2,
-                'key' => $addition['key'],
-                'value' => $addition['value'],
+                'key' => $addition->key,
+                'value' => $addition->value,
             ]);
         }
 

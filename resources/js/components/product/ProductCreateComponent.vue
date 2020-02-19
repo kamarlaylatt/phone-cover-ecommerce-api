@@ -4,7 +4,7 @@
             {{error.errorMessage}}
         </div>
         <!-- begin form -->
-        <form class="m-form m-form--fit m-form--label-align-right">
+        <form class="m-form m-form--fit m-form--label-align-right" v-on:submit="create" method="post">
 			<div class="m-portlet__body">
                 <div class="form-group m-form__group">
 					<label>Thumbnail</label>
@@ -62,7 +62,6 @@
                     <label>Maximum Order</label>
                     <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
                 </div>
-                {{recommend}}
                 <div class="m-form__group form-check ml-4">
                     <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Recommend</label>
@@ -88,14 +87,14 @@
                         <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
                     </div>
                     <!--english addition fields -->
-                    <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="addition">
+                    <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
                         <div class="form-group col-4">
                             <!-- <label>Label</label> -->
-                            <input v-model="addition.key" type="text" class="form-control" placeholder="Label" >
+                            <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
                         </div>
                         <div class="form-group col">
                             <!-- <label>Value</label> -->
-                            <input v-model="addition.value" type="text" class="form-control" placeholder="Value" >
+                            <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
                         </div>
                         <div class="form-group col-1">
                             <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -112,14 +111,14 @@
                         <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
                     </div>
                     <!--myanmar addition fields -->
-                    <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="addition">
+                    <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
                         <div class="form-group col-4">
                             <!-- <label>Label</label> -->
-                            <input v-model="addition.key" type="text" class="form-control" placeholder="Label" >
+                            <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
                         </div>
                         <div class="form-group col">
                             <!-- <label>Value</label> -->
-                            <input v-model="addition.value" type="text" class="form-control" placeholder="Value" >
+                            <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
                         </div>
                         <div class="form-group col-1">
                             <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -132,16 +131,13 @@
             <div class="form-group m-form__group">
                 <button @click="add_addition" type="button" class="btn btn-danger">Add More</button>
             </div>
-            {{english.additions}}
-
             <div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">
-					<button v-if="disabled_status==false" @click="create" class="btn btn-danger">Create</button>
-					<button v-if="disabled_status==true" disabled @click="create" class="btn btn-danger">Create</button>
+					<button type="submit" v-if="disabled_status==false" class="btn btn-danger">Create</button>
+					<button v-if="disabled_status==true" disabled class="btn btn-danger">Create</button>
 					<button type="button" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
-            {{formData}}
         </form>
     </div>
 </template>
@@ -213,12 +209,6 @@ export default {
                                 }
                             };
 
-            for(var i=0; i<this.images.length; i++)
-            {
-                let file =  this.images[i];
-                formData.append('images[' + i + ']', file);
-            }
-
             if(this.recommend == false)
             {
                 this.recommend = 0;
@@ -228,21 +218,9 @@ export default {
                 this.recommend = 1;
             }
 
-            // for(var i=0; i<this.english.additions.length; i++)
-            // {
-            //     let additions =  this.english.additions[i];
-            //     formData.append('english_additions[' + i + ']', additions);
-            // }
-
-            // for(var i=0; i<this.myanmar.additions.length; i++)
-            // {
-            //     let additions =  this.myanmar.additions[i];
-            //     formData.append('myanmar_additions[' + i + ']', additions);
-            // }
-
-
             formData.append('image', this.image);
-            formData.append('category_array', this.category_array);
+            formData.append('images', JSON.stringify(this.images));
+            formData.append('category_array', JSON.stringify(this.category_array));
             formData.append('code_number', this.code_number);
             formData.append('price', this.price);
             formData.append('quantity', this.quantity);
@@ -251,14 +229,13 @@ export default {
             formData.append('recommend', this.recommend);
             formData.append('english_name', this.english.name);
             formData.append('english_description', this.english.description);
-            formData.append('english_additions', this.english.additions);
+            formData.append('english_additions', JSON.stringify(this.english.additions));
             formData.append('myanmar_name', this.myanmar.name);
             formData.append('myanmar_description', this.myanmar.description);
-            formData.append('myanmar_additions', this.myanmar.additions);
+            formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
 
             axios.post('/admin/products/store', formData, config)
             .then(response=> {
-                // console.log(JSON.stringify(response.data));
                 if(response.data.validation == true)
                 {
                     setTimeout(()=>{

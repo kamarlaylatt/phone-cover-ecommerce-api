@@ -26,27 +26,26 @@ class ProductController extends BaseController
 
     public function store(Request $request)
     {
-        // $rules = [
-        //     'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
-        //     'category_array' => 'required',
-        //     'code_number' => 'required',
-        //     'price' => 'required|numeric',
-        //     'quantity' => 'required|numeric',
-        //     'minimum_order' => 'required|numeric',
-        //     'maximum_order' => 'required|numeric',
-        //     'recommand' => 'required',
-        //     'english_name' => 'required|string',
-        //     'english_description' => 'required|string',
-        //     'myanmar_name' => 'required|string',
-        //     'myanmar_description' => 'required|string',
-        // ];
+        $rules = [
+            // 'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'category_array' => 'required',
+            'code_number' => 'required',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'minimum_order' => 'required|numeric',
+            'maximum_order' => 'required|numeric',
+            'english_name' => 'required|string',
+            'english_description' => 'required|string',
+            'myanmar_name' => 'required|string',
+            'myanmar_description' => 'required|string',
+        ];
 
-        // $validation = $this->jsonValidate($request->all(), $rules);
+        $validation = $this->jsonValidate($request->all(), $rules);
 
-        // if($validation['success'] == false)
-        // {
-        //     return $validation;
-        // }
+        if($validation['success'] == false)
+        {
+            return $validation;
+        }
 
         $productModel = new Product;
         $product_store = $productModel->storeProduct($request->all());
