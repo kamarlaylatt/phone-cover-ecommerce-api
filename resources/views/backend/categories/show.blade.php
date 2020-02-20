@@ -28,7 +28,13 @@
                 <table class="table table-bordered">
                     <tr>
                         <th> Image </th>
-                        <td> <img src="{{$img_url}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> </td>
+                        <td> 
+                            @if(\Storage::exists('uploads/category_imgs/'.$category->image))
+                                <img src="{{$img_url}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
+                            @else
+                            <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th> Path </th>

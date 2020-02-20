@@ -174,7 +174,7 @@ export default {
 
             errors: '',
             disabled_status: false,
-            show_image: 'https://www.capitalkaratesc.com/wp-content/uploads/2017/04/default-image.jpg',
+            show_image: '/images/default.png',
 
              normalizer(node) {
               return {

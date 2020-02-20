@@ -14,7 +14,8 @@ class ProductController extends BaseController
 {
     public function index()
     {
-    	return view('backend.products.index');
+        $products = Product::paginate(10);
+    	return view('backend.products.index', compact('products'));
     }
 
     public function create()

@@ -121,7 +121,9 @@
                             @else
                     		  <td>{{Str::limit($category->category_infos[0]->description, 20)}}</td>
                             @endif
-                    		<td class="text-center"><img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60"></td>
+                    		<td class="text-center">
+                                <img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                            </td>
                             <td class="text-center">
                             	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.show', $category->id)}}">
                                     <i class="fa fa-eye"></i>

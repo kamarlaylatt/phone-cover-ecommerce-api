@@ -8,6 +8,7 @@ use App\ProductAddition;
 use App\Category;
 use App\ProductImage;
 use Storage;
+use Image;
 
 class Product extends Model
 {
@@ -37,11 +38,19 @@ class Product extends Model
         $images = json_decode($request['images']);
 
         foreach ($images as $key => $image) {
-            ProductImage::Create([
+            $filename = uniqid().'_'.$image->name;
+            
+            Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
+
+            
+            $product_image = ProductImage::Create([
                 'product_id' => $product->id,
-                'image' => $image->name,
+                'image' => $filename,
                 'sort_no' => $key+1,
             ]);
+
+
+            
         }
 
         ProductInfo::Create([
