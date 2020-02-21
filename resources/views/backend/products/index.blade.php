@@ -78,9 +78,9 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
-                                <th title="Field #2" data-field="Name">Code Number</th>
+                                <th title="Field #2" data-field="Name">Name</th>
                                 <th title="Field #3" data-field="Email">Price</th>
-                                <th title="Field #3" data-field="Role">Quantity</th>
+                                <th title="Field #3" data-field="Role">Code No</th>
                                 <th title="Field #4" data-field="Role">Image</th>
                                 <th title="Field #5" data-field="Action">Action</th>
                             </tr>
@@ -89,26 +89,26 @@
                             @foreach($products as $key=>$product)
                                 <tr>
                                     <td>{{ $key+ $products->firstItem() }}</td>
-                                    <td>{{$product->code_number}}</td>
+                                    <td>{{$product->infos->where('language_id',1)->first()->name}}</td>
                                     <td>{{$product->price}}</td>
-                                    <td>{{$product->qty}}</td>
+                                    <td>{{$product->code_number}}</td>
                                     <td>
                                         <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
                                     </td>
-                                    {{-- <td>
-                                        <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('admins.show', $admin->id)}}">
+                                    <td>
+                                        <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.show', $product->id)}}">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('admins.edit', $admin->id)}}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.edit', $product->id)}}"><i class="fa fa-edit"></i></a>
 
-                                        <form action="{{route('admins.destroy', $admin->id)}}" method="POST" style="display:inline;">
+                                        <form action="" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')                                            
                                             <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>
                                             </button>
                                         </form>
-                                    </td>--}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>                                     

@@ -48,6 +48,8 @@ Route::namespace('backend')->group(function(){
 		Route::get('/','ProductController@index')->name('products.index');
 		Route::get('/create','ProductController@create')->name('products.create');
 		Route::post('/store', 'ProductController@store')->name('products.store');
+		Route::get('/{id}/edit', 'ProductController@edit')->name('products.edit');
+		Route::get('{id}/show', 'ProductController@SHOW')->name('products.show');
 	});
 	
 

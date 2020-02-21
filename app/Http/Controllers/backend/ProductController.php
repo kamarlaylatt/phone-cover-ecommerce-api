@@ -26,6 +26,11 @@ class ProductController extends BaseController
         return view('backend.products.create', compact('category_array'));
     }
 
+    public function show($id)
+    {
+        return view('backend.products.show');
+    }
+
     public function store(Request $request)
     {
         $rules = [
@@ -68,5 +73,10 @@ class ProductController extends BaseController
             return response()->json(['validation' => true]);
         }
 
+    }
+
+    public function edit($id)
+    {
+        return view('backend.products.edit');
     }
 }

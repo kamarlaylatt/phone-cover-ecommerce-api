@@ -21,6 +21,11 @@ class Product extends Model
         return $this->belongsToMany('App\Category');
     }
 
+    public function infos()
+    {
+        return $this->hasMany('App\ProductInfo');
+    }
+
     public function storeProduct($request)
     {
     	$product = Product::Create([

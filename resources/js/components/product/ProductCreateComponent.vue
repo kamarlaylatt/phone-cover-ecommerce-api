@@ -132,10 +132,14 @@
                 <button @click="add_addition" type="button" class="btn btn-danger">Add More</button>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
-				<div class="m-form__actions">
-					<button type="submit" @click="create" v-if="disabled_status==false" class="btn btn-danger">Create</button>
-					<button v-if="disabled_status==true" disabled class="btn btn-danger">Create</button>
-					<button type="button" class="btn btn-outline-danger">Cancel</button>
+				<div class="m-form__actions">					
+                     <VueLoadingButton 
+                      @click.native="create"
+                     class="btn btn-danger"
+                     :loading="isLoading"
+                     ><small>Create</small>
+                     </VueLoadingButton>
+                     <button type="button" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
         </form>
@@ -143,6 +147,7 @@
 </template>
 
 <script>
+import VueLoadingButton from 'vue-loading-button';
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
@@ -184,12 +189,14 @@ export default {
                 isDisabled: node.isDisabled,
               }
             },
+
+            isLoading: false,
             
         };
     },
 
     components: {
-        VueUploadMultipleImage,Treeselect 
+        VueUploadMultipleImage,Treeselect,VueLoadingButton,
       },
 
     mounted()
@@ -201,7 +208,7 @@ export default {
 
         //create button click
         create(){
-            this.disabled_status = true;
+            this.isLoading = true;
             let formData = new FormData();
                 let config = {
                                 headers: {
@@ -243,7 +250,7 @@ export default {
                     },2000)
                     var currentUrl = window.location.pathname;
                     // window.location.href = currentUrl;
-                    window.location.href = '/admin/products/create';
+                    window.location.href = '/admin/products';
                 }
                 else{
                     window.scrollTo(0,0);
@@ -251,7 +258,7 @@ export default {
                     setTimeout(()=>{
                         this.errors = '';
                     },2000)
-                    this.disabled_status = false;               
+                    this.isLoading = false;               
                 }
                 
             });
