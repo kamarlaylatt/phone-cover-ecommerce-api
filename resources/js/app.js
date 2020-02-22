@@ -34,6 +34,8 @@ Vue.component('tree-component', require('./components/category/TreeComponent.vue
 Vue.component('category_create-component', require('./components/category/CategoryCreateComponent.vue').default);
 Vue.component('category_edit-component', require('./components/category/CategoryEditComponent.vue').default);
 Vue.component('product_create-component', require('./components/product/ProductCreateComponent.vue').default);
+Vue.component('product_edit-component', require('./components/product/ProductEditComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

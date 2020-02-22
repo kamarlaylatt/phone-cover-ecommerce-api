@@ -77,6 +77,26 @@ class ProductController extends BaseController
 
     public function edit($id)
     {
-        return view('backend.products.edit');
+        $product = Product::find($id);
+        $categoryModel = new Category;
+        $category_array = $categoryModel->getChildrenTree();
+        $thumbnail_url = url(Storage::url('uploads/product_imgs/thumbnail/'.$product->image));
+
+        $images = array();
+
+        foreach($product->images as $image)
+        {
+            $image_path = (string) \Image::make(storage_path('app/public/uploads/product_imgs/images/'.$image->image))->encode('data-url');
+            $obj = [
+                'id' => $image->id,
+                'name' => $image->image,
+                'path' => $image_path,
+                'highlight' => 0,
+                'default' => 0,
+            ];
+            array_push($images, $obj);
+        }
+
+        return view('backend.products.edit', compact('category_array','product','thumbnail_url','images'));
     }
 }

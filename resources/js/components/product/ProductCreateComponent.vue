@@ -129,7 +129,7 @@
                 </div>              
             </div>
             <div class="form-group m-form__group">
-                <button @click="add_addition" type="button" class="btn btn-danger">Add More</button>
+                <button @click="add_addition" type="button" class="btn btn-danger">Add Options</button>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">					

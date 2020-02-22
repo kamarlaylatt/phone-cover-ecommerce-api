@@ -26,6 +26,16 @@ class Product extends Model
         return $this->hasMany('App\ProductInfo');
     }
 
+    public function additions()
+    {
+        return $this->hasMany('App\ProductAddition');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage');
+    }
+
     public function storeProduct($request)
     {
     	$product = Product::Create([
