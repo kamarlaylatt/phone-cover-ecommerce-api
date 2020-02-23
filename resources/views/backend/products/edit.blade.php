@@ -43,7 +43,7 @@
         <div class="m-portlet__body">
         <!-- <p>{{json_encode($images)}}</p> -->
             <product_edit-component 
-                :images="{{json_encode($images)}}"
+                :edit_images="{{json_encode($images)}}"
                 :product="{{json_encode($product)}}"
                 :selected_categories="{{json_encode($product->categories)}}"
                 :product_infos="{{json_encode($product->infos)}}"

@@ -134,11 +134,12 @@
             <div class="m-portlet__foot m-portlet__foot--fit">
 				<div class="m-form__actions">					
                      <VueLoadingButton 
-                      @click.native="create"
+                      @click.native="update"
                      class="btn btn-danger"
                      :loading="isLoading"
-                     ><small>Create</small>
+                     ><small>Update</small>
                      </VueLoadingButton>
+                     <button @click="reset()" type="button" class="btn btn-outline-danger">Reset</button>
                      <button type="button" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
@@ -152,12 +153,13 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 export default {
-    props: ['images','categories','product','product_infos','selected_categories','product_additions','thumbnail_url'],
+    props: ['edit_images','categories','product','product_infos','selected_categories','product_additions','thumbnail_url'],
     
     data(){
         return{
 
             image: '',
+            images: [],
             category_array: [],
             code_number: '',
             price: '',
@@ -174,6 +176,12 @@ export default {
                 name: '',
                 description: '',
                 additions: [],
+            },
+
+            destroy:{
+                images_ids: [],
+                category_ids: [],
+                addition_ids: [],
             },
 
             errors: '',
@@ -219,6 +227,11 @@ export default {
             this.myanmar.name = this.product_infos[1].name;
             this.myanmar.description = this.product_infos[1].description;
 
+            for(var i=0; i<this.edit_images.length; i++)
+            {
+                this.images.push(this.edit_images[i]);
+            }
+
             for(var i=0; i<this.selected_categories.length; i++)
             {
                 this.category_array.push(this.selected_categories[i].id);
@@ -227,8 +240,11 @@ export default {
             for(var i=0; i<this.product_additions.length; i++)
             {
                 var obj= {
+                    id: this.product_additions[i].id,
                     key: this.product_additions[i].key,
                     value: this.product_additions[i].value,
+                    create_status: 0,
+                    update_status: 1,
                 };
                 if(this.product_additions[i].language_id == 1)
                 {
@@ -241,8 +257,13 @@ export default {
             }
         },
 
-        //create button click
-        create(){
+        reset(){
+            var currentUrl = window.location.pathname;
+            window.location.href = currentUrl;
+        },
+
+        //update button click
+        update(){
             this.isLoading = true;
             let formData = new FormData();
                 let config = {
@@ -301,14 +322,21 @@ export default {
 
         //extra field functions
         add_addition(){
-            var eng_obj= {key: '',value: ''};
-            var myan_obj= {key: '',value: ''};
+            var eng_obj= {key: '',value: '',create_status: 1, update_status: 0};
+            var myan_obj= {key: '',value: '',create_status:1, update_status:0};
 
             this.english.additions.push(eng_obj);
             this.myanmar.additions.push(myan_obj);
         },
 
         delete_addition(index){
+
+            if(this.english.additions[index].create_status == 0)
+            {
+                this.destroy.addition_ids.push(this.english.additions[index].id);
+                this.destroy.addition_ids.push(this.myanmar.additions[index].id);
+            }
+            
             this.english.additions.splice(index,1);
             this.myanmar.additions.splice(index,1);
         },
@@ -335,24 +363,38 @@ export default {
 
         //multiple photo upload functions
         uploadImageSuccess(formData, index, fileList) {
-          console.log('data', formData, index, fileList)
+        //   console.log('data', formData, index, fileList)
 
           this.images = fileList;
+          this.images[index].update_status = 0;   
+          this.images[index].create_status = 1;          
           // Upload image api
           // axios.post('http://your-url-upload', formData).then(response => {
           //   console.log(response)
           // })
         },
+        
         beforeRemove (index, done, fileList) {
-          console.log('index', index, fileList)
-          var r = confirm("remove image")
+            
+        //   console.log('index', index, fileList)
+          var r = confirm("Are you sure to remove image?")
           if (r == true) {
+            if(this.images[index].create_status == 0)
+            {
+                this.destroy.images_ids.push(this.images[index].id);
+            }
             done()
           } else {
           }
         },
+
         editImage (formData, index, fileList) {
-          console.log('edit data', formData, index, fileList)
+            //   console.log('edit data', formData, index, fileList)
+            if(this.images[index].create_status == 0)
+            {
+                this.images[index].update_status = 1;
+            }
+          
         }
     },
 }

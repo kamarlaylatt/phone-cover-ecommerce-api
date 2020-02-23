@@ -93,6 +93,8 @@ class ProductController extends BaseController
                 'path' => $image_path,
                 'highlight' => 0,
                 'default' => 0,
+                'update_status' => 0,
+                'create_status' => 0,
             ];
             array_push($images, $obj);
         }
