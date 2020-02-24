@@ -101,4 +101,50 @@ class ProductController extends BaseController
 
         return view('backend.products.edit', compact('category_array','product','thumbnail_url','images'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            // 'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'category_array' => 'required',
+            'code_number' => 'required',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'minimum_order' => 'required|numeric',
+            'maximum_order' => 'required|numeric',
+            'english_name' => 'required|string',
+            'english_description' => 'required|string',
+            'myanmar_name' => 'required|string',
+            'myanmar_description' => 'required|string',
+        ];
+
+        $validation = $this->jsonValidate($request->all(), $rules);
+
+        if($validation['success'] == false)
+        {
+            return $validation;
+        }
+
+        $productModel = new Product;
+        $product_store = $productModel->updateProduct($request->all(), $id);
+
+        
+        $product = Product::find($id);
+
+        if($request->hasFile('image'))
+        {
+            Storage::delete('public/uploads/product_imgs/thumbnail/'.$product->image); 
+            $file = $request->file('image');
+            $filename = uniqid().'_'.$file->getClientOriginalName();
+            Storage::disk('public')->putFileAs('/uploads/product_imgs/thumbnail/', $file, $filename);
+            $product->image = $filename;
+            $product->save();
+        }
+
+        if($product_store['success'] == true)
+        {
+            return response()->json(['validation' => true]);
+        }
+
+    }
 }

@@ -97,7 +97,7 @@
                             <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
                         </div>
                         <div class="form-group col-1">
-                            <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <a @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash" style="color:white;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                             <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
                         </div>
                         <div class="form-group col-1">
-                            <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <a @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash" style="color:white;"></i></a>
                         </div>
                     </div>
 
@@ -161,6 +161,7 @@ export default {
             image: '',
             images: [],
             category_array: [],
+            old_category_array: [],
             code_number: '',
             price: '',
             quantity: '',
@@ -168,11 +169,13 @@ export default {
             maximum_order: '',
             recommend: false,
             english: {
+                id: '',
                 name: '',
                 description: '',
                 additions: [],                
             },
             myanmar: {
+                id: '',
                 name: '',
                 description: '',
                 additions: [],
@@ -180,7 +183,6 @@ export default {
 
             destroy:{
                 images_ids: [],
-                category_ids: [],
                 addition_ids: [],
             },
 
@@ -222,8 +224,10 @@ export default {
             this.minimum_order = this.product.min_order;
             this.maximum_order = this.product.max_order;
             this.recommend = this.product.recommend;
+            this.english.id = this.product_infos[0].id;
             this.english.name = this.product_infos[0].name;
             this.english.description = this.product_infos[0].description;
+            this.myanmar.id = this.product_infos[1].id;
             this.myanmar.name = this.product_infos[1].name;
             this.myanmar.description = this.product_infos[1].description;
 
@@ -236,6 +240,8 @@ export default {
             {
                 this.category_array.push(this.selected_categories[i].id);
             }
+
+            this.old_category_array = this.category_array;
 
             for(var i=0; i<this.product_additions.length; i++)
             {
@@ -280,24 +286,30 @@ export default {
             {
                 this.recommend = 1;
             }
-
-            formData.append('image', this.image);
+            if(this.image_change_status == true)
+            {
+                formData.append('image', this.image);
+            }
             formData.append('images', JSON.stringify(this.images));
             formData.append('category_array', JSON.stringify(this.category_array));
+            formData.append('old_category_array', JSON.stringify(this.old_category_array));
             formData.append('code_number', this.code_number);
             formData.append('price', this.price);
             formData.append('quantity', this.quantity);
             formData.append('minimum_order', this.minimum_order);
             formData.append('maximum_order', this.maximum_order);
             formData.append('recommend', this.recommend);
+            formData.append('english_id', this.english.id);
             formData.append('english_name', this.english.name);
             formData.append('english_description', this.english.description);
             formData.append('english_additions', JSON.stringify(this.english.additions));
+            formData.append('myanmar_id', this.myanmar.id);
             formData.append('myanmar_name', this.myanmar.name);
             formData.append('myanmar_description', this.myanmar.description);
             formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
+            formData.append('destroy_additions', JSON.stringify(this.destroy.addition_ids));
 
-            axios.post('/admin/products/store', formData, config)
+            axios.post('/admin/products/'+ this.product.id +'/update', formData, config)
             .then(response=> {
                 if(response.data.validation == true)
                 {
@@ -330,7 +342,6 @@ export default {
         },
 
         delete_addition(index){
-
             if(this.english.additions[index].create_status == 0)
             {
                 this.destroy.addition_ids.push(this.english.additions[index].id);

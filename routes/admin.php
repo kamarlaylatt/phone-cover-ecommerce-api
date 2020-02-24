@@ -34,7 +34,7 @@ Route::namespace('backend')->group(function(){
 	//categories
 	Route::prefix('categories')->group(function(){
 		Route::get('/','CategoryController@index')->name('categories.index');
-		Route::get('{id}/show','CategoryController@show')->name('categories.show');
+		Route::get('/{id}/show','CategoryController@show')->name('categories.show');
 		Route::get('/create','CategoryController@create')->name('categories.create');
 		Route::post('/store','CategoryController@store')->name('categories.store');
 		Route::get('/{id}/edit','CategoryController@edit')->name('categories.edit');
@@ -49,7 +49,8 @@ Route::namespace('backend')->group(function(){
 		Route::get('/create','ProductController@create')->name('products.create');
 		Route::post('/store', 'ProductController@store')->name('products.store');
 		Route::get('/{id}/edit', 'ProductController@edit')->name('products.edit');
-		Route::get('{id}/show', 'ProductController@SHOW')->name('products.show');
+		Route::post('/{id}/update', 'ProductController@update')->name('products.update');
+		Route::get('/{id}/show', 'ProductController@SHOW')->name('products.show');
 	});
 	
 

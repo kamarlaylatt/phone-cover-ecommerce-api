@@ -109,5 +109,88 @@ class Product extends Model
         ];
     }
 
+    public function updateProduct($request,$id)
+    {
+        $product = Product::find($id);
+
+        //product
+        $product->code_number = $request['code_number'];
+        $product->price = $request['price'];
+        $product->qty = $request['quantity'];
+        $product->min_order = $request['minimum_order'];
+        $product->max_order = $request['maximum_order'];
+        $product->recommend = $request['recommend'];
+        $product->save();
+
+        //product_category
+        $old_category = Category::find(json_decode($request['old_category_array']));
+        $product->categories()->detach($old_category);
+        $new_category = Category::find(json_decode($request['category_array']));
+        $product->categories()->attach($new_category);
+
+        //product_info
+        $english_info = ProductInfo::find($request['english_id']);
+        $myanmar_info = ProductInfo::find($request['myanmar_id']); 
+        $english_info->name = $request['english_name'];
+        $english_info->description = $request['english_description'];
+        $myanmar_info->name = $request['myanmar_name'];
+        $myanmar_info->description = $request['myanmar_description'];
+        $english_info->save();
+        $myanmar_info->save();
+
+        //product additions
+        $english_additions = json_decode($request['english_additions']);
+        foreach ($english_additions as $addition) {
+            if($addition->create_status == 1)
+            {
+                ProductAddition::Create([
+                    'product_id' => $product->id,
+                    'language_id' => 1,
+                    'key' => $addition->key,
+                    'value' => $addition->value,
+                ]);
+            }
+            
+            if($addition->update_status == 1)
+            {
+                $product_addition = ProductAddition::find($addition->id);
+                $product_addition->key = $addition->key;
+                $product_addition->value = $addition->value;
+                $product_addition->save();
+            }            
+        }
+        $myanmar_additions = json_decode($request['myanmar_additions']);
+        foreach ($myanmar_additions as $addition) {
+            if($addition->create_status == 1)
+            {
+                ProductAddition::Create([
+                    'product_id' => $product->id,
+                    'language_id' => 2,
+                    'key' => $addition->key,
+                    'value' => $addition->value,
+                ]);
+            }
+            
+            if($addition->update_status == 1)
+            {
+                $product_addition = ProductAddition::find($addition->id);
+                $product_addition->key = $addition->key;
+                $product_addition->value = $addition->value;
+                $product_addition->save();
+            }            
+        }
+
+        $destroy_additions = json_decode($request['destroy_additions']);
+        foreach ($destroy_additions as $addition_id)
+        {
+            $product_addition = ProductAddition::find($addition_id);
+            $product_addition->delete();
+        }
+
+        return [
+            'success' =>true,
+        ];
+    }
+
 
 }
