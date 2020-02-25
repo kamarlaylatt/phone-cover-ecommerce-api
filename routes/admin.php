@@ -50,7 +50,8 @@ Route::namespace('backend')->group(function(){
 		Route::post('/store', 'ProductController@store')->name('products.store');
 		Route::get('/{id}/edit', 'ProductController@edit')->name('products.edit');
 		Route::post('/{id}/update', 'ProductController@update')->name('products.update');
-		Route::get('/{id}/show', 'ProductController@SHOW')->name('products.show');
+		Route::get('/{id}/show', 'ProductController@show')->name('products.show');
+		Route::delete('/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
 	});
 	
 

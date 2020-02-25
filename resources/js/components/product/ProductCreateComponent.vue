@@ -139,7 +139,7 @@
                      :loading="isLoading"
                      ><small>Create</small>
                      </VueLoadingButton>
-                     <button type="button" class="btn btn-outline-danger">Cancel</button>
+                     <button @click="cancel()" type="button" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
         </form>
@@ -262,6 +262,12 @@ export default {
                 }
                 
             });
+        },
+
+        cancel()
+        {
+            window.location.href = '/admin/products';
+
         },
 
         //extra field functions

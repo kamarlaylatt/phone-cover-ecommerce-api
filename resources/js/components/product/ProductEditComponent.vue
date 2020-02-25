@@ -140,7 +140,7 @@
                      ><small>Update</small>
                      </VueLoadingButton>
                      <button @click="reset()" type="button" class="btn btn-outline-danger">Reset</button>
-                     <button type="button" class="btn btn-outline-danger">Cancel</button>
+                     <button @click="cancel()" type="button" class="btn btn-outline-danger">Cancel</button>
 				</div>
 			</div>
         </form>
@@ -268,6 +268,11 @@ export default {
             window.location.href = currentUrl;
         },
 
+        cancel(){
+            window.location.href = '/admin/products';
+            
+        },
+
         //update button click
         update(){
             this.isLoading = true;
@@ -290,6 +295,12 @@ export default {
             {
                 formData.append('image', this.image);
             }
+
+            for(var i=0; i<this.images.length; i++)
+            {
+                this.images[i].sort_no = i+1;
+            }
+
             formData.append('images', JSON.stringify(this.images));
             formData.append('category_array', JSON.stringify(this.category_array));
             formData.append('old_category_array', JSON.stringify(this.old_category_array));

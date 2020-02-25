@@ -86,6 +86,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($products->count() < 1)
+                                <td colspan=6 class="text-center">
+                                    There is no product
+                                </td>
+                            @endif
                             @foreach($products as $key=>$product)
                                 <tr>
                                     <td>{{ $key+ $products->firstItem() }}</td>
@@ -102,7 +107,7 @@
 
                                         <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.edit', $product->id)}}"><i class="fa fa-edit"></i></a>
 
-                                        <form action="" method="POST" style="display:inline;">
+                                        <form action="{{route('products.destroy', $product->id)}}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')                                            
                                             <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>

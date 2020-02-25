@@ -147,4 +147,25 @@ class ProductController extends BaseController
         }
 
     }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        Storage::delete('public/uploads/product_imgs/thumbnail/'.$product->image);
+        foreach($product->images as $p_image)
+        {
+            Storage::delete('public/uploads/product_imgs/images/'.$p_image->image);
+        }
+
+        $detach_array = array();
+        foreach($product->categories as $cat)
+        {
+            array_push($detach_array, $cat->id);
+        }
+        $category = Category::find($detach_array);
+        $product->categories()->detach($category);
+
+        $product->delete();
+        return redirect()->back();
+    }
 }

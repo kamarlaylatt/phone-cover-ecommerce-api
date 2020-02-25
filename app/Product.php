@@ -196,19 +196,24 @@ class Product extends Model
                 $product_image = ProductImage::Create([
                     'product_id' => $product->id,
                     'image' => $filename,
-                    'sort_no' => $key+1,
+                    'sort_no' => $image->sort_no,
                 ]);
             }
-
-            if($image->update_status == 1)
-            {
+            else{
                 $product_image = ProductImage::find($image->id);
-                Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
-                $filename = uniqid().'_'.$image->name;            
-                Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
-                $product_image->image = $filename;
+                $product_image->sort_no = $image->sort_no;
                 $product_image->save();
-            }     
+
+                if($image->update_status == 1)
+                {              
+                    Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
+                    $filename = uniqid().'_'.$image->name;            
+                    Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
+                    $product_image->image = $filename;
+                    $product_image->save();
+                }
+            }           
+
         }
         $destroy_images = json_decode($request['destroy_images']);
         foreach ($destroy_images as $image_id)

@@ -6767,6 +6767,9 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
+    cancel: function cancel() {
+      window.location.href = '/admin/products';
+    },
     //extra field functions
     add_addition: function add_addition() {
       var eng_obj = {
@@ -7092,6 +7095,9 @@ __webpack_require__.r(__webpack_exports__);
       var currentUrl = window.location.pathname;
       window.location.href = currentUrl;
     },
+    cancel: function cancel() {
+      window.location.href = '/admin/products';
+    },
     //update button click
     update: function update() {
       var _this = this;
@@ -7112,6 +7118,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.image_change_status == true) {
         formData.append('image', this.image);
+      }
+
+      for (var i = 0; i < this.images.length; i++) {
+        this.images[i].sort_no = i + 1;
       }
 
       formData.append('images', JSON.stringify(this.images));
@@ -62860,7 +62870,12 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-outline-danger",
-                    attrs: { type: "button" }
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.cancel()
+                      }
+                    }
                   },
                   [_vm._v("Cancel")]
                 )
@@ -63606,7 +63621,12 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-outline-danger",
-                    attrs: { type: "button" }
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.cancel()
+                      }
+                    }
                   },
                   [_vm._v("Cancel")]
                 )
@@ -79056,8 +79076,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
