@@ -179,12 +179,43 @@ class Product extends Model
                 $product_addition->save();
             }            
         }
-
         $destroy_additions = json_decode($request['destroy_additions']);
         foreach ($destroy_additions as $addition_id)
         {
             $product_addition = ProductAddition::find($addition_id);
             $product_addition->delete();
+        }
+
+        //product images
+        $images = json_decode($request['images']);
+        foreach ($images as $key => $image) {
+            if($image->create_status == 1)
+            {
+                $filename = uniqid().'_'.$image->name;            
+                Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
+                $product_image = ProductImage::Create([
+                    'product_id' => $product->id,
+                    'image' => $filename,
+                    'sort_no' => $key+1,
+                ]);
+            }
+
+            if($image->update_status == 1)
+            {
+                $product_image = ProductImage::find($image->id);
+                Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
+                $filename = uniqid().'_'.$image->name;            
+                Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
+                $product_image->image = $filename;
+                $product_image->save();
+            }     
+        }
+        $destroy_images = json_decode($request['destroy_images']);
+        foreach ($destroy_images as $image_id)
+        {
+            $product_image = ProductImage::find($image_id);
+            Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
+            $product_image->delete();
         }
 
         return [

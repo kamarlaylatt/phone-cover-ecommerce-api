@@ -7132,6 +7132,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('myanmar_description', this.myanmar.description);
       formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
       formData.append('destroy_additions', JSON.stringify(this.destroy.addition_ids));
+      formData.append('destroy_images', JSON.stringify(this.destroy.images_ids));
       axios.post('/admin/products/' + this.product.id + '/update', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
@@ -79055,8 +79056,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Homestead\universitylife\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Homestead\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Kamar Lay Latt\HomesteadProjects\universitylife\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -308,6 +308,7 @@ export default {
             formData.append('myanmar_description', this.myanmar.description);
             formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
             formData.append('destroy_additions', JSON.stringify(this.destroy.addition_ids));
+            formData.append('destroy_images', JSON.stringify(this.destroy.images_ids));
 
             axios.post('/admin/products/'+ this.product.id +'/update', formData, config)
             .then(response=> {
