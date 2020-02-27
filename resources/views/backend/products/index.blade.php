@@ -35,7 +35,7 @@
                 
                 <!--begin: Search Form -->
                 <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-                    <form method="POST" action="{{route('admins.search')}}">
+                    <form method="POST" action="{{route('products.search')}}">
                         <div class="row align-items-center">
                             <div class="col-xl-8 order-2 order-xl-1">
                                 <div class="form-group m-form__group row align-items-center">
@@ -53,7 +53,7 @@
                                         <button type="submit" class="btn btn-danger">Search</button>
                                     </div>
                                     <div class="col-md-1">
-                                        <a href="{{route('admins.index')}}"class="btn btn-danger">Show All</a>
+                                        <a href="{{route('products.index')}}"class="btn btn-danger">Show All</a>
                                     </div>                                                                        
                                 </div>
                             </div>

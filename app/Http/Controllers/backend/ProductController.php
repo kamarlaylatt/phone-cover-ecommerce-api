@@ -28,7 +28,9 @@ class ProductController extends BaseController
 
     public function show($id)
     {
-        return view('backend.products.show');
+        $product = Product::find($id);
+        $img_url = url(Storage::url('uploads/product_imgs/thumbnail/'.$product->image));
+        return view('backend.products.show', compact('product','img_url'));
     }
 
     public function store(Request $request)
@@ -167,5 +169,21 @@ class ProductController extends BaseController
 
         $product->delete();
         return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request['search'];
+
+        $products = Product::where('code_number', 'like', '%'.$search.'%')
+                            ->orWhere('price', 'like', '%'.$search.'%')
+                            ->orWhereHas('infos',function ($query) use ($search){
+                                $query->where('name','like', '%'.$search.'%')
+                                    ->orWhere('description', 'like', '%'.$search.'%');
+                            })
+                            ->orderBy('id','asc')->paginate(10);
+
+        return view('backend.products.index', compact('products'));
+        
     }
 }
