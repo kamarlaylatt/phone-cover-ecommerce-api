@@ -23,11 +23,16 @@ class CategoryController extends Controller
     
     public function index()
     {
-        $categories = Category::orderBy('id', 'asc')->paginate(20);
+        $categories = Category::orderBy('id', 'asc')->paginate(10);
 
+    	return view('backend.categories.index', compact('categories'));
+    }
+
+    public function tree()
+    {
         $categoryModel = new Category;
         $category_array = $categoryModel->getChildrenTree();
-    	return view('backend.categories.index', compact('categories','category_array'));
+    	return view('backend.categories.tree', compact('category_array'));
     }
 
     public function show($id)

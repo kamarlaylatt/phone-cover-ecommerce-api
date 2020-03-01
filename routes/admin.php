@@ -31,9 +31,13 @@ Route::namespace('backend')->group(function(){
 	Route::resource('users', 'UserController');
 	Route::post('users/search','UserController@search')->name('users.search');
 
+	Route::resource('banners', 'BannerController');
+	Route::post('banners/search','BannerController@search')->name('banners.search');
+
 	//categories
 	Route::prefix('categories')->group(function(){
 		Route::get('/','CategoryController@index')->name('categories.index');
+		Route::get('/tree','CategoryController@tree')->name('categories.tree');
 		Route::get('/{id}/show','CategoryController@show')->name('categories.show');
 		Route::get('/create','CategoryController@create')->name('categories.create');
 		Route::post('/store','CategoryController@store')->name('categories.store');

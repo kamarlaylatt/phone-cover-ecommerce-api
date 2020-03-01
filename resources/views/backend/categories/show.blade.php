@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Categoyr|View')
+@section('title','Category|View')
 
 @section('head_title','Categories')
 

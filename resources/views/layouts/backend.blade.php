@@ -304,5 +304,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="{{ mix('js/app.js') }}"></script>
 	</body>
 
+	@yield('script')
+
 	<!-- end::Body -->
 </html>
