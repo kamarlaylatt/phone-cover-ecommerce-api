@@ -14,7 +14,9 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'User',
+            'uuid' => uniqid(),
             'email' => 'user@gmail.com',
+            'phone' => '01222222',
             'password' => Hash::make('password'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

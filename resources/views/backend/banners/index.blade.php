@@ -105,7 +105,9 @@
                                             <span style="color:red;"><b>Off</b></span>
                                         @endif
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                    </td>
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('banners.show', $banner->id)}}">
                                             <i class="fa fa-eye"></i>

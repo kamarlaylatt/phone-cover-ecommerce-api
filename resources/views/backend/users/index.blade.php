@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                            <!-- <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                                 <a href="{{route('users.create')}}" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                     <span>
                                         <i class="la la-plus"></i>
@@ -74,7 +74,7 @@
                                     </span>
                                 </a>
                                 <div class="m-separator m-separator--dashed d-xl-none"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -87,7 +87,9 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
+                                <th title="Field #1" data-field="No">ID</th>
                                 <th title="Field #2" data-field="Name">Name</th>
+                                <th title="Field #2" data-field="Name">Phone</th>
                                 <th title="Field #3" data-field="Email">Email</th>
                                 <th title="Field #4" data-field="Action">Action</th>
                             </tr>
@@ -96,19 +98,20 @@
                             @foreach($users as $key=>$user)
                                 <tr>
                                     <td>{{ $key+ $users->firstItem() }}</td>
+                                    <td>{{$user->uuid}}</td>
                                     <td>{{$user->name}}</td>
+                                    <td>{{$user->phone}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('users.show', $user->id)}}">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('users.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
+                                        <!-- <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('users.edit', $user->id)}}"><i class="fa fa-edit"></i></a> -->
 
-                                        <form action="{{route('users.destroy', $user->id)}}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')                                            
-                                            <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>
+                                        <form action="{{route('users.active_change', $user->id)}}" method="POST" style="display:inline;">
+                                            @csrf                                          
+                                            <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to ban this user?')"><i class="fa fa-ban"></i>
                                             </button>
                                         </form>
                                     </td>

@@ -29,6 +29,7 @@ Route::namespace('backend')->group(function(){
 
 	//users
 	Route::resource('users', 'UserController');
+	Route::post('users/{id}/active_change', 'UserController@activeChange')->name('users.active_change');
 	Route::post('users/search','UserController@search')->name('users.search');
 
 	Route::resource('banners', 'BannerController');
