@@ -25,6 +25,12 @@ class UserController extends Controller
         return view('backend.users.index', compact('users'));
     }
 
+    public function block_list()
+    {
+        $users = User::where('active_status', 0)->paginate(10);
+        return view('backend.users.block_list', compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -141,10 +147,18 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function activeChange($id)
+    public function block($id)
     {
         $user = User::find($id);
         $user->active_status = false;
+        $user->save();
+        return redirect()->back();
+    }
+
+    public function unblock($id)
+    {
+        $user = User::find($id);
+        $user->active_status = true;
         $user->save();
         return redirect()->back();
     }
@@ -156,8 +170,22 @@ class UserController extends Controller
         $users = User::where('name','like', '%'.$search.'%')
                         ->orwhere('email', 'like', '%'.$search.'%')
                         ->orWhere('phone', 'like', '%'.$search.'%')
+                        ->where('active_status',1)
                         ->paginate(10);
 
         return view('backend.users.index', compact('users'));
+    }
+
+    public function block_search(Request $request)
+    {
+        $search = $request['search'];
+
+        $users = User::where('name','like', '%'.$search.'%')
+                        ->orwhere('email', 'like', '%'.$search.'%')
+                        ->orWhere('phone', 'like', '%'.$search.'%')
+                        ->where('active_status',0)
+                        ->paginate(10);
+
+        return view('backend.users.block_list', compact('users'));
     }
 }

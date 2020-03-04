@@ -109,7 +109,7 @@
 
                                         <!-- <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('users.edit', $user->id)}}"><i class="fa fa-edit"></i></a> -->
 
-                                        <form action="{{route('users.active_change', $user->id)}}" method="POST" style="display:inline;">
+                                        <form action="{{route('users.block', $user->id)}}" method="POST" style="display:inline;">
                                             @csrf                                          
                                             <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to ban this user?')"><i class="fa fa-ban"></i>
                                             </button>

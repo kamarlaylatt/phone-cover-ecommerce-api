@@ -29,8 +29,11 @@ Route::namespace('backend')->group(function(){
 
 	//users
 	Route::resource('users', 'UserController');
-	Route::post('users/{id}/active_change', 'UserController@activeChange')->name('users.active_change');
+	Route::get('block_list', 'UserController@block_list')->name('users.block_list');
+	Route::post('users/{id}/block', 'UserController@block')->name('users.block');
+	Route::post('users/{id}/unblock', 'UserController@unblock')->name('users.unblock');
 	Route::post('users/search','UserController@search')->name('users.search');
+	Route::post('users/block_search','UserController@block_search')->name('users.block_search');
 
 	Route::resource('banners', 'BannerController');
 	Route::post('banners/search','BannerController@search')->name('banners.search');
