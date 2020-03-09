@@ -7,7 +7,7 @@
 |
 | Here is where you can register admin routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "admin" middleware group. Now create something great!
+| contains the "admin" middleware group. Now create something great! 
 |
 */
 
@@ -15,9 +15,10 @@ Route::get('/login', 'Auth\LoginController@showAdminLoginForm')->name('admin.log
 Route::post('/login', 'Auth\LoginController@adminLogin')->name('admin.login.post');
 Route::get('/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
 
-Route::namespace('backend')->group(function(){
+Route::namespace('backend')->middleware('auth:admin')->group(function(){
 
 	Route::get('/', function () {return view('layouts.backend');})->name('admin');
+
 
 	//admin_roles	
 	Route::resource('admin_roles', 'AdminRoleController');

@@ -83,7 +83,7 @@
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions">
                     <button type="submit" class="btn btn-danger">Create</button>
-                    <a href="{{route('admins.index')}}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{route('admins.index')}}" class="btn btn-outline-danger">Cancel</a>
                 </div>
             </div>
         </form>
