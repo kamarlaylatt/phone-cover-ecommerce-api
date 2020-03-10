@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\LanguageResource;
+use App\Language;
 
 class BaseController extends Controller
 {
@@ -27,5 +29,13 @@ class BaseController extends Controller
         ];
 
         return response()->json($response, 200);
+    }
+
+    public function getLanguage(){
+        $responseBody = [
+            'language' => LanguageResource::Collection(Language::all()),
+        ];
+
+        return $this->successResponse($responseBody, 'Successfully retrieve language list');
     }
 }

@@ -23,4 +23,7 @@ Route::namespace('api')->group(function(){
         Route::get('/category/list', 'HomeController@getCategoryList');
         Route::get('/product/list', 'HomeController@getProductList');
     });
+
+    Route::get('/language/list','BaseController@getLanguage');
+    Route::get('/category/root/list', 'CategoryController@getRootCategoryList');
 });
