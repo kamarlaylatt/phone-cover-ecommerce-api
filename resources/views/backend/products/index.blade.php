@@ -78,10 +78,10 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
+                                <th title="Field #4" data-field="Role">Image</th>
                                 <th title="Field #2" data-field="Name">Name</th>
                                 <th title="Field #3" data-field="Email">Price</th>
                                 <th title="Field #3" data-field="Role">Code No</th>
-                                <th title="Field #4" data-field="Role">Image</th>
                                 <th title="Field #5" data-field="Action">Action</th>
                             </tr>
                         </thead>
@@ -94,12 +94,16 @@
                             @foreach($products as $key=>$product)
                                 <tr>
                                     <td>{{ $key+ $products->firstItem() }}</td>
+                                    <td>
+                                        @if(is_file(\Storage::path('public/uploads/product_imgs/thumbnail/'.$product->image)))
+                                            <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                        @else
+                                            <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="60" height="60"> 
+                                        @endif
+                                    </td>
                                     <td>{{$product->infos->where('language_id',1)->first()->name}}</td>
                                     <td>{{$product->price}}</td>
-                                    <td>{{$product->code_number}}</td>
-                                    <td>
-                                        <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
-                                    </td>
+                                    <td>{{$product->code_number}}</td>                                    
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.show', $product->id)}}">
                                             <i class="fa fa-eye"></i>

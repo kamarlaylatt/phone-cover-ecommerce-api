@@ -26,4 +26,7 @@ Route::namespace('api')->group(function(){
 
     Route::get('/language/list','BaseController@getLanguage');
     Route::get('/category/root/list', 'CategoryController@getRootCategoryList');
+    Route::get('/category/subcategory/list', 'CategoryController@getSubCategories');
+    Route::get('/product/list', 'ProductController@getProductList');
+    Route::get('/product/detail', 'ProductController@getProductDetail');
 });

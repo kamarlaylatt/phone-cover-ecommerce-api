@@ -78,11 +78,11 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
+                                <th> Image </th>
                                 <th> Title </th>
                                 <th> Sub Title </th>
                                 <th> Button Text </th>
                                 <th> Show Status </th>
-                                <th> Image </th>
                                 <th> Actions </th>
                             </tr>
                         </thead>
@@ -95,6 +95,13 @@
                             @foreach($banners as $key=>$banner)
                                 <tr>
                                     <td>{{ $key+ $banners->firstItem() }}</td>
+                                    <td>
+                                        @if(is_file(\Storage::path('public/uploads/banner_imgs/'.$banner->image)))
+                                            <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                        @else
+                                            <img src="{{asset('images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">                                           
+                                        @endif
+                                    </td>
                                     <td>{{$banner->infos[0]->title}}</td>
                                     <td>{{$banner->infos[0]->subtitle}}</td>
                                     <td>{{$banner->infos[0]->button_text}}</td>
@@ -104,10 +111,7 @@
                                         @else
                                             <span style="color:red;"><b>Off</b></span>
                                         @endif
-                                    </td>
-                                    <td>
-                                        <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
-                                    </td>
+                                    </td>                                    
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('banners.show', $banner->id)}}">
                                             <i class="fa fa-eye"></i>

@@ -89,10 +89,10 @@
                     <thead>
                         <tr class="text-center">
                             <th title="Field #1" data-field="No">No</th>
+                            <th title="Field #3" data-field="Role">Photo</th>
                             <th title="Field #2" data-field="Name">Name</th>
                             <th title="Field #2" data-field="Name">Path</th>
                             <th title="Field #3" data-field="Email">Description</th>
-                            <th title="Field #3" data-field="Role">Photo</th>
                             <th title="Field #3" data-field="Role">Action</th>
                         </tr>
                     </thead>
@@ -105,6 +105,13 @@
                         @foreach($categories as $key=>$category)
                     	<tr>
                     		<td class="text-center">{{ $key+ $categories->firstItem() }}</td>
+                            <td class="text-center">
+                                @if(is_file(\Storage::path('public/uploads/category_imgs/'.$category->image)))
+                                    <img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                @else
+                                    <img src="{{asset('images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                @endif
+                            </td>
                             <td>{{$category->category_infos[0]->name}}  </td>
                             @if($category->parents == 0)
                                 <td>{{$category->category_infos[0]->name}}</td>
@@ -120,10 +127,7 @@
                                 <td class="text-center"><span class="text-danger">null</span>
                             @else
                     		  <td>{{Str::limit($category->category_infos[0]->description, 20)}}</td>
-                            @endif
-                    		<td class="text-center">
-                                <img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
-                            </td>
+                            @endif                    		
                             <td class="text-center">
                             	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.show', $category->id)}}">
                                     <i class="fa fa-eye"></i>

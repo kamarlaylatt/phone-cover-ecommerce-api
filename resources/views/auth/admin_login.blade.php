@@ -95,7 +95,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 								</div> --}}
 								<div class="m-login__form-action">
-									<button type="submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">Sign In</button>
+									<button type="submit" class="btn btn-danger btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--danger">Sign In</button>
 								</div>
 							</form>
 						</div>

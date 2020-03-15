@@ -29,7 +29,7 @@
                     <tr>
                         <th> Image </th>
                         <td> 
-                            @if(\Storage::exists('uploads/category_imgs/'.$category->image))
+                            @if(is_file(\Storage::path('public/uploads/category_imgs/'.$category->image)))
                                 <img src="{{$img_url}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
                             @else
                             <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 

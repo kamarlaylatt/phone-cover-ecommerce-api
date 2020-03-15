@@ -29,11 +29,11 @@
                     <tr>
                         <th> Thumbnail </th>
                         <td> 
-                            @if(\Storage::exists('uploads/product_imgs/thumbnail/'.$product->image))
-                                <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
-                            @else
-                                <img src="{{$img_url}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
-                            @endif
+                        @if(is_file(\Storage::path('public/uploads/product_imgs/thumbnail/'.$product->image)))
+                            <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded" alt="Cinque Terre" width="200" height="150">
+                        @else
+                            <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
+                        @endif
                         </td>
                     </tr>   
                     <tr>

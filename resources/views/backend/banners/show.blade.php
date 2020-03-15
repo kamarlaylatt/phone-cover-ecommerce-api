@@ -29,7 +29,11 @@
                     <tr>
                         <th> Image </th>
                         <td> 
-                            <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded" alt="Cinque Terre" width="200" height="150">
+                            @if(is_file(\Storage::path('public/uploads/banner_imgs/'.$banner->image)))
+                                <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded" alt="Cinque Terre" width="200" height="150">
+                            @else
+                                <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
+                            @endif
                         </td>
                     </tr>
                     <tr>

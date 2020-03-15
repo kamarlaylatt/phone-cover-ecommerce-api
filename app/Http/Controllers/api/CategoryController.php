@@ -18,4 +18,13 @@ class CategoryController extends BaseController
 
         return $this->successResponse($responseBody, 'Success retrieve cateogory root list');
     }
+
+    public function getSubCategories(Request $request)
+    {
+        $responseBody = [
+            'subCategoryList' => CategoryListResource::collection(Category::where('parents', $request->category_id)->get()),
+        ];
+
+        return $this->successResponse($responseBody, 'Success retrieve cateogory root list');
+    }
 }
