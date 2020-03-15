@@ -25,7 +25,7 @@ class HomeController extends BaseController
     public function getCategoryList()
     {
         $responseBody = [
-            'categoryList' => CategoryListResource::collection(Category::all()),
+            'categoryList' => CategoryListResource::collection(Category::inRandomOrder()->limit(6)->get()),
         ];
         return $this->successResponse($responseBody, 'Success retrieve category list');
     }
@@ -33,7 +33,7 @@ class HomeController extends BaseController
     public function getProductList()
     {
         $responseBody = [
-            'productList' => ProductListResource::collection(Product::all()),
+            'productList' => ProductListResource::collection(Product::inRandomOrder()->limit(20)->get()),
         ];
         return $this->successResponse($responseBody, 'Success retrieve product list');
     }

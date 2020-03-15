@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\CategoryListResource;
+use Storage;
 
 class ProductListResource extends JsonResource
 {
@@ -17,11 +18,19 @@ class ProductListResource extends JsonResource
     {
         $product_info = $this->infos->where('language_id', $request->language_id)->first();
 
+        if(is_file(Storage::path('public/uploads/product_imgs/thumbnail/'.$this->image)))
+        {
+            $image_url = url(Storage::url('uploads/product_imgs/thumbnail/'.$this->image));
+        }
+        else{
+            $image_url = asset('images/default.png');
+        }
+
         return [
             'product_id' => $this->id,
             'product_name' => $product_info->name,
             'product_code' => $this->code_number,
-            'thumbnail' => $this->image,
+            'thumbnail' => $image_url,
             'price' => $this->price,
             'category' => CategoryListResource::collection($this->categories),
         ];
