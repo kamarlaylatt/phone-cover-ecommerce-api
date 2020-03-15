@@ -17,7 +17,7 @@ class HomeController extends BaseController
     public function getBannerList()
     {
         $responseBody = [
-            'bannerList' => BannerListResource::collection(Banner::all()),
+            'bannerList' => BannerListResource::collection(Banner::inRandomOrder()->where('show_status',1)->get()),
         ];
         return $this->successResponse($responseBody, 'Success retrieve banner list');
     }
