@@ -1,75 +1,88 @@
 
 <template>
-	<div class="container">
+	<div class="container" style="max-width:800px">
 		<div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
 			{{error.errorMessage}}
 		</div>
 		<!--begin::Form-->
         <form class="m-form m-form--fit m-form--label-align-right">
-			<div class="m-portlet__body">
-				<div class="form-group m-form__group">
-					<label>Parent</label>
-					<v-tree-select 
-					:data="categories" 
-					value-field-name="id" 
-					v-model="form.parent"
-					text-field-name="name"
-					>						
-					</v-tree-select>
-				</div>
-				
-				<div class="form-group m-form__group">
-					<label>Image</label>
-					<div class="col-md-3">
-						<img :src="image"  class="img-responsive" height="120" width="120">
-					</div>
-					<div class="col-md-6">
-						<input type="file" ref="file" v-on:change="onImageChange">
+			<div class="m-portlet">	
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+						<div class="m-portlet__head-title">
+							<span class="m-portlet__head-icon m--hide">
+								<i class="la la-gear"></i>
+							</span>
+							<h3 class="m-portlet__head-text">
+								Category Edit
+							</h3>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="m-portlet">			
 				<div class="m-portlet__body">
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
-						</li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
-							<div class="form-group m-form__group">
-								<label>Category</label>
-								<input v-model="form.english.name" type="text" class="form-control" placeholder="Enter Sub Category" required>
-							</div>
-							<div class="form-group m-form__group">
-								<label for="comment">Description:</label>
-								<textarea v-model="form.english.description" class="form-control" rows="5" id="comment"></textarea>
-							</div>
+					<div class="form-group m-form__group">
+						<label>Parent</label>
+						<v-tree-select 
+						:data="categories" 
+						value-field-name="id" 
+						v-model="form.parent"
+						text-field-name="name"
+						>						
+						</v-tree-select>
+					</div>
+					
+					<div class="form-group m-form__group">
+						<label>Image</label>
+						<div class="col-md-3">
+							<img :src="image"  class="img-responsive" height="120" width="120">
 						</div>
-						<div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
-							<div class="form-group m-form__group">
-								<label>Category</label>
-								<input v-model="form.myanmar.name" type="text" class="form-control" placeholder="Enter Sub Category" required>
+						<div class="col-md-6">
+							<input type="file" ref="file" v-on:change="onImageChange">
+						</div>
+					</div>
+					<div class="form-group m-form__group">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
+								<div class="form-group m-form__group">
+									<label>Category</label>
+									<input v-model="form.english.name" type="text" class="form-control" placeholder="Enter Sub Category" required>
+								</div>
+								<div class="form-group m-form__group">
+									<label for="comment">Description:</label>
+									<textarea v-model="form.english.description" class="form-control" rows="5" id="comment"></textarea>
+								</div>
 							</div>
-							<div class="form-group m-form__group">
-								<label for="comment">Description:</label>
-								<textarea v-model="form.myanmar.description" class="form-control" rows="5" id="comment"></textarea>
+							<div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+								<div class="form-group m-form__group">
+									<label>Category</label>
+									<input v-model="form.myanmar.name" type="text" class="form-control" placeholder="Enter Sub Category" required>
+								</div>
+								<div class="form-group m-form__group">
+									<label for="comment">Description:</label>
+									<textarea v-model="form.myanmar.description" class="form-control" rows="5" id="comment"></textarea>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>	
-				
-			<div class="m-portlet__foot m-portlet__foot--fit">
-				<div class="m-form__actions">
-					<button v-if="disabled_status==false" type="button" @click="update" class="btn btn-danger">Update</button>
-					<button v-if="disabled_status==true" type="button" disabled @click="update" class="btn btn-danger">Update</button>
-						<button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
+								
+				<div class="m-portlet__foot m-portlet__foot--fit">
+					<div class="m-form__actions text-center">
+						<button v-if="disabled_status==false" type="button" @click="update" class="btn btn-danger">Update</button>
+						<button v-if="disabled_status==true" type="button" disabled @click="update" class="btn btn-danger">Update</button>
+							<button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
+					</div>
 				</div>
-			</div>
+		</div>
+		
         </form>
 
         <!--end::Form-->

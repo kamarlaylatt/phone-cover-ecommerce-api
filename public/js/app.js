@@ -6171,6 +6171,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories'],
@@ -6191,7 +6203,7 @@ __webpack_require__.r(__webpack_exports__);
           language_id: 2
         }
       },
-      image: '',
+      image: '/images/default.png',
       errors: '',
       hasImage: false,
       disabled_status: false
@@ -6275,6 +6287,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6713,6 +6738,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6910,6 +6947,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @riophae/vue-treeselect/dist/vue-treeselect.css */ "./node_modules/@riophae/vue-treeselect/dist/vue-treeselect.css");
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61645,7 +61696,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    { staticClass: "container", staticStyle: { "max-width": "800px" } },
     [
       _vm._l(_vm.errors, function(error) {
         return _c(
@@ -61663,246 +61714,248 @@ var render = function() {
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
         [
-          _c("div", { staticClass: "m-portlet__body" }, [
-            _c(
-              "div",
-              { staticClass: "form-group m-form__group" },
-              [
-                _c("label", [_vm._v("Parent")]),
-                _vm._v(" "),
-                _c("v-tree-select", {
-                  attrs: {
-                    data: _vm.categories,
-                    "value-field-name": "id",
-                    "text-field-name": "name"
-                  },
-                  model: {
-                    value: _vm.form.parent,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "parent", $$v)
-                    },
-                    expression: "form.parent"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group" }, [
-              _c("label", [_vm._v("Image")]),
-              _vm._v(" "),
-              _vm.image
-                ? _c("div", { staticClass: "col-md-3" }, [
-                    _c("img", {
-                      staticClass: "img-responsive",
-                      attrs: { src: _vm.image, height: "120", width: "120" }
-                    })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  ref: "file",
-                  attrs: { type: "file" },
-                  on: { change: _vm.onImageChange }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "m-portlet" }, [
+            _vm._m(0),
+            _vm._v(" "),
             _c("div", { staticClass: "m-portlet__body" }, [
-              _vm._m(0),
+              _c(
+                "div",
+                { staticClass: "form-group m-form__group" },
+                [
+                  _c("label", [_vm._v("Parent")]),
+                  _vm._v(" "),
+                  _c("v-tree-select", {
+                    attrs: {
+                      data: _vm.categories,
+                      "value-field-name": "id",
+                      "text-field-name": "name"
+                    },
+                    model: {
+                      value: _vm.form.parent,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "parent", $$v)
+                      },
+                      expression: "form.parent"
+                    }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "tab-content" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane active",
-                    attrs: { id: "m_tabs_1_1", role: "tabpanel" }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", [_vm._v("Category")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.english.name,
-                            expression: "form.english.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Enter Sub Category",
-                          required: ""
-                        },
-                        domProps: { value: _vm.form.english.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form.english,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", { attrs: { for: "comment" } }, [
-                        _vm._v("Description:")
-                      ]),
-                      _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.english.description,
-                            expression: "form.english.description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { rows: "5", id: "comment" },
-                        domProps: { value: _vm.form.english.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form.english,
-                              "description",
-                              $event.target.value
-                            )
-                          }
-                        }
+              _c("div", { staticClass: "form-group m-form__group" }, [
+                _c("label", [_vm._v("Image")]),
+                _vm._v(" "),
+                _vm.image
+                  ? _c("div", { staticClass: "col-md-3" }, [
+                      _c("img", {
+                        staticClass: "img-responsive",
+                        attrs: { src: _vm.image, height: "120", width: "120" }
                       })
                     ])
-                  ]
-                ),
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    ref: "file",
+                    attrs: { type: "file" },
+                    on: { change: _vm.onImageChange }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "tab-content" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane active",
+                      attrs: { id: "m_tabs_1_1", role: "tabpanel" }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", [_vm._v("Category")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.english.name,
+                              expression: "form.english.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Enter Sub Category",
+                            required: ""
+                          },
+                          domProps: { value: _vm.form.english.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.english,
+                                "name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", { attrs: { for: "comment" } }, [
+                          _vm._v("Description:")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.english.description,
+                              expression: "form.english.description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "5", id: "comment" },
+                          domProps: { value: _vm.form.english.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.english,
+                                "description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane",
+                      attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", [_vm._v("Category")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.myanmar.name,
+                              expression: "form.myanmar.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Enter Sub Category",
+                            required: ""
+                          },
+                          domProps: { value: _vm.form.myanmar.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.myanmar,
+                                "name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", { attrs: { for: "comment" } }, [
+                          _vm._v("Description:")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.myanmar.description,
+                              expression: "form.myanmar.description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "5", id: "comment" },
+                          domProps: { value: _vm.form.myanmar.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.myanmar,
+                                "description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+              _c("div", { staticClass: "m-form__actions text-center" }, [
+                _vm.disabled_status == false
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: { click: _vm.create }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.disabled_status == true
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", disabled: "" },
+                        on: { click: _vm.create }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
-                  "div",
+                  "button",
                   {
-                    staticClass: "tab-pane",
-                    attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                    staticClass: "btn btn-outline-danger",
+                    attrs: { type: "button" },
+                    on: { click: _vm.cancel }
                   },
-                  [
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", [_vm._v("Category")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.myanmar.name,
-                            expression: "form.myanmar.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Enter Sub Category",
-                          required: ""
-                        },
-                        domProps: { value: _vm.form.myanmar.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form.myanmar,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", { attrs: { for: "comment" } }, [
-                        _vm._v("Description:")
-                      ]),
-                      _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.myanmar.description,
-                            expression: "form.myanmar.description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { rows: "5", id: "comment" },
-                        domProps: { value: _vm.form.myanmar.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form.myanmar,
-                              "description",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ])
-                  ]
+                  [_vm._v("Cancel")]
                 )
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-            _c("div", { staticClass: "m-form__actions" }, [
-              _vm.disabled_status == false
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" },
-                      on: { click: _vm.create }
-                    },
-                    [_vm._v("Create")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.disabled_status == true
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button", disabled: "" },
-                      on: { click: _vm.create }
-                    },
-                    [_vm._v("Create")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-danger",
-                  attrs: { type: "button" },
-                  on: { click: _vm.cancel }
-                },
-                [_vm._v("Cancel")]
-              )
             ])
           ])
         ]
@@ -61912,6 +61965,24 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m-portlet__head" }, [
+      _c("div", { staticClass: "m-portlet__head-caption" }, [
+        _c("div", { staticClass: "m-portlet__head-title" }, [
+          _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
+            _c("i", { staticClass: "la la-gear" })
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "m-portlet__head-text" }, [
+            _vm._v("\n\t\t\t\t\t\t\t\tCategory Create\n\t\t\t\t\t\t\t")
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -61972,7 +62043,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    { staticClass: "container", staticStyle: { "max-width": "800px" } },
     [
       _vm._l(_vm.errors, function(error) {
         return _c(
@@ -61990,244 +62061,246 @@ var render = function() {
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
         [
-          _c("div", { staticClass: "m-portlet__body" }, [
-            _c(
-              "div",
-              { staticClass: "form-group m-form__group" },
-              [
-                _c("label", [_vm._v("Parent")]),
-                _vm._v(" "),
-                _c("v-tree-select", {
-                  attrs: {
-                    data: _vm.categories,
-                    "value-field-name": "id",
-                    "text-field-name": "name"
-                  },
-                  model: {
-                    value: _vm.form.parent,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "parent", $$v)
-                    },
-                    expression: "form.parent"
-                  }
-                })
-              ],
-              1
-            ),
+          _c("div", { staticClass: "m-portlet" }, [
+            _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group" }, [
-              _c("label", [_vm._v("Image")]),
+            _c("div", { staticClass: "m-portlet__body" }, [
+              _c(
+                "div",
+                { staticClass: "form-group m-form__group" },
+                [
+                  _c("label", [_vm._v("Parent")]),
+                  _vm._v(" "),
+                  _c("v-tree-select", {
+                    attrs: {
+                      data: _vm.categories,
+                      "value-field-name": "id",
+                      "text-field-name": "name"
+                    },
+                    model: {
+                      value: _vm.form.parent,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "parent", $$v)
+                      },
+                      expression: "form.parent"
+                    }
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: { src: _vm.image, height: "120", width: "120" }
-                })
+              _c("div", { staticClass: "form-group m-form__group" }, [
+                _c("label", [_vm._v("Image")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: { src: _vm.image, height: "120", width: "120" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    ref: "file",
+                    attrs: { type: "file" },
+                    on: { change: _vm.onImageChange }
+                  })
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  ref: "file",
-                  attrs: { type: "file" },
-                  on: { change: _vm.onImageChange }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "m-portlet" }, [
-            _c("div", { staticClass: "m-portlet__body" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "tab-content" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane active",
-                    attrs: { id: "m_tabs_1_1", role: "tabpanel" }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", [_vm._v("Category")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.english.name,
-                            expression: "form.english.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Enter Sub Category",
-                          required: ""
-                        },
-                        domProps: { value: _vm.form.english.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+              _c("div", { staticClass: "form-group m-form__group" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "tab-content" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane active",
+                      attrs: { id: "m_tabs_1_1", role: "tabpanel" }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", [_vm._v("Category")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.english.name,
+                              expression: "form.english.name"
                             }
-                            _vm.$set(
-                              _vm.form.english,
-                              "name",
-                              $event.target.value
-                            )
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Enter Sub Category",
+                            required: ""
+                          },
+                          domProps: { value: _vm.form.english.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.english,
+                                "name",
+                                $event.target.value
+                              )
+                            }
                           }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", { attrs: { for: "comment" } }, [
-                        _vm._v("Description:")
+                        })
                       ]),
                       _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.english.description,
-                            expression: "form.english.description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { rows: "5", id: "comment" },
-                        domProps: { value: _vm.form.english.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", { attrs: { for: "comment" } }, [
+                          _vm._v("Description:")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.english.description,
+                              expression: "form.english.description"
                             }
-                            _vm.$set(
-                              _vm.form.english,
-                              "description",
-                              $event.target.value
-                            )
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "5", id: "comment" },
+                          domProps: { value: _vm.form.english.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.english,
+                                "description",
+                                $event.target.value
+                              )
+                            }
                           }
-                        }
-                      })
-                    ])
-                  ]
-                ),
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane",
+                      attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", [_vm._v("Category")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.myanmar.name,
+                              expression: "form.myanmar.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Enter Sub Category",
+                            required: ""
+                          },
+                          domProps: { value: _vm.form.myanmar.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.myanmar,
+                                "name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group m-form__group" }, [
+                        _c("label", { attrs: { for: "comment" } }, [
+                          _vm._v("Description:")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.myanmar.description,
+                              expression: "form.myanmar.description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "5", id: "comment" },
+                          domProps: { value: _vm.form.myanmar.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.myanmar,
+                                "description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+              _c("div", { staticClass: "m-form__actions text-center" }, [
+                _vm.disabled_status == false
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: { click: _vm.update }
+                      },
+                      [_vm._v("Update")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.disabled_status == true
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", disabled: "" },
+                        on: { click: _vm.update }
+                      },
+                      [_vm._v("Update")]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
-                  "div",
+                  "button",
                   {
-                    staticClass: "tab-pane",
-                    attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                    staticClass: "btn btn-outline-danger",
+                    attrs: { type: "button" },
+                    on: { click: _vm.cancel }
                   },
-                  [
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", [_vm._v("Category")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.myanmar.name,
-                            expression: "form.myanmar.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Enter Sub Category",
-                          required: ""
-                        },
-                        domProps: { value: _vm.form.myanmar.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form.myanmar,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group m-form__group" }, [
-                      _c("label", { attrs: { for: "comment" } }, [
-                        _vm._v("Description:")
-                      ]),
-                      _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.myanmar.description,
-                            expression: "form.myanmar.description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { rows: "5", id: "comment" },
-                        domProps: { value: _vm.form.myanmar.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form.myanmar,
-                              "description",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ])
-                  ]
+                  [_vm._v("Cancel")]
                 )
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-            _c("div", { staticClass: "m-form__actions" }, [
-              _vm.disabled_status == false
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" },
-                      on: { click: _vm.update }
-                    },
-                    [_vm._v("Update")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.disabled_status == true
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button", disabled: "" },
-                      on: { click: _vm.update }
-                    },
-                    [_vm._v("Update")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-danger",
-                  attrs: { type: "button" },
-                  on: { click: _vm.cancel }
-                },
-                [_vm._v("Cancel")]
-              )
             ])
           ])
         ]
@@ -62237,6 +62310,24 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m-portlet__head" }, [
+      _c("div", { staticClass: "m-portlet__head-caption" }, [
+        _c("div", { staticClass: "m-portlet__head-title" }, [
+          _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
+            _c("i", { staticClass: "la la-gear" })
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "m-portlet__head-text" }, [
+            _vm._v("\n\t\t\t\t\t\t\t\tCategory Edit\n\t\t\t\t\t\t\t")
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -62345,7 +62436,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _vm.errors != ""
       ? _c(
           "div",
@@ -62380,552 +62471,175 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c(
-      "nav",
-      {
-        staticClass: "navbar navbar-expand-lg navbar-light bg-light",
-        staticStyle: { "background-color": "#f2f3f8", "font-size": "13px" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarText" }
-          },
-          [
-            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-              _c(
-                "li",
-                {
-                  staticClass: "nav-item mr-3",
-                  on: {
-                    click: function($event) {
-                      return _vm.changeNavbar("general")
-                    }
-                  }
-                },
-                [
-                  _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                    _vm.nav_bar.general == false
-                      ? _c("span", [_vm._v("General")])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.nav_bar.general == true
-                      ? _c("span", { staticClass: "text-primary" }, [
-                          _vm._v("General")
-                        ])
-                      : _vm._e()
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "nav-item mr-3",
-                  on: {
-                    click: function($event) {
-                      return _vm.changeNavbar("data")
-                    }
-                  }
-                },
-                [
-                  _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                    _vm.nav_bar.data == false
-                      ? _c("span", [_vm._v("Data")])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.nav_bar.data == true
-                      ? _c("span", { staticClass: "text-primary" }, [
-                          _vm._v("Data")
-                        ])
-                      : _vm._e()
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "nav-item",
-                  on: {
-                    click: function($event) {
-                      return _vm.changeNavbar("images")
-                    }
-                  }
-                },
-                [
-                  _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                    _vm.nav_bar.images == false
-                      ? _c("span", [_vm._v("Images")])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.nav_bar.images == true
-                      ? _c("span", { staticClass: "text-primary" }, [
-                          _vm._v("Images")
-                        ])
-                      : _vm._e()
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
       "form",
       { staticClass: "m-form m-form--fit m-form--label-align-right" },
       [
-        _c("div", { staticClass: "m-portlet__body" }, [
-          _vm.nav_bar.images == true
-            ? _c("div", { staticClass: "form-group m-form__group" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _vm.show_image
-                  ? _c("div", { staticClass: "col-md-3" }, [
-                      _c("img", {
-                        staticClass: "img-responsive",
-                        attrs: {
-                          src: _vm.show_image,
-                          height: "120",
-                          width: "120"
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    ref: "file",
-                    attrs: { type: "file" },
-                    on: { change: _vm.onImageChange }
-                  })
-                ])
-              ])
-            : _vm._e(),
+        _c("div", { staticClass: "m-portlet" }, [
+          _vm._m(0),
           _vm._v(" "),
-          _vm.nav_bar.images == true
-            ? _c(
-                "div",
-                {
-                  staticClass: "form-group m-form__group",
-                  attrs: { id: "my-strictly-unique-vue-upload-multiple-image" }
-                },
-                [
-                  _c("label", [_vm._v("Images")]),
-                  _vm._v(" "),
-                  _c("vue-upload-multiple-image", {
-                    attrs: {
-                      "data-images": _vm.images,
-                      idUpload: "myIdUpload",
-                      editUpload: "myIdEdit",
-                      dragText: "Drag your photo",
-                      browseText: "Upload photos",
-                      maxImage: 5
-                    },
-                    on: {
-                      "upload-success": _vm.uploadImageSuccess,
-                      "before-remove": _vm.beforeRemove,
-                      "edit-image": _vm.editImage
-                    }
-                  })
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.nav_bar.general == true
-            ? _c(
-                "ul",
-                { staticClass: "nav nav-tabs", attrs: { role: "tablist" } },
-                [_vm._m(1), _vm._v(" "), _vm._m(2)]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.nav_bar.general == true
-            ? _c("div", { staticClass: "tab-content" }, [
+          _c("div", { staticClass: "m-portlet__body" }, [
+            _c(
+              "nav",
+              {
+                staticClass: "navbar navbar-expand-lg navbar-light mb-4",
+                staticStyle: {
+                  "background-color": "#ffffff",
+                  "font-size": "13px"
+                }
+              },
+              [
                 _c(
                   "div",
                   {
-                    staticClass: "tab-pane active",
-                    attrs: { id: "m_tabs_1_1", role: "tabpanel" }
+                    staticClass: "collapse navbar-collapse",
+                    attrs: { id: "navbarText" }
                   },
                   [
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-form__group col-md-6" },
-                      [
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.english.name,
-                              expression: "english.name"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Enter Product Name",
-                            required: ""
-                          },
-                          domProps: { value: _vm.english.name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.english, "name", $event.target.value)
-                            }
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-form__group col-md-6" },
-                      [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.english.description,
-                              expression: "english.description"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { rows: "5", id: "comment" },
-                          domProps: { value: _vm.english.description },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.english,
-                                "description",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._l(_vm.english.additions, function(addition, index) {
-                      return _c(
-                        "div",
+                    _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+                      _c(
+                        "li",
                         {
-                          key: index,
-                          staticClass:
-                            "form-row form-group m-form__group mb-negative"
+                          staticClass: "nav-item mr-3",
+                          on: {
+                            click: function($event) {
+                              return _vm.changeNavbar("general")
+                            }
+                          }
                         },
                         [
-                          _c("div", { staticClass: "form-group col-4" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: addition.key,
-                                  expression: "addition.key"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Label",
-                                required: ""
-                              },
-                              domProps: { value: addition.key },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(addition, "key", $event.target.value)
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: addition.value,
-                                  expression: "addition.value"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Value",
-                                required: ""
-                              },
-                              domProps: { value: addition.value },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    addition,
-                                    "value",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-1" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.delete_addition(index)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash" })]
-                            )
-                          ])
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _vm.nav_bar.general == true
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "tab-pane",
-                        attrs: { id: "m_tabs_1_2", role: "tabpanel" }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "form-group m-form__group col-md-6" },
-                          [
-                            _vm._m(5),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.myanmar.name,
-                                  expression: "myanmar.name"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                placeholder: "Enter Product Name",
-                                required: ""
-                              },
-                              domProps: { value: _vm.myanmar.name },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.myanmar,
-                                    "name",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group m-form__group col-md-6" },
-                          [
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.myanmar.description,
-                                  expression: "myanmar.description"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { rows: "5", id: "comment" },
-                              domProps: { value: _vm.myanmar.description },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.myanmar,
-                                    "description",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.myanmar.additions, function(
-                          addition,
-                          index
-                        ) {
-                          return _c(
-                            "div",
-                            {
-                              key: index,
-                              staticClass: "form-row m-form__group mb-negative"
-                            },
+                          _c(
+                            "a",
+                            { staticClass: "nav-link", attrs: { href: "#" } },
                             [
-                              _c("div", { staticClass: "form-group col-4" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: addition.key,
-                                      expression: "addition.key"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    type: "text",
-                                    placeholder: "Label",
-                                    required: ""
-                                  },
-                                  domProps: { value: addition.key },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        addition,
-                                        "key",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
+                              _vm.nav_bar.general == false
+                                ? _c("span", [_vm._v("General")])
+                                : _vm._e(),
                               _vm._v(" "),
-                              _c("div", { staticClass: "form-group col" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: addition.value,
-                                      expression: "addition.value"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    type: "text",
-                                    placeholder: "Value",
-                                    required: ""
-                                  },
-                                  domProps: { value: addition.value },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        addition,
-                                        "value",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "form-group col-1" }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.delete_addition(index)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "fa fa-trash" })]
-                                )
-                              ])
+                              _vm.nav_bar.general == true
+                                ? _c("span", { staticClass: "text-primary" }, [
+                                    _vm._v("General")
+                                  ])
+                                : _vm._e()
                             ]
                           )
-                        })
-                      ],
-                      2
-                    )
-                  : _vm._e()
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.nav_bar.general == true
-            ? _c("div", { staticClass: "form-group m-form__group" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: { click: _vm.add_addition }
-                  },
-                  [_vm._v("Add Attribues")]
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          staticClass: "nav-item mr-3",
+                          on: {
+                            click: function($event) {
+                              return _vm.changeNavbar("data")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            { staticClass: "nav-link", attrs: { href: "#" } },
+                            [
+                              _vm.nav_bar.data == false
+                                ? _c("span", [_vm._v("Data")])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.nav_bar.data == true
+                                ? _c("span", { staticClass: "text-primary" }, [
+                                    _vm._v("Data")
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          staticClass: "nav-item",
+                          on: {
+                            click: function($event) {
+                              return _vm.changeNavbar("images")
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            { staticClass: "nav-link", attrs: { href: "#" } },
+                            [
+                              _vm.nav_bar.images == false
+                                ? _c("span", [_vm._v("Images")])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.nav_bar.images == true
+                                ? _c("span", { staticClass: "text-primary" }, [
+                                    _vm._v("Images")
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
                 )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group m-form__group row" }, [
-            _vm.nav_bar.data == true
+              ]
+            ),
+            _vm._v(" "),
+            _vm.nav_bar.images == true
+              ? _c("div", { staticClass: "form-group m-form__group" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm.show_image
+                    ? _c("div", { staticClass: "col-md-3" }, [
+                        _c("img", {
+                          staticClass: "img-responsive",
+                          attrs: {
+                            src: _vm.show_image,
+                            height: "120",
+                            width: "120"
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      ref: "file",
+                      attrs: { type: "file" },
+                      on: { change: _vm.onImageChange }
+                    })
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.nav_bar.images == true
               ? _c(
                   "div",
-                  { staticClass: "col-md-6" },
+                  {
+                    staticClass: "form-group m-form__group",
+                    attrs: {
+                      id: "my-strictly-unique-vue-upload-multiple-image"
+                    }
+                  },
                   [
-                    _vm._m(7),
+                    _c("label", [_vm._v("Images")]),
                     _vm._v(" "),
-                    _c("treeselect", {
+                    _c("vue-upload-multiple-image", {
                       attrs: {
-                        multiple: true,
-                        options: _vm.categories,
-                        normalizer: _vm.normalizer,
-                        flat: true,
-                        required: true
+                        "data-images": _vm.images,
+                        idUpload: "myIdUpload",
+                        editUpload: "myIdEdit",
+                        dragText: "Drag your photo",
+                        browseText: "Upload photos",
+                        maxImage: 5
                       },
-                      model: {
-                        value: _vm.category_array,
-                        callback: function($$v) {
-                          _vm.category_array = $$v
-                        },
-                        expression: "category_array"
+                      on: {
+                        "upload-success": _vm.uploadImageSuccess,
+                        "before-remove": _vm.beforeRemove,
+                        "edit-image": _vm.editImage
                       }
                     })
                   ],
@@ -62933,222 +62647,633 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _vm.nav_bar.data == true
-              ? _c("div", { staticClass: "col-md-6" }, [
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.code_number,
-                        expression: "code_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Enter Code Number",
-                      required: ""
-                    },
-                    domProps: { value: _vm.code_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.code_number = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group m-form__group row" }, [
-            _vm.nav_bar.data == true
-              ? _c("div", { staticClass: "col-md-6" }, [
-                  _vm._m(9),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.price,
-                        expression: "price"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "number",
-                      placeholder: "Enter Price",
-                      required: ""
-                    },
-                    domProps: { value: _vm.price },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.price = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.nav_bar.data == true
-              ? _c("div", { staticClass: "col-md-6" }, [
-                  _vm._m(10),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.quantity,
-                        expression: "quantity"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "number",
-                      placeholder: "Enter Quantity",
-                      required: ""
-                    },
-                    domProps: { value: _vm.quantity },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.quantity = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group m-form__group row" }, [
-            _vm.nav_bar.data == true
-              ? _c("div", { staticClass: "col-md-6" }, [
-                  _vm._m(11),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.minimum_order,
-                        expression: "minimum_order"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "number",
-                      placeholder: "Enter Minimum Order",
-                      required: ""
-                    },
-                    domProps: { value: _vm.minimum_order },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.minimum_order = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.nav_bar.data == true
-              ? _c("div", { staticClass: "col-md-6" }, [
-                  _vm._m(12),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.maximum_order,
-                        expression: "maximum_order"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "number",
-                      placeholder: "Enter Maximum Order",
-                      required: ""
-                    },
-                    domProps: { value: _vm.maximum_order },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.maximum_order = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _vm.nav_bar.data == true
-            ? _c("div", { staticClass: "m-form__group form-check ml-4" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.recommend,
-                      expression: "recommend"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "checkbox", id: "exampleCheck1" },
-                  domProps: {
-                    checked: Array.isArray(_vm.recommend)
-                      ? _vm._i(_vm.recommend, null) > -1
-                      : _vm.recommend
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.recommend,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.recommend = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.recommend = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.recommend = $$c
-                      }
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "exampleCheck1" }
-                  },
-                  [_vm._v("Recommend")]
+            _vm.nav_bar.general == true
+              ? _c(
+                  "ul",
+                  { staticClass: "nav nav-tabs", attrs: { role: "tablist" } },
+                  [_vm._m(2), _vm._v(" "), _vm._m(3)]
                 )
-              ])
-            : _vm._e(),
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.nav_bar.general == true
+              ? _c("div", { staticClass: "tab-content" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-pane active",
+                      attrs: { id: "m_tabs_1_1", role: "tabpanel" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "form-group m-form__group col-md-6" },
+                        [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.english.name,
+                                expression: "english.name"
+                              }
+                            ],
+                            staticClass: "form-control t",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter Product Name",
+                              required: ""
+                            },
+                            domProps: { value: _vm.english.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.english,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group m-form__group col-md-6" },
+                        [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.english.description,
+                                expression: "english.description"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { rows: "5", id: "comment" },
+                            domProps: { value: _vm.english.description },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.english,
+                                  "description",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.english.additions, function(addition, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: index,
+                            staticClass:
+                              "form-row form-group m-form__group mb-negative"
+                          },
+                          [
+                            _c("div", { staticClass: "form-group col-4" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: addition.key,
+                                    expression: "addition.key"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Label",
+                                  required: ""
+                                },
+                                domProps: { value: addition.key },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      addition,
+                                      "key",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: addition.value,
+                                    expression: "addition.value"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Value",
+                                  required: ""
+                                },
+                                domProps: { value: addition.value },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      addition,
+                                      "value",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-1" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.delete_addition(index)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-trash" })]
+                              )
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _vm.nav_bar.general == true
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane",
+                          attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "form-group m-form__group col-md-6"
+                            },
+                            [
+                              _vm._m(6),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.myanmar.name,
+                                    expression: "myanmar.name"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Enter Product Name",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.myanmar.name },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.myanmar,
+                                      "name",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "form-group m-form__group col-md-6"
+                            },
+                            [
+                              _vm._m(7),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.myanmar.description,
+                                    expression: "myanmar.description"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { rows: "5", id: "comment" },
+                                domProps: { value: _vm.myanmar.description },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.myanmar,
+                                      "description",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.myanmar.additions, function(
+                            addition,
+                            index
+                          ) {
+                            return _c(
+                              "div",
+                              {
+                                key: index,
+                                staticClass:
+                                  "form-row m-form__group mb-negative"
+                              },
+                              [
+                                _c("div", { staticClass: "form-group col-4" }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: addition.key,
+                                        expression: "addition.key"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      type: "text",
+                                      placeholder: "Label",
+                                      required: ""
+                                    },
+                                    domProps: { value: addition.key },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          addition,
+                                          "key",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group col" }, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: addition.value,
+                                        expression: "addition.value"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      type: "text",
+                                      placeholder: "Value",
+                                      required: ""
+                                    },
+                                    domProps: { value: addition.value },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          addition,
+                                          "value",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group col-1" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.delete_addition(index)
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "fa fa-trash" })]
+                                  )
+                                ])
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.nav_bar.general == true
+              ? _c("div", { staticClass: "form-group m-form__group" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button" },
+                      on: { click: _vm.add_addition }
+                    },
+                    [_vm._v("Add Attribues")]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group m-form__group row" }, [
+              _vm.nav_bar.data == true
+                ? _c(
+                    "div",
+                    { staticClass: "col-md-6" },
+                    [
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _c("treeselect", {
+                        attrs: {
+                          multiple: true,
+                          options: _vm.categories,
+                          normalizer: _vm.normalizer,
+                          flat: true,
+                          required: true
+                        },
+                        model: {
+                          value: _vm.category_array,
+                          callback: function($$v) {
+                            _vm.category_array = $$v
+                          },
+                          expression: "category_array"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.data == true
+                ? _c("div", { staticClass: "col-md-6" }, [
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.code_number,
+                          expression: "code_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Enter Code Number",
+                        required: ""
+                      },
+                      domProps: { value: _vm.code_number },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.code_number = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group m-form__group row" }, [
+              _vm.nav_bar.data == true
+                ? _c("div", { staticClass: "col-md-6" }, [
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.price,
+                          expression: "price"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Enter Price",
+                        required: ""
+                      },
+                      domProps: { value: _vm.price },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.price = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.data == true
+                ? _c("div", { staticClass: "col-md-6" }, [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.quantity,
+                          expression: "quantity"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Enter Quantity",
+                        required: ""
+                      },
+                      domProps: { value: _vm.quantity },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.quantity = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group m-form__group row" }, [
+              _vm.nav_bar.data == true
+                ? _c("div", { staticClass: "col-md-6" }, [
+                    _vm._m(12),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.minimum_order,
+                          expression: "minimum_order"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Enter Minimum Order",
+                        required: ""
+                      },
+                      domProps: { value: _vm.minimum_order },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.minimum_order = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.data == true
+                ? _c("div", { staticClass: "col-md-6" }, [
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.maximum_order,
+                          expression: "maximum_order"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Enter Maximum Order",
+                        required: ""
+                      },
+                      domProps: { value: _vm.maximum_order },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.maximum_order = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm.nav_bar.data == true
+              ? _c("div", { staticClass: "m-form__group form-check ml-4" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.recommend,
+                        expression: "recommend"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: { type: "checkbox", id: "exampleCheck1" },
+                    domProps: {
+                      checked: Array.isArray(_vm.recommend)
+                        ? _vm._i(_vm.recommend, null) > -1
+                        : _vm.recommend
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.recommend,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.recommend = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.recommend = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.recommend = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "exampleCheck1" }
+                    },
+                    [_vm._v("Recommend")]
+                  )
+                ])
+              : _vm._e()
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
             _c(
@@ -63192,6 +63317,26 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m-portlet__head" }, [
+      _c("div", { staticClass: "m-portlet__head-caption" }, [
+        _c("div", { staticClass: "m-portlet__head-title" }, [
+          _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
+            _c("i", { staticClass: "la la-gear" })
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "m-portlet__head-text" }, [
+            _vm._v(
+              "\n                                Product Create\n                            "
+            )
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -63349,7 +63494,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
     [
       _vm._l(_vm.errors, function(error) {
         return _c(
@@ -63364,565 +63508,572 @@ var render = function() {
       }),
       _vm._v(" "),
       _c(
-        "nav",
-        {
-          staticClass: "navbar navbar-expand-lg navbar-light bg-light",
-          staticStyle: { "background-color": "#f2f3f8", "font-size": "13px" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "navbarText" }
-            },
-            [
-              _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-                _c(
-                  "li",
-                  {
-                    staticClass: "nav-item mr-3",
-                    on: {
-                      click: function($event) {
-                        return _vm.changeNavbar("general")
-                      }
-                    }
-                  },
-                  [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm.nav_bar.general == false
-                        ? _c("span", [_vm._v("General")])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.nav_bar.general == true
-                        ? _c("span", { staticClass: "text-primary" }, [
-                            _vm._v("General")
-                          ])
-                        : _vm._e()
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "nav-item mr-3",
-                    on: {
-                      click: function($event) {
-                        return _vm.changeNavbar("data")
-                      }
-                    }
-                  },
-                  [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm.nav_bar.data == false
-                        ? _c("span", [_vm._v("Data")])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.nav_bar.data == true
-                        ? _c("span", { staticClass: "text-primary" }, [
-                            _vm._v("Data")
-                          ])
-                        : _vm._e()
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "nav-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.changeNavbar("images")
-                      }
-                    }
-                  },
-                  [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm.nav_bar.images == false
-                        ? _c("span", [_vm._v("Images")])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.nav_bar.images == true
-                        ? _c("span", { staticClass: "text-primary" }, [
-                            _vm._v("Images")
-                          ])
-                        : _vm._e()
-                    ])
-                  ]
-                )
-              ])
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
         "form",
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
         [
-          _c("div", { staticClass: "m-portlet__body" }, [
-            _vm.nav_bar.general == true
-              ? _c(
-                  "ul",
-                  { staticClass: "nav nav-tabs", attrs: { role: "tablist" } },
-                  [_vm._m(0), _vm._v(" "), _vm._m(1)]
-                )
-              : _vm._e(),
+          _c("div", { staticClass: "m-portlet" }, [
+            _vm._m(0),
             _vm._v(" "),
-            _vm.nav_bar.general == true
-              ? _c("div", { staticClass: "tab-content" }, [
+            _c("div", { staticClass: "m-portlet__body" }, [
+              _c(
+                "nav",
+                {
+                  staticClass: "navbar navbar-expand-lg navbar-light mb-4",
+                  staticStyle: { "font-size": "13px" }
+                },
+                [
                   _c(
                     "div",
                     {
-                      staticClass: "tab-pane active",
-                      attrs: { id: "m_tabs_1_1", role: "tabpanel" }
+                      staticClass: "collapse navbar-collapse",
+                      attrs: { id: "navbarText" }
                     },
                     [
-                      _c("div", { staticClass: "form-group m-form__group" }, [
-                        _c("label", [_vm._v("Name")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.english.name,
-                              expression: "english.name"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Enter Name",
-                            required: ""
-                          },
-                          domProps: { value: _vm.english.name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.english, "name", $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group m-form__group" }, [
-                        _c("label", { attrs: { for: "comment" } }, [
-                          _vm._v("Description")
-                        ]),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.english.description,
-                              expression: "english.description"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { rows: "5", id: "comment" },
-                          domProps: { value: _vm.english.description },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.english,
-                                "description",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.english.additions, function(addition, index) {
-                        return _c(
-                          "div",
+                      _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+                        _c(
+                          "li",
                           {
-                            key: index,
-                            staticClass:
-                              "form-row form-group m-form__group mb-negative"
+                            staticClass: "nav-item mr-3",
+                            on: {
+                              click: function($event) {
+                                return _vm.changeNavbar("general")
+                              }
+                            }
                           },
                           [
-                            _c("div", { staticClass: "form-group col-4" }, [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: addition.key,
-                                    expression: "addition.key"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Label",
-                                  required: ""
-                                },
-                                domProps: { value: addition.key },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      addition,
-                                      "key",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col" }, [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: addition.value,
-                                    expression: "addition.value"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Value",
-                                  required: ""
-                                },
-                                domProps: { value: addition.value },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      addition,
-                                      "value",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-1" }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "btn btn-danger",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.delete_addition(index)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-trash",
-                                    staticStyle: { color: "white" }
-                                  })
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _vm.nav_bar.general == true
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane",
-                          attrs: { id: "m_tabs_1_2", role: "tabpanel" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "form-group m-form__group" },
-                            [
-                              _c("label", [_vm._v("Name")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.myanmar.name,
-                                    expression: "myanmar.name"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Enter Name",
-                                  required: ""
-                                },
-                                domProps: { value: _vm.myanmar.name },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.myanmar,
-                                      "name",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "form-group m-form__group" },
-                            [
-                              _c("label", { attrs: { for: "comment" } }, [
-                                _vm._v("Description")
-                              ]),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.myanmar.description,
-                                    expression: "myanmar.description"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { rows: "5", id: "comment" },
-                                domProps: { value: _vm.myanmar.description },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.myanmar,
-                                      "description",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.myanmar.additions, function(
-                            addition,
-                            index
-                          ) {
-                            return _c(
-                              "div",
-                              {
-                                key: index,
-                                staticClass:
-                                  "form-row m-form__group mb-negative"
-                              },
+                            _c(
+                              "a",
+                              { staticClass: "nav-link", attrs: { href: "#" } },
                               [
-                                _c("div", { staticClass: "form-group col-4" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: addition.key,
-                                        expression: "addition.key"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    attrs: {
-                                      type: "text",
-                                      placeholder: "Label",
-                                      required: ""
-                                    },
-                                    domProps: { value: addition.key },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.$set(
-                                          addition,
-                                          "key",
-                                          $event.target.value
-                                        )
-                                      }
-                                    }
-                                  })
-                                ]),
+                                _vm.nav_bar.general == false
+                                  ? _c("span", [_vm._v("General")])
+                                  : _vm._e(),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "form-group col" }, [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: addition.value,
-                                        expression: "addition.value"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    attrs: {
-                                      type: "text",
-                                      placeholder: "Value",
-                                      required: ""
-                                    },
-                                    domProps: { value: addition.value },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.$set(
-                                          addition,
-                                          "value",
-                                          $event.target.value
-                                        )
-                                      }
-                                    }
-                                  })
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "form-group col-1" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.delete_addition(index)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass: "fa fa-trash",
-                                        staticStyle: { color: "white" }
-                                      })
-                                    ]
-                                  )
-                                ])
+                                _vm.nav_bar.general == true
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "text-primary" },
+                                      [_vm._v("General")]
+                                    )
+                                  : _vm._e()
                               ]
                             )
-                          })
-                        ],
-                        2
-                      )
-                    : _vm._e()
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.nav_bar.general == true
-              ? _c("div", { staticClass: "form-group m-form__group" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      attrs: { type: "button" },
-                      on: { click: _vm.add_addition }
-                    },
-                    [_vm._v("Add Options")]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.nav_bar.images == true
-              ? _c("div", { staticClass: "form-group m-form__group" }, [
-                  _c("label", [_vm._v("Thumbnail")]),
-                  _vm._v(" "),
-                  _vm.show_image
-                    ? _c("div", { staticClass: "col-md-3" }, [
-                        _c("img", {
-                          staticClass: "img-responsive",
-                          attrs: {
-                            src: _vm.show_image,
-                            height: "120",
-                            width: "120"
-                          }
-                        })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          {
+                            staticClass: "nav-item mr-3",
+                            on: {
+                              click: function($event) {
+                                return _vm.changeNavbar("data")
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "a",
+                              { staticClass: "nav-link", attrs: { href: "#" } },
+                              [
+                                _vm.nav_bar.data == false
+                                  ? _c("span", [_vm._v("Data")])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.nav_bar.data == true
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "text-primary" },
+                                      [_vm._v("Data")]
+                                    )
+                                  : _vm._e()
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            on: {
+                              click: function($event) {
+                                return _vm.changeNavbar("images")
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "a",
+                              { staticClass: "nav-link", attrs: { href: "#" } },
+                              [
+                                _vm.nav_bar.images == false
+                                  ? _c("span", [_vm._v("Images")])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.nav_bar.images == true
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "text-primary" },
+                                      [_vm._v("Images")]
+                                    )
+                                  : _vm._e()
+                              ]
+                            )
+                          ]
+                        )
                       ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("input", {
-                      ref: "file",
-                      attrs: { type: "file" },
-                      on: { change: _vm.onImageChange }
-                    })
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.nav_bar.images == true
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "form-group m-form__group",
-                    attrs: {
-                      id: "my-strictly-unique-vue-upload-multiple-image"
-                    }
-                  },
-                  [
-                    _c("label", [_vm._v("Images")]),
-                    _vm._v(" "),
-                    _c("vue-upload-multiple-image", {
-                      attrs: {
-                        "data-images": _vm.images,
-                        idUpload: "myIdUpload",
-                        editUpload: "myIdEdit",
-                        dragText: "Drag your photo",
-                        browseText: "Upload photos",
-                        maxImage: 5
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.nav_bar.general == true
+                ? _c(
+                    "ul",
+                    { staticClass: "nav nav-tabs", attrs: { role: "tablist" } },
+                    [_vm._m(1), _vm._v(" "), _vm._m(2)]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.general == true
+                ? _c("div", { staticClass: "tab-content" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane active",
+                        attrs: { id: "m_tabs_1_1", role: "tabpanel" }
                       },
-                      on: {
-                        "upload-success": _vm.uploadImageSuccess,
-                        "before-remove": _vm.beforeRemove,
-                        "edit-image": _vm.editImage
-                      }
-                    })
-                  ],
-                  1
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group row" }, [
-              _vm.nav_bar.data == true
+                      [
+                        _c("div", { staticClass: "form-group m-form__group" }, [
+                          _c("label", [_vm._v("Name")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.english.name,
+                                expression: "english.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter Name",
+                              required: ""
+                            },
+                            domProps: { value: _vm.english.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.english,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group m-form__group" }, [
+                          _c("label", { attrs: { for: "comment" } }, [
+                            _vm._v("Description")
+                          ]),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.english.description,
+                                expression: "english.description"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { rows: "5", id: "comment" },
+                            domProps: { value: _vm.english.description },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.english,
+                                  "description",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.english.additions, function(
+                          addition,
+                          index
+                        ) {
+                          return _c(
+                            "div",
+                            {
+                              key: index,
+                              staticClass:
+                                "form-row form-group m-form__group mb-negative"
+                            },
+                            [
+                              _c("div", { staticClass: "form-group col-4" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: addition.key,
+                                      expression: "addition.key"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Label",
+                                    required: ""
+                                  },
+                                  domProps: { value: addition.key },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        addition,
+                                        "key",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group col" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: addition.value,
+                                      expression: "addition.value"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Value",
+                                    required: ""
+                                  },
+                                  domProps: { value: addition.value },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        addition,
+                                        "value",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group col-1" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.delete_addition(index)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-trash",
+                                      staticStyle: { color: "white" }
+                                    })
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm.nav_bar.general == true
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane",
+                            attrs: { id: "m_tabs_1_2", role: "tabpanel" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-form__group" },
+                              [
+                                _c("label", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.myanmar.name,
+                                      expression: "myanmar.name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Enter Name",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.myanmar.name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.myanmar,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-form__group" },
+                              [
+                                _c("label", { attrs: { for: "comment" } }, [
+                                  _vm._v("Description")
+                                ]),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.myanmar.description,
+                                      expression: "myanmar.description"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { rows: "5", id: "comment" },
+                                  domProps: { value: _vm.myanmar.description },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.myanmar,
+                                        "description",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.myanmar.additions, function(
+                              addition,
+                              index
+                            ) {
+                              return _c(
+                                "div",
+                                {
+                                  key: index,
+                                  staticClass:
+                                    "form-row m-form__group mb-negative"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group col-4" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: addition.key,
+                                            expression: "addition.key"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "text",
+                                          placeholder: "Label",
+                                          required: ""
+                                        },
+                                        domProps: { value: addition.key },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              addition,
+                                              "key",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-group col" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: addition.value,
+                                          expression: "addition.value"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "text",
+                                        placeholder: "Value",
+                                        required: ""
+                                      },
+                                      domProps: { value: addition.value },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            addition,
+                                            "value",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group col-1" },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.delete_addition(index)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-trash",
+                                            staticStyle: { color: "white" }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.general == true
+                ? _c("div", { staticClass: "form-group m-form__group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: { click: _vm.add_addition }
+                      },
+                      [_vm._v("Add Options")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.images == true
+                ? _c("div", { staticClass: "form-group m-form__group" }, [
+                    _c("label", [_vm._v("Thumbnail")]),
+                    _vm._v(" "),
+                    _vm.show_image
+                      ? _c("div", { staticClass: "col-md-3" }, [
+                          _c("img", {
+                            staticClass: "img-responsive",
+                            attrs: {
+                              src: _vm.show_image,
+                              height: "120",
+                              width: "120"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        ref: "file",
+                        attrs: { type: "file" },
+                        on: { change: _vm.onImageChange }
+                      })
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.nav_bar.images == true
                 ? _c(
                     "div",
-                    { staticClass: "col-md-6" },
+                    {
+                      staticClass: "form-group m-form__group",
+                      attrs: {
+                        id: "my-strictly-unique-vue-upload-multiple-image"
+                      }
+                    },
                     [
-                      _c("label", [_vm._v("Categories")]),
+                      _c("label", [_vm._v("Images")]),
                       _vm._v(" "),
-                      _c("treeselect", {
+                      _c("vue-upload-multiple-image", {
                         attrs: {
-                          multiple: true,
-                          options: _vm.categories,
-                          normalizer: _vm.normalizer,
-                          flat: true,
-                          required: true
+                          "data-images": _vm.images,
+                          idUpload: "myIdUpload",
+                          editUpload: "myIdEdit",
+                          dragText: "Drag your photo",
+                          browseText: "Upload photos",
+                          maxImage: 5
                         },
-                        model: {
-                          value: _vm.category_array,
-                          callback: function($$v) {
-                            _vm.category_array = $$v
-                          },
-                          expression: "category_array"
+                        on: {
+                          "upload-success": _vm.uploadImageSuccess,
+                          "before-remove": _vm.beforeRemove,
+                          "edit-image": _vm.editImage
                         }
                       })
                     ],
@@ -63930,273 +64081,303 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _vm.nav_bar.data == true
-                ? _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Code Number")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.code_number,
-                          expression: "code_number"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Enter Code Number",
-                        required: ""
-                      },
-                      domProps: { value: _vm.code_number },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _vm.nav_bar.data == true
+                  ? _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", [_vm._v("Categories")]),
+                        _vm._v(" "),
+                        _c("treeselect", {
+                          attrs: {
+                            multiple: true,
+                            options: _vm.categories,
+                            normalizer: _vm.normalizer,
+                            flat: true,
+                            required: true
+                          },
+                          model: {
+                            value: _vm.category_array,
+                            callback: function($$v) {
+                              _vm.category_array = $$v
+                            },
+                            expression: "category_array"
                           }
-                          _vm.code_number = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group row" }, [
-              _vm.nav_bar.data == true
-                ? _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Price")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.price,
-                          expression: "price"
-                        }
+                        })
                       ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        placeholder: "Enter Price",
-                        required: ""
-                      },
-                      domProps: { value: _vm.price },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Code Number")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.code_number,
+                            expression: "code_number"
                           }
-                          _vm.price = $event.target.value
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Enter Code Number",
+                          required: ""
+                        },
+                        domProps: { value: _vm.code_number },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.code_number = $event.target.value
+                          }
                         }
-                      }
-                    })
-                  ])
-                : _vm._e(),
+                      })
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Price")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.price,
+                            expression: "price"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          placeholder: "Enter Price",
+                          required: ""
+                        },
+                        domProps: { value: _vm.price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.price = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Quantity")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.quantity,
+                            expression: "quantity"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          placeholder: "Enter Quantity",
+                          required: ""
+                        },
+                        domProps: { value: _vm.quantity },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.quantity = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Minimum Order")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.minimum_order,
+                            expression: "minimum_order"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          placeholder: "Enter Minimum Order",
+                          required: ""
+                        },
+                        domProps: { value: _vm.minimum_order },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.minimum_order = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Maximum Order")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.maximum_order,
+                            expression: "maximum_order"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          placeholder: "Enter Maximum Order",
+                          required: ""
+                        },
+                        domProps: { value: _vm.maximum_order },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.maximum_order = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e()
+              ]),
               _vm._v(" "),
               _vm.nav_bar.data == true
-                ? _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Quantity")]),
-                    _vm._v(" "),
+                ? _c("div", { staticClass: "m-form__group form-check ml-4" }, [
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.quantity,
-                          expression: "quantity"
+                          value: _vm.recommend,
+                          expression: "recommend"
                         }
                       ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        placeholder: "Enter Quantity",
-                        required: ""
+                      staticClass: "form-check-input",
+                      attrs: { type: "checkbox", id: "exampleCheck1" },
+                      domProps: {
+                        checked: Array.isArray(_vm.recommend)
+                          ? _vm._i(_vm.recommend, null) > -1
+                          : _vm.recommend
                       },
-                      domProps: { value: _vm.quantity },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.quantity = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group row" }, [
-              _vm.nav_bar.data == true
-                ? _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Minimum Order")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.minimum_order,
-                          expression: "minimum_order"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        placeholder: "Enter Minimum Order",
-                        required: ""
-                      },
-                      domProps: { value: _vm.minimum_order },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.minimum_order = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.nav_bar.data == true
-                ? _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Maximum Order")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.maximum_order,
-                          expression: "maximum_order"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        placeholder: "Enter Maximum Order",
-                        required: ""
-                      },
-                      domProps: { value: _vm.maximum_order },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.maximum_order = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _vm.nav_bar.data == true
-              ? _c("div", { staticClass: "m-form__group form-check ml-4" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.recommend,
-                        expression: "recommend"
-                      }
-                    ],
-                    staticClass: "form-check-input",
-                    attrs: { type: "checkbox", id: "exampleCheck1" },
-                    domProps: {
-                      checked: Array.isArray(_vm.recommend)
-                        ? _vm._i(_vm.recommend, null) > -1
-                        : _vm.recommend
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.recommend,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 && (_vm.recommend = $$a.concat([$$v]))
+                        change: function($event) {
+                          var $$a = _vm.recommend,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.recommend = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.recommend = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
                           } else {
-                            $$i > -1 &&
-                              (_vm.recommend = $$a
-                                .slice(0, $$i)
-                                .concat($$a.slice($$i + 1)))
+                            _vm.recommend = $$c
                           }
-                        } else {
-                          _vm.recommend = $$c
                         }
                       }
-                    }
-                  }),
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "exampleCheck1" }
+                      },
+                      [_vm._v("Recommend")]
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+              _c(
+                "div",
+                { staticClass: "m-form__actions" },
+                [
+                  _c(
+                    "VueLoadingButton",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { loading: _vm.isLoading },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.update($event)
+                        }
+                      }
+                    },
+                    [_c("small", [_vm._v("Update")])]
+                  ),
                   _vm._v(" "),
                   _c(
-                    "label",
+                    "button",
                     {
-                      staticClass: "form-check-label",
-                      attrs: { for: "exampleCheck1" }
+                      staticClass: "btn btn-outline-danger",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.reset()
+                        }
+                      }
                     },
-                    [_vm._v("Recommend")]
+                    [_vm._v("Reset")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-danger",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.cancel()
+                        }
+                      }
+                    },
+                    [_vm._v("Cancel")]
                   )
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-            _c(
-              "div",
-              { staticClass: "m-form__actions" },
-              [
-                _c(
-                  "VueLoadingButton",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { loading: _vm.isLoading },
-                    nativeOn: {
-                      click: function($event) {
-                        return _vm.update($event)
-                      }
-                    }
-                  },
-                  [_c("small", [_vm._v("Update")])]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.reset()
-                      }
-                    }
-                  },
-                  [_vm._v("Reset")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.cancel()
-                      }
-                    }
-                  },
-                  [_vm._v("Cancel")]
-                )
-              ],
-              1
-            )
+                ],
+                1
+              )
+            ])
           ])
         ]
       )
@@ -64205,6 +64386,26 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m-portlet__head" }, [
+      _c("div", { staticClass: "m-portlet__head-caption" }, [
+        _c("div", { staticClass: "m-portlet__head-title" }, [
+          _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
+            _c("i", { staticClass: "la la-gear" })
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "m-portlet__head-text" }, [
+            _vm._v(
+              "\n                                Product Edit\n                            "
+            )
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

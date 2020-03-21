@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <!-- <div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
             {{error.errorMessage}}
         </div> -->
@@ -12,167 +12,179 @@
         <div v-if="errors != ''" class="alert alert-danger" role="alert">
             {{errors[2].errorMessage}}<br>
         </div>
-        <!-- begin form -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f2f3f8; font-size: 13px;">
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item mr-3" @click="changeNavbar('general')">
-                        <a class="nav-link" href="#">
-                            <span v-if="nav_bar.general == false">General</span>
-                            <span class="text-primary" v-if="nav_bar.general == true">General</span>                            
-                        </a>
-                    </li>     
-                    <li class="nav-item mr-3" @click="changeNavbar('data')">
-                        <a class="nav-link" href="#">
-                            <span v-if="nav_bar.data == false">Data</span>
-                            <span class="text-primary" v-if="nav_bar.data == true">Data</span>  
-                        </a>
-                    </li>                                   
-                    <li class="nav-item" @click="changeNavbar('images')">
-                        <a class="nav-link" href="#">
-                            <span v-if="nav_bar.images == false">Images</span>
-                            <span class="text-primary" v-if="nav_bar.images == true">Images</span>  
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <!-- begin form -->        
         <form class="m-form m-form--fit m-form--label-align-right">
-			<div class="m-portlet__body">
-                <div class="form-group m-form__group" v-if="nav_bar.images==true">
-					<label><span class="text-danger">*</span>Thumbnail</label>
-					<div class="col-md-3" v-if="show_image">
-						<img :src="show_image" class="img-responsive" height="120" width="120">
-					</div>
-					<div class="col-md-6">
-						<input type="file" ref="file" v-on:change="onImageChange">
-					</div>
-				</div>
-                 <div v-if="nav_bar.images==true" class="form-group m-form__group" id="my-strictly-unique-vue-upload-multiple-image">
-                    <label>Images</label>
-                    <vue-upload-multiple-image
-                      @upload-success="uploadImageSuccess"
-                      @before-remove="beforeRemove"
-                      @edit-image="editImage"
-                      :data-images="images"
-                      idUpload="myIdUpload"
-                      editUpload="myIdEdit"
-                      dragText="Drag your photo"
-                      browseText="Upload photos"
-                      :maxImage="5"
-                      ></vue-upload-multiple-image>
-                </div>
-
-                <ul v-if="nav_bar.general==true" class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
-                    </li>
-                </ul>
-                <div v-if="nav_bar.general==true" class="tab-content">
-                    <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
-                        <div class="form-group m-form__group col-md-6">
-                            <label><span class="text-danger">*</span>Product Name</label>
-                            <input v-model="english.name" type="text" class="form-control" placeholder="Enter Product Name" required>
-                        </div>
-                        <div class="form-group m-form__group col-md-6">
-                            <label for="comment"><span class="text-danger">*</span>Description</label>
-                            <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                        <!--english addition fields -->
-                        <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
-                            <div class="form-group col-4">
-                                <!-- <label>Label</label> -->
-                                <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
-                            </div>
-                            <div class="form-group col">
-                                <!-- <label>Value</label> -->
-                                <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
-                            </div>
-                            <div class="form-group col-1">
-                                <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                            </div>
+			<div class="m-portlet">	
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon m--hide">
+                                <i class="la la-gear"></i>
+                            </span>
+                            <h3 class="m-portlet__head-text">
+                                Product Create
+                            </h3>
                         </div>
                     </div>
-                    <div v-if="nav_bar.general==true" class="tab-pane" id="m_tabs_1_2" role="tabpanel">
-                        <div class="form-group m-form__group col-md-6">
-                            <label><span class="text-danger">*</span>Product Name</label>
-                            <input v-model="myanmar.name" type="text" class="form-control" placeholder="Enter Product Name" required>
+                </div>
+                <div class="m-portlet__body">
+                    <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color: #ffffff; font-size: 13px;">
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item mr-3" @click="changeNavbar('general')">
+                                    <a class="nav-link" href="#">
+                                        <span v-if="nav_bar.general == false">General</span>
+                                        <span class="text-primary" v-if="nav_bar.general == true">General</span>                            
+                                    </a>
+                                </li>     
+                                <li class="nav-item mr-3" @click="changeNavbar('data')">
+                                    <a class="nav-link" href="#">
+                                        <span v-if="nav_bar.data == false">Data</span>
+                                        <span class="text-primary" v-if="nav_bar.data == true">Data</span>  
+                                    </a>
+                                </li>                                   
+                                <li class="nav-item" @click="changeNavbar('images')">
+                                    <a class="nav-link" href="#">
+                                        <span v-if="nav_bar.images == false">Images</span>
+                                        <span class="text-primary" v-if="nav_bar.images == true">Images</span>  
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="form-group m-form__group col-md-6">
-                            <label for="comment"><span class="text-danger">*</span>Description</label>
-                            <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
+                    </nav>
+                    <div class="form-group m-form__group" v-if="nav_bar.images==true">
+                        <label><span class="text-danger">*</span>Thumbnail</label>
+                        <div class="col-md-3" v-if="show_image">
+                            <img :src="show_image" class="img-responsive" height="120" width="120">
                         </div>
-                        <!--myanmar addition fields -->
-                        <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
-                            <div class="form-group col-4">
-                                <!-- <label>Label</label> -->
-                                <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                        <div class="col-md-6">
+                            <input type="file" ref="file" v-on:change="onImageChange">
+                        </div>
+                    </div>
+                    <div v-if="nav_bar.images==true" class="form-group m-form__group" id="my-strictly-unique-vue-upload-multiple-image">
+                        <label>Images</label>
+                        <vue-upload-multiple-image
+                        @upload-success="uploadImageSuccess"
+                        @before-remove="beforeRemove"
+                        @edit-image="editImage"
+                        :data-images="images"
+                        idUpload="myIdUpload"
+                        editUpload="myIdEdit"
+                        dragText="Drag your photo"
+                        browseText="Upload photos"
+                        :maxImage="5"
+                        ></vue-upload-multiple-image>
+                    </div>
+
+                    <ul v-if="nav_bar.general==true" class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
+                        </li>
+                    </ul>
+                    <div v-if="nav_bar.general==true" class="tab-content">
+                        <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
+                            <div class="form-group m-form__group col-md-6">
+                                <label><span class="text-danger">*</span>Product Name</label>
+                                <input v-model="english.name" type="text" class="form-control t" placeholder="Enter Product Name" required>
                             </div>
-                            <div class="form-group col">
-                                <!-- <label>Value</label> -->
-                                <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                            <div class="form-group m-form__group col-md-6">
+                                <label for="comment"><span class="text-danger">*</span>Description</label>
+                                <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
                             </div>
-                            <div class="form-group col-1">
-                                <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <!--english addition fields -->
+                            <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
+                                <div class="form-group col-4">
+                                    <!-- <label>Label</label> -->
+                                    <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                                </div>
+                                <div class="form-group col">
+                                    <!-- <label>Value</label> -->
+                                    <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                                </div>
+                                <div class="form-group col-1">
+                                    <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </div>
                             </div>
                         </div>
+                        <div v-if="nav_bar.general==true" class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+                            <div class="form-group m-form__group col-md-6">
+                                <label><span class="text-danger">*</span>Product Name</label>
+                                <input v-model="myanmar.name" type="text" class="form-control" placeholder="Enter Product Name" required>
+                            </div>
+                            <div class="form-group m-form__group col-md-6">
+                                <label for="comment"><span class="text-danger">*</span>Description</label>
+                                <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                            <!--myanmar addition fields -->
+                            <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
+                                <div class="form-group col-4">
+                                    <!-- <label>Label</label> -->
+                                    <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                                </div>
+                                <div class="form-group col">
+                                    <!-- <label>Value</label> -->
+                                    <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                                </div>
+                                <div class="form-group col-1">
+                                    <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </div>
 
 
-                    </div>              
-                </div>
-                <div v-if="nav_bar.general==true" class="form-group m-form__group">
-                    <button @click="add_addition" type="button" class="btn btn-danger">Add Attribues</button>
-                </div>
-
-                <div class="form-group m-form__group row">
-                    <div v-if="nav_bar.data==true" class="col-md-6">
-                    <label><span class="text-danger">*</span>Categories</label>
-                    <treeselect 
-                        v-model="category_array" 
-                        :multiple="true" 
-                        :options="categories" 
-                        :normalizer="normalizer" 
-                        :flat="true"
-                        :required="true"
-                    />
+                        </div>              
+                    </div>
+                    <div v-if="nav_bar.general==true" class="form-group m-form__group">
+                        <button @click="add_addition" type="button" class="btn btn-danger">Add Attribues</button>
                     </div>
 
-                    <div v-if="nav_bar.data==true" class="col-md-6">
-                        <label><span class="text-danger">*</span>Code Number</label>
-                        <input v-model="code_number" type="text" class="form-control" placeholder="Enter Code Number" required>
-                    </div>
-                </div>
+                    <div class="form-group m-form__group row">
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                        <label><span class="text-danger">*</span>Categories</label>
+                        <treeselect 
+                            v-model="category_array" 
+                            :multiple="true" 
+                            :options="categories" 
+                            :normalizer="normalizer" 
+                            :flat="true"
+                            :required="true"
+                        />
+                        </div>
 
-                <div class="form-group m-form__group row">
-                    <div v-if="nav_bar.data==true" class="col-md-6">
-                        <label><span class="text-danger">*</span>Price</label>
-                        <input v-model="price" type="number" class="form-control" placeholder="Enter Price" required>
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label><span class="text-danger">*</span>Code Number</label>
+                            <input v-model="code_number" type="text" class="form-control" placeholder="Enter Code Number" required>
+                        </div>
                     </div>
-                    <div v-if="nav_bar.data==true" class="col-md-6">
-                        <label><span class="text-danger">*</span>Quantity</label>
-                        <input v-model="quantity" type="number" class="form-control" placeholder="Enter Quantity" required>
+
+                    <div class="form-group m-form__group row">
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label><span class="text-danger">*</span>Price</label>
+                            <input v-model="price" type="number" class="form-control" placeholder="Enter Price" required>
+                        </div>
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label><span class="text-danger">*</span>Quantity</label>
+                            <input v-model="quantity" type="number" class="form-control" placeholder="Enter Quantity" required>
+                        </div>
                     </div>
+                    
+                    <div class="form-group m-form__group row">
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label><span class="text-danger">*</span>Minimum Order</label>
+                            <input v-model="minimum_order" type="number" class="form-control" placeholder="Enter Minimum Order" required>
+                        </div>
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label><span class="text-danger">*</span>Maximum Order</label>
+                            <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
+                        </div>
+                    </div>
+                    <div v-if="nav_bar.data==true" class="m-form__group form-check ml-4">
+                        <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recommend</label>
+                    </div>               
                 </div>
-                
-                <div class="form-group m-form__group row">
-                    <div v-if="nav_bar.data==true" class="col-md-6">
-                        <label><span class="text-danger">*</span>Minimum Order</label>
-                        <input v-model="minimum_order" type="number" class="form-control" placeholder="Enter Minimum Order" required>
-                    </div>
-                    <div v-if="nav_bar.data==true" class="col-md-6">
-                        <label><span class="text-danger">*</span>Maximum Order</label>
-                        <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
-                    </div>
-                </div>
-                <div v-if="nav_bar.data==true" class="m-form__group form-check ml-4">
-                    <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Recommend</label>
-                </div>
-            
-                
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions">					
                         <VueLoadingButton 
