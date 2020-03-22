@@ -33,7 +33,7 @@
 
             <!-- Tree Dialog Start -->
             <div class="mb-4">
-                <a href="{{route('categories.index')}}"  type="button" class="btn btn-danger">Grid View</a>
+                <a href="{{route('categories.index')}}"  type="button" class="btn btn-primary">Grid View</a>
             </div>
             <!-- Tree Dialog End -->
 

@@ -50,15 +50,15 @@
                                         
                                     </div>
                                     <div class="col-md-1 mr-2">
-                                        <button type="submit" class="btn btn-danger">Search</button>
+                                        <button type="submit" class="btn btn-primary">Search</button>
                                     </div>
                                     <div class="col-md-1">
-                                        <a href="{{route('products.index')}}"class="btn btn-danger">Show All</a>
+                                        <a href="{{route('products.index')}}"class="btn btn-primary">Show All</a>
                                     </div>                                                                        
                                 </div>
                             </div>
                             <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                                <a href="{{route('products.create')}}" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                <a href="{{route('products.create')}}" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                     <span>
                                         <i class="la la-plus"></i>
                                         <span>Create</span>
