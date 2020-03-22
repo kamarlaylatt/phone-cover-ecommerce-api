@@ -17,8 +17,14 @@ Route::get('/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
 
 Route::namespace('backend')->middleware('auth:admin')->group(function(){
 
+
 	Route::get('/', function () {return view('layouts.backend');})->name('admin');
 
+	//admin profile
+	Route::get('/profile', 'AdminController@profile')->name('admins.profile');
+	Route::post('/profile/update', 'AdminController@profileUpdate')->name('admins.profile.update');
+	Route::get('/edit/password', 'AdminController@editPassword')->name('admins.edit.password');
+	Route::post('/update/password', 'AdminController@updatePassword')->name('admins.update.password');
 
 	//admin_roles	
 	Route::resource('admin_roles', 'AdminRoleController');

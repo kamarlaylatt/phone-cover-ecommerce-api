@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Admin;
 use App\AdminRole;
 use Validator;
+use Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -156,5 +157,40 @@ class AdminController extends Controller
                         ->paginate(10);
 
         return view('backend.admins.index', compact('admins'));
+    }
+
+    public function profile()
+    {
+        $roles = AdminRole::all();
+        $admin = Auth::user();
+        return view('auth.admin_profile', compact('roles','admin'));
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $admin = Admin::find(Auth::user()->id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+        ]);         
+        
+        $admin->name = $request['name'];
+        $admin->email = $request['email'];
+        $admin->admin_role_id = $request['role'];
+        $admin->update();
+
+        return redirect()->route('admins.profile')->with('success','Successfully update your profile.');
+        
+    }
+
+    public function editPassword()
+    {
+        return view('auth.edit_password');
+    }
+
+    public function updatePassword()
+    {
+        return redirect()->route('admins.edit.password')->with('success','Still doing');
     }
 }
