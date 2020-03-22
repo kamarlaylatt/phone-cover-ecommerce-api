@@ -17,9 +17,9 @@ class CategoryListResource extends JsonResource
     {
         $category_info = $this->category_infos->where('language_id', $request->language_id)->first();
 
-        if(is_file(Storage::path('public/uploads/category_imgs/'.$this->icon)))
+        if(is_file(Storage::path('public/uploads/category_imgs/'.$this->image)))
         {
-            $image_url = url(Storage::url('uploads/category_imgs/'.$this->icon));
+            $image_url = url(Storage::url('public/uploads/category_imgs/'.$this->image));
         }
         else{
             $image_url = asset('images/default.png');
