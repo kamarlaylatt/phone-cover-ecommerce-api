@@ -49,7 +49,7 @@
                                             </div>                                        
                                         
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mr-2">
                                         <button type="submit" class="btn btn-danger">Search</button>
                                     </div>
                                     <div class="col-md-1">
@@ -96,9 +96,9 @@
                                     <td>{{ $key+ $products->firstItem() }}</td>
                                     <td>
                                         @if(is_file(\Storage::path('public/uploads/product_imgs/thumbnail/'.$product->image)))
-                                            <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                            <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                         @else
-                                            <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="60" height="60"> 
+                                            <img src="{{asset('/images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60"> 
                                         @endif
                                     </td>
                                     <td>{{$product->infos->where('language_id',1)->first()->name}}</td>

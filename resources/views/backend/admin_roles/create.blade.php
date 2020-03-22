@@ -23,6 +23,7 @@
 
 
 <!--begin::Portlet-->
+<div class="container" style="max-width:800px">
     <div class="m-portlet m-portlet--tab">
         <div class="m-portlet__head">
             <div class="m-portlet__head-caption">
@@ -64,15 +65,16 @@
                 </div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
-                <div class="m-form__actions">
-                    <button type="submit" class="btn btn-danger">Create</button>
-                    <a href="{{route('admin_roles.index')}}" class="btn btn-secondary">Cancel</a>
+                <div class="m-form__actions text-center">
+                    <button type="submit" class="btn btn-success">Create</button>
+                    <a href="{{route('admin_roles.index')}}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </form>
 
         <!--end::Form-->
     </div>
+</div>
 
     <!--end::Portlet-->
 

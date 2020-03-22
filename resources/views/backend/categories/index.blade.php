@@ -53,7 +53,7 @@
                                     </div>                                        
                                 
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-1 mr-2">
                                 <button type="submit" class="btn btn-danger">Search</button>
                             </div>
                             <div class="col-md-1">
@@ -107,9 +107,9 @@
                     		<td class="text-center">{{ $key+ $categories->firstItem() }}</td>
                             <td class="text-center">
                                 @if(is_file(\Storage::path('public/uploads/category_imgs/'.$category->image)))
-                                    <img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                    <img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                 @else
-                                    <img src="{{asset('images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                    <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                 @endif
                             </td>
                             <td>{{$category->category_infos[0]->name}}  </td>
@@ -126,7 +126,7 @@
                             @if(!$category->category_infos[0]->description)
                                 <td class="text-center"><span class="text-danger">null</span>
                             @else
-                    		  <td>{{Str::limit($category->category_infos[0]->description, 20)}}</td>
+                    		  <td>{{Str::limit($category->category_infos[0]->description, 30)}}</td>
                             @endif                    		
                             <td class="text-center">
                             	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.show', $category->id)}}">

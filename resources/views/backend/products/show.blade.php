@@ -30,9 +30,9 @@
                         <th> Thumbnail </th>
                         <td> 
                         @if(is_file(\Storage::path('public/uploads/product_imgs/thumbnail/'.$product->image)))
-                            <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded" alt="Cinque Terre" width="200" height="150">
+                            <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">
                         @else
-                            <img src="{{asset('/images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
+                            <img src="{{asset('/images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150"> 
                         @endif
                         </td>
                     </tr>   
@@ -41,9 +41,9 @@
                         <td>
                             @foreach($product->images as $image)
                                 @if(\Storage::exists('uploads/product_imgs/images/'.$image->image))
-                                    <img src="{{$img_url}}" class="img-rounded" alt="Cinque Terre" width="200" height="150"> 
+                                    <img src="{{$img_url}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150"> 
                                 @else
-                                <img src="{{url(\Storage::url('uploads/product_imgs/images/'.$image->image))}}" class="img-rounded" alt="Cinque Terre" width="200" height="150">                                 
+                                <img src="{{url(\Storage::url('uploads/product_imgs/images/'.$image->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">                                 
                                 @endif
                             @endforeach
                         </td>

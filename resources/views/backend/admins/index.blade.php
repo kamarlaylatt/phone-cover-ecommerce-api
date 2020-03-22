@@ -58,7 +58,7 @@
                                             </div>                                        
                                         
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mr-2">
                                         <button type="submit" class="btn btn-danger">Search</button>
                                     </div>
                                     <div class="col-md-1">

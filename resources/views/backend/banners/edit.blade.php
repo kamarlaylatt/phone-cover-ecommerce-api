@@ -23,6 +23,7 @@
 
 
 <!--begin::Portlet-->
+<div class="container" style="max-width:800px">
     <div class="m-portlet m-portlet--tab">
         <div class="m-portlet__head">
             <div class="m-portlet__head-caption">
@@ -57,7 +58,7 @@
                     <div class="form-group m-form__group">
                         <label>Image</label><br>
                         <div class="col-md-12 mb-2">
-                            <img id="image_preview_container" src="{{url(\Storage::url('uploads/banner_imgs/'.$banner->image))}}"
+                            <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/banner_imgs/'.$banner->image))}}"
                                 alt="preview image" style="max-height: 150px;">
                         </div>
                         <input type="file" name="image" id="image">
@@ -112,9 +113,9 @@
                 </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
-                    <div class="m-form__actions">
-                        <button type="submit" class="btn btn-danger">Update</button>
-                        <a href="{{route('banners.index')}}" class="btn btn-outline-danger">Cancel</a>
+                    <div class="m-form__actions text-center">
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <a href="{{route('banners.index')}}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </form>
@@ -124,6 +125,7 @@
 
         <!--end::Form-->
     </div>
+</div>
 
     <!--end::Portlet-->
 

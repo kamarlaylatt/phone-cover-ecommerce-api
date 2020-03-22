@@ -21,7 +21,7 @@
 				</div>
 				<div class="m-portlet__body">
 					<div class="form-group m-form__group">
-						<label>Parent</label>
+						<label>Parent Category</label>
 						<v-tree-select 
 						:data="categories" 
 						value-field-name="id" 
@@ -34,7 +34,7 @@
 					<div class="form-group m-form__group">
 						<label>Image</label>
 						<div class="col-md-3">
-							<img :src="image"  class="img-responsive" height="120" width="120">
+							<img :src="image"  class="img-rounded img-thumbnail" height="120" width="120">
 						</div>
 						<div class="col-md-6">
 							<input type="file" ref="file" v-on:change="onImageChange">
@@ -76,9 +76,9 @@
 								
 				<div class="m-portlet__foot m-portlet__foot--fit">
 					<div class="m-form__actions text-center">
-						<button v-if="disabled_status==false" type="button" @click="update" class="btn btn-danger">Update</button>
-						<button v-if="disabled_status==true" type="button" disabled @click="update" class="btn btn-danger">Update</button>
-							<button type="button" @click="cancel" class="btn btn-outline-danger">Cancel</button>
+						<button v-if="disabled_status==false" type="button" @click="update" class="btn btn-success">Update</button>
+						<button v-if="disabled_status==true" type="button" disabled @click="update" class="btn btn-success">Update</button>
+							<button type="button" @click="cancel" class="btn btn-danger">Cancel</button>
 					</div>
 				</div>
 		</div>

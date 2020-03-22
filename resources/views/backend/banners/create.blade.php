@@ -23,105 +23,107 @@
 
 
 <!--begin::Portlet-->
-    <div class="m-portlet m-portlet--tab">
-        <div class="m-portlet__head">
-            <div class="m-portlet__head-caption">
-                <div class="m-portlet__head-title">
-                    <span class="m-portlet__head-icon m--hide">
-                        <i class="la la-gear"></i>
-                    </span>
-                    <h3 class="m-portlet__head-text">
-                        Banner Create
-                    </h3>
+    <div class="container" style="max-width:800px">
+        <div class="m-portlet m-portlet--tab">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <span class="m-portlet__head-icon m--hide">
+                            <i class="la la-gear"></i>
+                        </span>
+                        <h3 class="m-portlet__head-text">
+                            Banner Create
+                        </h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--begin::Form-->
-        <div class="m-portlet__body">
             <!--begin::Form-->
-            <form method="POST" action="{{route('banners.store')}}" enctype="multipart/form-data" class="m-form m-form--fit m-form--label-align-right">
-                @csrf
-                <div class="m-portlet__body">
-                    @if ($errors->any())
-                        <div class="form-group m-form__group m--margin-top-10">   
-                            <div class="alert alert-danger m-alert m-alert--default" role="alert">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                            </div>  
+            <div class="m-portlet__body">
+                <!--begin::Form-->
+                <form method="POST" action="{{route('banners.store')}}" enctype="multipart/form-data" class="m-form m-form--fit m-form--label-align-right">
+                    @csrf
+                    <div class="m-portlet__body">
+                        @if ($errors->any())
+                            <div class="form-group m-form__group m--margin-top-10">   
+                                <div class="alert alert-danger m-alert m-alert--default" role="alert">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                </div>  
+                            </div>
+                        @endif
+                        <div class="form-group m-form__group">
+                            <label>Image</label><br>
+                            <div class="col-md-12 mb-2">
+                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{ asset('images/default.png') }}"
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
+                            <input type="file" name="image" id="image">
                         </div>
-                    @endif
-                    <div class="form-group m-form__group">
-                        <label>Image</label><br>
-                        <div class="col-md-12 mb-2">
-                            <img id="image_preview_container" src="{{ asset('images/default.png') }}"
-                                alt="preview image" style="max-height: 150px;">
+                        <div class="form-group m-form__group">
+                            <label>Link</label>
+                            <input type="text" name="link" class="form-control m-input m-input--air" placeholder="Enter link" value="{{ old('link') }}"  required autocomplete="link">
                         </div>
-                        <input type="file" name="image" id="image">
-                    </div>
-                    <div class="form-group m-form__group">
-                        <label>Link</label>
-                        <input type="text" name="link" class="form-control m-input m-input--air" placeholder="Enter link" value="{{ old('link') }}"  required autocomplete="link">
-                    </div>
-                    <div class="form-group m-form__group ml-4">
-                        <input type="checkbox" name="show_status" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Show Status</label>
+                        <div class="form-group m-form__group ml-4">
+                            <input type="checkbox" name="show_status" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Show Status</label>
+                        </div>
+
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
+                                <div class="form-group m-form__group">
+                                    <label>Title</label>
+                                    <input type="text" name="english_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('english_title') }}"  required autocomplete="title">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>Sub Title</label>
+                                    <input type="text" name="english_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('english_subtitle') }}"  required autocomplete="subtitle">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>Button Text</label>
+                                    <input type="text" name="english_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('english_button_text') }}"  required autocomplete="button_text">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+                                <div class="form-group m-form__group">
+                                    <label>Title</label>
+                                    <input type="text" name="myanmar_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('myanmar_title') }}"  required autocomplete="title">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>Sub Title</label>
+                                    <input type="text" name="myanmar_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('myanmar_subtitle') }}"  required autocomplete="subtitle">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>Button Text</label>
+                                    <input type="text" name="myanmar_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('myanmar_button_text') }}"  required autocomplete="button_text">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
-                            <div class="form-group m-form__group">
-                                <label>Title</label>
-                                <input type="text" name="english_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('english_title') }}"  required autocomplete="title">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>Sub Title</label>
-                                <input type="text" name="english_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('english_subtitle') }}"  required autocomplete="subtitle">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>Button Text</label>
-                                <input type="text" name="english_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('english_button_text') }}"  required autocomplete="button_text">
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
-                            <div class="form-group m-form__group">
-                                <label>Title</label>
-                                <input type="text" name="myanmar_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('myanmar_title') }}"  required autocomplete="title">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>Sub Title</label>
-                                <input type="text" name="myanmar_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('myanmar_subtitle') }}"  required autocomplete="subtitle">
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>Button Text</label>
-                                <input type="text" name="myanmar_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('myanmar_button_text') }}"  required autocomplete="button_text">
-                            </div>
+                    <div class="m-portlet__foot m-portlet__foot--fit">
+                        <div class="m-form__actions text-center">
+                            <button type="submit" class="btn btn-success">Create</button>
+                            <a href="{{route('banners.index')}}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
-                </div>
+                </form>
 
-                <div class="m-portlet__foot m-portlet__foot--fit">
-                    <div class="m-form__actions">
-                        <button type="submit" class="btn btn-danger">Create</button>
-                        <a href="{{route('banners.index')}}" class="btn btn-outline-danger">Cancel</a>
-                    </div>
-                </div>
-            </form>
+                <!--end::Form-->
+            </div>
 
             <!--end::Form-->
         </div>
-
-        <!--end::Form-->
     </div>
 
     <!--end::Portlet-->

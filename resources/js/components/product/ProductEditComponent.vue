@@ -17,101 +17,97 @@
                             </h3>
                         </div>
                     </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item" @click="changeNavbar('general')">
+                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                    General
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item" @click="changeNavbar('data')">
+                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                    Data
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item" @click="changeNavbar('images')">
+                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                    Images
+                                </a>
+                            </li>
+                        </ul>
+                    </div>   
                 </div>
                 <div class="m-portlet__body">
-                    <nav class="navbar navbar-expand-lg navbar-light mb-4" style="font-size: 13px;">
-                        <div class="collapse navbar-collapse" id="navbarText">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item mr-3" @click="changeNavbar('general')">
-                                    <a class="nav-link" href="#">
-                                        <span v-if="nav_bar.general == false">General</span>
-                                        <span class="text-primary" v-if="nav_bar.general == true">General</span>                            
-                                    </a>
-                                </li>     
-                                <li class="nav-item mr-3" @click="changeNavbar('data')">
-                                    <a class="nav-link" href="#">
-                                        <span v-if="nav_bar.data == false">Data</span>
-                                        <span class="text-primary" v-if="nav_bar.data == true">Data</span>  
-                                    </a>
-                                </li>                                   
-                                <li class="nav-item" @click="changeNavbar('images')">
-                                    <a class="nav-link" href="#">
-                                        <span v-if="nav_bar.images == false">Images</span>
-                                        <span class="text-primary" v-if="nav_bar.images == true">Images</span>  
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    
-                    <ul v-if="nav_bar.general==true" class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
-                        </li>
-                    </ul>
-                    <div v-if="nav_bar.general==true" class="tab-content">
-                        <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
-                            <div class="form-group m-form__group">
-                                <label>Name</label>
-                                <input v-model="english.name" type="text" class="form-control" placeholder="Enter Name" required>
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label for="comment">Description</label>
-                                <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
-                            </div>
-                            <!--english addition fields -->
-                            <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
-                                <div class="form-group col-4">
-                                    <!-- <label>Label</label> -->
-                                    <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                    <div class="container" style="max-width:800px">
+                        <ul v-if="nav_bar.general==true" class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">English</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Myanmar</a>
+                            </li>
+                        </ul>
+                        <div v-if="nav_bar.general==true" class="tab-content">
+                            <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
+                                <div class="form-group m-form__group">
+                                    <label>Name</label>
+                                    <input v-model="english.name" type="text" class="form-control" placeholder="Enter Name" required>
                                 </div>
-                                <div class="form-group col">
-                                    <!-- <label>Value</label> -->
-                                    <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                                <div class="form-group m-form__group">
+                                    <label for="comment">Description</label>
+                                    <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
                                 </div>
-                                <div class="form-group col-1">
-                                    <a @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash" style="color:white;"></i></a>
+                                <!--english addition fields -->
+                                <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
+                                    <div class="form-group col-4">
+                                        <!-- <label>Label</label> -->
+                                        <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                                    </div>
+                                    <div class="form-group col">
+                                        <!-- <label>Value</label> -->
+                                        <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                                    </div>
+                                    <div class="form-group col-1">
+                                        <a @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash" style="color:white;"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div v-if="nav_bar.general==true" class="tab-pane" id="m_tabs_1_2" role="tabpanel">
-                            <div class="form-group m-form__group">
-                                <label>Name</label>
-                                <input v-model="myanmar.name" type="text" class="form-control" placeholder="Enter Name" required>
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label for="comment">Description</label>
-                                <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
-                            </div>
-                            <!--myanmar addition fields -->
-                            <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
-                                <div class="form-group col-4">
-                                    <!-- <label>Label</label> -->
-                                    <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                            <div v-if="nav_bar.general==true" class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+                                <div class="form-group m-form__group">
+                                    <label>Name</label>
+                                    <input v-model="myanmar.name" type="text" class="form-control" placeholder="Enter Name" required>
                                 </div>
-                                <div class="form-group col">
-                                    <!-- <label>Value</label> -->
-                                    <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                                <div class="form-group m-form__group">
+                                    <label for="comment">Description</label>
+                                    <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
                                 </div>
-                                <div class="form-group col-1">
-                                    <a @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash" style="color:white;"></i></a>
+                                <!--myanmar addition fields -->
+                                <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
+                                    <div class="form-group col-4">
+                                        <!-- <label>Label</label> -->
+                                        <input v-model="addition.key" type="text" class="form-control" placeholder="Label" required>
+                                    </div>
+                                    <div class="form-group col">
+                                        <!-- <label>Value</label> -->
+                                        <input v-model="addition.value" type="text" class="form-control" placeholder="Value" required>
+                                    </div>
+                                    <div class="form-group col-1">
+                                        <a @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash" style="color:white;"></i></a>
+                                    </div>
                                 </div>
-                            </div>
 
 
-                        </div>              
-                    </div>
-                    <div v-if="nav_bar.general==true" class="form-group m-form__group">
-                        <button @click="add_addition" type="button" class="btn btn-danger">Add Options</button>
+                            </div>              
+                        </div>
+                        <div v-if="nav_bar.general==true" class="form-group m-form__group">
+                            <button @click="add_addition" type="button" class="btn btn-primary">Add Attribues</button>
+                        </div>
                     </div>
 
                     <div class="form-group m-form__group" v-if="nav_bar.images==true">
                         <label>Thumbnail</label>
                         <div class="col-md-3" v-if="show_image">
-                            <img :src="show_image" class="img-responsive" height="120" width="120">
+                            <img :src="show_image" class="img-rounded img-thumbnail" height="120" width="120">
                         </div>
                         <div class="col-md-6">
                             <input type="file" ref="file" v-on:change="onImageChange">
@@ -181,12 +177,12 @@
                     <div class="m-form__actions">					
                         <VueLoadingButton 
                         @click.native="update"
-                        class="btn btn-danger"
+                        class="btn btn-success"
                         :loading="isLoading"
                         ><small>Update</small>
                         </VueLoadingButton>
-                        <button @click="reset()" type="button" class="btn btn-outline-danger">Reset</button>
-                        <button @click="cancel()" type="button" class="btn btn-outline-danger">Cancel</button>
+                        <button @click="reset()" type="button" class="btn btn-info">Reset</button>
+                        <button @click="cancel()" type="button" class="btn btn-danger">Cancel</button>
                     </div>
                 </div>
 			</div>

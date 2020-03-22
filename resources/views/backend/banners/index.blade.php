@@ -49,7 +49,7 @@
                                             </div>                                        
                                         
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mr-2">
                                         <button type="submit" class="btn btn-danger">Search</button>
                                     </div>
                                     <div class="col-md-1">
@@ -97,9 +97,9 @@
                                     <td>{{ $key+ $banners->firstItem() }}</td>
                                     <td>
                                         @if(is_file(\Storage::path('public/uploads/banner_imgs/'.$banner->image)))
-                                            <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">
+                                            <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                         @else
-                                            <img src="{{asset('images/default.png')}}" class="img-rounded" alt="Cinque Terre" width="60" height="60">                                           
+                                            <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
                                         @endif
                                     </td>
                                     <td>{{$banner->infos[0]->title}}</td>
