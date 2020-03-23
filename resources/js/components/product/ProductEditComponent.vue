@@ -16,28 +16,26 @@
                                 Product Edit
                             </h3>
                         </div>
-                    </div>
-                    <div class="m-portlet__head-tools">
-                        <ul class="m-portlet__nav">
-                            <li class="m-portlet__nav-item" @click="changeNavbar('general')">
-                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
-                                    General
-                                </a>
-                            </li>
-                            <li class="m-portlet__nav-item" @click="changeNavbar('data')">
-                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
-                                    Data
-                                </a>
-                            </li>
-                            <li class="m-portlet__nav-item" @click="changeNavbar('images')">
-                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
-                                    Images
-                                </a>
-                            </li>
-                        </ul>
-                    </div>   
+                    </div> 
                 </div>
                 <div class="m-portlet__body">
+                    <div class="row form-group m-form__group mb-2">
+                        <div class="m-portlet__nav-item mr-2" @click="changeNavbar('general')">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                General
+                            </a>
+                        </div>
+                        <div class="m-portlet__nav-item mr-2" @click="changeNavbar('data')">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                Data
+                            </a>
+                        </div>
+                        <div class="m-portlet__nav-item mr-2" @click="changeNavbar('images')">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                Images
+                            </a>
+                        </div>
+                    </div>
                     <div class="container" style="max-width:800px">
                         <ul v-if="nav_bar.general==true" class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
@@ -181,7 +179,7 @@
                         :loading="isLoading"
                         ><small>Update</small>
                         </VueLoadingButton>
-                        <button @click="reset()" type="button" class="btn btn-info">Reset</button>
+                        <button @click="reset()" type="button" class="btn btn-primary">Reset</button>
                         <button @click="cancel()" type="button" class="btn btn-danger">Cancel</button>
                     </div>
                 </div>

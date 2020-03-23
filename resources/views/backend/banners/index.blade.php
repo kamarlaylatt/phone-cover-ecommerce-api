@@ -49,7 +49,7 @@
                                             </div>                                        
                                         
                                     </div>
-                                    <div class="col-md-1 mr-2">
+                                    <div class="col-md-1 mr-1">
                                         <button type="submit" class="btn btn-primary">Search</button>
                                     </div>
                                     <div class="col-md-1">
@@ -78,12 +78,12 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
-                                <th> Image </th>
+                                <th class="text-center"> Image </th>
                                 <th> Title </th>
                                 <th> Sub Title </th>
                                 <th> Button Text </th>
-                                <th> Show Status </th>
-                                <th> Actions </th>
+                                <th class="text-center"> Show Status </th>
+                                <th class="text-center"> Actions </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,25 +94,29 @@
                             @endif
                             @foreach($banners as $key=>$banner)
                                 <tr>
-                                    <td>{{ $key+ $banners->firstItem() }}</td>
-                                    <td>
+                                    <td class="align-middle">{{ $key+ $banners->firstItem() }}</td>
+                                    <td class="text-center align-middle">
                                         @if(is_file(\Storage::path('public/uploads/banner_imgs/'.$banner->image)))
                                             <img src="{{url(Storage::url('public/uploads/banner_imgs/'.$banner->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                         @else
                                             <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
                                         @endif
                                     </td>
-                                    <td>{{$banner->infos[0]->title}}</td>
-                                    <td>{{$banner->infos[0]->subtitle}}</td>
-                                    <td>{{$banner->infos[0]->button_text}}</td>
-                                    <td class="text-center">
+                                    <td class="align-middle">{{$banner->infos[0]->title}}</td>
+                                    <td class="align-middle">{{$banner->infos[0]->subtitle}}</td>
+                                    <td class="align-middle">{{$banner->infos[0]->button_text}}</td>
+                                    <td class="text-center align-middle">
                                         @if($banner->show_status == 1)
-                                            <span style="color:green;"><b>On</b></span>
+                                            <button type="button" class="btn btn-primary m-btn m-btn--pill m-btn--air">
+                                                On
+                                            </button>
                                         @else
-                                            <span style="color:red;"><b>Off</b></span>
+                                            <button type="button" class="btn btn-outline-primary m-btn m-btn--pill m-btn--air">
+                                                Off
+                                            </button>
                                         @endif
                                     </td>                                    
-                                    <td>
+                                    <td class="text-center align-middle">
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('banners.show', $banner->id)}}">
                                             <i class="fa fa-eye"></i>
                                         </a>

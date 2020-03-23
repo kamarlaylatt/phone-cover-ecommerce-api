@@ -6745,8 +6745,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -6944,8 +6942,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @riophae/vue-treeselect/dist/vue-treeselect.css */ "./node_modules/@riophae/vue-treeselect/dist/vue-treeselect.css");
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__);
-//
-//
 //
 //
 //
@@ -62468,96 +62464,92 @@ var render = function() {
       { staticClass: "m-form m-form--fit m-form--label-align-right" },
       [
         _c("div", { staticClass: "m-portlet" }, [
-          _c("div", { staticClass: "m-portlet__head" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "m-portlet__head-tools" }, [
-              _c("ul", { staticClass: "m-portlet__nav" }, [
-                _c(
-                  "li",
-                  {
-                    staticClass: "m-portlet__nav-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.changeNavbar("general")
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    General\n                                "
-                        )
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "m-portlet__nav-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.changeNavbar("data")
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    Data\n                                "
-                        )
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "m-portlet__nav-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.changeNavbar("images")
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    Images\n                                "
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ])
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "m-portlet__body" }, [
+            _c("div", { staticClass: "row form-group m-form__group mb-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "m-portlet__nav-item mr-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.changeNavbar("general")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
+                      attrs: { href: "#" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                General\n                            "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "m-portlet__nav-item mr-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.changeNavbar("data")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
+                      attrs: { href: "#" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Data\n                            "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "m-portlet__nav-item mr-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.changeNavbar("images")
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
+                      attrs: { href: "#" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Images\n                            "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
             _vm.nav_bar.images == true
               ? _c("div", { staticClass: "form-group m-form__group" }, [
                   _vm._m(1),
@@ -63332,16 +63324,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-portlet__head-caption" }, [
-      _c("div", { staticClass: "m-portlet__head-title" }, [
-        _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
-          _c("i", { staticClass: "la la-gear" })
-        ]),
-        _vm._v(" "),
-        _c("h3", { staticClass: "m-portlet__head-text" }, [
-          _vm._v(
-            "\n                                Product Create\n                            "
-          )
+    return _c("div", { staticClass: "m-portlet__head" }, [
+      _c("div", { staticClass: "m-portlet__head-caption" }, [
+        _c("div", { staticClass: "m-portlet__head-title" }, [
+          _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
+            _c("i", { staticClass: "la la-gear" })
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "m-portlet__head-text" }, [
+            _vm._v(
+              "\n                                Product Create\n                            "
+            )
+          ])
         ])
       ])
     ])
@@ -63521,96 +63515,92 @@ var render = function() {
         { staticClass: "m-form m-form--fit m-form--label-align-right" },
         [
           _c("div", { staticClass: "m-portlet" }, [
-            _c("div", { staticClass: "m-portlet__head" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "m-portlet__head-tools" }, [
-                _c("ul", { staticClass: "m-portlet__nav" }, [
-                  _c(
-                    "li",
-                    {
-                      staticClass: "m-portlet__nav-item",
-                      on: {
-                        click: function($event) {
-                          return _vm.changeNavbar("general")
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    General\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "m-portlet__nav-item",
-                      on: {
-                        click: function($event) {
-                          return _vm.changeNavbar("data")
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Data\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "m-portlet__nav-item",
-                      on: {
-                        click: function($event) {
-                          return _vm.changeNavbar("images")
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
-                          attrs: { href: "#" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Images\n                                "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            ]),
+            _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "m-portlet__body" }, [
+              _c("div", { staticClass: "row form-group m-form__group mb-2" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "m-portlet__nav-item mr-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.changeNavbar("general")
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                General\n                            "
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "m-portlet__nav-item mr-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.changeNavbar("data")
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Data\n                            "
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "m-portlet__nav-item mr-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.changeNavbar("images")
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Images\n                            "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
               _c(
                 "div",
                 {
@@ -64369,7 +64359,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-info",
+                      staticClass: "btn btn-primary",
                       attrs: { type: "button" },
                       on: {
                         click: function($event) {
@@ -64409,16 +64399,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-portlet__head-caption" }, [
-      _c("div", { staticClass: "m-portlet__head-title" }, [
-        _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
-          _c("i", { staticClass: "la la-gear" })
-        ]),
-        _vm._v(" "),
-        _c("h3", { staticClass: "m-portlet__head-text" }, [
-          _vm._v(
-            "\n                                Product Edit\n                            "
-          )
+    return _c("div", { staticClass: "m-portlet__head" }, [
+      _c("div", { staticClass: "m-portlet__head-caption" }, [
+        _c("div", { staticClass: "m-portlet__head-title" }, [
+          _c("span", { staticClass: "m-portlet__head-icon m--hide" }, [
+            _c("i", { staticClass: "la la-gear" })
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "m-portlet__head-text" }, [
+            _vm._v(
+              "\n                                Product Edit\n                            "
+            )
+          ])
         ])
       ])
     ])

@@ -25,28 +25,26 @@
                                 Product Create
                             </h3>
                         </div>
-                    </div>   
-                    <div class="m-portlet__head-tools">
-                        <ul class="m-portlet__nav">
-                            <li class="m-portlet__nav-item" @click="changeNavbar('general')">
-                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
-                                    General
-                                </a>
-                            </li>
-                            <li class="m-portlet__nav-item" @click="changeNavbar('data')">
-                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
-                                    Data
-                                </a>
-                            </li>
-                            <li class="m-portlet__nav-item" @click="changeNavbar('images')">
-                                <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
-                                    Images
-                                </a>
-                            </li>
-                        </ul>
-                    </div>                 
+                    </div>                  
                 </div>
                 <div class="m-portlet__body">
+                    <div class="row form-group m-form__group mb-2">
+                        <div class="m-portlet__nav-item mr-2" @click="changeNavbar('general')">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                General
+                            </a>
+                        </div>
+                        <div class="m-portlet__nav-item mr-2" @click="changeNavbar('data')">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                Data
+                            </a>
+                        </div>
+                        <div class="m-portlet__nav-item mr-2" @click="changeNavbar('images')">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--pill m-btn--air">
+                                Images
+                            </a>
+                        </div>
+                    </div>
                     <div class="form-group m-form__group" v-if="nav_bar.images==true">
                         <label><span class="text-danger">*</span>Thumbnail</label>
                         <div class="col-md-3" v-if="show_image">

@@ -58,7 +58,7 @@
                                             </div>                                        
                                         
                                     </div>
-                                    <div class="col-md-1 mr-2">
+                                    <div class="col-md-1 mr-1">
                                         <button type="submit" class="btn btn-primary">Search</button>
                                     </div>                                    
                                     <div class="col-md-1">
@@ -95,6 +95,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($users->count() < 1)
+                                <td colspan=6 class="text-center">
+                                    There is no block user
+                                </td>
+                            @endif
                             @foreach($users as $key=>$user)
                                 <tr>
                                     <td>{{ $key+ $users->firstItem() }}</td>

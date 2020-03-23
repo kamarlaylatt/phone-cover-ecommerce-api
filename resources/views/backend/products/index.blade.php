@@ -49,7 +49,7 @@
                                             </div>                                        
                                         
                                     </div>
-                                    <div class="col-md-1 mr-2">
+                                    <div class="col-md-1 mr-1">
                                         <button type="submit" class="btn btn-primary">Search</button>
                                     </div>
                                     <div class="col-md-1">
@@ -78,11 +78,11 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
-                                <th title="Field #4" data-field="Role">Image</th>
+                                <th class="text-center" title="Field #4" data-field="Role">Image</th>
                                 <th title="Field #2" data-field="Name">Name</th>
                                 <th title="Field #3" data-field="Email">Price</th>
                                 <th title="Field #3" data-field="Role">Code No</th>
-                                <th title="Field #5" data-field="Action">Action</th>
+                                <th class="text-center" title="Field #5" data-field="Action">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,18 +93,18 @@
                             @endif
                             @foreach($products as $key=>$product)
                                 <tr>
-                                    <td>{{ $key+ $products->firstItem() }}</td>
-                                    <td>
+                                    <td class="align-middle">{{ $key+ $products->firstItem() }}</td>
+                                    <td class="text-center align-middle">
                                         @if(is_file(\Storage::path('public/uploads/product_imgs/thumbnail/'.$product->image)))
                                             <img src="{{url(\Storage::url('uploads/product_imgs/thumbnail/'.$product->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                         @else
                                             <img src="{{asset('/images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60"> 
                                         @endif
                                     </td>
-                                    <td>{{$product->infos->where('language_id',1)->first()->name}}</td>
-                                    <td>{{$product->price}}</td>
-                                    <td>{{$product->code_number}}</td>                                    
-                                    <td>
+                                    <td class="align-middle">{{$product->infos->where('language_id',1)->first()->name}}</td>
+                                    <td class="align-middle">{{$product->price}}</td>
+                                    <td class="align-middle">{{$product->code_number}}</td>                                    
+                                    <td class="text-center align-middle">
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.show', $product->id)}}">
                                             <i class="fa fa-eye"></i>
                                         </a>

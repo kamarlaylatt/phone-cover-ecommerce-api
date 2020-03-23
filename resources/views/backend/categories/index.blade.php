@@ -53,7 +53,7 @@
                                     </div>                                        
                                 
                             </div>
-                            <div class="col-md-1 mr-2">
+                            <div class="col-md-1 mr-1">
                                 <button type="submit" class="btn btn-primary">Search</button>
                             </div>
                             <div class="col-md-1">
@@ -104,31 +104,35 @@
                         @endif
                         @foreach($categories as $key=>$category)
                     	<tr>
-                    		<td class="text-center">{{ $key+ $categories->firstItem() }}</td>
-                            <td class="text-center">
+                    		<td class="text-center align-middle">{{ $key+ $categories->firstItem() }}</td>
+                            <td class="text-center align-middle">
                                 @if(is_file(\Storage::path('public/uploads/category_imgs/'.$category->image)))
                                     <img src="{{url(\Storage::url('uploads/category_imgs/'.$category->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                 @else
                                     <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                 @endif
                             </td>
-                            <td>{{$category->category_infos[0]->name}}  </td>
+                            <td class="align-middle">{{$category->category_infos[0]->name}}  </td>
                             @if($category->parents == 0)
-                                <td>{{$category->category_infos[0]->name}}</td>
+                                <td class="align-middle">{{$category->category_infos[0]->name}}</td>
                             @else
-                                <td>                            
+                                <td class="align-middle">                            
                             @if($category->parents != 0)
                                 @include('backend.categories.nested_parent', ['category' => $category->parent])
                             @endif
                                 {{$category->category_infos[0]->name}}
                                 </td>
                             @endif
-                            @if(!$category->category_infos[0]->description)
-                                <td class="text-center"><span class="text-danger">null</span>
+                            @if($category->category_infos[0]->description == '' || $category->category_infos[0]->description == 'null' )
+                                <td class="text-center align-middle">
+                                    <button type="button" class="btn btn-outline-danger m-btn m-btn--pill m-btn--air">
+                                        null
+                                    </button>
+                                </td>
                             @else
-                    		  <td>{{Str::limit($category->category_infos[0]->description, 30)}}</td>
+                    		  <td class="align-middle">{{Str::limit($category->category_infos[0]->description, 30)}}</td>
                             @endif                    		
-                            <td class="text-center">
+                            <td class="text-center align-middle">
                             	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.show', $category->id)}}">
                                     <i class="fa fa-eye"></i>
                                 </a>
