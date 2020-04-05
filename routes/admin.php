@@ -38,6 +38,14 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::resource('shell_materials', 'ShellMaterialController');
 	Route::post('shell_materials/search','ShellMaterialController@search')->name('shell_materials.search');
 
+	//phone_brands
+	Route::resource('phone_brands', 'PhoneBrandController');
+	Route::post('phone_brands/search','PhoneBrandController@search')->name('phone_brands.search');
+
+	//phone_models
+	Route::resource('phone_models', 'PhoneModelController');
+	Route::post('phone_models/search','PhoneModelController@search')->name('phone_models.search');
+
 	//users
 	Route::resource('users', 'UserController');
 	Route::get('block_list', 'UserController@block_list')->name('users.block_list');
