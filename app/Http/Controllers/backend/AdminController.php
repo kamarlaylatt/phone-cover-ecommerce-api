@@ -189,8 +189,42 @@ class AdminController extends Controller
         return view('auth.edit_password');
     }
 
-    public function updatePassword()
+    public function updatePassword(Request $request)
     {
-        return redirect()->route('admins.edit.password')->with('success','Still doing');
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|same:confirm_password',
+            'confirm_password' => 'required',
+        ]);    
+        $oldPassword = $request['old_password'];
+		$newPassword = $request['new_password'];
+		$confirmPassword = $request['confirm_password'];
+
+		$user = Auth::user();
+		$userPassword = $user->password;
+
+		if($oldPassword == $newPassword)
+		{
+            return redirect()->route('admins.edit.password')->with('error','Your new password cannot be the same as your current password, please try again.');
+		}
+
+
+		if(Hash::check($request->old_password, $user->password))
+		{
+			$user->password = Hash::make($newPassword);
+			$user->save();
+
+			$responseBody = [
+				'userId' => Auth::user()->id,
+				'userName' => Auth::user()->name,
+				'userPhone' => Auth::user()->phone,
+				'status' => 'Successfully update password.',
+			];
+            return redirect()->route('admins.edit.password')->with('success','Successfully update password.');
+            
+		}
+		else{
+            return redirect()->route('admins.edit.password')->with('error','Your old password not match, please try again');
+        }
     }
 }

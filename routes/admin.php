@@ -34,6 +34,10 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::resource('admins', 'AdminController');
 	Route::post('admins/search','AdminController@search')->name('admins.search');
 
+	//shell_materials
+	Route::resource('shell_materials', 'ShellMaterialController');
+	Route::post('shell_materials/search','ShellMaterialController@search')->name('shell_materials.search');
+
 	//users
 	Route::resource('users', 'UserController');
 	Route::get('block_list', 'UserController@block_list')->name('users.block_list');

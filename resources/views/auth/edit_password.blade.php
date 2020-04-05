@@ -32,6 +32,14 @@
             </button>
         </div>
     @endif
+    @if(session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session()->get('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     @if ($errors->any())
         <div class="form-group m-form__group m--margin-top-10">   
             <div class="alert alert-danger m-alert m-alert--default" role="alert">
@@ -65,11 +73,11 @@
             <div class="m-portlet__body">    
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">Old Password</label>
-                    <input type="password" name="password" class="form-control m-input m-input--air" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="old_password" class="form-control m-input m-input--air" id="exampleInputPassword1" placeholder="Password">
                 </div>           
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">New Password</label>
-                    <input type="password" name="password" class="form-control m-input m-input--air" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="new_password" class="form-control m-input m-input--air" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">Confirm Password</label>
