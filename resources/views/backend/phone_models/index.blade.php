@@ -78,8 +78,9 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
-                                <th> Image </th>
+                                <th class="text-center align-middle"> Image </th>
                                 <th> Name </th>
+                                <th> Brand </th>
                                 <th class="text-center"> Actions </th>
                             </tr>
                         </thead>
@@ -92,8 +93,15 @@
                             @foreach($phone_models as $key=>$phone_model)
                                 <tr>
                                     <td class="align-middle">{{ $key+ $phone_models->firstItem() }}</td>
+                                    <td class="text-center align-middle">
+                                        @if(is_file(\Storage::path('public/uploads/phone_model_imgs/'.$phone_model->image)))
+                                            <img src="{{url(Storage::url('public/uploads/phone_model_imgs/'.$phone_model->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
+                                        @else
+                                            <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
+                                        @endif
+                                    </td>
                                     <td class="align-middle">{{$phone_model->name}}</td>
-                                    <td class="align-middle">{{$phone_model->image}}</td>                         
+                                    <td class="align-middle">{{$phone_model->phone_brand->name}}</td>                      
                                     <td class="text-center align-middle">
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('phone_models.show', $phone_model->id)}}">
                                             <i class="fa fa-eye"></i>

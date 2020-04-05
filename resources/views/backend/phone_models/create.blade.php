@@ -59,13 +59,22 @@
                             <input type="text" name="name" class="form-control m-input m-input--air" placeholder="Enter name" value="{{ old('name') }}"  required autocomplete="name">
                         </div>
                         <div class="form-group m-form__group">
-                            <label>Image</label>
-                            <input type="number" name="image" class="form-control m-input m-input--air" placeholder="Enter price" value="{{ old('image') }}"  required autocomplete="image">
+                            <label for="exampleSelect1">Select Brand</label>
+                            <select name="brand_id" class="form-control m-input m-input--air">
+                                @foreach($phone_brands as $phone_brand)
+                                    <option value="{{$phone_brand->id}}">{{$phone_brand->name}}</option>
+                                @endforeach                        
+                            </select>
                         </div>
                         <div class="form-group m-form__group">
-                            <label>Brand</label>
-                            <input type="number" name="brand_id" class="form-control m-input m-input--air" placeholder="Enter price" value="{{ old('brand_id') }}"  required autocomplete="brand_id">
+                            <label>Image</label><br>
+                            <div class="col-md-12 mb-2">
+                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{ asset('images/default.png') }}"
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
+                            <input type="file" name="image" id="image">
                         </div>
+                        
                     </div>
 
                     <div class="m-portlet__foot m-portlet__foot--fit">
@@ -89,7 +98,15 @@
 
 @section('script')
     <script>
-
+        $('#image').change(function(){
+            
+            let reader = new FileReader();
+            reader.onload = (e) => { 
+                $('#image_preview_container').attr('src', e.target.result); 
+            }
+            reader.readAsDataURL(this.files[0]); 
+    
+        });
     </script>
     
 @endsection

@@ -60,12 +60,21 @@
                             <input type="text" name="name" class="form-control m-input m-input--air" placeholder="Enter name" value="{{ $phone_model->name }}"  required autocomplete="name">
                         </div>
                         <div class="form-group m-form__group">
-                            <label>Image</label>
-                            <input type="number" name="image" class="form-control m-input m-input--air" placeholder="Enter Image" value="{{ $phone_model->image }}"  required autocomplete="price">
+                            <label>Image</label><br>
+                            <div class="col-md-12 mb-2">
+                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/phone_model_imgs/'.$phone_model->image))}}"
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
+                            <input type="file" name="image" id="image">
                         </div>
                         <div class="form-group m-form__group">
-                            <label>Phone Brand</label>
-                            <input type="number" name="phone_brand_id" class="form-control m-input m-input--air" placeholder="Enter Image" value="{{ $phone_model->phone_brand_id }}"  required autocomplete="price">
+                            <label for="exampleSelect1">Select Brand</label>
+                            <select name="phone_brand_id" class="form-control m-input m-input--air">
+                                <option selected value="{{$phone_model->phone_brand_id}}">{{$phone_model->phone_brand->name}}</option>
+                                @foreach($phone_brands as $phone_brand)
+                                    <option value="{{$phone_brand->id}}">{{$phone_brand->name}}</option>
+                                @endforeach                        
+                            </select>
                         </div>
                     </div>
 
@@ -90,7 +99,14 @@
 
 @section('script')
     <script>
-
-    </script>
+        $('#image').change(function(){
+            
+            let reader = new FileReader();
+            reader.onload = (e) => { 
+                $('#image_preview_container').attr('src', e.target.result); 
+            }
+            reader.readAsDataURL(this.files[0]); 
     
+        });
+    </script>
 @endsection

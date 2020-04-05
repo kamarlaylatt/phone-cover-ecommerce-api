@@ -59,8 +59,12 @@
                             <input type="text" name="name" class="form-control m-input m-input--air" placeholder="Enter name" value="{{ old('name') }}"  required autocomplete="name">
                         </div>
                         <div class="form-group m-form__group">
-                            <label>Image</label>
-                            <input type="number" name="image" class="form-control m-input m-input--air" placeholder="Enter price" value="{{ old('image') }}"  required autocomplete="image">
+                            <label>Image</label><br>
+                            <div class="col-md-12 mb-2">
+                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{ asset('images/default.png') }}"
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
+                            <input type="file" name="image" id="image">
                         </div>
                     </div>
 
@@ -85,7 +89,15 @@
 
 @section('script')
     <script>
-
+        $('#image').change(function(){
+            
+            let reader = new FileReader();
+            reader.onload = (e) => { 
+                $('#image_preview_container').attr('src', e.target.result); 
+            }
+            reader.readAsDataURL(this.files[0]); 
+    
+        });
     </script>
     
 @endsection

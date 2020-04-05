@@ -78,7 +78,7 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
-                                <th> Image </th>
+                                <th class="text-center align-middle"> Image </th>
                                 <th> Name </th>
                                 <th class="text-center"> Actions </th>
                             </tr>
@@ -92,8 +92,14 @@
                             @foreach($phone_brands as $key=>$phone_brand)
                                 <tr>
                                     <td class="align-middle">{{ $key+ $phone_brands->firstItem() }}</td>
-                                    <td class="align-middle">{{$phone_brand->name}}</td>
-                                    <td class="align-middle">{{$phone_brand->image}}</td>                         
+                                    <td class="text-center align-middle">
+                                        @if(is_file(\Storage::path('public/uploads/phone_brand_imgs/'.$phone_brand->image)))
+                                            <img src="{{url(Storage::url('public/uploads/phone_brand_imgs/'.$phone_brand->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
+                                        @else
+                                            <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
+                                        @endif
+                                    </td>
+                                    <td class="align-middle">{{$phone_brand->name}}</td>                         
                                     <td class="text-center align-middle">
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('phone_brands.show', $phone_brand->id)}}">
                                             <i class="fa fa-eye"></i>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PhoneBrand;
+use Storage;
 
 class PhoneBrandController extends Controller
 {
@@ -39,13 +40,21 @@ class PhoneBrandController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required',
+            'image' => 'required|image',
         ]);
 
-        PhoneBrand::create([
+        $phone_brand = PhoneBrand::create([
             'name' => $request['name'],
-            'image' => $request['image'],
         ]);
+
+        if($request->file('image'))
+        {
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/phone_brand_imgs/', $file, $filename);
+                $phone_brand->image = $filename;
+                $phone_brand->save();
+        }
 
         return redirect()->route('phone_brands.index');
     }
@@ -86,11 +95,17 @@ class PhoneBrandController extends Controller
         $phone_brand = PhoneBrand::find($id);
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required',
         ]);         
         
         $phone_brand->name = $request['name'];
-        $phone_brand->image = $request['image'];
+        if($request->file('image'))
+        {
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/phone_brand_imgs/', $file, $filename);
+                $phone_brand->image = $filename;
+                $phone_brand->save();
+        }
 
         $phone_brand->update();
 

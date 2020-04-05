@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PhoneModel;
 use App\PhoneBrand;
+use Storage;
 
 
 class PhoneModelController extends Controller
@@ -46,11 +47,19 @@ class PhoneModelController extends Controller
             'brand_id' => 'required',
         ]);
 
-        PhoneModel::create([
+        $phone_model = PhoneModel::create([
             'name' => $request['name'],
-            'image' => $request['image'],
             'phone_brand_id'=> $request['brand_id'],
         ]);
+
+        if($request->file('image'))
+        {
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/phone_model_imgs/', $file, $filename);
+                $phone_model->image = $filename;
+                $phone_model->save();
+        }
 
         return redirect()->route('phone_models.index');
     }
@@ -75,8 +84,9 @@ class PhoneModelController extends Controller
      */
     public function edit($id)
     {
+        $phone_brands = PhoneBrand::all();
         $phone_model = PhoneModel::find($id);
-        return view('backend.phone_models.edit', compact('phone_model'));
+        return view('backend.phone_models.edit', compact('phone_model','phone_brands'));
     }
 
     /**
@@ -91,13 +101,20 @@ class PhoneModelController extends Controller
         $phone_model = PhoneModel::find($id);
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required',
             'phone_brand_id' => 'required',
         ]);         
         
         $phone_model->name = $request['name'];
-        $phone_model->image = $request['image'];
         $phone_model->phone_brand_id = $request['phone_brand_id'];
+
+        if($request->file('image'))
+        {
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/phone_model_imgs/', $file, $filename);
+                $phone_model->image = $filename;
+                $phone_model->save();
+        }
 
         $phone_model->update();
 
@@ -123,6 +140,9 @@ class PhoneModelController extends Controller
         $search = $request['search'];
 
         $phone_models = PhoneModel::where('name', 'like','%'.$search.'%')
+                        ->orWhereHas('phone_brand',function ($query) use ($search){
+                            $query->where('name','like', '%'.$search.'%');
+                        })
                         ->orderBy('id', 'asc')->paginate(20);
 
 

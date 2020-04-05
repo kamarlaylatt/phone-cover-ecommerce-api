@@ -27,18 +27,21 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
+                        <th> Image </th>
+                        <td>                             
+                            @if(is_file(\Storage::path('public/uploads/phone_brand_imgs/'.$phone_brand->image)))
+                                <img src="{{url(Storage::url('public/uploads/phone_brand_imgs/'.$phone_brand->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">
+                            @else
+                                <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">                                           
+                            @endif
+                        </td>
+                    </tr>    
+                    <tr>
                         <th> Name </th>
                         <td>                             
                             {{$phone_brand->name}}
                         </td>
-                    </tr>    
-
-                    <tr>
-                        <th> Image </th>
-                        <td>                             
-                            {{$phone_brand->image}}
-                        </td>
-                    </tr>                    
+                    </tr>                   
                 </table>
             </div>
 
