@@ -65,14 +65,14 @@ class RecruitmentController extends Controller
  
          RecruitmentInfo::Create([
              'title' => $request['english_title'],
-             'subtitle' => $request['english_description'],
+             'description' => $request['english_description'],
              'recruitment_id' => $recruitment->id,
              'language_id' => 1,
          ]);
  
          RecruitmentInfo::Create([
              'title' => $request['myanmar_title'],
-             'subtitle' => $request['myanmar_description'],
+             'description' => $request['myanmar_description'],
              'recruitment_id' => $recruitment->id,
              'language_id' => 2,
          ]);
@@ -140,16 +140,16 @@ class RecruitmentController extends Controller
         $myan_recruitment = $recruitment->infos->where('language_id',2)->first();
 
         $eng_recruitment->title = $request['english_title'];
-        $eng_recruitment->subtitle = $request['english_description'];
+        $eng_recruitment->description = $request['english_description'];
 
         $myan_recruitment->title = $request['myanmar_title'];
-        $myan_recruitment->subtitle = $request['myanmar_description'];
+        $myan_recruitment->description = $request['myanmar_description'];
 
         $recruitment->save();
         $eng_recruitment->save();
         $myan_recruitment->save();
 
-        return redirect(route('banners.index'));
+        return redirect(route('recruitments.index'));
     }
 
     /**
@@ -172,7 +172,7 @@ class RecruitmentController extends Controller
     {
         $search = $request['search'];
 
-        $recruitments = Banner::whereHas('infos', function ($query) use ($search){
+        $recruitments = Recruitment::whereHas('infos', function ($query) use ($search){
                             $query->where('title','like', '%' .$search. '%')
                                     ->orwhere('description','like', '%' .$search. '%');
                             })->orderBy('id', 'asc')->paginate(20);

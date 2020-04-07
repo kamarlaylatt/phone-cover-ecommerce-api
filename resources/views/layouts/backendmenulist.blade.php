@@ -41,6 +41,8 @@
 			</li>
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('phone_models.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-responsive"></i><span class="m-menu__link-text">Phone Model</span></a>
 			</li>
+			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('recruitments.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Recruitment</span></a>
+			</li>
 		</ul>
 	</div>
 
