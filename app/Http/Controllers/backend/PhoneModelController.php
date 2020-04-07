@@ -109,11 +109,12 @@ class PhoneModelController extends Controller
 
         if($request->file('image'))
         {
-                $file = $request->file('image');
-                $filename = uniqid().'_'.$file->getClientOriginalName();
-                Storage::disk('public')->putFileAs('/uploads/phone_model_imgs/', $file, $filename);
-                $phone_model->image = $filename;
-                $phone_model->save();
+            Storage::delete('public/uploads/phone_model_imgs/'.$phone_model->image);
+            $file = $request->file('image');
+            $filename = uniqid().'_'.$file->getClientOriginalName();
+            Storage::disk('public')->putFileAs('/uploads/phone_model_imgs/', $file, $filename);
+            $phone_model->image = $filename;
+            $phone_model->save();
         }
 
         $phone_model->update();
@@ -130,6 +131,7 @@ class PhoneModelController extends Controller
     public function destroy($id)
     {
         $phone_model = PhoneModel::find($id);
+        Storage::delete('public/uploads/phone_model_imgs/'.$phone_model->image);
         $phone_model->delete();
 
         return redirect()->back();

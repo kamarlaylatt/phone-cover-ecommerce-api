@@ -46,6 +46,10 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::resource('phone_models', 'PhoneModelController');
 	Route::post('phone_models/search','PhoneModelController@search')->name('phone_models.search');
 
+	//recruitments
+	Route::resource('recruitments', 'RecruitmentController');
+	Route::post('recruitments/search', 'RecruitmentController@search')->name('recruitments.search');
+
 	//users
 	Route::resource('users', 'UserController');
 	Route::get('block_list', 'UserController@block_list')->name('users.block_list');

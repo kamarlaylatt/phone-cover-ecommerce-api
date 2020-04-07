@@ -100,11 +100,12 @@ class PhoneBrandController extends Controller
         $phone_brand->name = $request['name'];
         if($request->file('image'))
         {
-                $file = $request->file('image');
-                $filename = uniqid().'_'.$file->getClientOriginalName();
-                Storage::disk('public')->putFileAs('/uploads/phone_brand_imgs/', $file, $filename);
-                $phone_brand->image = $filename;
-                $phone_brand->save();
+            Storage::delete('public/uploads/phone_brand_imgs/'.$phone_brand->image); 
+            $file = $request->file('image');
+            $filename = uniqid().'_'.$file->getClientOriginalName();
+            Storage::disk('public')->putFileAs('/uploads/phone_brand_imgs/', $file, $filename);
+            $phone_brand->image = $filename;
+            $phone_brand->save();
         }
 
         $phone_brand->update();
@@ -121,6 +122,7 @@ class PhoneBrandController extends Controller
     public function destroy($id)
     {
         $phone_brand = PhoneBrand::find($id);
+        Storage::delete('public/uploads/phone_brand_imgs/'.$phone_brand->image);
         $phone_brand->delete();
 
         return redirect()->back();
