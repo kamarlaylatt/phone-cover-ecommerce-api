@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Banner|View')
+@section('title','Banner | View')
 
 @section('head_title','Banners')
 
@@ -12,7 +12,7 @@
     <li class="m-nav__separator">-</li>
     <li class="m-nav__item">
         <a href="{{route('banners.show', $banner->id)}}" class="m-nav__link">
-            <span class="m-nav__link-text">Show</span>
+            <span class="m-nav__link-text">View</span>
         </a>
     </li>   
 @endsection

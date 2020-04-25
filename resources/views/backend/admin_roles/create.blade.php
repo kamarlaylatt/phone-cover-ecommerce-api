@@ -1,12 +1,12 @@
 @extends('layouts.backend')
-@section('title','Admin Role|Create')
+@section('title','Manager Role | Create')
 
-@section('head_title','Admin Role')
+@section('head_title','Manager Role')
 
 @section('breadcrumbs')
     <li class="m-nav__item">
         <a href="{{route('admin_roles.index')}}" class="m-nav__link">
-            <span class="m-nav__link-text">Admin Role</span>
+            <span class="m-nav__link-text">Manager Role</span>
         </a>
     </li>
     <li class="m-nav__separator">-</li>
@@ -32,7 +32,7 @@
                         <i class="la la-gear"></i>
                     </span>
                     <h3 class="m-portlet__head-text">
-                        Admin Role Create
+                    Manager Role Create
                     </h3>
                 </div>
             </div>

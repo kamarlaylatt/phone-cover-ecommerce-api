@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Shell Meterial|View')
+@section('title','Shell Meterial | View')
 
 @section('head_title','Shell Materials')
 
@@ -12,7 +12,7 @@
     <li class="m-nav__separator">-</li>
     <li class="m-nav__item">
         <a href="{{route('shell_materials.show', $shell_material->id)}}" class="m-nav__link">
-            <span class="m-nav__link-text">Show</span>
+            <span class="m-nav__link-text">View</span>
         </a>
     </li>   
 @endsection

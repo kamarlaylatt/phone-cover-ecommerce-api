@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Phone Brand|Create')
+@section('title','Phone Brand | Edit')
 
 @section('head_title','Phone Brand')
 

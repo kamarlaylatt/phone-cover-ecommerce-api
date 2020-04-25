@@ -1,18 +1,18 @@
 @extends('layouts.backend')
-@section('title','Admin|View')
+@section('title','Manager | Show')
 
-@section('head_title','Administrator')
+@section('head_title','Manager')
 
 @section('breadcrumbs')
     <li class="m-nav__item">
         <a href="{{route('admins.index')}}" class="m-nav__link">
-            <span class="m-nav__link-text">Admin</span>
+            <span class="m-nav__link-text">Manager</span>
         </a>
     </li>
     <li class="m-nav__separator">-</li>
     <li class="m-nav__item">
         <a href="{{route('admins.show', $admin->id)}}" class="m-nav__link">
-            <span class="m-nav__link-text">Show</span>
+            <span class="m-nav__link-text">View</span>
         </a>
     </li>   
 @endsection
@@ -22,7 +22,7 @@
 <div class="container col-md-8">
     <div class="card">
         <div class="container">
-            <div class="card-title text-center mt-4 h3">Admin Detail</div>
+            <div class="card-title text-center mt-4 h3">Manager Detail</div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>

@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Shell Materials |index')
+@section('title','UL | Shell Materials')
 
 @section('head_title','Shell Materials')
 

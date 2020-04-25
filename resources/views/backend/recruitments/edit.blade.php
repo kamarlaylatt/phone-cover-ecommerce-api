@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Recruitments|Edit')
+@section('title','Recruitments | Edit')
 
 @section('head_title','Recruitment')
 

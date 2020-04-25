@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Phone Model|View')
+@section('title','Phone Model | View')
 
 @section('head_title','Phone Models')
 
@@ -12,7 +12,7 @@
     <li class="m-nav__separator">-</li>
     <li class="m-nav__item">
         <a href="{{route('phone_models.show', $phone_model->id)}}" class="m-nav__link">
-            <span class="m-nav__link-text">Show</span>
+            <span class="m-nav__link-text">View</span>
         </a>
     </li>   
 @endsection

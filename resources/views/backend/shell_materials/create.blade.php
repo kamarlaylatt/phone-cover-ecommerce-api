@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Shell Material|Create')
+@section('title','Shell Material | Create')
 
 @section('head_title','Shell Material')
 

@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Banners|Create')
+@section('title','Banners | Create')
 
 @section('head_title','Banner')
 

@@ -1,12 +1,12 @@
 @extends('layouts.backend')
-@section('title','Admins|Create')
+@section('title','Managers | Create')
 
-@section('head_title','Administrator')
+@section('head_title','Manager')
 
 @section('breadcrumbs')
     <li class="m-nav__item">
         <a href="{{route('admins.index')}}" class="m-nav__link">
-            <span class="m-nav__link-text">Admin</span>
+            <span class="m-nav__link-text">Manager</span>
         </a>
     </li>
     <li class="m-nav__separator">-</li>
@@ -32,7 +32,7 @@
                         <i class="la la-gear"></i>
                     </span>
                     <h3 class="m-portlet__head-text">
-                        Admin Create
+                        Manager Create
                     </h3>
                 </div>
             </div>
