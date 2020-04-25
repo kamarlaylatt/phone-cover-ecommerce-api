@@ -78,9 +78,9 @@
                         <thead>
                             <tr>
                                 <th title="Field #1" data-field="No">No</th>
-                                <th> name </th>
-                                <th> price </th>
-                                <th> sort_index </th>
+                                <th> Name </th>
+                                <th> Price </th>
+                                <th> Sort Index </th>
                                 <th class="text-center"> Actions </th>
                             </tr>
                         </thead>
