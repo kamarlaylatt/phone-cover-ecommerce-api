@@ -43,7 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--RTL version:<link href="../../assets/demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 
 		<!--end::Global Theme Styles -->
-		<link rel="shortcut icon" href="{{asset('backend_asset/demo/default/media/img/logo/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{asset('images/shortcut_icon.png')}}" />
 
 		<link href=" {{ mix('css/app.css') }}" rel="stylesheet">
 	</head>

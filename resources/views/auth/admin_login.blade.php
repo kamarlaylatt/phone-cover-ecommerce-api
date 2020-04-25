@@ -43,7 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--RTL version:<link href="../../../assets/demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 
 		<!--end::Global Theme Styles -->
-		<link rel="shortcut icon" href="{{asset('backend_asset/demo/default/media/img/logo/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{asset('images/shortcut_icon.png')}}" />
 	</head>
 
 	<!-- end::Head -->
@@ -58,12 +58,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="m-login__container">
 						<div class="m-login__logo">
 							<a href="#">
-								<img src="{{asset('backend_asset/app/media/img/logos/logo-1.png')}}">
+								<img width="300" src="{{asset('images/universitylife_logo.png')}}">
 							</a>
 						</div>
 						<div class="m-login__signin">
 							<div class="m-login__head">
-								<h3 class="m-login__title">Sign In To Admin</h3>	
+								<h3 class="m-login__title">Sign In To Adminstrator Dashboard</h3>	
 							</div>
 							<form class="m-login__form m-form" method="POST" action="{{ route('admin.login.post') }}">
 								@csrf
@@ -95,7 +95,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 								</div> --}}
 								<div class="m-login__form-action">
-									<button type="submit" class="btn btn-danger btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--danger">Sign In</button>
+									<button type="submit" style="background-color: white; border: 2px solid grey; color:black" class="btn btn-outline btn-focus m-btn m-btn--pill m-btn--air m-login__btn">Sign In</button>
 								</div>
 							</form>
 						</div>
