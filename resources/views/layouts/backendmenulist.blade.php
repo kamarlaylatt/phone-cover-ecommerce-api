@@ -10,22 +10,27 @@
 				<h4 class="m-menu__section-text">Menu List</h4>
 				<i class="m-menu__section-icon flaticon-more-v2"></i>
 			</li> -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">User Management</span><i
-					 class="m-menu__ver-arrow la la-angle-right"></i></a>
-				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
-					<ul class="m-menu__subnav">
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('admins.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-businesswoman"></i><span class="m-menu__link-text">Managers</span></a>
-						</li>
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('admin_roles.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-3"></i><span class="m-menu__link-text">Roles</span></a>
-						</li>
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('users.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">Users</span></a>
-						</li>
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('users.block_list')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-cancel"></i><span class="m-menu__link-text">Block List</span></a>
-						</li>
-					</ul>
-				</div>
-			</li>
 
+			<!-- user admin management -->
+			@if(Auth::user()->admin_role_id == 1)
+				<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">User Management</span><i
+						class="m-menu__ver-arrow la la-angle-right"></i></a>
+					<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
+						<ul class="m-menu__subnav">
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('admins.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-businesswoman"></i><span class="m-menu__link-text">Managers</span></a>
+							</li>
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('admin_roles.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-3"></i><span class="m-menu__link-text">Roles</span></a>
+							</li>
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('users.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">Users</span></a>
+							</li>
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('users.block_list')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-cancel"></i><span class="m-menu__link-text">Block List</span></a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endif
+
+			<!-- category and products -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Products</span><i
 					 class="m-menu__ver-arrow la la-angle-right"></i></a>
 				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
@@ -53,10 +58,11 @@
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('banners.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-web"></i><span class="m-menu__link-text">Banner</span></a>
 			</li>
 
-			
+			<!-- shell material -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('shell_materials.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-background"></i><span class="m-menu__link-text">Shell Material</span></a>
 			</li>
 			
+			<!-- recruitment -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('recruitments.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Recruitment</span></a>
 			</li>
 		</ul>

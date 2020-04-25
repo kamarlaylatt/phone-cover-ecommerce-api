@@ -26,13 +26,24 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::get('/edit/password', 'AdminController@editPassword')->name('admins.edit.password');
 	Route::post('/update/password', 'AdminController@updatePassword')->name('admins.update.password');
 
-	//admin_roles	
-	Route::resource('admin_roles', 'AdminRoleController');
-	Route::post('admin_roles/search', 'AdminRoleController@search')->name('admin_roles.search');
-	
-	//admins	
-	Route::resource('admins', 'AdminController');
-	Route::post('admins/search','AdminController@search')->name('admins.search');
+	//only superadmin route group
+	Route::middleware('check_admin')->group(function(){
+		//admin_roles	
+		Route::resource('admin_roles', 'AdminRoleController');
+		Route::post('admin_roles/search', 'AdminRoleController@search')->name('admin_roles.search');
+		
+		//admins	
+		Route::resource('admins', 'AdminController');
+		Route::post('admins/search','AdminController@search')->name('admins.search');
+
+		//users
+		Route::resource('users', 'UserController');
+		Route::get('block_list', 'UserController@block_list')->name('users.block_list');
+		Route::post('users/{id}/block', 'UserController@block')->name('users.block');
+		Route::post('users/{id}/unblock', 'UserController@unblock')->name('users.unblock');
+		Route::post('users/search','UserController@search')->name('users.search');
+		Route::post('users/block_search','UserController@block_search')->name('users.block_search');
+	});	
 
 	//shell_materials
 	Route::resource('shell_materials', 'ShellMaterialController');
@@ -50,14 +61,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::resource('recruitments', 'RecruitmentController');
 	Route::post('recruitments/search', 'RecruitmentController@search')->name('recruitments.search');
 
-	//users
-	Route::resource('users', 'UserController');
-	Route::get('block_list', 'UserController@block_list')->name('users.block_list');
-	Route::post('users/{id}/block', 'UserController@block')->name('users.block');
-	Route::post('users/{id}/unblock', 'UserController@unblock')->name('users.unblock');
-	Route::post('users/search','UserController@search')->name('users.search');
-	Route::post('users/block_search','UserController@block_search')->name('users.block_search');
-
+	//banners
 	Route::resource('banners', 'BannerController');
 	Route::post('banners/search','BannerController@search')->name('banners.search');
 
