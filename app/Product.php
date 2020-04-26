@@ -36,6 +36,11 @@ class Product extends Model
         return $this->hasMany('App\ProductImage');
     }
 
+    public function order_items()
+    {
+        return  $this->morphMany('App\OrderItem', 'item');
+    }
+
     public function storeProduct($request)
     {
     	$product = Product::Create([
