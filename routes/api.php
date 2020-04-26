@@ -29,4 +29,10 @@ Route::namespace('api')->group(function(){
     Route::get('/category/subcategory/list', 'CategoryController@getSubCategories');
     Route::get('/product/list', 'ProductController@getProductList');
     Route::get('/product/detail', 'ProductController@getProductDetail');
+
+    Route::get('/shell-material/list', 'DiyController@getShellMaterialList');
+    Route::get('/recruitment/list', 'DiyController@getRecruitmentList');
+    Route::get('/phone-brand/list', 'DiyController@getPhoneBrandList');
+    Route::get('/phone-model/list', 'DiyController@getPhoneModelList');
+
 });

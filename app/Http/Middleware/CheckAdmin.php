@@ -19,6 +19,6 @@ class CheckAdmin
         if (Auth::user()->admin_role_id == 1) {
             return $next($request);
         }
-        return redirect()->route('categories.index');
+        return redirect()->route('admins.profile')->with('error','Sorry, this page for only (Super Adminstrator) role.');
     }
 }

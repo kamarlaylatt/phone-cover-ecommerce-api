@@ -65,9 +65,11 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="m-stack__item m-brand  m-brand--skin-dark ">
 								<div class="m-stack m-stack--ver m-stack--general">
 									<div class="m-stack__item m-stack__item--middle m-brand__logo">
-										<a href="../../index.html" class="m-brand__logo-wrapper">
-		  									<span class="h2 text-info"><strong>Universitylife</strong></span>
+										<a href="{{url('/')}}" class="m-brand__logo-wrapper">
+		  									<!-- <span class="h2" style="color: #7b7e9b;"><strong>Universitylife</strong></span> -->
 											<!-- <img alt="" src="{{asset('backend_asset/demo/default/media/img/logo/logo_default_dark.png')}}" /> -->
+											<img width="160" alt="" src="{{asset('images/universitylife_logo.png')}}" />
+
 										</a>
 									</div>
 									<div class="m-stack__item m-stack__item--middle m-brand__tools">

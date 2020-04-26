@@ -18,7 +18,7 @@ Route::get('/logout', 'Auth\LoginController@adminLogout')->name('admin.logout');
 Route::namespace('backend')->middleware('auth:admin')->group(function(){
 
 
-	Route::get('/', function () {return view('layouts.backend');})->name('admin');
+	Route::get('/', function () {return redirect()->route('admins.profile');})->name('admin');
 
 	//admin profile
 	Route::get('/profile', 'AdminController@profile')->name('admins.profile');

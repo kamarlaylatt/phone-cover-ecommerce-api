@@ -53,7 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		<!-- begin:: Page -->
 		<div class="m-grid m-grid--hor m-grid--root m-page">
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2" id="m_login" style="background-image: url({{asset('backend_asset/app/media/img//bg/bg-3.jpg')}});">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2" id="m_login" style="background-image: url({{asset('images/login_cover.jpg')}});">
 				<div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
 					<div class="m-login__container">
 						<div class="m-login__logo">
@@ -68,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<form class="m-login__form m-form" method="POST" action="{{ route('admin.login.post') }}">
 								@csrf
 								<div class="form-group m-form__group">
-									<input class="form-control m-input @error('email') is-invalid @enderror" type="text" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+									<input style="border: 2px solid grey;" class="form-control m-input @error('email') is-invalid @enderror" type="text" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 									@error('email')
 	                                    <span class="invalid-feedback" role="alert">
 	                                        <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	                                @enderror
 								</div>
 								<div class="form-group m-form__group">
-									<input class="form-control m-input m-login__form-input--last @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password">
+									<input style="border: 2px solid grey;" class="form-control m-input m-login__form-input--last @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password">
 									@error('password')
 	                                    <span class="invalid-feedback" role="alert">
 	                                        <strong>{{ $message }}</strong>
@@ -95,7 +95,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 								</div> --}}
 								<div class="m-login__form-action">
-									<button type="submit" style="background-color: white; border: 2px solid grey; color:black" class="btn btn-outline btn-focus m-btn m-btn--pill m-btn--air m-login__btn">Sign In</button>
+									<button type="submit" style="background-color: white; border: 2px solid grey; color:black;" class="btn btn-outline m-btn m-btn--pill m-btn--air m-login__btn">Sign In</button>
 								</div>
 							</form>
 						</div>
