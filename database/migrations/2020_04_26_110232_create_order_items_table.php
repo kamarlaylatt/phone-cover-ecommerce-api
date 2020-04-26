@@ -20,7 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->string('item_type');
             $table->integer('quantity')->default(1);
             $table->decimal('sub_total',8,2)->default(0);
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }

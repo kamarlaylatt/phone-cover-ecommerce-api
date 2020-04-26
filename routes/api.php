@@ -35,4 +35,8 @@ Route::namespace('api')->group(function(){
     Route::get('/phone-brand/list', 'DiyController@getPhoneBrandList');
     Route::get('/phone-model/list', 'DiyController@getPhoneModelList');
 
+    //order
+    Route::post('/order/product', 'OrderController@productOrder');
+
+
 });
