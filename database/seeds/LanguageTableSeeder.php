@@ -17,11 +17,15 @@ class LanguageTableSeeder extends Seeder
         DB::table('languages')->insert([
             'name' => 'English',
             'alias' => 'Eng',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         DB::table('languages')->insert([
             'name' => 'Myanmar',
             'alias' => 'Myan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }
