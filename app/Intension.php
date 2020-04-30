@@ -21,16 +21,16 @@ class Intension extends Model
 
     public function phone_model()
     {
-        $this->belongsTo('App\PhoneModel','phone_model_id');
+        return $this->belongsTo('App\PhoneModel','phone_model_id');
     }
 
     public function shell_material()
     {
-        $this->belongsTo('App\ShellMaterial','shell_material_id');
+        return $this->belongsTo('App\ShellMaterial','shell_material_id');
     }
 
     public function intension_images()
     {
-        $this->belongsTo('App\IntensionImage');
+        return $this->belongsTo('App\IntensionImage');
     }
 }

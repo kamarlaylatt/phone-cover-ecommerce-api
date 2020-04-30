@@ -12,16 +12,16 @@ class Order extends Model
 
     public function user()
     {
-        $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function order_status()
     {
-        $this->belongsTo('App\OrderStatus','order_status_id');
+        return $this->belongsTo('App\OrderStatus','order_status_id');
     }
 
     public function order_items()
     {
-        $this->hasMany('App\OrderItem');
+        return $this->hasMany('App\OrderItem');
     }
 }

@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('item_count')->default(0);
             $table->decimal('total_amount',8,2)->default(0);
             $table->string('remark')->nullable();
-            $table->string('order_no');
+            $table->string('order_no')->unique();
             $table->foreign('order_status_id')->references('id')->on('order_statuses');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
