@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\api\BaseController;
 use App\Order;
 use App\OrderItem;
+use App\Product;
 use DB;
 
 class OrderController extends BaseController
@@ -24,6 +25,22 @@ class OrderController extends BaseController
 
         $item_count = $order_header['item_count'];
         $total_amount = $order_header['total_amount'];
+
+        foreach($order_body['order_items'] as $item)
+        {
+            $check_order = Product::find($item['item_id']);
+            if(!$check_order)
+            {
+                $error = [
+                    [
+                        'fieldCode' => 'invalid',
+                        'errorMessage' => 'item_id ' . $item['item_id'] . ' not have in item list.',
+                    ],                    
+                ];
+
+                return $this->failResponse($error);
+            }
+        }
         
 
         //check unique order no

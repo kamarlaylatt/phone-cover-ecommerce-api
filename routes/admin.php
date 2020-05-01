@@ -89,6 +89,11 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 		Route::delete('/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
 		Route::post('/search', 'ProductController@search')->name('products.search');
 	});
+
+	//orders
+	Route::prefix('orders')->group(function(){
+		Route::get('/','OrderController@index')->name('orders.index');
+	});
 	
 
 });
