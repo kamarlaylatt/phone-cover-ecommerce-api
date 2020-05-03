@@ -6094,6 +6094,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-image-upload-resize */ "./node_modules/vue-image-upload-resize/dist/vue-image-upload-resize.common.js");
 /* harmony import */ var vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
+//
+//
+//
+//
 //
 //
 //
@@ -6184,6 +6189,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories'],
   data: function data() {
@@ -6206,11 +6212,12 @@ __webpack_require__.r(__webpack_exports__);
       image: '/images/default.png',
       errors: '',
       hasImage: false,
-      disabled_status: false
+      isLoading: false
     };
   },
   components: {
-    ImageUploader: vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_0___default.a
+    ImageUploader: vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_0___default.a,
+    VueLoadingButton: vue_loading_button__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   mounted: function mounted() {
     this.form.parent = this.categories[0].id;
@@ -6235,7 +6242,7 @@ __webpack_require__.r(__webpack_exports__);
     create: function create() {
       var _this = this;
 
-      this.disabled_status = true;
+      this.isLoading = true;
       var formData = new FormData();
       var config = {
         headers: {
@@ -6262,7 +6269,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {
             _this.errors = '';
           }, 2000);
-          _this.disabled_status = false;
+          _this.isLoading = false;
         }
       });
     },
@@ -6287,6 +6294,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
 //
 //
 //
@@ -6377,6 +6385,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categories', 'category', 'img_url', 'category_infos'],
   data: function data() {
@@ -6400,8 +6413,11 @@ __webpack_require__.r(__webpack_exports__);
       image_change_status: false,
       errors: '',
       obj: '',
-      disabled_status: false
+      isLoading: false
     };
+  },
+  components: {
+    VueLoadingButton: vue_loading_button__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
     // this.form.category = this.categories[0].id;
@@ -6441,7 +6457,7 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
-      this.disabled_status = true;
+      this.isLoading = true;
       var formData = new FormData();
       var config = {
         headers: {
@@ -6477,7 +6493,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {
             _this.errors = '';
           }, 2000);
-          _this.disabled_status = false;
+          _this.isLoading = false;
         }
       });
     },
@@ -61910,41 +61926,36 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-              _c("div", { staticClass: "m-form__actions text-center" }, [
-                _vm.disabled_status == false
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: { click: _vm.create }
-                      },
-                      [_vm._v("Create")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.disabled_status == true
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button", disabled: "" },
-                        on: { click: _vm.create }
-                      },
-                      [_vm._v("Create")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: { click: _vm.cancel }
-                  },
-                  [_vm._v("Cancel")]
-                )
-              ])
+              _c(
+                "div",
+                { staticClass: "m-form__actions text-center" },
+                [
+                  _c(
+                    "VueLoadingButton",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { loading: _vm.isLoading },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.create($event)
+                        }
+                      }
+                    },
+                    [_c("small", [_vm._v("Create")])]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button" },
+                      on: { click: _vm.cancel }
+                    },
+                    [_vm._v("Cancel")]
+                  )
+                ],
+                1
+              )
             ])
           ])
         ]
@@ -62255,41 +62266,36 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-              _c("div", { staticClass: "m-form__actions text-center" }, [
-                _vm.disabled_status == false
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: { click: _vm.update }
-                      },
-                      [_vm._v("Update")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.disabled_status == true
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button", disabled: "" },
-                        on: { click: _vm.update }
-                      },
-                      [_vm._v("Update")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: { click: _vm.cancel }
-                  },
-                  [_vm._v("Cancel")]
-                )
-              ])
+              _c(
+                "div",
+                { staticClass: "m-form__actions text-center" },
+                [
+                  _c(
+                    "VueLoadingButton",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { loading: _vm.isLoading },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.update($event)
+                        }
+                      }
+                    },
+                    [_c("small", [_vm._v("Update")])]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button" },
+                      on: { click: _vm.cancel }
+                    },
+                    [_vm._v("Cancel")]
+                  )
+                ],
+                1
+              )
             ])
           ])
         ]

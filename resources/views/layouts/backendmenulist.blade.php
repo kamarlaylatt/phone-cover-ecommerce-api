@@ -14,7 +14,7 @@
 			<!-- user admin management -->
 			@if(Auth::user()->admin_role_id == 1)
 				<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">User Management</span><i
-						class="m-menu__ver-arrow la la-angle-right"></i></a>
+						class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
 					<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
 						<ul class="m-menu__subnav">
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('admins.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-businesswoman"></i><span class="m-menu__link-text">Managers</span></a>
@@ -30,21 +30,9 @@
 				</li>
 			@endif
 
-			<!-- category and products -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Products</span><i
-					 class="m-menu__ver-arrow la la-angle-right"></i></a>
-				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
-					<ul class="m-menu__subnav">		
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('categories.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Category</span></a>
-						</li>
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('products.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Product</span></a>
-						</li>
-					</ul>
-				</div>
-			</li>
 			<!-- Phone Brand & Model -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-responsive"></i><span class="m-menu__link-text">Brands & Models</span><i
-					 class="m-menu__ver-arrow la la-angle-right"></i></a>
+					 class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
 				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
 					<ul class="m-menu__subnav">		
 						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('phone_brands.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-box-1"></i><span class="m-menu__link-text">Phone Brand</span></a>
@@ -53,6 +41,14 @@
 						</li>
 					</ul>
 				</div>
+			</li>
+
+			<!-- Category -->
+			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('categories.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Category</span></a>
+			</li>
+
+			<!-- Product -->
+			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('products.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Product</span></a>
 			</li>
 			<!-- Banner -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('banners.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-web"></i><span class="m-menu__link-text">Banner</span></a>
@@ -67,8 +63,8 @@
 			</li>
 
 			<!-- order -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Order</span></a>
-			</li>
+			<!-- <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Order</span></a>
+			</li> -->
 		</ul>
 	</div>
 

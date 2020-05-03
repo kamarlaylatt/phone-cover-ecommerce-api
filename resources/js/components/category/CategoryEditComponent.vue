@@ -76,9 +76,13 @@
 								
 				<div class="m-portlet__foot m-portlet__foot--fit">
 					<div class="m-form__actions text-center">
-						<button v-if="disabled_status==false" type="button" @click="update" class="btn btn-success">Update</button>
-						<button v-if="disabled_status==true" type="button" disabled @click="update" class="btn btn-success">Update</button>
-							<button type="button" @click="cancel" class="btn btn-danger">Cancel</button>
+						<VueLoadingButton 
+                        @click.native="update"
+                        class="btn btn-success"
+                        :loading="isLoading"
+                        ><small>Update</small>
+                        </VueLoadingButton>
+						<button type="button" @click="cancel" class="btn btn-danger">Cancel</button>
 					</div>
 				</div>
 		</div>
@@ -89,6 +93,7 @@
 	</div>
 </template>
 <script>
+	import VueLoadingButton from 'vue-loading-button';
 	export default {
 		props: ['categories','category','img_url','category_infos'],
 		data(){
@@ -113,8 +118,12 @@
 				image_change_status: false,
 				errors: '',
 				obj: '',
-				disabled_status: false,
+				isLoading: false,
 			};
+		},
+
+		components: {
+			VueLoadingButton
 		},
 
 		mounted()
@@ -164,7 +173,7 @@
 
 			update()
 			{	
-				this.disabled_status = true;
+				this.isLoading = true;
 
 				let formData = new FormData();
 				let config = {
@@ -208,7 +217,7 @@
 						setTimeout(()=>{
 							this.errors = '';
 						},2000)	
-						this.disabled_status = false;			
+						this.isLoading = false;			
 					}
 					
 				});

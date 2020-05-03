@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // is this request asks for api?
-        if( $request->is('api/*') || $request->header('content-type','application/json')){
+        if( $request->is('api/*') || $request->header('content-type') == 'application/json'){
 
             /*  is this exception? */
 

@@ -75,8 +75,12 @@
 				
 				<div class="m-portlet__foot m-portlet__foot--fit">
 					<div class="m-form__actions text-center">
-						<button v-if="disabled_status==false" type="button" @click="create" class="btn btn-success">Create</button>
-						<button v-if="disabled_status==true" type="button" disabled @click="create" class="btn btn-success">Create</button>
+						<VueLoadingButton 
+                        @click.native="create"
+                        class="btn btn-success"
+                        :loading="isLoading"
+                        ><small>Create</small>
+                        </VueLoadingButton>
 						<button type="button" @click="cancel" class="btn btn-danger">Cancel</button>
 					</div>
 				</div>
@@ -89,6 +93,7 @@
 
 <script>
 import ImageUploader from 'vue-image-upload-resize'
+import VueLoadingButton from 'vue-loading-button';
 	export default {
 		props: ['categories'],
 		data(){
@@ -113,12 +118,12 @@ import ImageUploader from 'vue-image-upload-resize'
 
 				errors: '',
 				hasImage: false,
-				disabled_status: false,
+				isLoading: false,
 			};
 		},
 
 		components: {
-			ImageUploader
+			ImageUploader,VueLoadingButton
 		},
 
 		mounted()
@@ -147,7 +152,7 @@ import ImageUploader from 'vue-image-upload-resize'
 			
 			create()
 			{
-				this.disabled_status = true;
+				this.isLoading = true;
 				
 				let formData = new FormData();
 				let config = {
@@ -181,7 +186,7 @@ import ImageUploader from 'vue-image-upload-resize'
 						setTimeout(()=>{
 							this.errors = '';
 						},2000)
-						this.disabled_status = false;				
+						this.isLoading = false;					
 					}
 					
 				});
