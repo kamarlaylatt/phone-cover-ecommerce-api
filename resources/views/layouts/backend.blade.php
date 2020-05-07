@@ -45,7 +45,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Global Theme Styles -->
 		<link rel="shortcut icon" href="{{asset('images/shortcut_icon.png')}}" />
 
-		<link href=" {{ mix('css/app.css') }}" rel="stylesheet">
+		<link href=" {{ asset('css/app.css') }}" rel="stylesheet">
 	</head>
 
 	<!-- end::Head -->
@@ -305,7 +305,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 			<!--end::Global Theme Bundle -->
 		</div>
-		<script src="{{ mix('js/app.js') }}"></script>
+		<script src="{{ asset('js/app.js') }}"></script>
 	</body>
 
 	@yield('script')
