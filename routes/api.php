@@ -38,5 +38,8 @@ Route::namespace('api')->group(function(){
     //order
     Route::post('/order/product', 'OrderController@productOrder');
 
+    Route::get('/tab-list', 'DiyController@getTabList');
+    Route::get('/charlet-list', 'DiyController@getCharletList');
+    Route::get('/mask-list', 'DiyController@getMaskList');
 
 });

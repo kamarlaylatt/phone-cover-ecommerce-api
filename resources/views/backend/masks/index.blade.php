@@ -93,8 +93,8 @@
                                 <tr>
                                     <td class="align-middle">{{ $key+ $masks->firstItem() }}</td>
                                     <td class="text-center align-middle">
-                                        @if(is_file(\Storage::path('public/uploads/charlet_imgs/'.$mask->image)))
-                                            <img src="{{url(Storage::url('public/uploads/charlet_imgs/'.$mask->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
+                                        @if(is_file(\Storage::path('public/uploads/mask_imgs/'.$mask->image)))
+                                            <img src="{{url(Storage::url('public/uploads/mask_imgs/'.$mask->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                         @else
                                             <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
                                         @endif

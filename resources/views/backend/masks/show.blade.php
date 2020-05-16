@@ -29,8 +29,8 @@
                     <tr>
                         <th> Image </th>
                         <td>                             
-                            @if(is_file(\Storage::path('public/uploads/charlet_imgs/'.$mask->image)))
-                                <img src="{{url(Storage::url('public/uploads/charlet_imgs/'.$mask->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">
+                            @if(is_file(\Storage::path('public/uploads/mask_imgs/'.$mask->image)))
+                                <img src="{{url(Storage::url('public/uploads/mask_imgs/'.$mask->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">
                             @else
                                 <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">                                           
                             @endif

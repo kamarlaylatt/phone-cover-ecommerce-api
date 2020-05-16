@@ -8,11 +8,16 @@ use App\Http\Resources\ShellMaterialListResource;
 use App\Http\Resources\RecruitmentListResource;
 use App\Http\Resources\PhoneBrandListResource;
 use App\Http\Resources\PhoneModelListResource;
+use App\Http\Resources\CharletListResource;
+use App\Http\Resources\MaskListResource;
 use App\Http\Controllers\api\BaseController;
 use App\ShellMaterial;
 use App\Recruitment;
 use App\PhoneBrand;
 use App\PhoneModel;
+use App\Tab;
+use App\Charlet;
+use App\Mask;
 
 class DiyController extends BaseController
 {
@@ -50,5 +55,31 @@ class DiyController extends BaseController
         ];
 
         return $this->successResponse($responseBody,'Successfully retrieve Phone Model List.');
+    }
+
+    public function getTabList()
+    {
+        $tabs = Tab::select('id as tabId','name')->get();
+
+        $responseBody = [
+            'tabList' => $tabs,
+        ];
+        return $this->successResponse($responseBody,'Successfully retrieve Tab List.');
+    }
+
+    public function getCharletList()
+    {
+        $responseBody = [
+            'charletList' => CharletListResource::collection(Charlet::all()),
+        ];
+        return $this->successResponse($responseBody,'Successfully retrieve Charlet List.');
+    }
+
+    public function getMaskList()
+    {
+        $responseBody = [
+            'maskList' => MaskListResource::collection(Mask::all()),
+        ];
+        return $this->successResponse($responseBody,'Successfully retrieve Mask List.');
     }
 }

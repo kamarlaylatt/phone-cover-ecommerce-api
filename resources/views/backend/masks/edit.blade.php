@@ -58,7 +58,7 @@
                         <div class="form-group m-form__group">
                             <label>Image</label><br>
                             <div class="col-md-12 mb-2">
-                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/charlet_imgs/'.$mask->image))}}"
+                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/mask_imgs/'.$mask->image))}}"
                                     alt="preview image" style="max-height: 150px;">
                             </div>
                             <input type="file" name="image" id="image">

@@ -53,7 +53,7 @@ class MaskController extends Controller
         {
                 $file = $request->file('image');
                 $filename = uniqid().'_'.$file->getClientOriginalName();
-                Storage::disk('public')->putFileAs('/uploads/charlet_imgs/', $file, $filename);
+                Storage::disk('public')->putFileAs('/uploads/mask_imgs/', $file, $filename);
                 $mask->image = $filename;
                 $mask->save();
         }
@@ -104,10 +104,10 @@ class MaskController extends Controller
 
         if($request->file('image'))
         {
-            Storage::delete('public/uploads/charlet_imgs/'.$mask->image);
+            Storage::delete('public/uploads/mask_imgs/'.$mask->image);
             $file = $request->file('image');
             $filename = uniqid().'_'.$file->getClientOriginalName();
-            Storage::disk('public')->putFileAs('/uploads/charlet_imgs/', $file, $filename);
+            Storage::disk('public')->putFileAs('/uploads/mask_imgs/', $file, $filename);
             $mask->image = $filename;
             $mask->save();
         }
@@ -126,7 +126,7 @@ class MaskController extends Controller
     public function destroy($id)
     {
         $mask = Mask::find($id);
-        Storage::delete('public/uploads/charlet_imgs/'.$mask->image);
+        Storage::delete('public/uploads/mask_imgs/'.$mask->image);
         $mask->delete();
 
         return redirect()->back();
