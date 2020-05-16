@@ -82,14 +82,19 @@
                 </div>
                 <div class="form-group m-form__group">
                     <label>Address</label>
-                    <input type="text" value="{{$admin->address}}" name="address" class="form-control m-input m-input--air" placeholder="Enter name" value="{{ old('name') }}" autocomplete="name">
+                    <input type="text" value="{{$admin->address}}" name="address" class="form-control m-input m-input--air" placeholder="Enter Address" value="{{ old('name') }}" autocomplete="name">
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleSelect1">Select Role</label>
                     <select name="role" class="form-control m-input m-input--air">
-                        <option selected value="{{$admin->admin_role->id}}">{{$admin->admin_role->name}}</option>
                         @foreach($roles as $role)
-                            <option value="{{$role->id}}">{{$role->name}}</option>
+                            <option value="{{$role->id}}"
+                                @if($role->id == $admin->admin_role->id)
+                                selected="selected"
+                                @endif
+                            >
+                                {{$role->name}}
+                            </option>
                         @endforeach    
                     </select>
                 </div>

@@ -72,7 +72,14 @@
                             <select name="phone_brand_id" class="form-control m-input m-input--air">
                                 <option selected value="{{$phone_model->phone_brand_id}}">{{$phone_model->phone_brand->name}}</option>
                                 @foreach($phone_brands as $phone_brand)
-                                    <option value="{{$phone_brand->id}}">{{$phone_brand->name}}</option>
+                                    <option 
+                                        @if($phone_brand->id == $phone_model->phone_brand_id)
+                                        selected="selected"
+                                        @endif
+                                        value="{{$phone_brand->id}}"
+                                    >
+                                        {{$phone_brand->name}}
+                                    </option>
                                 @endforeach                        
                             </select>
                         </div>
