@@ -16,7 +16,7 @@ class CreateMasksTable extends Migration
         Schema::create('masks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tab_id');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreign('tab_id')->references('id')->on('tabs');
             $table->timestamps();
         });

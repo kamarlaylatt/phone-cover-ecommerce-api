@@ -6,7 +6,7 @@
 @section('breadcrumbs')
     <li class="m-nav__item">
         <a href="{{route('phone_models.index')}}" class="m-nav__link">
-            <span class="m-nav__link-text">Phone Modell</span>
+            <span class="m-nav__link-text">Phone Model</span>
         </a>
     </li>
     <li class="m-nav__separator">-</li>
@@ -43,7 +43,7 @@
                         </td>
                     </tr>    
                     <tr>
-                        <th> Name </th>
+                        <th> Brand </th>
                         <td>                             
                             {{$phone_model->phone_brand->name}}
                         </td>

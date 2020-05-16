@@ -70,7 +70,6 @@
                         <div class="form-group m-form__group">
                             <label for="exampleSelect1">Select Brand</label>
                             <select name="phone_brand_id" class="form-control m-input m-input--air">
-                                <option selected value="{{$phone_model->phone_brand_id}}">{{$phone_model->phone_brand->name}}</option>
                                 @foreach($phone_brands as $phone_brand)
                                     <option 
                                         @if($phone_brand->id == $phone_model->phone_brand_id)

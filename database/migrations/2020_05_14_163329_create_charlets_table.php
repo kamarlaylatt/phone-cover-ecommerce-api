@@ -16,7 +16,7 @@ class CreateCharletsTable extends Migration
         Schema::create('charlets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tab_id');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreign('tab_id')->references('id')->on('tabs');
             $table->timestamps();
         });

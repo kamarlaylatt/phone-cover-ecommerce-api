@@ -4,6 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Charlet;
+use App\Tab;
+use Storage;
 
 class CharletController extends Controller
 {
@@ -14,7 +17,8 @@ class CharletController extends Controller
      */
     public function index()
     {
-        //
+        $charlets = Charlet::paginate(10);
+        return view('backend.charlets.index', compact('charlets'));
     }
 
     /**
@@ -24,7 +28,8 @@ class CharletController extends Controller
      */
     public function create()
     {
-        //
+        $tabs = Tab::all();
+        return view('backend.charlets.create', compact('tabs'));
     }
 
     /**
@@ -35,7 +40,25 @@ class CharletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required',
+            'tab_id' => 'required',
+        ]);
+
+        $charlet = Charlet::create([
+            'tab_id'=> $request['tab_id'],
+        ]);
+
+        if($request->file('image'))
+        {
+                $file = $request->file('image');
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/charlet_imgs/', $file, $filename);
+                $charlet->image = $filename;
+                $charlet->save();
+        }
+
+        return redirect()->route('charlets.index');
     }
 
     /**
@@ -46,7 +69,8 @@ class CharletController extends Controller
      */
     public function show($id)
     {
-        //
+        $charlet = Charlet::find($id);
+        return view('backend.charlets.show', compact('charlet'));
     }
 
     /**
@@ -57,7 +81,9 @@ class CharletController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tabs = Tab::all();
+        $charlet = Charlet::find($id);
+        return view('backend.charlets.edit', compact('charlet','tabs'));
     }
 
     /**
@@ -69,7 +95,26 @@ class CharletController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $charlet = Charlet::find($id);
+        $request->validate([
+            'tab_id' => 'required',
+        ]);         
+
+        $charlet->tab_id = $request['tab_id'];
+
+        if($request->file('image'))
+        {
+            Storage::delete('public/uploads/charlet_imgs/'.$charlet->image);
+            $file = $request->file('image');
+            $filename = uniqid().'_'.$file->getClientOriginalName();
+            Storage::disk('public')->putFileAs('/uploads/charlet_imgs/', $file, $filename);
+            $charlet->image = $filename;
+            $charlet->save();
+        }
+
+        $charlet->update();
+
+        return redirect()->route('charlets.index');
     }
 
     /**
@@ -80,6 +125,23 @@ class CharletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $charlet = Charlet::find($id);
+        Storage::delete('public/uploads/charlet_imgs/'.$charlet->image);
+        $charlet->delete();
+
+        return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request['search'];
+
+        $charlets = Charlet::WhereHas('tab',function ($query) use ($search){
+                            $query->where('name','like', '%'.$search.'%');
+                        })
+                        ->orderBy('id', 'asc')->paginate(20);
+
+
+        return view('backend.charlets.index', compact('charlets'));
     }
 }

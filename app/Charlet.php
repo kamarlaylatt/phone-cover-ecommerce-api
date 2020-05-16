@@ -9,4 +9,9 @@ class Charlet extends Model
     protected $fillable = [
         'image','tab_id'
     ];
+
+    public function tab()
+    {
+        return $this->belongsTo('App\Tab','tab_id');
+    }
 }

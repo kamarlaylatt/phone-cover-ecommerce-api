@@ -94,6 +94,18 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::prefix('orders')->group(function(){
 		Route::get('/','OrderController@index')->name('orders.index');
 	});
+
+	//tabs
+	Route::resource('tabs', 'TabController');
+	Route::post('tabs/search','TabController@search')->name('tabs.search');
+
+	//charlets
+	Route::resource('charlets', 'CharletController');
+	Route::post('charlets/search','CharletController@search')->name('charlets.search');
+
+	//masks
+	Route::resource('masks', 'MaskController');
+	Route::post('masks/search','MaskController@search')->name('masks.search');
 	
 
 });
