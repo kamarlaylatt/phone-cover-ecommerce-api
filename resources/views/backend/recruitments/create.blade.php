@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>Description</label>
-                                    <input type="text" name="english_description" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('english_description') }}"  required autocomplete="english_description">
+                                    <input type="text" name="english_description" class="form-control m-input m-input--air" placeholder="Enter Description" value="{{ old('english_description') }}"  required autocomplete="english_description">
                                 </div>
                             </div>
                             <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>Description</label>
-                                    <input type="text" name="myanmar_description" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('myanmar_description') }}"  required autocomplete="myanmar_description">
+                                    <input type="text" name="myanmar_description" class="form-control m-input m-input--air" placeholder="Enter Description" value="{{ old('myanmar_description') }}"  required autocomplete="myanmar_description">
                                 </div>
                             </div>
                         </div>

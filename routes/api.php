@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('api')->group(function(){
+Route::namespace('api')->middleware('check_app')->group(function(){
     Route::prefix('home')->group(function(){
         Route::get('/banner/list', 'HomeController@getBannerList');
         Route::get('/category/list', 'HomeController@getCategoryList');
