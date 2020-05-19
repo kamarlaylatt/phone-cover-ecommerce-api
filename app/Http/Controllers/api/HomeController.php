@@ -33,7 +33,7 @@ class HomeController extends BaseController
     public function getProductList()
     {
         $responseBody = [
-            'productList' => ProductListResource::collection(Product::inRandomOrder()->limit(20)->get()),
+            'productList' => ProductListResource::collection(Product::inRandomOrder()->limit(32)->get()),
         ];
         return $this->successResponse($responseBody, 'Success retrieve product list');
     }
