@@ -20,7 +20,13 @@ class ProductController extends BaseController
         {
             return new ProductListResourceCollection($category->products()->paginate(20));
         }else{
-            return $this->successResponse(null, 'There is no product list in this cateogory');
+            $response = [
+                'responseCode' => 200,
+                'responseMessage' => 'There is no product list in this cateogory',
+                'data' => null,
+            ];
+    
+            return response()->json($response, 200);
         }
     }
 
