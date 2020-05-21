@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\ShellMaterialListResource;
 use App\Http\Resources\RecruitmentListResource;
+use App\Http\Resources\RecruitmentDetailResource;
+use App\Http\Resources\RecruitmentListResourceCollection;
 use App\Http\Resources\PhoneBrandListResource;
 use App\Http\Resources\PhoneModelListResource;
 use App\Http\Resources\CharletListResource;
@@ -32,11 +34,20 @@ class DiyController extends BaseController
 
     public function getRecruitmentList()
     {
-        $responseBody = [
-            'recruitmentList' => RecruitmentListResource::collection(Recruitment::all())
-        ];
+        return new RecruitmentListResourceCollection(Recruitment::paginate(10));
+    }
 
-        return $this->successResponse($responseBody,'Successfully retrieve Recruitment List.');
+    public function getRecruitmentDetail(Request $request)
+    {
+        $recruitment = Recruitment::find($request->recruitment_id);
+        if($recruitment)
+        {
+            $responseBody = new RecruitmentDetailResource($recruitment);
+        }
+        else{
+            $responseBody = null;
+        }
+        return $this->successResponse($responseBody,'Successfully retrieve Recruitment Detail.');
     }
 
     public function getPhoneBrandList()

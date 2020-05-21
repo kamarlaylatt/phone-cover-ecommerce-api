@@ -30,6 +30,7 @@ class ProductListResource extends JsonResource
             'product_id' => $this->id,
             'product_name' => $product_info->name, 
             'codeNo' => $this->code_number,
+            'recommend' => $this->recommend,
             'thumbnail' => $image_url,
             'price' => $this->price,
             'categories' => CategoryListResource::collection($this->categories),

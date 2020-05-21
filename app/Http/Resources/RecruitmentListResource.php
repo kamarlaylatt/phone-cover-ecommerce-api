@@ -29,7 +29,8 @@ class RecruitmentListResource extends JsonResource
             'image' => $image_url,
             'sortIndex' => $this->sort_index,
             'title' => $recruitment_info->title,
-            'description' => $recruitment_info->description,
+            'date' => date("d/m/Y", strtotime($this->created_at)),
+            'createdBy' => 'Admin'
         ];
     }
 }
