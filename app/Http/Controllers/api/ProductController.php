@@ -15,18 +15,17 @@ class ProductController extends BaseController
 {
     public function getProductList(Request $request)
     {
+        if($request->recommend_status == 1)
+        {
+            return new ProductListResourceCollection(Product::where('recommend',1)->paginate(20));
+        }
+
         $category = Category::find($request->category_id);
         if($category)
         {
             return new ProductListResourceCollection($category->products()->paginate(20));
         }else{
-            $response = [
-                'responseCode' => 200,
-                'responseMessage' => 'There is no product list in this cateogory',
-                'data' => null,
-            ];
-    
-            return response()->json($response, 200);
+            return new ProductListResourceCollection(Product::paginate(20));
         }
     }
 

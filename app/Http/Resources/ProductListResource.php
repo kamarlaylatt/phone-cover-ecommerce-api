@@ -32,7 +32,7 @@ class ProductListResource extends JsonResource
             'product_code' => $this->code_number,
             'thumbnail' => $image_url,
             'price' => $this->price,
-            'category' => CategoryListResource::collection($this->categories),
+            'categories' => CategoryListResource::collection($this->categories),
         ];
     }
 }

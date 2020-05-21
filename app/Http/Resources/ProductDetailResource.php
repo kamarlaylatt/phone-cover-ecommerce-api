@@ -5,6 +5,9 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\ProductImagesResource;
 use App\Http\Resources\ProductAdditionsResource;
+use App\Http\Resources\ProductListResource;
+use App\Product;
+
 use Storage;
 
 class ProductDetailResource extends JsonResource
@@ -37,6 +40,7 @@ class ProductDetailResource extends JsonResource
             'category' => CategoryListResource::collection($this->categories),
             'images' => ProductImagesResource::collection($this->images),
             'attributes' => ProductAdditionsResource::collection($this->additions->where('language_id', $request->language_id)),
+            'related_products' =>  ProductListResource::Collection(Product::whereHas('categories')->limit(8)->get()),
         ];
     }
 }
