@@ -29,7 +29,6 @@ class CategoryListResource extends JsonResource
             'category_id' => $this->id,
             'image' => $image_url,
             'name' => $category_info->name,
-            'subCategoryList' => CategoryListResource::collection($this->children),
         ];
     }
 }

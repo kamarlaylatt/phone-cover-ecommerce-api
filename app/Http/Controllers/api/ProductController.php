@@ -48,6 +48,7 @@ class ProductController extends BaseController
         $products = Product::whereHas('categories',function($query)use($categories){
                                     $query->whereIn('category_id',$categories);
                                 })
+                                ->where('id', '!=', $request->product_id)
                                 ->limit(8)
                                 ->get();
         $responseBody = ProductListResource::Collection($products);

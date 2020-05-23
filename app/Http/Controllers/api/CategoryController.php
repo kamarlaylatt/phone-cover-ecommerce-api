@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\api\BaseController;
 use App\Http\Resources\CategoryListResource;
+use App\Http\Resources\SubCategoryListResource;
 use App\Category;
 
 class CategoryController extends BaseController
@@ -22,7 +23,7 @@ class CategoryController extends BaseController
     public function getSubCategories(Request $request)
     {
         $responseBody = [
-            'subCategoryList' => CategoryListResource::collection(Category::where('parents', $request->category_id)->get()),
+            'subCategoryList' => SubCategoryListResource::collection(Category::where('parents', $request->category_id)->get()),
         ];
 
         return $this->successResponse($responseBody, 'Success retrieve cateogory root list');
