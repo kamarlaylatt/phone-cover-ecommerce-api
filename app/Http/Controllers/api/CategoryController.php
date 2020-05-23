@@ -22,7 +22,11 @@ class CategoryController extends BaseController
 
     public function getSubCategories(Request $request)
     {
+        $category = Category::findorFail($request->category_id);
+        $category_info = $category->category_infos->where('language_id', $request->language_id)->first();
         $responseBody = [
+            'parent_id' => $category->id,
+            'parent_name' => $category_info->name,
             'subCategoryList' => SubCategoryListResource::collection(Category::where('parents', $request->category_id)->get()),
         ];
 
