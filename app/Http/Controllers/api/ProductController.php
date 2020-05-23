@@ -40,4 +40,24 @@ class ProductController extends BaseController
         }
         return $this->successResponse($responseBody, 'Success retrieve product detail');
     }
+
+    public function getRelatedProduct(Request $request)
+    {
+        $categories = explode(',', $request->categories);
+
+        $products = Product::whereHas('categories',function($query)use($categories){
+                                    $query->whereIn('category_id',$categories);
+                                })
+                                ->limit(8)
+                                ->get();
+        $responseBody = ProductListResource::Collection($products);
+
+        return $this->successResponse($responseBody, 'Success retrieve related products');
+
+    }
+
+    public function getRecommendProduct(Request $request)
+    {
+        return new ProductListResourceCollection(Product::where('recommend',1)->paginate(20));
+    }
 }

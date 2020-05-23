@@ -41,7 +41,6 @@ class ProductDetailResource extends JsonResource
             'category' => CategoryListResource::collection($this->categories),
             'images' => ProductImagesResource::collection($this->images),
             'attributes' => ProductAdditionsResource::collection($this->additions->where('language_id', $request->language_id)),
-            'related_products' =>  ProductListResource::Collection(Product::whereHas('categories')->limit(8)->get()),
         ];
     }
 }

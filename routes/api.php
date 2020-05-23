@@ -24,11 +24,18 @@ Route::namespace('api')->middleware('check_app')->group(function(){
         Route::get('/product/list', 'HomeController@getProductList');
     });
 
+    //languages
     Route::get('/language/list','BaseController@getLanguage');
+
+    //categories
     Route::get('/category/root/list', 'CategoryController@getRootCategoryList');
     Route::get('/category/subcategory/list', 'CategoryController@getSubCategories');
+
+    //products
     Route::get('/product/list', 'ProductController@getProductList');
     Route::get('/product/detail', 'ProductController@getProductDetail');
+    Route::get('/product/related-products', 'ProductController@getRelatedProduct');
+    Route::get('/product/recommend-products', 'ProductController@getRecommendProduct');
 
     Route::get('/shell-material/list', 'DiyController@getShellMaterialList');
     Route::get('/recruitment/list', 'DiyController@getRecruitmentList');
