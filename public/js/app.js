@@ -65143,7 +65143,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Enter Sub Category",
+                            placeholder: "Enter Title",
                             required: ""
                           },
                           domProps: { value: _vm.form.english.title },
@@ -65212,7 +65212,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Enter Sub Category",
+                            placeholder: "Enter Title",
                             required: ""
                           },
                           domProps: { value: _vm.form.myanmar.title },
@@ -65479,7 +65479,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Enter Sub Category",
+                            placeholder: "Enter Title",
                             required: ""
                           },
                           domProps: { value: _vm.form.english.title },
@@ -65549,7 +65549,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "Enter Sub Category",
+                            placeholder: "Enter Title",
                             required: ""
                           },
                           domProps: { value: _vm.form.myanmar.title },

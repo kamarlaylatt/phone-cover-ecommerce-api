@@ -47,7 +47,7 @@
 							<div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
 								<div class="form-group m-form__group">
 									<label>Title</label>
-									<input v-model="form.english.title" type="text" class="form-control" placeholder="Enter Sub Category" required>
+									<input v-model="form.english.title" type="text" class="form-control" placeholder="Enter Title" required>
 								</div>
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
@@ -59,7 +59,7 @@
 							<div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
 								<div class="form-group m-form__group">
 									<label>Title</label>
-									<input v-model="form.myanmar.title" type="text" class="form-control" placeholder="Enter Sub Category" required>
+									<input v-model="form.myanmar.title" type="text" class="form-control" placeholder="Enter Title" required>
 								</div>
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
