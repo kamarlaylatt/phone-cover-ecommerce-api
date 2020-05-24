@@ -18,6 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('api')->middleware('check_app')->group(function(){
+    //Register
+    Route::post('/register', 'AuthController@register');
+    Route::post('/login', 'AuthController@login');
+
     Route::prefix('home')->group(function(){
         Route::get('/banner/list', 'HomeController@getBannerList');
         Route::get('/category/list', 'HomeController@getCategoryList');
