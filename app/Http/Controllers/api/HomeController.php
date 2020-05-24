@@ -22,10 +22,15 @@ class HomeController extends BaseController
         return $this->successResponse($responseBody, 'Success retrieve banner list');
     }
 
-    public function getCategoryList()
+    public function getCategoryList(Request $request)
     {
         $responseBody = [
-            'categoryList' => CategoryListResource::collection(Category::inRandomOrder()->limit(6)->get()),
+            'categoryList' => Category::join('category_infos','categories.id','=','category_infos.category_id')
+                                    ->where('category_infos.language_id',$request->language_id)
+                                    ->orderBy('category_infos.name','asc')
+                                    ->select('categories.id as category_id','category_infos.name')
+                                    ->limit(6)
+                                    ->get(),
         ];
         return $this->successResponse($responseBody, 'Success retrieve category list');
     }
