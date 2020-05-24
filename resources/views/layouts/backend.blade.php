@@ -300,8 +300,8 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!--begin::Global Theme Bundle -->
 			<script src="{{asset('backend_asset/vendors/base/vendors.bundle.js')}}" type="text/javascript"></script>
 			<script src="{{asset('backend_asset/demo/default/base/scripts.bundle.js')}}" type="text/javascript"></script>
-			<!-- <script src="{{asset('backend_asset/demo/default/custom/crud/forms/widgets/summernote.js')}}" type="text/javascript"></script> -->
-			
+			{{-- <script src="{{asset('backend_asset/demo/default/custom/crud/forms/widgets/summernote.js')}}" type="text/javascript"></script> --}}
+						
 
 			<!--end::Global Theme Bundle -->
 		</div>

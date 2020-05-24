@@ -24,7 +24,7 @@
 
 <!--begin::Portlet-->
 <div class="container" style="max-width:800px">
-    <div class="m-portlet m-portlet--tab">
+    {{-- <div class="m-portlet m-portlet--tab">
         <div class="m-portlet__head">
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
@@ -112,7 +112,12 @@
         </div>
 
         <!--end::Form-->
-    </div>
+    </div> --}}
+    <recruitment_edit-component
+        :recruitment="{{json_encode($recruitment)}}" 
+        :recruitment_infos="{{json_encode($recruitment->infos)}}"
+        :img_url="{{json_encode(url(Storage::url('uploads/recruitment_imgs/'.$recruitment->image)))}}"
+    ></recruitment_edit-component>
 </div>
 
     <!--end::Portlet-->

@@ -24,8 +24,8 @@
 
 <!--begin::Portlet-->
     <div class="container" style="max-width:800px">
-        <div class="m-portlet m-portlet--tab">
-            <div class="m-portlet__head">
+        {{-- <div class="m-portlet m-portlet--tab"> --}}
+            {{-- <div class="m-portlet__head">
                 <div class="m-portlet__head-caption">
                     <div class="m-portlet__head-title">
                         <span class="m-portlet__head-icon m--hide">
@@ -36,9 +36,9 @@
                         </h3>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--begin::Form-->
-            <div class="m-portlet__body">
+            {{-- <div class="m-portlet__body">
                 <!--begin::Form-->
                 <form method="POST" action="{{route('recruitments.store')}}" enctype="multipart/form-data" class="m-form m-form--fit m-form--label-align-right">
                     @csrf
@@ -108,10 +108,12 @@
                 </form>
 
                 <!--end::Form-->
-            </div>
+            </div> --}}
+
+            <recruitment_create-component></recruitment_create-component>
 
             <!--end::Form-->
-        </div>
+        {{-- </div> --}}
     </div>
 
     <!--end::Portlet-->
@@ -130,5 +132,6 @@
     
         });
     </script>
+
     
 @endsection

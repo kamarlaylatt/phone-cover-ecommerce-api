@@ -102,7 +102,9 @@
                                         @endif
                                     </td>
                                     <td class="align-middle">{{$recruitment->infos[0]->title}}</td>
-                                    <td class="align-middle">{{$recruitment->infos[0]->description}}</td>
+                                    <td class="align-middle">
+                                        {!! Str::limit(strip_tags($recruitment->infos[0]->description),100) !!}
+                                    </td>
                                     <td class="align-middle text-center">{{$recruitment->sort_index}}</td>                              
                                     <td class="text-center align-middle">
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('recruitments.show', $recruitment->id)}}">

@@ -82,6 +82,7 @@
                         :loading="isLoading"
                         ><small>Update</small>
                         </VueLoadingButton>
+                        <button @click="reset()" type="button" class="btn btn-primary">Reset</button>
 						<button type="button" @click="cancel" class="btn btn-danger">Cancel</button>
 					</div>
 				</div>
@@ -224,6 +225,10 @@
 				
 			},
 
+			reset(){
+				var currentUrl = window.location.pathname;
+				window.location.href = currentUrl;
+			},
 
 			cancel()
 			{

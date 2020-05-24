@@ -8,6 +8,7 @@ use App\Recruitment;
 use App\RecruitmentInfo;
 use Auth;
 use Storage;
+use Validator;
 
 class RecruitmentController extends Controller
 {
@@ -40,14 +41,41 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $rules = [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'sort_index' => 'required|numeric', 
             'english_title' => 'required|string',
             'english_description' => 'required|string',
             'myanmar_title' => 'required|string',
             'myanmar_description' => 'required|string',
-         ]);
+         ];
+
+         $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            
+            $errors_array = array(); 
+
+            $errors = $validator->errors();
+
+            foreach ($errors->all() as $error) {
+                $error_array = explode(" ", $error);
+                $data = [
+                    "fieldCode" => $error_array[1],
+                    "errorMessage" => $error,
+                ];
+
+                array_push($errors_array, $data);
+            }
+
+            return response()->json([
+                'success' => false,
+                'validation' => false,
+                'responseMessage' => 'Multiple Error',
+                'errors' => $errors_array,
+            ]);  
+            
+        }
  
          $recruitment = Recruitment::Create([
              'sort_index' => $request['sort_index'],
@@ -77,7 +105,11 @@ class RecruitmentController extends Controller
              'language_id' => 2,
          ]);
  
-         return redirect(route('recruitments.index'));
+        $data = [
+            'success' => true,
+            'validation' => true,
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -113,13 +145,53 @@ class RecruitmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'sort_index' => 'required|numeric', 
-            'english_title' => 'required|string',
-            'english_description' => 'required|string',
-            'myanmar_title' => 'required|string',
-            'myanmar_description' => 'required|string',
-         ]);
+        if($request->file('image'))
+        {
+            $rules =[
+                'sort_index' => 'required|numeric', 
+                'english_title' => 'required|string',
+                'english_description' => 'required|string',
+                'myanmar_title' => 'required|string',
+                'myanmar_description' => 'required|string',
+                'image' => 'image',
+            ];
+        }else{
+            $rules =[
+                'sort_index' => 'required|numeric', 
+                'english_title' => 'required|string',
+                'english_description' => 'required|string',
+                'myanmar_title' => 'required|string',
+                'myanmar_description' => 'required|string',
+            ];
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+
+        $errors_array = array(); 
+
+        if($validator->fails()){        
+
+            $errors = $validator->errors();
+
+            foreach ($errors->all() as $error) {
+                $error_array = explode(" ", $error);
+                $data = [
+                    "fieldCode" => $error_array[1],
+                    "errorMessage" => $error,
+                ];
+
+                array_push($errors_array, $data);
+            }
+
+            return response()->json([
+                'success' => false,
+                'validation' => false,
+                'responseMessage' => 'Multiple Error',
+                'errors' => $errors_array,
+            ]);  
+            
+        }
+        
 
          $recruitment = Recruitment::find($id);
 
@@ -149,7 +221,12 @@ class RecruitmentController extends Controller
         $eng_recruitment->save();
         $myan_recruitment->save();
 
-        return redirect(route('recruitments.index'));
+        $data = [
+            'success' => true,
+            'validation' => true,
+        ];
+        
+        return response()->json($data);
     }
 
     /**

@@ -13,7 +13,9 @@ import VJstree from 'vue-jstree';
 import ImageUploader from 'vue-image-upload-resize'
 import VueLazyload from 'vue-lazyload'
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
- 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
+Vue.use( CKEditor ); 
 Vue.use(VueLazyload);
 Vue.use(ImageUploader);
 Vue.use(VTreeselect);
@@ -35,6 +37,9 @@ Vue.component('category_create-component', require('./components/category/Catego
 Vue.component('category_edit-component', require('./components/category/CategoryEditComponent.vue').default);
 Vue.component('product_create-component', require('./components/product/ProductCreateComponent.vue').default);
 Vue.component('product_edit-component', require('./components/product/ProductEditComponent.vue').default);
+Vue.component('recruitment_create-component', require('./components/recruitment/RecruitmentCreateComponent.vue').default);
+Vue.component('recruitment_edit-component', require('./components/recruitment/RecruitmentEditComponent.vue').default);
+
 
 
 /**
