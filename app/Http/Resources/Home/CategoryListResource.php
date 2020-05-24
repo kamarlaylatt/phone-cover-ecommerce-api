@@ -14,10 +14,10 @@ class CategoryListResource extends JsonResource
      */
     public function toArray($request) 
     {
-        $category_info = $this->category_infos->where('language_id', $request->language_id)->first();
+        // $category_info = $this->category_infos->where('language_id', $request->language_id)->first();
         return [
             'category_id' => $this->id,
-            'name' => $category_info->name,
+            'name' => $this->name,
         ];
     }
 }
