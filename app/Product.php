@@ -49,7 +49,8 @@ class Product extends Model
     		'price' => $request['price'],
     		'qty' => $request['quantity'],
     		'min_order' => $request['minimum_order'],
-    		'max_order' => $request['maximum_order'],
+            'max_order' => $request['maximum_order'],
+            'fb_pixel' => $request['fb_pixel'],
     		'recommend' => $request['recommend'],
     	]);
 
@@ -133,6 +134,7 @@ class Product extends Model
         $product->qty = $request['quantity'];
         $product->min_order = $request['minimum_order'];
         $product->max_order = $request['maximum_order'];
+        $product->fb_pixel = $request['fb_pixel'];
         $product->recommend = $request['recommend'];
         $product->save();
 

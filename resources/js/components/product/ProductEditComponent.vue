@@ -173,10 +173,15 @@
                             <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
                         </div>
                     </div>
-
-                    <div v-if="nav_bar.data==true" class="m-form__group form-check ml-4">
-                        <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Recommend</label>
+                    <div class="form-group m-form__group row">
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label>Fb Pixel</label>
+                            <input v-model="fb_pixel" type="text" class="form-control" placeholder="Enter Fb Pixel" required>
+                        </div>
+                        <div v-if="nav_bar.data==true" class="m-form__group form-check col-md-6">
+                            <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Recommend</label>
+                        </div>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
@@ -216,6 +221,7 @@ export default {
             quantity: '',
             minimum_order: '',
             maximum_order: '',
+            fb_pixel: '',
             recommend: false,
             english: {
                 id: '',
@@ -280,6 +286,7 @@ export default {
             this.quantity = this.product.qty;
             this.minimum_order = this.product.min_order;
             this.maximum_order = this.product.max_order;
+            this.fb_pixel = this.product.fb_pixel;
             this.recommend = this.product.recommend;
             this.english.id = this.product_infos[0].id;
             this.english.name = this.product_infos[0].name;
@@ -368,6 +375,7 @@ export default {
             formData.append('quantity', this.quantity);
             formData.append('minimum_order', this.minimum_order);
             formData.append('maximum_order', this.maximum_order);
+            formData.append('fb_pixel', this.fb_pixel);
             formData.append('recommend', this.recommend);
             formData.append('english_id', this.english.id);
             formData.append('english_name', this.english.name);

@@ -58,7 +58,8 @@
                         <th> Categories </th>
                         <td> 
                             @foreach($product->categories as $category)
-                                {{$category->category_infos->where('language_id', 1)->first()->name}},
+                                {{ $loop->first ? '' : ', ' }}
+                                {{$category->category_infos->where('language_id', 1)->first()->name}}
                             @endforeach
                         </td>
                     </tr>
@@ -85,7 +86,13 @@
                         <td> 
                             {{$product->max_order}}
                         </td>
-                    </tr>     
+                    </tr>
+                    <tr>
+                        <th> Fb Pixel </th>
+                        <td> 
+                            {{$product->fb_pixel}}
+                        </td>
+                    </tr>       
                     <tr>
                         <th> Recommend </th>
                         <td> 

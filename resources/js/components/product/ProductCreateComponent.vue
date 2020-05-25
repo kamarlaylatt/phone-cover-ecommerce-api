@@ -1,9 +1,9 @@
 <template>
     <div>
-        <!-- <div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
+        <div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
             {{error.errorMessage}}
-        </div> -->
-        <div v-if="errors != ''" class="alert alert-danger" role="alert">
+        </div>
+        <!-- <div v-if="errors != ''" class="alert alert-danger" role="alert">
             {{errors[0].errorMessage}}<br>
         </div>
         <div v-if="errors != ''" class="alert alert-danger" role="alert">
@@ -11,7 +11,7 @@
         </div>
         <div v-if="errors != ''" class="alert alert-danger" role="alert">
             {{errors[2].errorMessage}}<br>
-        </div>
+        </div> -->
         <!-- begin form -->        
         <form class="m-form m-form--fit m-form--label-align-right">
 			<div class="m-portlet">	
@@ -183,10 +183,16 @@
                             <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
                         </div>
                     </div>
-                    <div v-if="nav_bar.data==true" class="m-form__group form-check ml-4">
-                        <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Recommend</label>
-                    </div>               
+                    <div class="form-group m-form__group row">
+                        <div v-if="nav_bar.data==true" class="col-md-6">
+                            <label>Fb Pixel</label>
+                            <input v-model="fb_pixel" type="text" class="form-control" placeholder="Enter Fb Pixel" required>
+                        </div>
+                        <div v-if="nav_bar.data==true" class="m-form__group form-check col-md-6">
+                            <input v-model="recommend" type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Recommend</label>
+                        </div>                             
+                    </div>          
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions">					
@@ -223,6 +229,7 @@ export default {
             quantity: '',
             minimum_order: '',
             maximum_order: '',
+            fb_pixel: '',
             recommend: false,
             english: {
                 name: '',
@@ -300,6 +307,7 @@ export default {
             formData.append('quantity', this.quantity);
             formData.append('minimum_order', this.minimum_order);
             formData.append('maximum_order', this.maximum_order);
+            formData.append('fb_pixel', this.fb_pixel);
             formData.append('recommend', this.recommend);
             formData.append('english_name', this.english.name);
             formData.append('english_short_description', this.english.description);
