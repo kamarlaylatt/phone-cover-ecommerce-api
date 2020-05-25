@@ -20,6 +20,9 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 
 	Route::get('/', function () {return redirect()->route('admins.profile');})->name('admin');
 
+	//dashboard
+	Route::get('/dashboard','DashboardController@index')->name('admins.dashboard');
+
 	//admin profile
 	Route::get('/profile', 'AdminController@profile')->name('admins.profile');
 	Route::post('/profile/update', 'AdminController@profileUpdate')->name('admins.profile.update');
