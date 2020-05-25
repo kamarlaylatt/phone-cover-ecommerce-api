@@ -9,6 +9,7 @@ use App\Category;
 use App\ProductImage;
 use Storage;
 use Image;
+use File;
 
 class Product extends Model
 {
@@ -54,6 +55,12 @@ class Product extends Model
 
         $category = Category::find(json_decode($request['category_array']));
         $product->categories()->attach($category);
+
+        $filepath = storage_path('app/public/uploads/product_imgs/images/');
+
+        if (!file_exists($filepath)) {
+            File::makeDirectory($filepath);
+        }
 
         $images = json_decode($request['images']);
 
