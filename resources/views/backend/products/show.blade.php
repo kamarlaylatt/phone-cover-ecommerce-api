@@ -110,6 +110,10 @@
                         <td>{{$product->infos->where('language_id',1)->first()->name}}</td>
                     </tr>
                     <tr>
+                        <th> Short Description </th>
+                        <td>{{$product->infos->where('language_id',1)->first()->short_description}}</td>
+                    </tr>
+                    <tr>
                         <th> Description </th>
                         <td>{{$product->infos->where('language_id',1)->first()->description}}</td>
                     </tr>
@@ -131,6 +135,10 @@
                     <tr>
                         <th> Name </th>
                         <td>{{$product->infos->where('language_id',2)->first()->name}}</td>
+                    </tr>
+                    <tr>
+                        <th> Short Description </th>
+                        <td>{{$product->infos->where('language_id',2)->first()->short_description}}</td>
                     </tr>
                     <tr>
                         <th> Description </th>

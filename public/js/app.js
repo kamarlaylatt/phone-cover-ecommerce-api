@@ -6798,6 +6798,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6817,11 +6825,13 @@ __webpack_require__.r(__webpack_exports__);
       recommend: false,
       english: {
         name: '',
+        short_description: '',
         description: '',
         additions: []
       },
       myanmar: {
         name: '',
+        short_description: '',
         description: '',
         additions: []
       },
@@ -6879,9 +6889,11 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('maximum_order', this.maximum_order);
       formData.append('recommend', this.recommend);
       formData.append('english_name', this.english.name);
+      formData.append('english_short_description', this.english.description);
       formData.append('english_description', this.english.description);
       formData.append('english_additions', JSON.stringify(this.english.additions));
       formData.append('myanmar_name', this.myanmar.name);
+      formData.append('myanmar_short_description', this.myanmar.description);
       formData.append('myanmar_description', this.myanmar.description);
       formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
       axios.post('/admin/products/store', formData, config).then(function (response) {
@@ -7185,6 +7197,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7206,12 +7226,14 @@ __webpack_require__.r(__webpack_exports__);
       english: {
         id: '',
         name: '',
+        short_description: '',
         description: '',
         additions: []
       },
       myanmar: {
         id: '',
         name: '',
+        short_description: '',
         description: '',
         additions: []
       },
@@ -7258,9 +7280,11 @@ __webpack_require__.r(__webpack_exports__);
       this.recommend = this.product.recommend;
       this.english.id = this.product_infos[0].id;
       this.english.name = this.product_infos[0].name;
+      this.english.short_description = this.product_infos[0].short_description;
       this.english.description = this.product_infos[0].description;
       this.myanmar.id = this.product_infos[1].id;
       this.myanmar.name = this.product_infos[1].name;
+      this.myanmar.short_description = this.product_infos[1].short_description;
       this.myanmar.description = this.product_infos[1].description;
 
       for (var i = 0; i < this.edit_images.length; i++) {
@@ -7333,10 +7357,12 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('recommend', this.recommend);
       formData.append('english_id', this.english.id);
       formData.append('english_name', this.english.name);
+      formData.append('english_short_description', this.english.short_description);
       formData.append('english_description', this.english.description);
       formData.append('english_additions', JSON.stringify(this.english.additions));
       formData.append('myanmar_id', this.myanmar.id);
       formData.append('myanmar_name', this.myanmar.name);
+      formData.append('myanmar_short_description', this.myanmar.short_description);
       formData.append('myanmar_description', this.myanmar.description);
       formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
       formData.append('destroy_additions', JSON.stringify(this.destroy.addition_ids));
@@ -63260,6 +63286,44 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
+                                    value: _vm.english.short_description,
+                                    expression: "english.short_description"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { rows: "3", id: "comment" },
+                                domProps: {
+                                  value: _vm.english.short_description
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.english,
+                                      "short_description",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "form-group m-form__group col-md-12"
+                            },
+                            [
+                              _vm._m(6),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
                                     value: _vm.english.description,
                                     expression: "english.description"
                                   }
@@ -63395,7 +63459,7 @@ var render = function() {
                                     "form-group m-form__group col-md-12"
                                 },
                                 [
-                                  _vm._m(6),
+                                  _vm._m(7),
                                   _vm._v(" "),
                                   _c("input", {
                                     directives: [
@@ -63436,7 +63500,46 @@ var render = function() {
                                     "form-group m-form__group col-md-12"
                                 },
                                 [
-                                  _vm._m(7),
+                                  _vm._m(8),
+                                  _vm._v(" "),
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.myanmar.short_description,
+                                        expression: "myanmar.short_description"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: { rows: "3", id: "comment" },
+                                    domProps: {
+                                      value: _vm.myanmar.short_description
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.myanmar,
+                                          "short_description",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "form-group m-form__group col-md-12"
+                                },
+                                [
+                                  _vm._m(9),
                                   _vm._v(" "),
                                   _c("textarea", {
                                     directives: [
@@ -63608,7 +63711,7 @@ var render = function() {
                     "div",
                     { staticClass: "col-md-6" },
                     [
-                      _vm._m(8),
+                      _vm._m(10),
                       _vm._v(" "),
                       _c("treeselect", {
                         attrs: {
@@ -63633,7 +63736,7 @@ var render = function() {
               _vm._v(" "),
               _vm.nav_bar.data == true
                 ? _c("div", { staticClass: "col-md-6" }, [
-                    _vm._m(9),
+                    _vm._m(11),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -63667,7 +63770,7 @@ var render = function() {
             _c("div", { staticClass: "form-group m-form__group row" }, [
               _vm.nav_bar.data == true
                 ? _c("div", { staticClass: "col-md-6" }, [
-                    _vm._m(10),
+                    _vm._m(12),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -63699,7 +63802,7 @@ var render = function() {
               _vm._v(" "),
               _vm.nav_bar.data == true
                 ? _c("div", { staticClass: "col-md-6" }, [
-                    _vm._m(11),
+                    _vm._m(13),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -63733,7 +63836,7 @@ var render = function() {
             _c("div", { staticClass: "form-group m-form__group row" }, [
               _vm.nav_bar.data == true
                 ? _c("div", { staticClass: "col-md-6" }, [
-                    _vm._m(12),
+                    _vm._m(14),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -63765,7 +63868,7 @@ var render = function() {
               _vm._v(" "),
               _vm.nav_bar.data == true
                 ? _c("div", { staticClass: "col-md-6" }, [
-                    _vm._m(13),
+                    _vm._m(15),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -63969,6 +64072,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "comment" } }, [
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Short Description")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "comment" } }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
       _vm._v("Description")
     ])
   },
@@ -63979,6 +64091,15 @@ var staticRenderFns = [
     return _c("label", [
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
       _vm._v("Product Name")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "comment" } }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Short Description")
     ])
   },
   function() {
@@ -64239,6 +64360,45 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
+                              {
+                                staticClass:
+                                  "form-group m-form__group col-md-12"
+                              },
+                              [
+                                _vm._m(3),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.english.short_description,
+                                      expression: "english.short_description"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { rows: "3", id: "comment" },
+                                  domProps: {
+                                    value: _vm.english.short_description
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.english,
+                                        "short_description",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
                               { staticClass: "form-group m-form__group" },
                               [
                                 _c("label", { attrs: { for: "comment" } }, [
@@ -64421,6 +64581,46 @@ var render = function() {
                                           _vm.$set(
                                             _vm.myanmar,
                                             "name",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-group m-form__group col-md-12"
+                                  },
+                                  [
+                                    _vm._m(4),
+                                    _vm._v(" "),
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.myanmar.short_description,
+                                          expression:
+                                            "myanmar.short_description"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { rows: "3", id: "comment" },
+                                      domProps: {
+                                        value: _vm.myanmar.short_description
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.myanmar,
+                                            "short_description",
                                             $event.target.value
                                           )
                                         }
@@ -65018,6 +65218,24 @@ var staticRenderFns = [
         },
         [_vm._v("Myanmar")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "comment" } }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Short Description")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "comment" } }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Short Description")
     ])
   }
 ]

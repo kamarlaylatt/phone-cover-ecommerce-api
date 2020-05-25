@@ -85,6 +85,10 @@
                                     <input v-model="english.name" type="text" class="form-control t" placeholder="Enter Product Name" required>
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
+                                    <label for="comment"><span class="text-danger">*</span>Short Description</label>
+                                    <textarea v-model="english.short_description" class="form-control" rows="3" id="comment"></textarea>
+                                </div>
+                                <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
                                     <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
                                 </div>
@@ -107,6 +111,10 @@
                                 <div class="form-group m-form__group col-md-12">
                                     <label><span class="text-danger">*</span>Product Name</label>
                                     <input v-model="myanmar.name" type="text" class="form-control" placeholder="Enter Product Name" required>
+                                </div>
+                                <div class="form-group m-form__group col-md-12">
+                                    <label for="comment"><span class="text-danger">*</span>Short Description</label>
+                                    <textarea v-model="myanmar.short_description" class="form-control" rows="3" id="comment"></textarea>
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
@@ -218,11 +226,13 @@ export default {
             recommend: false,
             english: {
                 name: '',
+                short_description: '',
                 description: '',
                 additions: [],                
             },
             myanmar: {
                 name: '',
+                short_description: '',
                 description: '',
                 additions: [],
             },
@@ -292,9 +302,11 @@ export default {
             formData.append('maximum_order', this.maximum_order);
             formData.append('recommend', this.recommend);
             formData.append('english_name', this.english.name);
+            formData.append('english_short_description', this.english.description);
             formData.append('english_description', this.english.description);
             formData.append('english_additions', JSON.stringify(this.english.additions));
             formData.append('myanmar_name', this.myanmar.name);
+            formData.append('myanmar_short_description', this.myanmar.description);
             formData.append('myanmar_description', this.myanmar.description);
             formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
 

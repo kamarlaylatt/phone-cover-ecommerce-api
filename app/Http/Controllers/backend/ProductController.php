@@ -44,9 +44,11 @@ class ProductController extends BaseController
             'minimum_order' => 'required|numeric',
             'maximum_order' => 'required|numeric',
             'english_name' => 'required|string',
+            'english_short_description' => 'required|string',
             'english_description' => 'required|string',
             'myanmar_name' => 'required|string',
-            'myanmar_description' => 'required|string',
+            'myanmar_short_description' => 'required|string',
+            'myanmar_description' => 'required|string',            
         ];
 
         $validation = $this->jsonValidate($request->all(), $rules);
@@ -115,8 +117,10 @@ class ProductController extends BaseController
             'minimum_order' => 'required|numeric',
             'maximum_order' => 'required|numeric',
             'english_name' => 'required|string',
+            'english_short_description' => 'required|string',
             'english_description' => 'required|string',
             'myanmar_name' => 'required|string',
+            'myanmar_short_description' => 'required|string',
             'myanmar_description' => 'required|string',
         ];
 

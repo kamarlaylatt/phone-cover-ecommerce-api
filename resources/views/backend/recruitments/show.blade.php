@@ -56,8 +56,8 @@
                         <td> {{$recruitment->infos[0]->title}} </td>
                     </tr>
                     <tr>
-                        <th> Subtitle </th>
-                        <td> {{$recruitment->infos[0]->description}} </td>
+                        <th> Description </th>
+                        <td> {!!$recruitment->infos[0]->description!!} </td>
                     </tr>
                 </table>
             </div>
@@ -73,8 +73,8 @@
                         <td> {{$recruitment->infos[1]->title}} </td>
                     </tr>
                     <tr>
-                        <th> Subtitle </th>
-                        <td> {{$recruitment->infos[1]->description}} </td>
+                        <th> Description </th>
+                        <td> {!!$recruitment->infos[1]->description!!} </td>
                     </tr>
                 </table>
             </div>

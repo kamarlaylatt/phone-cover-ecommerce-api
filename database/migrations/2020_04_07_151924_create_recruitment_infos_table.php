@@ -18,7 +18,7 @@ class CreateRecruitmentInfosTable extends Migration
             $table->unsignedBigInteger('recruitment_id');
             $table->unsignedBigInteger('language_id');
             $table->string('title');
-            $table->text('description');
+            $table->longText('description');
             $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
             $table->foreign('language_id')->references('id')->on('languages');
             $table->timestamps();

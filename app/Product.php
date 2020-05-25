@@ -84,6 +84,7 @@ class Product extends Model
             'product_id' => $product->id,
             'language_id' => 1,
             'name' => $request['english_name'],
+            'short_description' => $request['english_short_description'],
             'description' => $request['english_description'],
         ]);
 
@@ -91,6 +92,7 @@ class Product extends Model
             'product_id' => $product->id,
             'language_id' => 2,
             'name' => $request['myanmar_name'],
+            'short_description' => $request['myanmar_short_description'],
             'description' => $request['myanmar_description'],
         ]);
 
@@ -144,8 +146,10 @@ class Product extends Model
         $english_info = ProductInfo::find($request['english_id']);
         $myanmar_info = ProductInfo::find($request['myanmar_id']); 
         $english_info->name = $request['english_name'];
+        $english_info->short_description = $request['english_short_description'];
         $english_info->description = $request['english_description'];
         $myanmar_info->name = $request['myanmar_name'];
+        $myanmar_info->short_description = $request['myanmar_short_description'];
         $myanmar_info->description = $request['myanmar_description'];
         $english_info->save();
         $myanmar_info->save();
