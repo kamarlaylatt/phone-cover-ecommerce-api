@@ -56,6 +56,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
 
     Route::middleware('auth:api')->group(function(){
         Route::get('/profile', 'ProfileController@profile');
+        Route::post('/profile/update', 'ProfileController@profileUpdate');
     });
 
 });
