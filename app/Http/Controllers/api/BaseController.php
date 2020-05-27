@@ -24,7 +24,7 @@ class BaseController extends Controller
     public function failResponse($errors)
     {
         $response = [
-            'responseCode' => 1000,
+            'responseCode' => 401,
             'responseMessage' => 'multiple errors',
             'error' => $errors,
         ];
@@ -53,7 +53,7 @@ class BaseController extends Controller
             }
 
             return [
-                'responseCode' => 1000,
+                'responseCode' => 401,
                 'responseMessage' => 'Validation Error',
                 'validate_status' => 1,
                 'error' => $errors_array,

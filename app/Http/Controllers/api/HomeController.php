@@ -27,6 +27,7 @@ class HomeController extends BaseController
         $responseBody = [
             'categoryList' => CategoryListResource::collection(Category::join('category_infos','categories.id','=','category_infos.category_id')
                                     ->where('category_infos.language_id',$request->language_id)
+                                    ->where('categories.parents',0)
                                     ->orderBy('category_infos.name','asc')
                                     // ->select('categories.id as category_id','category_infos.name','categories.image')
                                     ->limit(6)

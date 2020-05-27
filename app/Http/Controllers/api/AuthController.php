@@ -6,6 +6,7 @@ use App\Http\Controllers\api\BaseController;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
+use Illuminate\Validation\Rule;
 
 class AuthController extends BaseController
 {
@@ -75,61 +76,90 @@ class AuthController extends BaseController
     public function login(Request $request)
     {
 
-        $rules = [
-            'phone' => 'required|numeric',
-            'password' => 'required',
-        ];
-
-        $validation = $this->validateResponse($request->all(), $rules);
-        if($validation['validate_status'] == 1)
-        {
-            return $validation;
-        }
-
-        $user = User::where('phone', $request['phone'])->first();
+        $user = User::where('provider_id', $request['provider_id'])
+                    ->where('provider', $request['provider'])
+                    ->first();
 
         if ($user) {
 
-            if (Hash::check($request->password, $user->password)) {
-                // $tokens = $user->tokens();
-                // foreach($tokens as $token) {
-                //     $token->revoke();   
-                // }
-
-
-                $token =  $user->createToken('Customer')->accessToken;
-                // $user->device_type = $request['deviceType'];
-                // $user->mobile_fcm_token = $request['fcmToken'];
-                // $user->save();
-
-                $responseBody = [
-                    'user_id' => $user->id,
-                    'name' => $user->name,
-                    'phone' => $user->phone,
-                    'email' => $user->email,
-                    'address' => $user->address,
-                    'token' => $token,
-                ];
-                return $this->successResponse($responseBody, 'Successfully Login');
-
-            } else {
-                $error = [
-                    [
-                        'fieldCode' => 'password',
-                        'errorMessage' => 'Password does not match',
-                    ],    
-                ];
-                return $this->failResponse($error);
+            $rules = [
+                'name' => 'required',
+                'provider' => 'required',
+                'provider_id' => 'required',
+                'phone' => ['required',Rule::unique('users')->ignore($user->id),],
+            ];
+    
+            $validation = $this->validateResponse($request->all(), $rules);
+            if($validation['validate_status'] == 1)
+            {
+                return $validation;
             }
 
+            $user->name = $request->name;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
+            $user->save();
+
+            $token =  $user->createToken('Customer')->accessToken;
+
+            $responseBody = [
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'phone' => $user->phone,
+                'email' => $user->email,
+                'token' => $token,
+            ];
+            return $this->successResponse($responseBody, 'Successfully Login');
+
         } else {
-                $error = [
-                    [
-                        'fieldCode' => 'phone',
-                        'errorMessage' => 'Invalid Phone',
-                    ],   
-                ];
-                return $this->failResponse($error);
+            $rules = [
+                'name' => 'required',
+                'provider' => 'required',
+                'provider_id' => 'required',
+                'phone' => 'required|unique:users',
+            ];
+
+            $validation = $this->validateResponse($request->all(), $rules);
+            if($validation['validate_status'] == 1)
+            {
+                return $validation;
+            }
+
+            //check unique order no
+            $check = false;
+            $uuid = 0;
+            while($check == false){
+                $uuid = time();
+                $check_no = User::where('uuid',$uuid)->first();
+                if(!$check_no)
+                {
+                    $check = true;
+                }
+                else{
+                    $check = false;
+                }
+            }
+            //end check
+
+            $user = User::create([
+                'name' => $request->name,
+                'uuid' => $uuid,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'provider_id' => $request->provider_id,
+                'provider' => $request->provider,
+            ]);
+
+            $token =  $user->createToken('Customer')->accessToken;
+
+            $responseBody = [
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'phone' => $user->phone,
+                'email' => $user->email,
+                'token' => $token,
+            ];
+            return $this->successResponse($responseBody, 'Successfully Login');
         }
     }
 }

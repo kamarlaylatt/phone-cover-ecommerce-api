@@ -54,4 +54,8 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/charlet-list', 'DiyController@getCharletList');
     Route::get('/mask-list', 'DiyController@getMaskList');
 
+    Route::middleware('auth:api')->group(function(){
+        Route::get('/profile', 'ProfileController@profile');
+    });
+
 });
