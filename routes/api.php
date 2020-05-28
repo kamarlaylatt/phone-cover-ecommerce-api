@@ -36,6 +36,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/category/subcategory/list', 'CategoryController@getSubCategories');
 
     //products
+    Route::get('/product/search', 'ProductController@searchProductList');
     Route::get('/product/list', 'ProductController@getProductList');
     Route::get('/product/detail', 'ProductController@getProductDetail');
     Route::get('/product/related-products', 'ProductController@getRelatedProduct');

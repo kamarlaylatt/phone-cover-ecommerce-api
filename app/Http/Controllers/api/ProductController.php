@@ -61,4 +61,16 @@ class ProductController extends BaseController
     {
         return new ProductListResourceCollection(Product::where('recommend',1)->paginate(20));
     }
+
+    public function searchProductList(Request $request)
+    {
+        $products = Product::where('code_number','like','%'.$request->search.'%')
+                            ->orWhereHas('infos', function($q) use($request){
+                                $q->where('name','like','%'.$request->search.'%')
+                                ->where('language_id',$request->language_id);              
+                            })
+                            ->get();
+        $responseBody = ProductListResource::Collection($products);
+        return $this->successResponse($responseBody, 'Success retrieve related products');
+    }
 }
