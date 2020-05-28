@@ -64,6 +64,15 @@ class ProductController extends BaseController
 
     public function searchProductList(Request $request)
     {
+        $rules = [
+            'search' => 'required',
+        ];
+
+        $validation = $this->validateResponse($request->all(), $rules);
+        if($validation['validate_status'] == 1)
+        {
+            return $validation;
+        }
         $products = Product::where('code_number','like','%'.$request->search.'%')
                             ->orWhereHas('infos', function($q) use($request){
                                 $q->where('name','like','%'.$request->search.'%')
