@@ -48,8 +48,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/phone-brand/list', 'DiyController@getPhoneBrandList');
     Route::get('/phone-model/list', 'DiyController@getPhoneModelList');
 
-    //order
-    Route::post('/order/product', 'OrderController@productOrder');
+    
 
     Route::get('/tab-list', 'DiyController@getTabList');
     Route::get('/charlet-list', 'DiyController@getCharletList');
@@ -58,6 +57,10 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::middleware('auth:api')->group(function(){
         Route::get('/profile', 'ProfileController@profile');
         Route::post('/profile/update', 'ProfileController@profileUpdate');
+
+        //order
+        Route::post('/order/product', 'OrderController@productOrder');
+        Route::get('/order-list', 'OrderController@orderList');
     });
 
 });

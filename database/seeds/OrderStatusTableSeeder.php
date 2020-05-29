@@ -13,8 +13,15 @@ class OrderStatusTableSeeder extends Seeder
     public function run()
     {
         OrderStatus::Create([
-            'name' => 'order',
+            'name' => 'peinding',
             'sort_index' => 1,
+            'icon' => 'icon.jpg',
+            'description' => 'order status'
+        ]);
+
+        OrderStatus::Create([
+            'name' => 'complete',
+            'sort_index' => 2,
             'icon' => 'icon.jpg',
             'description' => 'order status'
         ]);

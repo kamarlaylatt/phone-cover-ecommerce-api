@@ -5,10 +5,12 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\api\BaseController;
+use App\Http\Resources\OrderListResourceCollection;
 use App\Order;
 use App\OrderItem;
 use App\Product;
 use DB;
+use Auth;
 
 class OrderController extends BaseController
 {
@@ -69,7 +71,7 @@ class OrderController extends BaseController
 
             $order = Order::Create([
                 'order_status_id' => 1,
-                'user_id' => 1,
+                'user_id' => Auth::user()->id,
                 'item_count' => $item_count,
                 'total_amount' => $total_amount,
                 'order_no' => $order_no,
@@ -102,5 +104,10 @@ class OrderController extends BaseController
 
         return $this->successResponse($responseBody, 'Success Order');
 
+    }
+
+    public function orderList()
+    {
+        return new OrderListResourceCollection(Order::where('user_id', Auth::user()->id)->paginate(20));
     }
 }
