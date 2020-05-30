@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\api\BaseController;
 use App\Http\Resources\OrderListResourceCollection;
+use App\Http\Resources\OrderDetailResource;
 use App\Order;
 use App\OrderItem;
 use App\Product;
@@ -119,5 +120,11 @@ class OrderController extends BaseController
     public function orderList()
     {
         return new OrderListResourceCollection(Order::where('user_id', Auth::user()->id)->paginate(20));
+    }
+
+    public function orderDetail(Request $request)
+    {
+        $responseBody = new OrderDetailResource(Order::findOrFail($request->order_id));
+        return $this->successResponse($responseBody, 'Success retrieve Order Detail');
     }
 }

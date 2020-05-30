@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Home;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Storage;
 
 class CategoryListResource extends JsonResource
 {
@@ -15,9 +16,17 @@ class CategoryListResource extends JsonResource
     public function toArray($request) 
     {
         // $category_info = $this->category_infos->where('language_id', $request->language_id)->first();
+        if(is_file(Storage::path('public/uploads/category_imgs/'.$this->image)))
+        {
+            $image_url = url(Storage::url('public/uploads/category_imgs/'.$this->image));
+        }
+        else{
+            $image_url = asset('images/default.png');
+        }
         return [
             'category_id' => $this->id,
             'name' => $this->name,
+            'image' => $image_url,
         ];
     }
 }
