@@ -17,18 +17,18 @@ class OrderController extends BaseController
     public function productOrder(Request $request)
     {
         $rules = [
-            'order_header.item_count' => 'required|numeric',
-            'order_header.total_amount' => 'required|numeric',
-            'order_body.order_items' => 'required',
+            'order_items' => 'required',
         ];
+        $validation = $this->validateResponse($request->all(), $rules);
+        if($validation['validate_status'] == 1)
+        {
+            return $validation;
+		}
 
-        $order_header = $request->order_header;
-        $order_body = $request->order_body;
+        $order_items = $request->order_items;
 
-        $item_count = $order_header['item_count'];
-        $total_amount = $order_header['total_amount'];
-
-        foreach($order_body['order_items'] as $item)
+        //check valid item_id
+        foreach($order_items as $item)
         {
             $check_order = Product::find($item['item_id']);
             if(!$check_order)
@@ -43,8 +43,20 @@ class OrderController extends BaseController
                 return $this->failResponse($error);
             }
         }
-        
+        //end check
 
+        //item count
+        $item_count = count($order_items);
+
+        //total amount
+        $total_amount = 0;
+        foreach($order_items as $item)
+        {
+            $product = Product::find($item['item_id']);
+            $sub_total = $item['quantity']*$product->price;
+            $total_amount += $sub_total;
+        }
+        
         //check unique order no
         $check = false;
         $order_no = 0;
@@ -61,13 +73,8 @@ class OrderController extends BaseController
         }
         //end check
 
-        $validation = $this->validateResponse($request->all(), $rules);
-        if($validation['validate_status'] == 1)
-        {
-            return $validation;
-		}
 
-        $order_transaction = DB::transaction(function () use($order_header,$order_body,$item_count,$total_amount,$order_no) {
+        $order_transaction = DB::transaction(function () use($order_items,$item_count,$total_amount,$order_no) {
 
             $order = Order::Create([
                 'order_status_id' => 1,
@@ -77,14 +84,17 @@ class OrderController extends BaseController
                 'order_no' => $order_no,
             ]);
 
-            foreach($order_body['order_items'] as $item)
+            foreach($order_items as $item)
             {
+                $product = Product::find($item['item_id']);
+                $sub_total = $item['quantity']*$product->price;
+
                 OrderItem::Create([
                     'order_id' => $order->id,
                     'item_id' => $item['item_id'],
                     'item_type' => 'App\Product',
                     'quantity' => $item['quantity'],
-                    'sub_total' => $item['sub_total'],
+                    'sub_total' => $sub_total,
                 ]);
             }
 
