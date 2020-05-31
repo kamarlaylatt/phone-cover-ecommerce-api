@@ -25,7 +25,7 @@
                 <div class="m-portlet__head-caption">
                     <div class="m-portlet__head-title">
                         <h3 class="m-portlet__head-text">
-                        Orders Table<small>Control all of orders accounts</small>
+                        Orders Table<small>Control all of order lists</small>
                         </h3>
                     </div>
                 </div>
@@ -79,7 +79,8 @@
                                 <th title="Field #1" data-field="No">No</th>
                                 <th title="Field #2" data-field="Name">Order No</th>
                                 <th title="Field #3" data-field="Email">Total Amount</th>
-                                <th title="Field #3" data-field="Role">User Name</th>
+                                <th title="Field #3" data-field="Role">Customer Name</th>
+                                <th title="Field #3" data-field="Role">Order Status</th>
                                 <th title="Field #4" data-field="Action">Action</th>
                             </tr>
                         </thead>
@@ -90,20 +91,15 @@
                                     <td>{{$order->order_no}}</td>
                                     <td>{{$order->total_amount}}</td>
                                     <td>{{$order->user->name}}</td>
-                                    {{--<td>
+                                    <td class="text-center">{{$order->order_status->name}}</td>
+                                    <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.show', $order->id)}}">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href=""><i class="fa fa-edit"></i></a>
 
-                                        <form action="{{route('orders.destroy', $order->id)}}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')                                            
-                                            <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody> 

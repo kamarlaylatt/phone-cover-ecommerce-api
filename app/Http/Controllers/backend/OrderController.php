@@ -13,4 +13,10 @@ class OrderController extends Controller
         $orders = Order::paginate(10);
         return view('backend.orders.index', compact('orders'));
     }
+
+    public function show($id)
+    {
+        $order = Order::findOrFail($id);
+        return view('backend.orders.show', compact('order'));
+    }
 }

@@ -111,6 +111,7 @@ class OrderController extends BaseController
             'order_status' => $order_transaction->order_status->name,
             'orderDate' => $order_transaction->created_at->format('d/m/Y'),
             'orderTime' => $order_transaction->created_at->format('H:i A'),
+            'order_time' => date($order_transaction->created_at),
         ];
 
         return $this->successResponse($responseBody, 'Success Order');

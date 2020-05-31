@@ -22,6 +22,7 @@ class OrderDetailResource extends JsonResource
             'order_status' => $this->order_status->name,
             'item_count' => $this->item_count,
             'total_amount' => (double)$this->total_amount,
+            'order_time' => date($this->created_at),
             'order_items' => OrderItemListResource::collection(OrderItem::where('order_id',$this->id)->get()),
         ];
     }

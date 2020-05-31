@@ -46,17 +46,17 @@
 			<!-- DIY -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-squares"></i><span class="m-menu__link-text">DIY</span><i
 				class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
-		   <div class="m-menu__submenu "><span class="m-menu__arrow"></span>
-			   <ul class="m-menu__subnav">		
-				   <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('tabs.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-menu-button"></i><span class="m-menu__link-text">Tab</span></a>
-				   </li>
-				   <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('charlets.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-confetti"></i><span class="m-menu__link-text">Charlet</span></a>
-				   </li>
-				   <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('masks.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon fa fa-theater-masks"></i><span class="m-menu__link-text">Mask</span></a>
-				   </li>
-			   </ul>
-		   </div>
-	   </li>
+				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">		
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('tabs.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-menu-button"></i><span class="m-menu__link-text">Tab</span></a>
+						</li>
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('charlets.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-confetti"></i><span class="m-menu__link-text">Charlet</span></a>
+						</li>
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('masks.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon fa fa-theater-masks"></i><span class="m-menu__link-text">Mask</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
 
 			<!-- Category -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('categories.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Category</span></a>
@@ -78,8 +78,19 @@
 			</li>
 
 			<!-- order -->
-			<!-- <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Order</span></a>
-			</li> -->
+			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Order</span><i
+				class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
+				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">		
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('order_statuses.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-menu-button"></i><span class="m-menu__link-text">Order Status</span></a>
+						</li>
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">Customer Orders</span></a>
+						</li>
+						{{-- <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('masks.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon fa fa-theater-masks"></i><span class="m-menu__link-text">Mask</span></a> --}}
+						</li>
+					</ul>
+				</div>
+			</li>
 		</ul>
 	</div>
 

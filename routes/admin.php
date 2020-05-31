@@ -96,7 +96,12 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	//orders
 	Route::prefix('orders')->group(function(){
 		Route::get('/','OrderController@index')->name('orders.index');
+		Route::get('/{id}/show','OrderController@show')->name('orders.show');
 	});
+
+	//order statuses
+	Route::resource('order_statuses', 'OrderStatusController');
+	Route::post('order_statuses/search','OrderStatusController@search')->name('order_statuses.search');
 
 	//tabs
 	Route::resource('tabs', 'TabController');

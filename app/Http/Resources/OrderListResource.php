@@ -22,6 +22,7 @@ class OrderListResource extends JsonResource
             'total_amount' => $this->total_amount,
             'remark' => $this->remark,
             'order_no' => $this->order_no,
+            'order_time' => date($this->created_at),
         ];
     }
 }
