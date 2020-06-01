@@ -7,13 +7,13 @@
 								{{-- <span class="m-badge m-badge--danger">2</span> --}}
 							</span> </span></span></a></li>
 			<li class="m-menu__section ">
-				<h4 class="m-menu__section-text">Menu List</h4>
+				<h4 class="m-menu__section-text">Adminstration</h4>
 				<i class="m-menu__section-icon flaticon-more-v2"></i>
 			</li>
 
 			<!-- user admin management -->
 			@if(Auth::user()->admin_role_id == 1)
-				<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">User Management</span><i
+				<li style="margin-top: -5px" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">User Management</span><i
 						class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
 					<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
 						<ul class="m-menu__subnav">
@@ -30,8 +30,13 @@
 				</li>
 			@endif
 
+			<li class="m-menu__section " style="margin-top: -5px">
+				<h4 class="m-menu__section-text">DIY Related</h4>
+				<i class="m-menu__section-icon flaticon-more-v2"></i>
+			</li>
+
 			<!-- Phone Brand & Model -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-responsive"></i><span class="m-menu__link-text">Brands & Models</span><i
+			<li style="margin-top: -5px" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-responsive"></i><span class="m-menu__link-text">Brands & Models</span><i
 					 class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
 				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
 					<ul class="m-menu__subnav">		
@@ -58,27 +63,43 @@
 				</div>
 			</li>
 
+			<!-- shell material -->
+			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('shell_materials.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-background"></i><span class="m-menu__link-text">Shell Material</span></a>
+			</li>
+
+			<li class="m-menu__section " style="margin-top: -5px">
+				<h4 class="m-menu__section-text">Products</h4>
+				<i class="m-menu__section-icon flaticon-more-v2"></i>
+			</li>
+
 			<!-- Category -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('categories.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Category</span></a>
+			<li style="margin-top: -5px" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('categories.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Category</span></a>
 			</li>
 
 			<!-- Product -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('products.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Product</span></a>
 			</li>
-			<!-- Banner -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('banners.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-web"></i><span class="m-menu__link-text">Banner</span></a>
+
+			<li class="m-menu__section " style="margin-top: -5px">
+				<h4 class="m-menu__section-text">Informations</h4>
+				<i class="m-menu__section-icon flaticon-more-v2"></i>
 			</li>
 
-			<!-- shell material -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('shell_materials.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-background"></i><span class="m-menu__link-text">Shell Material</span></a>
-			</li>
+			<!-- Banner -->
+			<li style="margin-top: -5px" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('banners.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-web"></i><span class="m-menu__link-text">Banner</span></a>
+			</li>	
 			
 			<!-- recruitment -->
 			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('recruitments.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Recruitment</span></a>
 			</li>
 
+			<li class="m-menu__section " style="margin-top: -5px">
+				<h4 class="m-menu__section-text">Reports</h4>
+				<i class="m-menu__section-icon flaticon-more-v2"></i>
+			</li>
+
 			<!-- order -->
-			<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Order</span><i
+			<li style="margin-top: -5px" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Order</span><i
 				class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
 				<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
 					<ul class="m-menu__subnav">		
