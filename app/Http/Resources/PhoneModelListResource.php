@@ -23,7 +23,7 @@ class PhoneModelListResource extends JsonResource
             $image_url = asset('images/default.png');
         }
         return [
-            'phoneBrandId' => $this->id,
+            'phoneModelId' => $this->id,
             'name' => $this->name,
             'image' => $image_url,
         ];
