@@ -20,6 +20,7 @@ class BannerListResource extends JsonResource
             'banner_id' => $this->id,
             'image' => url(\Storage::url('uploads/banner_imgs/'.$this->image)),
             'url' => $this->link,
+            'text_color' => $this->text_color,
             'title' => $product_infos->title,
             'subtitle' => $product_infos->subtitle,
             'buttonText' => $product_infos->button_text,

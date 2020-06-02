@@ -17,6 +17,7 @@ class CreateBannersTable extends Migration
             $table->bigIncrements('id');
             $table->text('image')->nullable();
             $table->text('link')->nullable();
+            $table->string('text_color')->nullable();
             $table->boolean('show_status')->default(0);
             $table->timestamps();
         });

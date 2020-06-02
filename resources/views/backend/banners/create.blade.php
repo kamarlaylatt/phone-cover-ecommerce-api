@@ -66,6 +66,10 @@
                             <label>Link</label>
                             <input type="text" name="link" class="form-control m-input m-input--air" placeholder="Enter link" value="{{ old('link') }}"  required autocomplete="link">
                         </div>
+                        <div class="form-group m-form__group">
+                            <label>Text Color</label>
+                            <input type="color" name="text_color" class="col-lg-2 form-control m-input m-input--air" placeholder="Enter text color code" value="{{ old('text_color') }}"  required autocomplete="text_color">
+                        </div>
                         <div class="form-group m-form__group ml-4">
                             <input type="checkbox" name="show_status" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Show Status</label>
@@ -88,7 +92,7 @@
                                 <div class="form-group m-form__group">
                                     <label>Sub Title</label>
                                     <input type="text" name="english_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('english_subtitle') }}"  required autocomplete="subtitle">
-                                </div>
+                                </div>                                
                                 <div class="form-group m-form__group">
                                     <label>Button Text</label>
                                     <input type="text" name="english_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('english_button_text') }}"  required autocomplete="button_text">

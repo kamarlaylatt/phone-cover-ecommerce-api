@@ -52,6 +52,7 @@ class BannerController extends Controller
 
         $banner = Banner::Create([
             'link' => $request['link'],
+            'text_color' => $request['text_color'],
             'show_status' => isset($request->show_status[0]) ? 1 : 0,
         ]);
 
@@ -141,6 +142,7 @@ class BannerController extends Controller
          }
 
         $banner->link = $request['link'];
+        $banner->text_color = $request['text_color'];
         $banner->show_status = isset($request->show_status[0]) ? 1 : 0;
  
         $eng_banner = $banner->infos->where('language_id',1)->first();
