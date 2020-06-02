@@ -17,6 +17,11 @@ class CreatePhoneModelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image')->nullable();
+            $table->double('width',10,2)->nullable();
+            $table->double('height',10,2)->nullable();
+            $table->double('position_x',10,2)->nullable();
+            $table->double('position_y',10,2)->nullable();
+            $table->text('frame')->nullable();
             $table->unsignedBigInteger('phone_brand_id');
             $table->foreign('phone_brand_id')->references('id')->on('phone_brands');
             $table->timestamps();

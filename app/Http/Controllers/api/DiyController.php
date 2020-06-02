@@ -10,6 +10,7 @@ use App\Http\Resources\RecruitmentDetailResource;
 use App\Http\Resources\RecruitmentListResourceCollection;
 use App\Http\Resources\PhoneBrandListResource;
 use App\Http\Resources\PhoneModelListResource;
+use App\Http\Resources\PhoneModelDetailResource;
 use App\Http\Resources\CharletListResource;
 use App\Http\Resources\MaskListResource;
 use App\Http\Controllers\api\BaseController;
@@ -66,6 +67,12 @@ class DiyController extends BaseController
         ];
 
         return $this->successResponse($responseBody,'Successfully retrieve Phone Model List.');
+    }
+
+    public function getPhoneModelDetail(Request $request)
+    {
+        $responseBody = new PhoneModelDetailResource(PhoneModel::findOrFail($request->phone_model_id));
+        return $this->successResponse($responseBody,'Successfully retrieve Phone Model Detail.');
     }
 
     public function getTabList()

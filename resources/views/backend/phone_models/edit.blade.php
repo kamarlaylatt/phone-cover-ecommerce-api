@@ -60,14 +60,6 @@
                             <input type="text" name="name" class="form-control m-input m-input--air" placeholder="Enter name" value="{{ $phone_model->name }}"  required autocomplete="name">
                         </div>
                         <div class="form-group m-form__group">
-                            <label>Image</label><br>
-                            <div class="col-md-12 mb-2">
-                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/phone_model_imgs/'.$phone_model->image))}}"
-                                    alt="preview image" style="max-height: 150px;">
-                            </div>
-                            <input type="file" name="image" id="image">
-                        </div>
-                        <div class="form-group m-form__group">
                             <label for="exampleSelect1">Select Brand</label>
                             <select name="phone_brand_id" class="form-control m-input m-input--air">
                                 @foreach($phone_brands as $phone_brand)
@@ -81,6 +73,30 @@
                                     </option>
                                 @endforeach                        
                             </select>
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label>Position-X</label>
+                            <input type="number" name="position_x" class="form-control m-input m-input--air" placeholder="Enter position X" value="{{$phone_model->position_x}}"  required autocomplete="name">
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label>Position-Y</label>
+                            <input type="number" name="position_y" class="form-control m-input m-input--air" placeholder="Enter position Y" value="{{$phone_model->position_y}}"  required autocomplete="name">
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label>Image</label><br>
+                            <div class="col-md-12 mb-2">
+                                <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/phone_model_imgs/'.$phone_model->image))}}"
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
+                            <input type="file" name="image" id="image">
+                        </div>
+                        <div class="form-group m-form__group">
+                            <label>Frame (1000x1000)</label><br>
+                            <div class="col-md-12 mb-2">
+                                <img class="img-rounded img-thumbnail" id="frame_preview_container" src="{{url(\Storage::url('uploads/phone_model_frame_imgs/'.$phone_model->frame))}}"
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
+                            <input type="file" name="frame" id="frame">
                         </div>
                     </div>
 
@@ -110,6 +126,16 @@
             let reader = new FileReader();
             reader.onload = (e) => { 
                 $('#image_preview_container').attr('src', e.target.result); 
+            }
+            reader.readAsDataURL(this.files[0]); 
+    
+        });
+
+        $('#frame').change(function(){
+            
+            let reader = new FileReader();
+            reader.onload = (e) => { 
+                $('#frame_preview_container').attr('src', e.target.result); 
             }
             reader.readAsDataURL(this.files[0]); 
     

@@ -47,6 +47,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/recruitment/detail', 'DiyController@getRecruitmentDetail');
     Route::get('/phone-brand/list', 'DiyController@getPhoneBrandList');
     Route::get('/phone-model/list', 'DiyController@getPhoneModelList');
+    Route::get('/phone-model/detail', 'DiyController@getPhoneModelDetail');
 
     
 

@@ -37,6 +37,16 @@
                         </td>
                     </tr> 
                     <tr>
+                        <th> Frame </th>
+                        <td>                             
+                            @if(is_file(\Storage::path('public/uploads/phone_model_frame_imgs/'.$phone_model->frame)))
+                                <img src="{{url(Storage::url('public/uploads/phone_model_frame_imgs/'.$phone_model->frame))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">
+                            @else
+                                <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150">                                           
+                            @endif
+                        </td>
+                    </tr> 
+                    <tr>
                         <th> Name </th>
                         <td>                             
                             {{$phone_model->name}}
@@ -46,6 +56,18 @@
                         <th> Brand </th>
                         <td>                             
                             {{$phone_model->phone_brand->name}}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th> Position-X </th>
+                        <td>                             
+                            {{$phone_model->position_x}}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th> Positioin-Y </th>
+                        <td>                             
+                            {{$phone_model->position_y}}
                         </td>
                     </tr> 
                                        

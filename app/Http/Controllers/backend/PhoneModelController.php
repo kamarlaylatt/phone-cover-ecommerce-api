@@ -43,13 +43,16 @@ class PhoneModelController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required',
+            'image' => 'required|image',
+            'frame' => 'required|image',
             'brand_id' => 'required',
         ]);
 
         $phone_model = PhoneModel::create([
             'name' => $request['name'],
             'phone_brand_id'=> $request['brand_id'],
+            'position_x' => $request['position_x'],
+            'position_y' => $request['position_y'],
         ]);
 
         if($request->file('image'))
@@ -58,6 +61,15 @@ class PhoneModelController extends Controller
                 $filename = uniqid().'_'.$file->getClientOriginalName();
                 Storage::disk('public')->putFileAs('/uploads/phone_model_imgs/', $file, $filename);
                 $phone_model->image = $filename;
+                $phone_model->save();
+        }
+
+        if($request->file('frame'))
+        {
+                $frame_file = $request->file('frame');
+                $framename = uniqid().'_'.$frame_file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/phone_model_frame_imgs/', $frame_file, $framename);
+                $phone_model->frame = $framename;
                 $phone_model->save();
         }
 
@@ -106,6 +118,8 @@ class PhoneModelController extends Controller
         
         $phone_model->name = $request['name'];
         $phone_model->phone_brand_id = $request['phone_brand_id'];
+        $phone_model->position_x = $request['position_x'];
+        $phone_model->position_y = $request['position_y'];
 
         if($request->file('image'))
         {
@@ -115,6 +129,15 @@ class PhoneModelController extends Controller
             Storage::disk('public')->putFileAs('/uploads/phone_model_imgs/', $file, $filename);
             $phone_model->image = $filename;
             $phone_model->save();
+        }
+
+        if($request->file('frame'))
+        {
+                $frame_file = $request->file('frame');
+                $framename = uniqid().'_'.$frame_file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/uploads/phone_model_frame_imgs/', $frame_file, $framename);
+                $phone_model->frame = $framename;
+                $phone_model->save();
         }
 
         $phone_model->update();
