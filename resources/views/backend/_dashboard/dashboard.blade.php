@@ -4,549 +4,155 @@
 @section('head_title','Dashboard')
 
 @section('content')
-<div class="row">
-    <div class="col-xl-4">
+<!--Begin::Section-->
+<div class="m-portlet">
+    <div class="m-portlet__body m-portlet__body--no-padding">
+        <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-12 col-xl-4">
 
-        <!--begin:: Widgets/Top Products-->
-        <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height ">
-            <div class="m-portlet__head">
-                <div class="m-portlet__head-caption">
-                    <div class="m-portlet__head-title">
-                        <h3 class="m-portlet__head-text">
-                            Trends
-                        </h3>
-                    </div>
-                </div>
-                <div class="m-portlet__head-tools">
-                    <ul class="m-portlet__nav">
-                        <li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
-                            <a href="#" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
-                                All
-                            </a>
-                            <div class="m-dropdown__wrapper">
-                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 36.5px;"></span>
-                                <div class="m-dropdown__inner">
-                                    <div class="m-dropdown__body">
-                                        <div class="m-dropdown__content">
-                                            <ul class="m-nav">
-                                                <li class="m-nav__item">
-                                                    <a href="" class="m-nav__link">
-                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                        <span class="m-nav__link-text">Activity</span>
-                                                    </a>
-                                                </li>
-                                                <li class="m-nav__item">
-                                                    <a href="" class="m-nav__link">
-                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                        <span class="m-nav__link-text">Messages</span>
-                                                    </a>
-                                                </li>
-                                                <li class="m-nav__item">
-                                                    <a href="" class="m-nav__link">
-                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                        <span class="m-nav__link-text">FAQ</span>
-                                                    </a>
-                                                </li>
-                                                <li class="m-nav__item">
-                                                    <a href="" class="m-nav__link">
-                                                        <i class="m-nav__link-icon flaticon-lifebuoy"></i>
-                                                        <span class="m-nav__link-text">Support</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                <!--begin:: Widgets/Stats2-1 -->
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('admins.profile')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">User Profile</h3>
+                                    <span class="m-widget1__desc">User account management</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="fa fa-user"></span>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </a>
+                    </div>
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('phone_brands.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Phone Brands</h3>
+                                    <span class="m-widget1__desc">Phone Brand Lists</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-responsive"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('phone_models.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Phone Models</h3>
+                                    <span class="m-widget1__desc">Phone Model Lists</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-responsive"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
+
+                <!--end:: Widgets/Stats2-1 -->
             </div>
-            <div class="m-portlet__body">
+            <div class="col-md-12 col-lg-12 col-xl-4">
 
-                <!--begin::Widget5-->
-                <div class="m-widget4">
-                    <div class="m-widget4__chart m-portlet-fit--sides m--margin-top-10 m--margin-top-20" style="height:260px;">
-                        <canvas id="m_chart_trends_stats"></canvas>
+                <!--begin:: Widgets/Stats2-2 -->
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('categories.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Category</h3>
+                                    <span class="m-widget1__desc">List of categories</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-map"></span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="m-widget4__item">
-                        <div class="m-widget4__img m-widget4__img--logo">
-                            <img src="assets/app/media/img/client-logos/logo3.png" alt="">
-                        </div>
-                        <div class="m-widget4__info">
-                            <span class="m-widget4__title">
-                                Phyton
-                            </span><br>
-                            <span class="m-widget4__sub">
-                                A Programming Language
-                            </span>
-                        </div>
-                        <span class="m-widget4__ext">
-                            <span class="m-widget4__number m--font-danger">+$17</span>
-                        </span>
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('products.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Product</h3>
+                                    <span class="m-widget1__desc">List of products</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-business"></span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="m-widget4__item">
-                        <div class="m-widget4__img m-widget4__img--logo">
-                            <img src="assets/app/media/img/client-logos/logo1.png" alt="">
-                        </div>
-                        <div class="m-widget4__info">
-                            <span class="m-widget4__title">
-                                FlyThemes
-                            </span><br>
-                            <span class="m-widget4__sub">
-                                A Let's Fly Fast Again Language
-                            </span>
-                        </div>
-                        <span class="m-widget4__ext">
-                            <span class="m-widget4__number m--font-danger">+$300</span>
-                        </span>
-                    </div>
-                    <div class="m-widget4__item">
-                        <div class="m-widget4__img m-widget4__img--logo">
-                            <img src="assets/app/media/img/client-logos/logo2.png" alt="">
-                        </div>
-                        <div class="m-widget4__info">
-                            <span class="m-widget4__title">
-                                AirApp
-                            </span><br>
-                            <span class="m-widget4__sub">
-                                Awesome App For Project Management
-                            </span>
-                        </div>
-                        <span class="m-widget4__ext">
-                            <span class="m-widget4__number m--font-danger">+$6700</span>
-                        </span>
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('banners.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Banner</h3>
+                                    <span class="m-widget1__desc">List of banners</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-web"></span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
-                <!--end::Widget 5-->
+                <!--begin:: Widgets/Stats2-2 -->
             </div>
-        </div>
+            <div class="col-md-12 col-lg-12 col-xl-4">
 
-        <!--end:: Widgets/Top Products-->
-    </div>
-    <div class="col-xl-8">
-
-        <!--begin:: Widgets/Best Sellers-->
-        <div class="m-portlet m-portlet--full-height ">
-            <div class="m-portlet__head">
-                <div class="m-portlet__head-caption">
-                    <div class="m-portlet__head-title">
-                        <h3 class="m-portlet__head-text">
-                            Best Sellers
-                        </h3>
+                <!--begin:: Widgets/Stats2-3 -->
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('recruitments.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Recruitment</h3>
+                                    <span class="m-widget1__desc">List of recruitments</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-list-2"></span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="m-portlet__head-tools">
-                    <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
-                        <li class="nav-item m-tabs__item">
-                            <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget5_tab1_content" role="tab">
-                                Last Month
-                            </a>
-                        </li>
-                        <li class="nav-item m-tabs__item">
-                            <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget5_tab2_content" role="tab">
-                                last Year
-                            </a>
-                        </li>
-                        <li class="nav-item m-tabs__item">
-                            <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget5_tab3_content" role="tab">
-                                All time
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="m-portlet__body">
-
-                <!--begin::Content-->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="m_widget5_tab1_content" aria-expanded="true">
-
-                        <!--begin::m-widget5-->
-                        <div class="m-widget5">
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="{{asset('backend_asset/app/media/img//products/product6.jpg')}}" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Great Logo Designn
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                author:
-                                            </span>
-                                            <span class="m-widget5__info-author-name">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('order_statuses.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Order Status</h3>
+                                    <span class="m-widget1__desc">List of order statuses</span>
                                 </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">19,200</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">1046</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-menu-button"></span>
                                 </div>
                             </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="{{asset('backend_asset/app/media/img//products/product10.jpg')}}" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Branding Mockup
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">24,583</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">3809</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="{{asset('backend_asset/app/media/img//products/product11.jpg')}}" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Awesome Mobile App
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">10,054</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">1103</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--end::m-widget5-->
+                        </a>
                     </div>
-                    <div class="tab-pane" id="m_widget5_tab2_content" aria-expanded="false">
-
-                        <!--begin::m-widget5-->
-                        <div class="m-widget5">
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="assets/app/media/img//products/product11.jpg" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Branding Mockup
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('orders.index')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Customer Order</h3>
+                                    <span class="m-widget1__desc">List of customer orders</span>
                                 </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">24,583</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">3809</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-users-1"></span>
                                 </div>
                             </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="assets/app/media/img//products/product6.jpg" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Great Logo Designn
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">19,200</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">1046</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="assets/app/media/img//products/product10.jpg" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Awesome Mobile App
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">10,054</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">1103</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--end::m-widget5-->
-                    </div>
-                    <div class="tab-pane" id="m_widget5_tab3_content" aria-expanded="false">
-
-                        <!--begin::m-widget5-->
-                        <div class="m-widget5">
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="assets/app/media/img//products/product10.jpg" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Branding Mockup
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">10.054</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">1103</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="assets/app/media/img//products/product11.jpg" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Great Logo Designn
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">24,583</span><br>
-                                        <span class="m-widget5__sales">sales</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">3809</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="assets/app/media/img//products/product6.jpg" alt="">
-                                    </div>
-                                    <div class="m-widget5__section">
-                                        <h4 class="m-widget5__title">
-                                            Awesome Mobile App
-                                        </h4>
-                                        <span class="m-widget5__desc">
-                                            Make Metronic Great Again.Lorem Ipsum Amet
-                                        </span>
-                                        <div class="m-widget5__info">
-                                            <span class="m-widget5__author">
-                                                Author:
-                                            </span>
-                                            <span class="m-widget5__info-author m--font-info">
-                                                Fly themes
-                                            </span>
-                                            <span class="m-widget5__info-label">
-                                                Released:
-                                            </span>
-                                            <span class="m-widget5__info-date m--font-info">
-                                                23.08.17
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__content">
-                                    <div class="m-widget5__stats1">
-                                        <span class="m-widget5__number">19,200</span><br>
-                                        <span class="m-widget5__sales">1046</span>
-                                    </div>
-                                    <div class="m-widget5__stats2">
-                                        <span class="m-widget5__number">1046</span><br>
-                                        <span class="m-widget5__votes">votes</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--end::m-widget5-->
+                        </a>
                     </div>
                 </div>
 
-                <!--end::Content-->
+                <!--begin:: Widgets/Stats2-3 -->
             </div>
         </div>
-
-        <!--end:: Widgets/Best Sellers-->
     </div>
 </div>
+
+<!--End::Section-->
 
 @endsection
