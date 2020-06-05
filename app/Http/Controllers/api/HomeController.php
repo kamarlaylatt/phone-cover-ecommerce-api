@@ -33,6 +33,7 @@ class HomeController extends BaseController
                                     ->limit(6)
                                     ->get()),
         ];
+        
         return $this->successResponse($responseBody, 'Success retrieve category list');
     }
 

@@ -24,7 +24,7 @@ class CategoryListResource extends JsonResource
             $image_url = asset('images/default.png');
         }
         return [
-            'category_id' => $this->id,
+            'category_id' => $this->category_id,
             'name' => $this->name,
             'image' => $image_url,
         ];
