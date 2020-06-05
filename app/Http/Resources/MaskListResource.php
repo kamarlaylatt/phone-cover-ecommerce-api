@@ -22,8 +22,9 @@ class MaskListResource extends JsonResource
             $image_url = asset('images/default.png');
         }
         return [
-            'charletId' => $this->id,
+            'maskId' => $this->id,
             'tabId' => $this->tab_id,
+            'tabName' => $this->tab->name,
             'image' => $image_url,
         ];
     }

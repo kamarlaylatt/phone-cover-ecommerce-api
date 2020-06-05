@@ -26,6 +26,7 @@ class CharletListResource extends JsonResource
         return [
             'charletId' => $this->id,
             'tabId' => $this->tab_id,
+            'tabName' => $this->tab->name,
             'image' => $image_url,
         ];
     }
