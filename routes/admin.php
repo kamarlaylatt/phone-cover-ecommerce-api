@@ -97,6 +97,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::prefix('orders')->group(function(){
 		Route::get('/','OrderController@index')->name('orders.index');
 		Route::get('/{id}/show','OrderController@show')->name('orders.show');
+		Route::post('/search','OrderController@search')->name('orders.search');
 	});
 
 	//order statuses
