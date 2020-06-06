@@ -22,7 +22,13 @@
 <div class="container col-md-8">
     <div class="card">
         <div class="container">
-            <div class="card-title text-center mt-4 h3">Mask Detail</div>
+            <div class="row">
+                <div class="col-xl-4"></div>
+                <div class="col-xl-4 card-title text-center mt-4 h3">Mask Detail</div>
+                <div class="col-xl-4 m--align-right">
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('masks.edit', $mask->id)}}"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
 
             <div class="card-body">
                 <table class="table table-bordered">

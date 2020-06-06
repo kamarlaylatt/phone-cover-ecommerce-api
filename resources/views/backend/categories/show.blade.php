@@ -22,7 +22,13 @@
 <div class="container col-md-8">
     <div class="card">
         <div class="container">
-            <div class="card-title text-center mt-4 h3">Category Detail</div>
+            <div class="row">
+                <div class="col-xl-4"></div>
+                <div class="col-xl-4 card-title text-center mt-4 h3">Category Detail</div>
+                <div class="col-xl-4 m--align-right">
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.edit', $category->id)}}"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
 
             <div class="card-body">
                 <table class="table table-bordered">
@@ -51,15 +57,11 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th> Language </th>
-                        <th> English </th>
-                    </tr>
-                    <tr>
-                        <th> Name </th>
+                        <th> English Name </th>
                         <td> {{$category->category_infos[0]->name}} </td>
                     </tr>
                     <tr>
-                        <th> Description </th>
+                        <th> English Description </th>
                         <td> {{$category->category_infos[0]->description}} </td>
                     </tr>
                 </table>
@@ -68,15 +70,11 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th> Language </th>
-                        <th> Myanmar </th>
-                    </tr>
-                    <tr>
-                        <th> Name </th>
+                        <th> Myanmar Name </th>
                         <td> {{$category->category_infos[1]->name}} </td>
                     </tr>
                     <tr>
-                        <th> Description </th>
+                        <th> Myanmar Description </th>
                         <td> {{$category->category_infos[1]->description}} </td>
                     </tr>
                 </table>

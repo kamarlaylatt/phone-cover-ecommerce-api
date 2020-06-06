@@ -87,7 +87,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="html_table" width="100%">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="text-center table-font">
                             <th title="Field #1" data-field="No">No</th>
                             <th title="Field #3" data-field="Role">Photo</th>
                             <th title="Field #2" data-field="Name">Name</th>
@@ -123,15 +123,7 @@
                                 {{$category->category_infos[0]->name}}
                                 </td>
                             @endif
-                            @if($category->category_infos[0]->description == '' || $category->category_infos[0]->description == 'null' )
-                                <td class="text-center align-middle">
-                                    <button type="button" class="btn btn-outline-danger m-btn m-btn--pill m-btn--air">
-                                        null
-                                    </button>
-                                </td>
-                            @else
-                    		  <td class="align-middle">{{Str::limit($category->category_infos[0]->description, 30)}}</td>
-                            @endif                    		
+                    		<td class="align-middle">{{Str::limit($category->category_infos[0]->description, 30)}}</td>                                            		
                             <td class="text-center align-middle">
                             	<a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('categories.show', $category->id)}}">
                                     <i class="fa fa-eye"></i>

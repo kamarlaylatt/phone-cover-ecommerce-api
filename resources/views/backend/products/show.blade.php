@@ -22,7 +22,13 @@
 <div class="container col-md-8">
     <div class="card">
         <div class="container">
-            <div class="card-title text-center mt-4 h3">Product Detail</div>
+            <div class="row">
+                <div class="col-xl-4"></div>
+                <div class="col-xl-4 card-title text-center mt-4 h3">Product Detail</div>
+                <div class="col-xl-4 m--align-right">
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.edit', $product->id)}}"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
 
             <div class="card-body">
                 <table class="table table-bordered">
@@ -109,19 +115,15 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th> Language </th>
-                        <th> English </th>
-                    </tr>
-                    <tr>
-                        <th> Name </th>
+                        <th> English Name </th>
                         <td>{{$product->infos->where('language_id',1)->first()->name}}</td>
                     </tr>
                     <tr>
-                        <th> Short Description </th>
+                        <th> English Short Description </th>
                         <td>{{$product->infos->where('language_id',1)->first()->short_description}}</td>
                     </tr>
                     <tr>
-                        <th> Description </th>
+                        <th> English Description </th>
                         <td>{{$product->infos->where('language_id',1)->first()->description}}</td>
                     </tr>
                     @foreach($product->additions->where('language_id',1) as $addition)
@@ -136,19 +138,15 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th> Language </th>
-                        <th> Myanmar </th>
-                    </tr>
-                    <tr>
-                        <th> Name </th>
+                        <th> Myanmar Name </th>
                         <td>{{$product->infos->where('language_id',2)->first()->name}}</td>
                     </tr>
                     <tr>
-                        <th> Short Description </th>
+                        <th> Myanmar Short Description </th>
                         <td>{{$product->infos->where('language_id',2)->first()->short_description}}</td>
                     </tr>
                     <tr>
-                        <th> Description </th>
+                        <th> Myanmar Description </th>
                         <td>{{$product->infos->where('language_id',2)->first()->description}}</td>
                     </tr>
                     @foreach($product->additions->where('language_id',2) as $addition)

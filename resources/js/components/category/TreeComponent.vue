@@ -28,7 +28,11 @@
 
     methods: {
       itemClick(node) {
-        this.node = node.model;
+        this.node = node.model.id;
+        if(this.node != 0)
+        { 
+          window.location.href = '/admin/categories/'+this.node+'/show';
+        }
       },
 
     }

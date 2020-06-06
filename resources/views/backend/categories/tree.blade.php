@@ -32,8 +32,18 @@
         <div class="m-portlet__body">
 
             <!-- Tree Dialog Start -->
-            <div class="mb-4">
-                <a href="{{route('categories.index')}}"  type="button" class="btn btn-primary">Grid View</a>
+            <div class="row">
+                <div class="mb-4 mr-4">
+                    <a href="{{route('categories.index')}}"  type="button" class="btn btn-primary">Grid View</a>
+                </div>
+                <div class="mb-4">
+                    <a href="{{route('categories.create')}}" class="btn btn-success">
+                        <span>
+                            <i class="la la-plus"></i>
+                            <span>Create</span>
+                        </span>
+                    </a>
+                </div>
             </div>
             <!-- Tree Dialog End -->
 

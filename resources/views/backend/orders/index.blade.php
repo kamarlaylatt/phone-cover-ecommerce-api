@@ -75,7 +75,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="html_table" width="100%">
                        <thead>
-                            <tr>
+                            <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
                                 <th title="Field #2" data-field="Name">Order No</th>
                                 <th title="Field #3" data-field="Email">Total Amount</th>

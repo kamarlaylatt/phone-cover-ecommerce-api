@@ -46,6 +46,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link rel="shortcut icon" href="{{asset('images/shortcut_icon.png')}}" />
 
 		<link href=" {{ asset('css/app.css') }}" rel="stylesheet">
+
+		<style>
+			.table-font{
+				font-size: 16px;
+				font-weight: bold;
+			}
+		</style>
 	</head>
 
 	<!-- end::Head -->

@@ -84,7 +84,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="html_table" width="100%">
                         <thead>
-                            <tr>
+                            <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
                                 <th class="text-center align-middle"> Image </th>
                                 <th class="text-center"> Name </th>
