@@ -137,7 +137,7 @@ class Handler extends ExceptionHandler
 
                 }
 
-                return response()->json($response,$status);
+                return response()->json($response,200);
 
             }
         }
