@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/images/upload','api\OrderController@imageUpload');
+
 Route::namespace('api')->middleware('check_app')->group(function(){
     //Register
     Route::post('/register', 'AuthController@register');

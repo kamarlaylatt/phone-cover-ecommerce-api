@@ -12,6 +12,7 @@ use App\OrderItem;
 use App\Product;
 use DB;
 use Auth;
+use Storage;
 
 class OrderController extends BaseController
 {
@@ -127,5 +128,35 @@ class OrderController extends BaseController
     {
         $responseBody = new OrderDetailResource(Order::findOrFail($request->order_id));
         return $this->successResponse($responseBody, 'Success retrieve Order Detail');
+    }
+
+    public function imageUpload(Request $request)
+    {
+        $files = $request->file('images');
+        if(is_array($files))
+        {
+            $image_array = array();
+            foreach($files as $file)
+            {
+                $filename = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->putFileAs('/orders/images/', $file, $filename);
+                $obj = [
+                    'image_url' => url(\Storage::url('orders/images/'.$filename)),
+                    'image_name' => $filename,
+                ];
+                array_push($image_array,$obj);
+            }
+            $responseBody = $image_array;
+        }
+        else{
+            $filename = uniqid().'_'.$files->getClientOriginalName();
+            Storage::disk('public')->putFileAs('/orders/images/', $files, $filename);
+            $responseBody = [
+                'image_url' => url(\Storage::url('orders/images/'.$filename)),
+                'image_name' => $filename,
+            ];
+        }
+        
+        return $this->successResponse($responseBody, 'Success upload Image');
     }
 }
