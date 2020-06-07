@@ -56,7 +56,7 @@
                                     </div>                                                                        
                                 </div>
                             </div>
-                            <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                            {{-- <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                                 <a href="" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                     <span>
                                         <i class="la la-plus"></i>
@@ -64,7 +64,7 @@
                                     </span>
                                 </a>
                                 <div class="m-separator m-separator--dashed d-xl-none"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </form>
                 </div>
@@ -97,7 +97,7 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        {{-- <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href=""><i class="fa fa-edit"></i></a> --}}
+                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-edit"></i></a>
 
                                     </td>
                                 </tr>

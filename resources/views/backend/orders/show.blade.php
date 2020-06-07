@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Order | Show ')
+@section('title','Order | View ')
 
 @section('head_title','Orders')
 
@@ -12,7 +12,7 @@
     <li class="m-nav__separator">-</li>
     <li class="m-nav__item">
         <a href="{{route('orders.show', $order->id)}}" class="m-nav__link">
-            <span class="m-nav__link-text">Show</span>
+            <span class="m-nav__link-text">View</span>
         </a>
     </li>   
 @endsection
@@ -21,21 +21,55 @@
 <div class="container col-md-12">
     <div class="card">
         <div class="container">
-            <div class="card-title text-center mt-4 h3">Order Detail</div>
+            <div class="row">
+                <div class="col-xl-4"></div>
+                <div class="col-xl-4 card-title text-center mt-4 h3">Order Detail</div>
+                <div class="col-xl-4 m--align-right">
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
 
             <div class="card-body">
-                <p class="h5"><strong>No - #{{$order->order_no}}</strong></p>
-                <p class="h5"><strong>Ordered at - {{$order->created_at->format('d/M/Y h:i A')}}</strong></p>
-                <p class="h5"><strong>Status - {{$order->order_status->name}}</strong></p>
-                <p class="h5"><strong>Customer Name - {{$order->user->name}}</strong></p>
-                <p class="h5"><strong>Total Item - {{$order->item_count}}</strong></p>
-                <p class="h5"><strong>Total Amount - {{$order->total_amount}}</strong></p>
-                <p class="h5"><strong>Remark - {{$order->remark}}</strong></p>
+                <div class="row mb-2">
+                    <div class="col-xl-2 h5"><strong>No</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>#{{$order->order_no}}</strong></div>
+                </div> 
+                <div class="row mb-2">
+                    <div class="col-xl-2 h5"><strong>Ordered at</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>{{$order->created_at->format('d/M/Y h:i A')}}</strong></div>
+                </div> 
+                <div class="row mb-2">
+                    <div class="col-xl-2 h5"><strong>Status</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>{{$order->order_status->name}}</strong></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-xl-2 h5"><strong>Customer Name</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>{{$order->user->name}}</strong></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-xl-2 h5"><strong>Total Item</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>{{$order->item_count}}</strong></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-xl-2 h5"><strong>Total Amount</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>{{$order->total_amount}}</strong></div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-2 h5"><strong>Remark</strong></div>
+                    <div class="col-xl-1 h5"><strong>-</strong></div>
+                    <div class="col-xl-9 h5"><strong>{{$order->remark}}</strong></div>
+                </div>
                 <br>
                 <h4>Order Items</h4>
                 <table class="table table-hover">
                     <thead>
-                        <tr>
+                        <tr class="table-font">
                             <th class="align-middle text-center">#</th>
                             <th class="align-middle text-center">Product Image</th>
                             <th class="align-middle text-center">Product Name</th>

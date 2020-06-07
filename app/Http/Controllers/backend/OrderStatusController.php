@@ -40,7 +40,7 @@ class OrderStatusController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'srot_index' => 'required',
+            'sort_index' => 'required',
             'icon' => 'required|image',
         ]);
 
