@@ -22,8 +22,11 @@ Route::post('/images/upload','api\OrderController@imageUpload');
 Route::namespace('api')->middleware('check_app')->group(function(){
     //Register
     Route::post('/register', 'AuthController@register');
+    Route::post('/register/check-otp', 'AuthController@checkOtpRegister');
+    Route::post('/login/provider', 'AuthController@providerLogin');
     Route::post('/login', 'AuthController@login');
 
+    //home
     Route::prefix('home')->group(function(){
         Route::get('/banner/list', 'HomeController@getBannerList');
         Route::get('/category/list', 'HomeController@getCategoryList');
@@ -44,6 +47,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/product/related-products', 'ProductController@getRelatedProduct');
     Route::get('/product/recommend-products', 'ProductController@getRecommendProduct');
 
+    //DIY
     Route::get('/shell-material/list', 'DiyController@getShellMaterialList');
     Route::get('/recruitment/list', 'DiyController@getRecruitmentList');
     Route::get('/recruitment/detail', 'DiyController@getRecruitmentDetail');
@@ -51,13 +55,15 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/phone-model/list', 'DiyController@getPhoneModelList');
     Route::get('/phone-model/detail', 'DiyController@getPhoneModelDetail');
 
-    
-
     Route::get('/tab-list', 'DiyController@getTabList');
     Route::get('/charlet-list', 'DiyController@getCharletList');
     Route::get('/mask-list', 'DiyController@getMaskList');
 
     Route::middleware('auth:api')->group(function(){
+        //logout
+        Route::get('/logout', 'AuthController@logout');
+
+        //profile
         Route::get('/profile', 'ProfileController@profile');
         Route::post('/profile/update', 'ProfileController@profileUpdate');
 

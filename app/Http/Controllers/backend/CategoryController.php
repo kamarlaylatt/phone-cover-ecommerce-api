@@ -240,7 +240,7 @@ class CategoryController extends Controller
         return response()->json($data);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $category = Category::find($id);
 
