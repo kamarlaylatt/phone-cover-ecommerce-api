@@ -92,7 +92,7 @@ class AuthController extends BaseController
             $token =  $user->createToken('Customer')->accessToken;
 
             return response()->json([
-                'responseCode' => 1,
+                'responseCode' => 200,
                 'responseMessage'=>'Correct Code No.',
                 'responseBody' => [
                     'user_id' => $user->id,
@@ -137,7 +137,7 @@ class AuthController extends BaseController
                 $token =  $user->createToken('Customer')->accessToken;  
 
                 return response()->json([ 
-                    'responseCode' => 1,
+                    'responseCode' => 200,
                     'responseMessage' => 'Login Success',
                     'responseBody' => [
                         'user_id' => $user->id,
