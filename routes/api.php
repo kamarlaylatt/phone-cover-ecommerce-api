@@ -21,6 +21,7 @@ Route::post('/images/upload','api\OrderController@imageUpload');
 
 Route::namespace('api')->middleware('check_app')->group(function(){
     //Register
+    Route::get('/send-otp', 'AuthController@sendOtp');
     Route::post('/register', 'AuthController@register');
     Route::post('/register/check-otp', 'AuthController@checkOtpRegister');
     Route::post('/login/provider', 'AuthController@providerLogin');

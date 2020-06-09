@@ -10,6 +10,21 @@ use Illuminate\Validation\Rule;
 
 class AuthController extends BaseController
 {
+    public function sendOtp(Request $request)
+    {
+        // Send SMS
+        $otp_code = mt_rand(1, 999999);
+        // \Otp::sendSMS($user->phone, $otp_code);
+        // $otp_code = '123456';  
+        // $user->otp_code = $otp_code;
+        // $user->save();
+        $responseBody = [
+            'phone' => $request->phone,
+            'otp_code' => $otp_code,
+        ];
+        return $this->successResponse($responseBody, 'Successfully Send OTP');
+    }
+
     public function register(Request $request)
     {
         $rules = [
@@ -61,7 +76,7 @@ class AuthController extends BaseController
 
         
 
-        // $token =  $user->createToken('Customer')->accessToken;
+        $token =  $user->createToken('Customer')->accessToken;
         
         $responseBody = [
             'user_id' => $user->id,
@@ -69,7 +84,7 @@ class AuthController extends BaseController
             'phone' => $user->phone,
             'email' => $user->email,
             'address' => $user->address,
-            // 'token' => $token,
+            'token' => $token,
         ];
         return $this->successResponse($responseBody, 'Successfully Register');
     }
@@ -95,12 +110,12 @@ class AuthController extends BaseController
                 'responseCode' => 200,
                 'responseMessage'=>'Correct Code No.',
                 'responseBody' => [
-                    'user_id' => $user->id,
-                    'name' => $user->name,
-                    'phone' => $user->phone,
-                    'email' => $user->email,
-                    'address' => $user->address,
-                    'token' => $token,             
+                    // 'user_id' => $user->id,
+                    // 'name' => $user->name,
+                    // 'phone' => $user->phone,
+                    // 'email' => $user->email,
+                    // 'address' => $user->address,
+                    // 'token' => $token,             
                 ],
             ]);
         }
