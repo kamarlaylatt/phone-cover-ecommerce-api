@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\api\BaseController;
 use Illuminate\Http\Request;
 use App\User;
+use App\OtpCheck;
 use Hash;
 use Illuminate\Validation\Rule;
 
@@ -12,15 +13,39 @@ class AuthController extends BaseController
 {
     public function sendOtp(Request $request)
     {
-        // Send SMS
+        $rules = [
+            'phone' => 'required',
+        ];
+
+        $validation = $this->validateResponse($request->all(), $rules);
+        if($validation['validate_status'] == 1)
+        {
+            return $validation;
+        }
+
         $otp_code = mt_rand(1, 999999);
+        $otp_check = OtpCheck::where('phone', $request->phone)->first();
+    
+        if($otp_check)
+        {
+            $otp_check->otp_code = $otp_code;
+            $otp_check->save();
+        }else{
+            $otp_check = OtpCheck::Create([
+                'phone' => $request->phone,
+                'otp_code' => $otp_code,
+            ]);
+        }
+        
+        // Send SMS
         // \Otp::sendSMS($user->phone, $otp_code);
         // $otp_code = '123456';  
         // $user->otp_code = $otp_code;
         // $user->save();
+
         $responseBody = [
-            'phone' => $request->phone,
-            'otp_code' => $otp_code,
+            'phone' => $otp_check->phone,
+            'otp_code' => $otp_check->otp_code,
         ];
         return $this->successResponse($responseBody, 'Successfully Send OTP');
     }
@@ -64,7 +89,7 @@ class AuthController extends BaseController
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'address' => $request->address,
-            'otp_code' => '1111',
+            'active_status' => 1,
         ]);
 
         // Send SMS
@@ -97,14 +122,11 @@ class AuthController extends BaseController
             return $validation;
         }
         
-        $user = User::where('phone',$request['phone'])->first();        
+        $otp_check = OtpCheck::where('phone',$request['phone'])->first();        
 
-        if($user->otp_code == $request['otp_code'])
+        if($otp_check->otp_code == $request['otp_code'])
         {
-            $user->active_status = 1;
-            $user->save();
 
-            $token =  $user->createToken('Customer')->accessToken;
 
             return response()->json([
                 'responseCode' => 200,
