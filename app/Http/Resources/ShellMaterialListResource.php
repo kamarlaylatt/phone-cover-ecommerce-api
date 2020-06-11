@@ -17,6 +17,7 @@ class ShellMaterialListResource extends JsonResource
         return [
             'shellMaterialId' => $this->id,
             'name' => $this->name,
+            'price' => $this->price,
             'sortIndex' => $this->sort_index,
         ];
     }
