@@ -6816,6 +6816,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -7019,6 +7022,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @riophae/vue-treeselect/dist/vue-treeselect.css */ "./node_modules/@riophae/vue-treeselect/dist/vue-treeselect.css");
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
+//
 //
 //
 //
@@ -63190,6 +63196,9 @@ var render = function() {
                       _c("vue-upload-multiple-image", {
                         attrs: {
                           "data-images": _vm.images,
+                          primaryText: "",
+                          markIsPrimaryText: "",
+                          popupText: "First Image",
                           idUpload: "myIdUpload",
                           editUpload: "myIdEdit",
                           dragText: "Drag your photo",
@@ -64901,6 +64910,9 @@ var render = function() {
                       _c("vue-upload-multiple-image", {
                         attrs: {
                           "data-images": _vm.images,
+                          primaryText: "",
+                          markIsPrimaryText: "",
+                          popupText: "First Image",
                           idUpload: "myIdUpload",
                           editUpload: "myIdEdit",
                           dragText: "Drag your photo",
