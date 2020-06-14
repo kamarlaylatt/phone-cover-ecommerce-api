@@ -11,6 +11,29 @@ use Illuminate\Validation\Rule;
 
 class AuthController extends BaseController
 {
+    public function sendSMS($phone, $otp_code)
+    {
+        // SMSPoh Authorization Token
+        $token = "5yZ_hGEas-RiQcLp1uGyUAfCS0kREHbPuDPk_NQvVfPB7BWZ7uN08K86Ni-VGM74";
+
+        // // Prepare data for POST request
+        $data = [
+            "to"        =>      "$phone",
+            "message"   =>      "Your UNIVERSITYLIFE OTP is $otp_code. DO NOT! share it to anyone. Call the Customer Care Center +09263683288 if OTP was not requested by you.",
+            "sender"    =>      "UNIVERSITYLIFE"
+        ];
+        $ch = curl_init("https://smspoh.com/api/v2/send"); 
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $token,
+            'Content-Type: application/json'
+        ]);
+
+        $result = curl_exec($ch);
+    }
+
     public function sendOtp(Request $request)
     {
         $rules = [
@@ -23,7 +46,7 @@ class AuthController extends BaseController
             return $validation;
         }
 
-        $otp_code = mt_rand(1, 999999);
+        $otp_code = mt_rand(100000, 999999);
         $otp_check = OtpCheck::where('phone', $request->phone)->first();
     
         if($otp_check)
@@ -38,7 +61,7 @@ class AuthController extends BaseController
         }
         
         // Send SMS
-        // \Otp::sendSMS($user->phone, $otp_code);
+        // $this->sendSMS($request->phone, $otp_code);
         // $otp_code = '123456';  
         // $user->otp_code = $otp_code;
         // $user->save();
