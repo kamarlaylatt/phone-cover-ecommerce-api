@@ -10,6 +10,9 @@ use App\Http\Resources\OrderDetailResource;
 use App\Order;
 use App\OrderItem;
 use App\Product;
+use App\Intension;
+use App\IntensionImage;
+use App\ShellMaterial;
 use DB;
 use Auth;
 use Storage;
@@ -158,5 +161,41 @@ class OrderController extends BaseController
         }
         
         return $this->successResponse($responseBody, 'Success upload Image');
+    }
+
+    public function intensionOrder(Request $request)
+    {
+        $shell_material = ShellMaterial::findOrFail($request->shell_material_id);
+        $intension = Intension::Create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'type' => $request->type,
+            'phone_model_id' => $request->phone_model_id,
+            'shell_material_id' => $request->shell_material_id,
+            'preview' => $request->preview,
+            'price' => $shell_material->price,
+        ]);
+
+        foreach($request->images as $image)
+        {
+            IntensionImage::Create([
+                'intension_id' => $intension->id,
+                'image' => $image,
+            ]);
+        }
+
+        $responseBody = [
+            'name' => $intension->name,
+            'phone' => $intension->phone,
+            'address' => $intension->address,
+            'type' => $intension->type,  
+            'phone_model' => $intension->phone_model->name,
+            'shell_material_id' => $intension->shell_material->name,
+            'price' => $intension->price       
+        ];
+
+        return $this->successResponse($responseBody, 'Success upload Intension Order');
+        
     }
 }
