@@ -186,6 +186,7 @@ class OrderController extends BaseController
         }
 
         $responseBody = [
+            'intension_id' => $intension->id,
             'name' => $intension->name,
             'phone' => $intension->phone,
             'address' => $intension->address,
