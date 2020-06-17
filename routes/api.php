@@ -70,9 +70,12 @@ Route::namespace('api')->middleware('check_app')->group(function(){
 
         //order
         Route::post('/order/product', 'OrderController@productOrder');
-        Route::post('/order/intension', 'OrderController@intensionOrder');
         Route::get('/order-list', 'OrderController@orderList');
         Route::get('/order-detail', 'OrderController@orderDetail');
+
+        //intension order
+        Route::post('/order/intension', 'OrderController@intensionOrder');
+        Route::get('/intension/detail', 'OrderController@intensionDetail');
     });
 
 });

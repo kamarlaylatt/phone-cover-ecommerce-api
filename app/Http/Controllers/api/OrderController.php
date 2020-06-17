@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\api\BaseController;
 use App\Http\Resources\OrderListResourceCollection;
 use App\Http\Resources\OrderDetailResource;
+use App\Http\Resources\IntensionResource;
 use App\Order;
 use App\OrderItem;
 use App\Product;
@@ -167,6 +168,7 @@ class OrderController extends BaseController
     {
         $shell_material = ShellMaterial::findOrFail($request->shell_material_id);
         $intension = Intension::Create([
+            'user_id' => Auth::user()->id,
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,
@@ -175,6 +177,7 @@ class OrderController extends BaseController
             'shell_material_id' => $request->shell_material_id,
             'preview' => $request->preview,
             'price' => $shell_material->price,
+            'order_status_id' => 1,
         ]);
 
         foreach($request->images as $image)
@@ -192,11 +195,20 @@ class OrderController extends BaseController
             'address' => $intension->address,
             'type' => $intension->type,  
             'phone_model' => $intension->phone_model->name,
-            'shell_material_id' => $intension->shell_material->name,
-            'price' => $intension->price       
+            'shell_material' => $intension->shell_material->name, 
+            'price' => $intension->price,    
+            'order_status' => $intension->order_status->name,   
         ];
 
         return $this->successResponse($responseBody, 'Success upload Intension Order');
         
+    }
+
+    public function intensionDetail(Request $request)
+    {
+        $intension = Intension::findOrFail($request->intension_id);
+        $responseBody =  new IntensionResource($intension);
+
+        return $this->successResponse($responseBody, 'Successfully retrieve Intension Detail');
     }
 }

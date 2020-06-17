@@ -17,13 +17,13 @@ class ProductController extends BaseController
     {
         if($request->recommend_status == 1)
         {
-            return new ProductListResourceCollection(Product::where('recommend',1)->paginate(20));
+            return new ProductListResourceCollection(Product::where('recommend',1)->paginate(10));
         }
 
         $category = Category::find($request->category_id);
         if($category)
         {
-            return new ProductListResourceCollection($category->products()->paginate(20));
+            return new ProductListResourceCollection($category->products()->paginate(10));
         }else{
             return new ProductListResourceCollection(Product::paginate(20));
         }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Intension extends Model
 {
     protected $fillable = [
+        'user_id',
         'name',
         'phone',
         'address',
@@ -15,7 +16,7 @@ class Intension extends Model
         'shell_material_id',
         'preview',
         'price',
-        'print_status',
+        'order_status_id',
         'remark',
     ];
 
@@ -32,5 +33,10 @@ class Intension extends Model
     public function intension_images()
     {
         return $this->belongsTo('App\IntensionImage');
+    }
+
+    public function order_status()
+    {
+        return $this->belongsTo('App\OrderStatus','order_status_id');
     }
 }
