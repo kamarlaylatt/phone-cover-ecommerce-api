@@ -25,7 +25,7 @@ class ProductController extends BaseController
         {
             return new ProductListResourceCollection($category->products()->paginate(10));
         }else{
-            return new ProductListResourceCollection(Product::paginate(20));
+            return new ProductListResourceCollection(Product::paginate(10));
         }
     }
 

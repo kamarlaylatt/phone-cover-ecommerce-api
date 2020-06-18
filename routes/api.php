@@ -64,6 +64,13 @@ Route::namespace('api')->middleware('check_app')->group(function(){
         //logout
         Route::get('/logout', 'AuthController@logout');
 
+        //change password
+        Route::post('/change-password','AuthController@changePassword');
+
+        //forgot password
+        Route::get('/forgot-password','AuthController@forgotPassword');
+        Route::post('/reset-password','AuthController@resetPassword');
+
         //profile
         Route::get('/profile', 'ProfileController@profile');
         Route::post('/profile/update', 'ProfileController@profileUpdate');

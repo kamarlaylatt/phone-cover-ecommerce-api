@@ -8,6 +8,7 @@ use App\User;
 use App\OtpCheck;
 use Hash;
 use Illuminate\Validation\Rule;
+use Auth;
 
 class AuthController extends BaseController
 {
@@ -326,5 +327,145 @@ class AuthController extends BaseController
             'logout_status' => 1,
         ];
         return $this->successResponse($data, 'Successfully Logout');
+    }
+
+    public function changePassword(Request $request)
+	{
+		$rules = [
+			'oldPassword' => 'required',
+			'newPassword' => 'required|same:confirmPassword',
+			'confirmPassword' => 'required',
+		];
+		$validation = $this->validateResponse($request->all(), $rules);
+		if($validation['validate_status'] == 1)
+        {
+            return $validation;
+        }
+
+		
+		$oldPassword = $request['oldPassword'];
+		$newPassword = $request['newPassword'];
+		$confirmPassword = $request['confirmPassword'];
+
+		$user = Auth::user();
+		$userPassword = $user->password;
+
+		if($oldPassword == $newPassword)
+		{
+			$errors = [
+				[
+					'fieldCode' => 'must different',
+					'errorMessage' => 'Your new password cannot be the same as your current password, please try again',
+				],
+			];
+			return $this->failResponse($errors);
+		}
+
+
+		if(Hash::check($request->oldPassword, $user->password))
+		{
+			$user->password = Hash::make($newPassword);
+			$user->save();
+
+			$responseBody = [
+				'userId' => Auth::user()->id,
+				'userName' => Auth::user()->name,
+				'userPhone' => Auth::user()->phone,
+				'message' => 'Successfully update password.',
+			];
+		
+			return $this->successResponse($responseBody, 'Successfully update password.');
+		}
+		else{
+			$errors = [
+				[
+					'fieldCode' => 'notMatch',
+					'errorMessage' => 'Your old password not match, please try again',
+				],
+			];
+			return $this->failResponse($errors);
+		}
+    }
+    
+    public function forgotPassword(Request $request)
+    {
+        $validation = $this->validateResponse($request->all(), ['phoneNo' => 'required']);
+		if($validation['validate_status'] == 1)
+        {
+            return $validation;
+		}
+		
+		$phone_no = $request['phoneNo'];
+
+		if(User::where('phone', $phone_no)->exists())
+		{ 
+            $otp_code = mt_rand(100000, 999999);
+            $otp_check = OtpCheck::where('phone', $request->phoneNo)->first();
+        
+            if($otp_check)
+            {
+                $otp_check->otp_code = $otp_code;
+                $otp_check->save();
+            }else{
+                $otp_check = OtpCheck::Create([
+                    'phone' => $request->phoneNo,
+                    'otp_code' => $otp_code,
+                ]);
+            }
+
+            // Send SMS
+            // $this->sendSMS($request->phone, $otp_code);
+            // $otp_code = '123456';  
+            // $user->otp_code = $otp_code;
+            // $user->save();
+
+            $user = User::where('phone', $phone_no)->first();
+
+            $responseBody = [
+                'user_id' => $user->id,
+                'phone' => $otp_check->phone,
+                'otp_code' => $otp_check->otp_code,
+            ];
+            return $this->successResponse($responseBody, 'Successfully check forget phone no and Send OTP');
+		}
+		else{
+			$errors = [
+				[
+					'fieldCode' => 'invalid',
+					'errorMessage' => 'Phone no is invalid',
+				],
+			];
+			return $this->failResponse($errors);
+		}
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $rules = [
+            'userId' => 'required',
+            'newPassword' => 'required|same:confirmPassword',
+            'confirmPassword' => 'required',
+        ];
+        $validation = $this->validateResponse($request->all(), $rules);
+		if($validation['validate_status'] == 1)
+        {
+            return $validation;
+        }
+
+        $user = User::findOrFail($request['userId']);
+        $token =  $user->createToken('unilife')->accessToken;
+
+        $new_password= Hash::make($request['newPassword']);
+        $user->password = $new_password;
+        $user->save();
+
+        return response()->json([
+            'responseCode' => 1,
+            'responseMessage'=>'Successfully reset password',
+            'responseBody' => [
+                'userId' => $user->id,
+                'token' => $token,
+            ],                
+        ]);
     }
 }
