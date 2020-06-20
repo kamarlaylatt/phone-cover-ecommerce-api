@@ -25,7 +25,43 @@ class ProductController extends BaseController
         {
             return new ProductListResourceCollection($category->products()->paginate(10));
         }else{
-            return new ProductListResourceCollection(Product::paginate(10));
+            $products = new Product;
+
+            switch ($request->sort_by_status) {
+                case "1":
+                    $products = $products->orderBy('price','asc');
+                    break;
+                case "2":
+                    $products = $products->orderBy('price','desc');
+                  break;
+                case "3":
+                    $products = $products->orderBy('id','desc');
+                  break;
+                default:
+                  $products;
+            }
+
+            switch ($request->price_status) {
+                case "1":
+                    $products = $products->whereBetween('price',[0,1000]);
+                    break;
+                case "2":
+                    $products = $products->whereBetween('price',[1000,5000]);
+                    break;
+                case "3":
+                    $products = $products->whereBetween('price',[5000,10000]);
+                    break;
+                case "4":
+                    $products = $products->whereBetween('price',[10000,20000]);
+                    break;
+                case "5":
+                    $products = $products->where('price','>', 20000);
+                    break;
+                default:
+                  $products;
+            }
+            
+            return new ProductListResourceCollection($products->paginate(10));
         }
     }
 
