@@ -110,7 +110,10 @@
                 <!--end::Form-->
             </div> --}}
 
-            <recruitment_create-component></recruitment_create-component>
+            <recruitment_create-component
+                :base_url="{{json_encode(URL::to('/'))}}"
+            >
+            </recruitment_create-component>
 
             <!--end::Form-->
         {{-- </div> --}}

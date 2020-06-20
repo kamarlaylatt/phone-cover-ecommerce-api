@@ -96,7 +96,7 @@
 <script>
 	import VueLoadingButton from 'vue-loading-button';
 	export default {
-		props: ['categories','category','img_url','category_infos'],
+		props: ['categories','category','img_url','category_infos','base_url'],
 		data(){
 			return{
 				form: {

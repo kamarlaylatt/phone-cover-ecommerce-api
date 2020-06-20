@@ -219,7 +219,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 export default {
-    props: ['categories'],
+    props: ['categories','base_url'],
     
     data(){
         return{
@@ -256,7 +256,7 @@ export default {
 
             errors: '',
             disabled_status: false,
-            show_image: '/images/default.png',
+            show_image: this.base_url+'/images/default.png',
 
              normalizer(node) {
               return {

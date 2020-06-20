@@ -19,6 +19,9 @@
 
 
 @section('content')
-            <category_create-component :categories="{{json_encode($category_array)}}"></category_create-component>
+            <category_create-component 
+                :categories="{{json_encode($category_array)}}"
+                :base_url="{{json_encode(URL::to('/'))}}"
+            ></category_create-component>
 
 @endsection

@@ -3,7 +3,6 @@
 		<div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
 			{{error.errorMessage}}
 		</div>
-
 		<!--begin::Form-->
         <form class="m-form m-form--fit m-form--label-align-right">
 			<div class="m-portlet">	
@@ -94,6 +93,7 @@ import ImageUploader from 'vue-image-upload-resize'
 import VueLoadingButton from 'vue-loading-button';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
+	props: ['base_url'],
     data(){
         return{
             form: {
@@ -116,7 +116,7 @@ export default {
             editorConfig: {
                 },
 
-            image:'/images/default.png',
+            image: this.base_url+'/images/default.png',
 
             errors: '',
             hasImage: false,

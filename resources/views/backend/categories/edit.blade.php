@@ -23,7 +23,9 @@
                 :img_url="{{json_encode($img_url)}}" 
                 :category="{{json_encode($category)}}" 
                 :category_infos="{{json_encode($category->category_infos)}}" 
-                :categories="{{json_encode($category_array)}}">
+                :categories="{{json_encode($category_array)}}"
+                :base_url="{{json_encode(URL::to('/'))}}"
+            >
             </category_edit-component>
 
 @endsection

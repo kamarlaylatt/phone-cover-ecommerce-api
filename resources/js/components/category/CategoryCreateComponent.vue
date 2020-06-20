@@ -95,7 +95,7 @@
 import ImageUploader from 'vue-image-upload-resize'
 import VueLoadingButton from 'vue-loading-button';
 	export default {
-		props: ['categories'],
+		props: ['categories','base_url'],
 		data(){
 			return{
 				form: {
@@ -114,7 +114,7 @@ import VueLoadingButton from 'vue-loading-button';
 					},										
 				},
 
-				image:'/images/default.png',
+				image: this.base_url+'/images/default.png',
 
 				errors: '',
 				hasImage: false,

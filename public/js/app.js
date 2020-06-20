@@ -6223,7 +6223,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['categories'],
+  props: ['categories', 'base_url'],
   data: function data() {
     return {
       form: {
@@ -6241,7 +6241,7 @@ __webpack_require__.r(__webpack_exports__);
           language_id: 2
         }
       },
-      image: '/images/default.png',
+      image: this.base_url + '/images/default.png',
       errors: '',
       hasImage: false,
       isLoading: false
@@ -6424,7 +6424,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['categories', 'category', 'img_url', 'category_infos'],
+  props: ['categories', 'category', 'img_url', 'category_infos', 'base_url'],
   data: function data() {
     return {
       form: {
@@ -6824,7 +6824,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['categories'],
+  props: ['categories', 'base_url'],
   data: function data() {
     return {
       image: '',
@@ -6856,7 +6856,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       errors: '',
       disabled_status: false,
-      show_image: '/images/default.png',
+      show_image: this.base_url + '/images/default.png',
       normalizer: function normalizer(node) {
         return {
           id: node.id,
@@ -7609,11 +7609,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['base_url'],
   data: function data() {
     return {
       form: {
@@ -7633,7 +7633,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2___default.a,
       editorConfig: {},
-      image: '/images/default.png',
+      image: this.base_url + '/images/default.png',
       errors: '',
       hasImage: false,
       isLoading: false
