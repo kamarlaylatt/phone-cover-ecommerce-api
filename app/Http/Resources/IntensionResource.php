@@ -20,6 +20,7 @@ class IntensionResource extends JsonResource
             'name' => $this->name,
             'phone' => $this->phone,
             'address' => $this->address,
+            'order_no' => $this->order_no,
             'type' => $this->type,  
             'phone_model' => $this->phone_model->name,
             'shell_material' => $this->shell_material->name, 

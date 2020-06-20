@@ -166,12 +166,29 @@ class OrderController extends BaseController
 
     public function intensionOrder(Request $request)
     {
+        //check unique order no
+        $check = false;
+        $order_no = 0;
+        while($check == false){
+            $order_no = time();
+            $check_no = Order::where('order_no',$order_no)->first();
+            if(!$check_no)
+            {
+                $check = true;
+            }
+            else{
+                $check = false;
+            }
+        }
+        //end check
+
         $shell_material = ShellMaterial::findOrFail($request->shell_material_id);
         $intension = Intension::Create([
             'user_id' => Auth::user()->id,
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,
+            'order_no' => $order_no,
             'type' => $request->type,
             'phone_model_id' => $request->phone_model_id,
             'shell_material_id' => $request->shell_material_id,
@@ -193,6 +210,7 @@ class OrderController extends BaseController
             'name' => $intension->name,
             'phone' => $intension->phone,
             'address' => $intension->address,
+            'order_no' => $intension->order_no,
             'type' => $intension->type,  
             'phone_model' => $intension->phone_model->name,
             'shell_material' => $intension->shell_material->name, 

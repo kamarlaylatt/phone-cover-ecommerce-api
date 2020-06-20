@@ -15,6 +15,7 @@ class AddColumnsToIntensionsTable extends Migration
     {
         Schema::table('intensions', function (Blueprint $table) {
             $table->dropColumn('print_status');
+            $table->string('order_no')->after('address')->unique();
             $table->unsignedBigInteger('user_id')->after('id');
             $table->unsignedBigInteger('order_status_id')->after('price');
             $table->foreign('order_status_id')->references('id')->on('order_statuses');

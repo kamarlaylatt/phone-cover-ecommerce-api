@@ -11,6 +11,7 @@ class Intension extends Model
         'name',
         'phone',
         'address',
+        'order_no',
         'type',
         'phone_model_id',
         'shell_material_id',
