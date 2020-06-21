@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use Storage;
 class IntensionResource extends JsonResource
 {
     /**
@@ -14,6 +14,14 @@ class IntensionResource extends JsonResource
      */
     public function toArray($request)
     {
+        if(is_file(Storage::path('public/orders/images/'.$this->preview)))
+        {
+            $image_url = url(Storage::url('orders/images/'.$this->preview));
+        }
+        else{
+            $image_url = asset('images/default.png');
+        }
+
         return [
             'intension_id' => $this->id,
             'user_id' => $this->user_id,
@@ -26,7 +34,7 @@ class IntensionResource extends JsonResource
             'shell_material' => $this->shell_material->name, 
             'price' => $this->price,    
             'order_status' => $this->order_status->name,   
-            'preview' => $this->preview,
+            'preview' => $image_url,
             'remark' => $this->remark,
             'type' => $this->type,
         ];
