@@ -105,7 +105,11 @@
 					<ul class="m-menu__subnav">		
 						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('order_statuses.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-menu-button"></i><span class="m-menu__link-text">Order Status</span></a>
 						</li>
-						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">Customer Orders</span></a>
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">Product Orders</span></a>
+						</li>
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('intensions.diy')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">DIY Orders</span></a>
+						</li>
+						<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('intensions.help')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">Help Me Design Orders</span></a>
 						</li>
 						{{-- <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('masks.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon fa fa-theater-masks"></i><span class="m-menu__link-text">Mask</span></a> --}}
 						</li>

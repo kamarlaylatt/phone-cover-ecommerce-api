@@ -33,7 +33,7 @@ class Intension extends Model
 
     public function intension_images()
     {
-        return $this->belongsTo('App\IntensionImage');
+        return $this->hasMany('App\IntensionImage');
     }
 
     public function order_status()
