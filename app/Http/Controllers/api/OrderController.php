@@ -125,7 +125,15 @@ class OrderController extends BaseController
 
     public function orderList()
     {
-        return new OrderListResourceCollection(Order::where('user_id', Auth::user()->id)->paginate(20));
+        $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),'price as total_amount','created_at')
+                                ->with('order_status','user');
+
+        $orders = Order::select('id','user_id','order_status_id','order_no','item_count','total_amount','created_at')
+                        ->with('order_status','user');
+
+        $order_history = $orders->union($intensions)->orderBy('created_at','desc')->paginate(10);
+
+        return new OrderListResourceCollection($order_history);
     }
 
     public function orderDetail(Request $request)
