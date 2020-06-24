@@ -125,10 +125,10 @@ class OrderController extends BaseController
 
     public function orderList()
     {
-        $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),'price as total_amount','created_at')
+        $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),DB::raw('"intension" as type'),'price as total_amount','created_at')
                                 ->with('order_status','user');
 
-        $orders = Order::select('id','user_id','order_status_id','order_no','item_count','total_amount','created_at')
+        $orders = Order::select('id','user_id','order_status_id','order_no','item_count',DB::raw('"order" as type'),'total_amount','created_at')
                         ->with('order_status','user');
 
         $order_history = $orders->union($intensions)->where('user_id', Auth::user()->id)->orderBy('created_at','desc')->paginate(10);
