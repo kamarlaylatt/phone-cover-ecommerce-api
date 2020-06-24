@@ -6819,6 +6819,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6832,6 +6838,7 @@ __webpack_require__.r(__webpack_exports__);
       category_array: null,
       code_number: '',
       price: '',
+      discount_price: '',
       quantity: '',
       minimum_order: '',
       maximum_order: '',
@@ -6898,6 +6905,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('category_array', JSON.stringify(this.category_array));
       formData.append('code_number', this.code_number);
       formData.append('price', this.price);
+      formData.append('discount_price', this.discount_price);
       formData.append('quantity', this.quantity);
       formData.append('minimum_order', this.minimum_order);
       formData.append('maximum_order', this.maximum_order);
@@ -7228,6 +7236,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7242,6 +7256,7 @@ __webpack_require__.r(__webpack_exports__);
       old_category_array: [],
       code_number: '',
       price: '',
+      discount_price: '',
       quantity: '',
       minimum_order: '',
       maximum_order: '',
@@ -7298,6 +7313,7 @@ __webpack_require__.r(__webpack_exports__);
       this.show_image = this.thumbnail_url;
       this.code_number = this.product.code_number;
       this.price = this.product.price;
+      this.discount_price = this.product.discount_price;
       this.quantity = this.product.qty;
       this.minimum_order = this.product.min_order;
       this.maximum_order = this.product.max_order;
@@ -7376,6 +7392,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('old_category_array', JSON.stringify(this.old_category_array));
       formData.append('code_number', this.code_number);
       formData.append('price', this.price);
+      formData.append('discount_price', this.discount_price);
       formData.append('quantity', this.quantity);
       formData.append('minimum_order', this.minimum_order);
       formData.append('maximum_order', this.maximum_order);
@@ -63959,6 +63976,40 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Discount Price")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.discount_price,
+                            expression: "discount_price"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          placeholder: "Enter Discount Price",
+                          required: ""
+                        },
+                        domProps: { value: _vm.discount_price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.discount_price = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _vm.nav_bar.data == true
                   ? _c(
                       "div",
                       { staticClass: "m-form__group form-check col-md-6" },
@@ -65157,6 +65208,40 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                _vm.nav_bar.data == true
+                  ? _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Discount Price")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.discount_price,
+                            expression: "discount_price"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "number",
+                          placeholder: "Enter Discount Price",
+                          required: ""
+                        },
+                        domProps: { value: _vm.discount_price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.discount_price = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
                 _vm.nav_bar.data == true
                   ? _c(
                       "div",

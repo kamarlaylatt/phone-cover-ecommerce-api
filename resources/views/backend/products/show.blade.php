@@ -76,6 +76,12 @@
                         </td>
                     </tr> 
                     <tr>
+                        <th> Discount Price </th>
+                        <td> 
+                            {{$product->discount_price}}
+                        </td>
+                    </tr> 
+                    <tr>
                         <th> Quantity </th>
                         <td> 
                             {{$product->qty}}

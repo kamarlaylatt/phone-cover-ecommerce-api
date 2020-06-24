@@ -14,7 +14,7 @@ use File;
 class Product extends Model
 {
     protected $fillable = [
-        'code_number','price','qty','min_order','max_order','recommend','image','seo_key','fb_pixel',
+        'code_number','price','discount_price','qty','min_order','max_order','recommend','image','seo_key','fb_pixel',
     ];
 
     public function categories()
@@ -46,7 +46,8 @@ class Product extends Model
     {
     	$product = Product::Create([
     		'code_number' => $request['code_number'],
-    		'price' => $request['price'],
+            'price' => $request['price'],
+            'discount_price' => $request['discount_price'],
     		'qty' => $request['quantity'],
     		'min_order' => $request['minimum_order'],
             'max_order' => $request['maximum_order'],
@@ -131,6 +132,7 @@ class Product extends Model
         //product
         $product->code_number = $request['code_number'];
         $product->price = $request['price'];
+        $product->discount_price = $request['discount_price'];
         $product->qty = $request['quantity'];
         $product->min_order = $request['minimum_order'];
         $product->max_order = $request['maximum_order'];

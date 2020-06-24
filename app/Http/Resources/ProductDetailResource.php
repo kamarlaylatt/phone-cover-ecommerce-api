@@ -37,6 +37,7 @@ class ProductDetailResource extends JsonResource
             'recommend' => $this->recommend,
             'thumbnail' => $image_url,
             'price' => $this->price,
+            'discount_price' => $this->discount_price,
             'short_description' => $this->short_description,
             'description' => $product_info->description,
             'fb_pixel' => $this->fb_pixel,
