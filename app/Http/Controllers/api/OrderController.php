@@ -204,14 +204,18 @@ class OrderController extends BaseController
             'price' => $shell_material->price,
             'order_status_id' => 1,
         ]);
-
-        foreach($request->images as $image)
+        
+        if($request->images != null)
         {
-            IntensionImage::Create([
-                'intension_id' => $intension->id,
-                'image' => $image,
-            ]);
+            foreach($request->images as $image)
+            {
+                IntensionImage::Create([
+                    'intension_id' => $intension->id,
+                    'image' => $image,
+                ]);
+            }
         }
+        
 
         $responseBody = [
             'intension_id' => $intension->id,
