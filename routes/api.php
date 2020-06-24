@@ -27,6 +27,10 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::post('/login/provider', 'AuthController@providerLogin');
     Route::post('/login', 'AuthController@login');
 
+    //forgot password
+    Route::get('/forgot-password','AuthController@forgotPassword');
+
+
     //home
     Route::prefix('home')->group(function(){
         Route::get('/banner/list', 'HomeController@getBannerList');
@@ -67,8 +71,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
         //change password
         Route::post('/change-password','AuthController@changePassword');
 
-        //forgot password
-        Route::get('/forgot-password','AuthController@forgotPassword');
+        //reset password
         Route::post('/reset-password','AuthController@resetPassword');
 
         //profile
