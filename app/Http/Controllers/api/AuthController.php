@@ -106,6 +106,19 @@ class AuthController extends BaseController
          }
          //end check
 
+         $otp_check = OtpCheck::where('phone',$request['phone'])->first();        
+
+        if($otp_check->otp_code != $request['otp_code'])
+        {
+            $error = [
+                [
+                    'fieldCode' => 'invalid',
+                    'errorMessage' => 'Sorry, invalid code number.',
+                ],    
+            ];
+            return $this->failResponse($error);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'uuid' => $uuid,
@@ -420,11 +433,12 @@ class AuthController extends BaseController
             // $user->save();
 
             $user = User::where('phone', $phone_no)->first();
+            $token =  $user->createToken('unilife')->accessToken;
 
             $responseBody = [
-                'user_id' => $user->id,
                 'phone' => $otp_check->phone,
                 'otp_code' => $otp_check->otp_code,
+                'token' => $token,
             ];
             return $this->successResponse($responseBody, 'Successfully check forget phone no and Send OTP');
 		}
@@ -442,9 +456,9 @@ class AuthController extends BaseController
     public function resetPassword(Request $request)
     {
         $rules = [
-            'userId' => 'required',
             'newPassword' => 'required|same:confirmPassword',
             'confirmPassword' => 'required',
+            'otp_code' => 'required',
         ];
         $validation = $this->validateResponse($request->all(), $rules);
 		if($validation['validate_status'] == 1)
@@ -452,7 +466,20 @@ class AuthController extends BaseController
             return $validation;
         }
 
-        $user = User::findOrFail($request['userId']);
+        $otp_check = OtpCheck::where('phone',Auth::user()->phone)->first();        
+
+        if($otp_check->otp_code != $request['otp_code'])
+        {
+            $error = [
+                [
+                    'fieldCode' => 'invalid',
+                    'errorMessage' => 'Sorry, invalid code number.',
+                ],    
+            ];
+            return $this->failResponse($error);
+        }
+
+        $user = Auth::user();
         $token =  $user->createToken('unilife')->accessToken;
 
         $new_password= Hash::make($request['newPassword']);
@@ -462,10 +489,7 @@ class AuthController extends BaseController
         return response()->json([
             'responseCode' => 1,
             'responseMessage'=>'Successfully reset password',
-            'responseBody' => [
-                'userId' => $user->id,
-                'token' => $token,
-            ],                
+            'responseBody' => [],                
         ]);
     }
 }
