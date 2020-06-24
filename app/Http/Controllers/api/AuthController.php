@@ -82,6 +82,7 @@ class AuthController extends BaseController
             'email' => 'required|unique:users',
             'password' => 'required|same:password_confirmation',
             'password_confirmation' => 'required',
+            'otp_code' => 'required',
         ];
 
         $validation = $this->validateResponse($request->all(), $rules);
