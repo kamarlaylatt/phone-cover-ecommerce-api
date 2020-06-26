@@ -123,6 +123,25 @@ class OrderController extends BaseController
 
     }
 
+    public function confirmOrder(Request $request)
+    {
+        $order_type = $request->order_type;
+
+        if($order_type == 'order')
+        {
+            $order = Order::findOrFail($request->order_id);
+            $order->order_status_id = 2;
+            $order->save();
+        }else{
+            $order = Intension::findOrFail($request->order_id);
+            $order->order_status_id = 2;
+            $order->save();
+        }
+            $responseBody = [];
+            return $this->successResponse($responseBody, 'Successfully update order confirmed');
+
+    }
+
     public function orderList()
     {
         $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),DB::raw('"intension" as type'),'price as total_amount','created_at')
@@ -138,8 +157,21 @@ class OrderController extends BaseController
 
     public function orderDetail(Request $request)
     {
-        $responseBody = new OrderDetailResource(Order::findOrFail($request->order_id));
-        return $this->successResponse($responseBody, 'Success retrieve Order Detail');
+        $user_orders = Order::where('user_id', Auth::user()->id)->where('id', $request->order_id)->first();
+        if(isset($user_orders))
+        {
+            $responseBody = new OrderDetailResource(Order::findOrFail($request->order_id));
+            return $this->successResponse($responseBody, 'Success retrieve Order Detail');
+        }{
+            $error = [
+                [
+                    'fieldCode' => 'invalid',
+                    'errorMessage' => 'Sorry, this order detail is not for '.Auth::user()->name,
+                ],    
+            ];
+            return response()->json($error);
+        }
+        
     }
 
     public function imageUpload(Request $request)

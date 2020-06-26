@@ -80,6 +80,7 @@ Route::namespace('api')->middleware('check_app')->group(function(){
 
         //order
         Route::post('/order/product', 'OrderController@productOrder');
+        Route::get('/order/confirmed', 'OrderController@confirmOrder');
         Route::get('/order-list', 'OrderController@orderList');
         Route::get('/order-detail', 'OrderController@orderDetail');
 
