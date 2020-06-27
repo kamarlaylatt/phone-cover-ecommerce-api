@@ -56,7 +56,7 @@ class PhoneBrandController extends Controller
                 $phone_brand->save();
         }
 
-        return redirect()->route('phone_brands.index');
+        return redirect()->route('phone_brands.index')->with('success','Successfully Create Phone Brand');
     }
 
     /**
@@ -110,7 +110,7 @@ class PhoneBrandController extends Controller
 
         $phone_brand->update();
 
-        return redirect()->route('phone_brands.index');
+        return redirect()->route('phone_brands.index')->with('success','Successfully Update Phone Brand');
     }
 
     /**
@@ -125,7 +125,7 @@ class PhoneBrandController extends Controller
         Storage::delete('public/uploads/phone_brand_imgs/'.$phone_brand->image);
         $phone_brand->delete();
 
-        return redirect()->back();
+        return redirect()->route('phone_brands.index')->with('success','Successfully Delete Phone Brand');
     }
 
     public function search(Request $request)

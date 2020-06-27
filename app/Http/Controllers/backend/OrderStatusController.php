@@ -59,7 +59,7 @@ class OrderStatusController extends Controller
                 $order_status->save();
         }
 
-        return redirect()->route('order_statuses.index');
+        return redirect()->route('order_statuses.index')->with('success','Successfully Create Order Status');
     }
 
     /**
@@ -116,7 +116,7 @@ class OrderStatusController extends Controller
 
         $order_status->update();
 
-        return redirect()->route('order_statuses.index');
+        return redirect()->route('order_statuses.index')->with('success','Successfully Update Order Status');
     }
 
     /**
@@ -135,7 +135,7 @@ class OrderStatusController extends Controller
         Storage::delete('public/uploads/order_status_imgs/'.$order_status->icon);
         $order_status->delete();
 
-        return redirect()->back();
+        return redirect()->route('order_statuses.index')->with('success','Successfully Delete Order Status');
     }
 
     public function search(Request $request)

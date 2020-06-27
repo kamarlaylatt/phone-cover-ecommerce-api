@@ -58,7 +58,7 @@ class CharletController extends Controller
                 $charlet->save();
         }
 
-        return redirect()->route('charlets.index');
+        return redirect()->route('charlets.index')->with('success','Successfully Create Charlet');
     }
 
     /**
@@ -114,7 +114,7 @@ class CharletController extends Controller
 
         $charlet->update();
 
-        return redirect()->route('charlets.index');
+        return redirect()->route('charlets.index')->with('success','Successfully Update Charlet');
     }
 
     /**
@@ -129,7 +129,7 @@ class CharletController extends Controller
         Storage::delete('public/uploads/charlet_imgs/'.$charlet->image);
         $charlet->delete();
 
-        return redirect()->back();
+        return redirect()->route('charlets.index')->with('success','Successfully Delete Charlet');
     }
 
     public function search(Request $request)

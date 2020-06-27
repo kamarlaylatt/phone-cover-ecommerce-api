@@ -73,7 +73,7 @@ class PhoneModelController extends Controller
                 $phone_model->save();
         }
 
-        return redirect()->route('phone_models.index');
+        return redirect()->route('phone_models.index')->with('success','Successfully Create Phone Model');
     }
 
     /**
@@ -142,7 +142,7 @@ class PhoneModelController extends Controller
 
         $phone_model->update();
 
-        return redirect()->route('phone_models.index');
+        return redirect()->route('phone_models.index')->with('success','Successfully Update Phone Model');
     }
 
     /**
@@ -157,7 +157,8 @@ class PhoneModelController extends Controller
         Storage::delete('public/uploads/phone_model_imgs/'.$phone_model->image);
         $phone_model->delete();
 
-        return redirect()->back();
+        return redirect()->route('phone_models.index')->with('success','Successfully Delete Phone Model');
+    
     }
 
     public function search(Request $request)

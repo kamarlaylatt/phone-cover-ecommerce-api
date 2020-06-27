@@ -114,7 +114,7 @@ class AdminRoleController extends Controller
         $admin_role = AdminRole::find($id);
         $admin_role->delete();
 
-        return redirect()->back();
+        return redirect()->route('admin_roles.index')->with('error','Successfully delete admin role');
     }
 
     public function search(Request $request)

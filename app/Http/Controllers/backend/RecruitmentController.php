@@ -242,7 +242,7 @@ class RecruitmentController extends Controller
         Storage::delete('public/uploads/recruitment_imgs/'.$recruitment->image);
         $recruitment->delete();
 
-        return redirect()->back();
+        return redirect()->route('recruitments.index')->with('success','Successfully Delete Recruitment');
     }
 
     public function search(Request $request)

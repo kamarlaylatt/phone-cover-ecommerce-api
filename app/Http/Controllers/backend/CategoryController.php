@@ -246,12 +246,12 @@ class CategoryController extends Controller
 
         if($category->children->count() != 0)
         {
-            return redirect()->back()->with('error', 'Sorry, this Category has child, can\'t delete!');   
+            return redirect()->route('categories.index')->with('error', 'Sorry, this Category has child, can\'t delete!');   
         }
         else{
             Storage::delete('public/uploads/category_imgs/'.$category->image);            
             $category->delete();
-            return redirect()->back()->with('success', 'Successfully delete category'); 
+            return redirect()->route('categories.index')->with('success', 'Successfully Delete Category'); 
         }        
     }
 

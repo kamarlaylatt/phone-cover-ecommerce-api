@@ -63,7 +63,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','Successfully Create User');
     }
 
     /**
@@ -113,7 +113,7 @@ class UserController extends Controller
             $user->email = $request['email'];
             $user->update();
 
-            return redirect()->route('users.index');
+            return redirect()->route('users.index')->with('success','Successfully Update User');
         }
         else
         {
@@ -129,7 +129,7 @@ class UserController extends Controller
             $user->password = Hash::make($request['password']);
             $user->update();
 
-            return redirect()->route('users.index');
+            return redirect()->route('users.index')->with('success','Successfully Update User');
         }
     }
 
@@ -144,7 +144,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->back();
+        return redirect()->route('users.index')->with('success','Successfully Delete User');
     }
 
     public function block($id)

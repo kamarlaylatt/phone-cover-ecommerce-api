@@ -30,12 +30,6 @@
             </div>
         </div>
         <div class="m-portlet__body">
-            @if (Session::has('error'))
-                <div class="alert alert-danger">{{ Session::get('error') }}</div>
-            @endif
-            @if (Session::has('success'))
-                <div class="alert alert-success">{{ Session::get('success') }}</div>
-            @endif
             
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-20">

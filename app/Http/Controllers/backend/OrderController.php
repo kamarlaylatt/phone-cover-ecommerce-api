@@ -45,6 +45,9 @@ class OrderController extends Controller
                         ->orWhereHas('user',function ($query) use ($search){
                             $query->where('name','like', '%'.$search.'%');
                         })
+                        ->orWhereHas('order_status',function ($query) use ($search){
+                            $query->where('name','like', '%'.$search.'%');
+                        })
                         ->orderBy('id', 'asc')->paginate(20);
 
 

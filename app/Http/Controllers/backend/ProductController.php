@@ -172,7 +172,7 @@ class ProductController extends BaseController
         $product->categories()->detach($category);
 
         $product->delete();
-        return redirect()->back();
+        return redirect()->route('products.index')->with('success','Successfully Delete Product');
     }
 
     public function search(Request $request)

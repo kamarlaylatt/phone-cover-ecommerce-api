@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group m-form__group">
                         <label>Text Color</label>
-                        <input type="color" value="#171616"  name="text_color" class="col-lg-2 form-control" placeholder="Enter text color code"  required autocomplete="text_color">
+                        <input type="color" value="{{$banner->text_color}}"  name="text_color" class="col-lg-2 form-control" placeholder="Enter text color code"  required autocomplete="text_color">
                     </div>
                     <div class="form-group m-form__group ml-4">
                         <input type="checkbox" {{($banner->show_status == 1 ? ' checked' : '')}} name="show_status" class="form-check-input" id="exampleCheck1">

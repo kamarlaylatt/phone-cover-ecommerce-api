@@ -58,7 +58,7 @@ class MaskController extends Controller
                 $mask->save();
         }
 
-        return redirect()->route('masks.index');
+        return redirect()->route('masks.index')->with('success','Successfully Create Mask');
     }
 
     /**
@@ -114,7 +114,7 @@ class MaskController extends Controller
 
         $mask->update();
 
-        return redirect()->route('masks.index');
+        return redirect()->route('masks.index')->with('success','Successfully Update Mask');
     }
 
     /**
@@ -129,7 +129,7 @@ class MaskController extends Controller
         Storage::delete('public/uploads/mask_imgs/'.$mask->image);
         $mask->delete();
 
-        return redirect()->back();
+        return redirect()->route('masks.index')->with('success','Successfully Delete Mask');
     }
 
     public function search(Request $request)

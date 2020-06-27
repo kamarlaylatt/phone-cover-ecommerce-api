@@ -46,7 +46,7 @@ class TabController extends Controller
             'name' => $request['name'],
         ]);
 
-        return redirect()->route('tabs.index');
+        return redirect()->route('tabs.index')->with('success','Successfully Create Tab');
     }
 
     /**
@@ -91,7 +91,7 @@ class TabController extends Controller
 
         $tab->update();
 
-        return redirect()->route('tabs.index');
+        return redirect()->route('tabs.index')->with('success','Successfully Update Tab');
     }
 
     /**
@@ -105,7 +105,7 @@ class TabController extends Controller
         $tab = Tab::find($id);
         $tab->delete();
 
-        return redirect()->back();
+        return redirect()->route('tabs.index')->with('success','Successfully Delete Tab');
     }
 
     public function search(Request $request)

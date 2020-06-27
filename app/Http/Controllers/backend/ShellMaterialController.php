@@ -49,7 +49,7 @@ class ShellMaterialController extends Controller
             'sort_index' => $request['sort_index'],
         ]);
 
-        return redirect()->route('shell_materials.index');
+        return redirect()->route('shell_materials.index')->with('success','Successfully Create Shell Material');
     }
 
     /**
@@ -98,7 +98,7 @@ class ShellMaterialController extends Controller
 
         $shell_material->update();
 
-        return redirect()->route('shell_materials.index');
+        return redirect()->route('shell_materials.index')->with('success','Successfully Update Shell Material');
     }
 
     /**
@@ -112,7 +112,7 @@ class ShellMaterialController extends Controller
         $shell_material = ShellMaterial::find($id);
         $shell_material->delete();
 
-        return redirect()->back();
+        return redirect()->route('shell_materials.index')->with('success','Successfully delete shell material');
     }
 
     public function search(Request $request)
@@ -123,7 +123,6 @@ class ShellMaterialController extends Controller
                         ->orWhere('price', 'like', '%'.$search.'%')
                         ->orWhere('sort_index', 'like', '%'.$search.'%')
                         ->orderBy('id', 'asc')->paginate(20);
-
 
         return view('backend.shell_materials.index', compact('shell_materials'));
     }

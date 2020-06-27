@@ -81,7 +81,7 @@ class BannerController extends Controller
             'language_id' => 2,
         ]);
 
-        return redirect(route('banners.index'));
+        return redirect(route('banners.index'))->with('success','Successfully Create Banner');
 
     }
 
@@ -160,7 +160,7 @@ class BannerController extends Controller
         $eng_banner->save();
         $myan_banner->save();
 
-        return redirect(route('banners.index'));
+        return redirect(route('banners.index'))->with('success','Successfully Update Banner');
     }
 
     /**
@@ -176,7 +176,7 @@ class BannerController extends Controller
         Storage::delete('public/uploads/banner_imgs/'.$banner->image);
         $banner->delete();
 
-        return redirect()->back();
+        return redirect()->route('banners.index')->with('error','Successfully Delete Banner');
     }
 
     public function search(Request $request)
