@@ -25,7 +25,7 @@
                 <div class="m-portlet__head-caption">
                     <div class="m-portlet__head-title">
                         <h3 class="m-portlet__head-text">
-                        DIY Orders Table<small>Control all of intension lists</small>
+                        DIY Orders Table
                         </h3>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
                 
                 <!--begin: Search Form -->
                 <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-                    {{-- <form method="POST" action="{{route('intensions.search')}}">
-                        <div class="row align-items-center"> --}}
-                            {{-- <div class="col-xl-8 intension-2 intension-xl-1">
+                    <form method="POST" action="{{route('intensions.diy.search')}}">
+                        <div class="row align-items-center">
+                            <div class="col-xl-8 intension-2 intension-xl-1">
                                 <div class="form-group m-form__group row align-items-center">
                                     <div class="col-md-4">                                    
                                             @csrf
@@ -55,7 +55,7 @@
                                         <a href="{{route('intensions.diy')}}"class="btn btn-primary">Show All</a>
                                     </div>                                                                        
                                 </div>
-                            </div> --}}
+                            </div>
                             {{-- <div class="col-xl-4 intension-1 intension-xl-2 m--align-right">
                                 <a href="" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                     <span>
@@ -65,8 +65,8 @@
                                 </a>
                                 <div class="m-separator m-separator--dashed d-xl-none"></div>
                             </div> --}}
-                        {{-- </div>
-                    </form> --}}
+                        </div>
+                    </form>
                 </div>
 
                 <!--end: Search Form -->

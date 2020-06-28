@@ -67,4 +67,32 @@ class IntensionController extends Controller
     
         return response()->download(public_path($fileName));
     }
+
+    public function diySearch(Request $request)
+    {
+        $search = $request['search'];
+
+        $intensions = Intension::where('order_no', 'like','%'.$search.'%')
+                        ->orWhere('name','like','%'.$search.'%')
+                        ->orWhere('phone','like','%'.$search.'%')
+                        ->orderBy('id', 'asc')->paginate(20);
+
+
+        return view('backend.intensions.diy_order', compact('intensions'));
+
+    }
+
+    public function helpSearch(Request $request)
+    {
+        $search = $request['search'];
+
+        $intensions = Intension::where('order_no', 'like','%'.$search.'%')
+                        ->orWhere('name','like','%'.$search.'%')
+                        ->orWhere('phone','like','%'.$search.'%')
+                        ->orderBy('id', 'asc')->paginate(20);
+
+
+        return view('backend.intensions.help_order', compact('intensions'));
+
+    }
 }
