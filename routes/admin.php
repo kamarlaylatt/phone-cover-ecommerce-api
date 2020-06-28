@@ -121,12 +121,12 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	//intensions
 	Route::prefix('intensions')->group(function(){
 		Route::get('/diy-order','IntensionController@diyOrder')->name('intensions.diy');
-		Route::get('/help-order','IntensionController@helpOrder')->name('intensions.help');
 		Route::get('/{id}/show','IntensionController@show')->name('intensions.show');
 		Route::get('/{id}/edit','IntensionController@edit')->name('intensions.edit');
 		Route::put('/update/{id}','IntensionController@update')->name('intensions.update');
 		Route::get('/{id}/download-images','IntensionController@download')->name('intensions.download');
 	});
+	Route::get('/help-order','IntensionController@helpOrder')->name('intensions.help');
 	
 
 });

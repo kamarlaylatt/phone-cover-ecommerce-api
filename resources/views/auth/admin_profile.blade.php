@@ -24,22 +24,6 @@
 
 <!--begin::Portlet-->
 <div class="container" style="max-width:800px">
-    @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session()->get('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    @if(session()->has('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session()->get('error') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     @if ($errors->any())
         <div class="form-group m-form__group m--margin-top-10">   
             <div class="alert alert-danger m-alert m-alert--default" role="alert">
