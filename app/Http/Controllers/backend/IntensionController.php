@@ -47,25 +47,38 @@ class IntensionController extends Controller
 
     public function download($id)
     {
-        $zip = new ZipArchive;
         $intension = Intension::findOrFail($id);
 
+        if(is_file(public_path('/intension_images.zip')))
+        {
+            unlink(public_path('/intension_images.zip'));
+        }
 
    
         $fileName = 'intension_images.zip';
-   
+        $zip = new ZipArchive;
         if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
         {
-            $zip->addFile(storage_path('app/public/orders/images/'.$intension->preview), $intension->preview);
+
+            if($intension->type == 1)
+            {
+                $zip->addFile(storage_path('app/public/orders/images/'.$intension->preview), $intension->preview);
+            }
             foreach ($intension->intension_images as $image) {
 
                 $zip->addFile(storage_path('app/public/orders/images/'.$image->image), $image->image);
             }
              
             $zip->close();
+
         }
     
-        return response()->download(public_path($fileName));
+        if(is_file(public_path('/intension_images.zip')))
+        {
+            return response()->download(public_path($fileName));   
+        }else{
+            return redirect()->back()->with('error','There is no file for download!');
+        }
     }
 
     public function diySearch(Request $request)
