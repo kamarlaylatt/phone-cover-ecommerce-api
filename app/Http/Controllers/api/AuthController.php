@@ -62,10 +62,10 @@ class AuthController extends BaseController
         }
         
         // Send SMS
-        // $this->sendSMS($request->phone, $otp_code);
-        // $otp_code = '123456';  
-        // $user->otp_code = $otp_code;
-        // $user->save();
+        $this->sendSMS($request->phone, $otp_code);
+        $otp_code = '123456';  
+        $user->otp_code = $otp_code;
+        $user->save();
 
         $responseBody = [
             'phone' => $otp_check->phone,
