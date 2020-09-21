@@ -319,6 +319,7 @@ class AuthController extends BaseController
                 'profile_link' => $request->profile_link,
                 'provider_id' => $request->provider_id,
                 'provider' => $request->provider,
+                'active_status' => 1,
             ]);
 
             $token =  $user->createToken('Customer')->accessToken;
