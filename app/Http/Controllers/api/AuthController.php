@@ -254,10 +254,9 @@ class AuthController extends BaseController
         if ($user) {
 
             $rules = [
-                'name' => 'required',
                 'provider' => 'required',
                 'provider_id' => 'required',
-                'phone' => ['required',Rule::unique('users')->ignore($user->id),],
+                'phone' => ['nullable',Rule::unique('users')->ignore($user->id),],
             ];
     
             $validation = $this->validateResponse($request->all(), $rules);
@@ -266,9 +265,9 @@ class AuthController extends BaseController
                 return $validation;
             }
 
-            $user->name = $request->name;
+            // $user->name = $request->name;
             $user->phone = $request->phone;
-            $user->email = $request->email;
+            // $user->email = $request->email;
             $user->save();
 
             $token =  $user->createToken('Customer')->accessToken;
@@ -287,7 +286,7 @@ class AuthController extends BaseController
                 'name' => 'required',
                 'provider' => 'required',
                 'provider_id' => 'required',
-                'phone' => 'required|unique:users',
+                'phone' => 'nullable|unique:users',
             ];
 
             $validation = $this->validateResponse($request->all(), $rules);
@@ -317,6 +316,7 @@ class AuthController extends BaseController
                 'uuid' => $uuid,
                 'phone' => $request->phone,
                 'email' => $request->email,
+                'profile_link' => $request->profile_link,
                 'provider_id' => $request->provider_id,
                 'provider' => $request->provider,
             ]);
