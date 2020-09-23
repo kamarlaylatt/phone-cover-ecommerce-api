@@ -3,7 +3,6 @@
 		<div v-for="error in errors" :key="error.index" class="alert alert-danger" role="alert">
 			{{error.errorMessage}}
 		</div>
-
 		<!--begin::Form-->
         <form class="m-form m-form--fit m-form--label-align-right">
 			<div class="m-portlet">	
@@ -95,7 +94,7 @@ import ImageUploader from 'vue-image-upload-resize'
 import VueLoadingButton from 'vue-loading-button';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
-	props: ['recruitment','recruitment_infos','img_url'],
+	props: ['base_url','recruitment','recruitment_infos','img_url'],
     data(){
         return{
             form: {
@@ -130,7 +129,7 @@ export default {
                     }
                 },
 
-            image:'/images/default.png',
+            image:this.base_url+'/images/default.png',
 
             errors: '',
             hasImage: false,
@@ -205,7 +204,7 @@ export default {
                     },2000)
                     // var currentUrl = window.location.pathname;
                     // window.location.href = currentUrl;
-                    window.location.href = '/admin/recruitments/';
+                    window.location.href = this.base_url+'/admin/recruitments/';
                 }
                 else{
                     window.scrollTo(0,0);
@@ -228,7 +227,7 @@ export default {
         
         cancel()
         {
-            window.location.href = '/admin/recruitments';
+            window.location.href = this.base_url+'/admin/recruitments';
         }
     }
 }

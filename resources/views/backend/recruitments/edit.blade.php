@@ -114,6 +114,7 @@
         <!--end::Form-->
     </div> --}}
     <recruitment_edit-component
+        :base_url="{{json_encode(URL::to('/'))}}"
         :recruitment="{{json_encode($recruitment)}}" 
         :recruitment_infos="{{json_encode($recruitment->infos)}}"
         :img_url="{{json_encode(url(Storage::url('uploads/recruitment_imgs/'.$recruitment->image)))}}"

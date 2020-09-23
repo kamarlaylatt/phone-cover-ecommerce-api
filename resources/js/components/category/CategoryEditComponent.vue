@@ -207,7 +207,7 @@
 						},2000)
 						var currentUrl = window.location.pathname;
 						// window.location.href = currentUrl;
-						window.location.href = '/admin/categories';
+						window.location.href = this.base_url+'/admin/categories';
 					}
 					else{
 						window.scrollTo(0,0);
@@ -232,7 +232,7 @@
 
 			cancel()
 			{
-				window.location.href = '/admin/categories';
+				window.location.href = this.base_url+'/admin/categories';
 			}
 		},
 	}

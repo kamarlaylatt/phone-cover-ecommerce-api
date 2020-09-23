@@ -338,7 +338,7 @@ export default {
                     },2000)
                     var currentUrl = window.location.pathname;
                     // window.location.href = currentUrl;
-                    window.location.href = '/admin/products';
+                    window.location.href = this.base_url+'/admin/products';
                 }
                 else{
                     window.scrollTo(0,0);
@@ -354,7 +354,7 @@ export default {
 
         cancel()
         {
-            window.location.href = '/admin/products';
+            window.location.href = this.base_url+'/admin/products';
 
         },
 

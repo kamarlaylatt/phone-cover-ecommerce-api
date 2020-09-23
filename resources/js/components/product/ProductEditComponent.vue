@@ -216,7 +216,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 export default {
-    props: ['edit_images','categories','product','product_infos','selected_categories','product_additions','thumbnail_url'],
+    props: ['base_url','edit_images','categories','product','product_infos','selected_categories','product_additions','thumbnail_url'],
     
     data(){
         return{
@@ -261,7 +261,7 @@ export default {
 
             errors: '',
             disabled_status: false,
-            show_image: '/images/default.png',
+            show_image: this.base_url+'/images/default.png',
             image_change_status: false,
 
              normalizer(node) {
@@ -346,7 +346,7 @@ export default {
         },
 
         cancel(){
-            window.location.href = '/admin/products';
+            window.location.href = this.base_url+'/admin/products';
             
         },
 
@@ -411,7 +411,7 @@ export default {
                     },2000)
                     var currentUrl = window.location.pathname;
                     // window.location.href = currentUrl;
-                    window.location.href = '/admin/products';
+                    window.location.href = this.base_url+'/admin/products';
                 }
                 else{
                     window.scrollTo(0,0);

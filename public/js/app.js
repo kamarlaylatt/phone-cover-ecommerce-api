@@ -6294,7 +6294,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
 
-          window.location.href = '/admin/categories';
+          window.location.href = _this.base_url + '/admin/categories';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -6310,7 +6310,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.image = output.info.name;
     },
     cancel: function cancel() {
-      window.location.href = '/admin/categories';
+      window.location.href = this.base_url + '/admin/categories';
     }
   }
 });
@@ -6516,7 +6516,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
 
-          window.location.href = '/admin/categories';
+          window.location.href = _this.base_url + '/admin/categories';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -6535,7 +6535,7 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = currentUrl;
     },
     cancel: function cancel() {
-      window.location.href = '/admin/categories';
+      window.location.href = this.base_url + '/admin/categories';
     }
   }
 });
@@ -6924,7 +6924,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
 
-          window.location.href = '/admin/products';
+          window.location.href = _this.base_url + '/admin/products';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -6936,7 +6936,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     cancel: function cancel() {
-      window.location.href = '/admin/products';
+      window.location.href = this.base_url + '/admin/products';
     },
     //extra field functions
     add_addition: function add_addition() {
@@ -7247,7 +7247,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['edit_images', 'categories', 'product', 'product_infos', 'selected_categories', 'product_additions', 'thumbnail_url'],
+  props: ['base_url', 'edit_images', 'categories', 'product', 'product_infos', 'selected_categories', 'product_additions', 'thumbnail_url'],
   data: function data() {
     return {
       image: '',
@@ -7287,7 +7287,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       errors: '',
       disabled_status: false,
-      show_image: '/images/default.png',
+      show_image: this.base_url + '/images/default.png',
       image_change_status: false,
       normalizer: function normalizer(node) {
         return {
@@ -7359,7 +7359,7 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = currentUrl;
     },
     cancel: function cancel() {
-      window.location.href = '/admin/products';
+      window.location.href = this.base_url + '/admin/products';
     },
     //update button click
     update: function update() {
@@ -7415,7 +7415,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000);
           var currentUrl = window.location.pathname; // window.location.href = currentUrl;
 
-          window.location.href = '/admin/products';
+          window.location.href = _this.base_url + '/admin/products';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -7698,7 +7698,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000); // var currentUrl = window.location.pathname;
           // window.location.href = currentUrl;
 
-          window.location.href = '/admin/recruitments';
+          window.location.href = _this.base_url + '/admin/recruitments';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -7711,7 +7711,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     cancel: function cancel() {
-      window.location.href = '/admin/recruitments';
+      window.location.href = this.base_url + '/admin/recruitments';
     }
   }
 });
@@ -7823,12 +7823,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['recruitment', 'recruitment_infos', 'img_url'],
+  props: ['base_url', 'recruitment', 'recruitment_infos', 'img_url'],
   data: function data() {
     return {
       form: {
@@ -7852,7 +7851,7 @@ __webpack_require__.r(__webpack_exports__);
           items: ['bold', 'italic', 'link', 'undo', 'redo', 'copy', 'Strike']
         }
       },
-      image: '/images/default.png',
+      image: this.base_url + '/images/default.png',
       errors: '',
       hasImage: false,
       isLoading: false
@@ -7914,7 +7913,7 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(function () {}, 2000); // var currentUrl = window.location.pathname;
           // window.location.href = currentUrl;
 
-          window.location.href = '/admin/recruitments/';
+          window.location.href = _this.base_url + '/admin/recruitments/';
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -7931,7 +7930,7 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = currentUrl;
     },
     cancel: function cancel() {
-      window.location.href = '/admin/recruitments';
+      window.location.href = this.base_url + '/admin/recruitments';
     }
   }
 });

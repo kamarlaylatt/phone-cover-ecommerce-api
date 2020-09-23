@@ -22,6 +22,7 @@
 
         <!-- <p>{{json_encode($product->categories)}}</p> -->
             <product_edit-component 
+                :base_url = "{{json_encode(url('/'))}}"
                 :edit_images="{{json_encode($images)}}"
                 :product="{{json_encode($product)}}"
                 :selected_categories="{{json_encode($product->categories)}}"
