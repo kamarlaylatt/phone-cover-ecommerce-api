@@ -59,7 +59,12 @@ class OrderController extends BaseController
         foreach($order_items as $item)
         {
             $product = Product::find($item['item_id']);
-            $sub_total = $item['quantity']*$product->price;
+            if($product->discount_price > 0){
+                $product_price = $product->discount_price;
+            }else{
+                $product_price =  $product->price;
+            }
+            $sub_total = $item['quantity']*$product_price;
             $total_amount += $sub_total;
         }
         
@@ -93,7 +98,12 @@ class OrderController extends BaseController
             foreach($order_items as $item)
             {
                 $product = Product::find($item['item_id']);
-                $sub_total = $item['quantity']*$product->price;
+                if($product->discount_price > 0){
+                    $product_price = $product->discount_price;
+                }else{
+                    $product_price =  $product->price;
+                }
+                $sub_total = $item['quantity']*$product_price;
 
                 OrderItem::Create([
                     'order_id' => $order->id,
@@ -145,13 +155,15 @@ class OrderController extends BaseController
     public function orderList()
     {
         $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),DB::raw('"intension" as type'),'price as total_amount','created_at')
+                                ->where('user_id', Auth::user()->id)
                                 ->with('order_status','user');
 
         $orders = Order::select('id','user_id','order_status_id','order_no','item_count',DB::raw('"order" as type'),'total_amount','created_at')
-                        ->with('order_status','user');
+                                ->where('user_id', Auth::user()->id)
+                                ->with('order_status','user');
 
         $order_history = $orders->union($intensions)->orderBy('created_at','desc')->paginate(10);
-        return new OrderListResourceCollection($order_history->where('user_id', Auth::user()->id));
+        return new OrderListResourceCollection($order_history);
     }
 
     public function orderDetail(Request $request)
