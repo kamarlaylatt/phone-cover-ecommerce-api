@@ -57,7 +57,7 @@ class IntensionController extends Controller
    
         $fileName = 'intension_images.zip';
         $zip = new ZipArchive;
-        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+        if ($zip->open($fileName, ZipArchive::CREATE) === TRUE)
         {
 
             if($intension->type == 1)
@@ -75,7 +75,7 @@ class IntensionController extends Controller
     
         if(is_file(public_path('/intension_images.zip')))
         {
-            return response()->download(public_path($fileName));   
+            return response()->download($fileName);   
         }else{
             return redirect()->back()->with('error','There is no file for download!');
         }
