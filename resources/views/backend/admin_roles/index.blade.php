@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                            {{-- <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                                 <a href="{{route('admin_roles.create')}}" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                     <span>
                                         <i class="la la-plus"></i>
@@ -74,7 +74,7 @@
                                     </span>
                                 </a>
                                 <div class="m-separator m-separator--dashed d-xl-none"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </form>
                 </div>
@@ -105,12 +105,12 @@
 
                                         <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('admin_roles.edit', $admin_role->id)}}"><i class="fa fa-edit"></i></a>
 
-                                        <form action="{{route('admin_roles.destroy', $admin_role->id)}}" method="POST" style="display:inline;">
+                                        {{-- <form action="{{route('admin_roles.destroy', $admin_role->id)}}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')                                            
                                             <button type="submit" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" onclick="return confirm('Are you sure to delete it?')"><i class="fa fa-trash"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach

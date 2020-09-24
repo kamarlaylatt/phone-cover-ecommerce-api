@@ -6838,7 +6838,7 @@ __webpack_require__.r(__webpack_exports__);
       category_array: null,
       code_number: '',
       price: '',
-      discount_price: '',
+      discount_price: 0.00,
       quantity: '',
       minimum_order: '',
       maximum_order: '',
@@ -7256,7 +7256,7 @@ __webpack_require__.r(__webpack_exports__);
       old_category_array: [],
       code_number: '',
       price: '',
-      discount_price: '',
+      discount_price: 0.00,
       quantity: '',
       minimum_order: '',
       maximum_order: '',
@@ -7313,7 +7313,13 @@ __webpack_require__.r(__webpack_exports__);
       this.show_image = this.thumbnail_url;
       this.code_number = this.product.code_number;
       this.price = this.product.price;
-      this.discount_price = this.product.discount_price;
+
+      if (this.discount_price == '') {
+        this.discount_price = 0.00;
+      } else {
+        this.discount_price = this.product.discount_price;
+      }
+
       this.quantity = this.product.qty;
       this.minimum_order = this.product.min_order;
       this.maximum_order = this.product.max_order;
@@ -7410,6 +7416,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
       formData.append('destroy_additions', JSON.stringify(this.destroy.addition_ids));
       formData.append('destroy_images', JSON.stringify(this.destroy.images_ids));
+      debugger;
       axios.post('/admin/products/' + this.product.id + '/update', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);

@@ -235,7 +235,7 @@ export default {
             category_array: null,
             code_number: '',
             price: '',
-            discount_price: '',
+            discount_price: 0.00,
             quantity: '',
             minimum_order: '',
             maximum_order: '',

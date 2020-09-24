@@ -81,6 +81,7 @@
                                 <th class="text-center" title="Field #4" data-field="Role">Image</th>
                                 <th title="Field #2" data-field="Name">Name</th>
                                 <th title="Field #3" data-field="Email">Price</th>
+                                <th title="Field #3" data-field="Email">Discount</th>
                                 <th title="Field #3" data-field="Role">Code No</th>
                                 <th class="text-center" title="Field #5" data-field="Action">Action</th>
                             </tr>
@@ -103,6 +104,7 @@
                                     </td>
                                     <td class="align-middle">{{$product->infos->where('language_id',1)->first()->name}}</td>
                                     <td class="align-middle">{{$product->price}}</td>
+                                    <td class="align-middle">{{$product->discount_price}}</td>
                                     <td class="align-middle">{{$product->code_number}}</td>                                    
                                     <td class="text-center align-middle">
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('products.show', $product->id)}}">
