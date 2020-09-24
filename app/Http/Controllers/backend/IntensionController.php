@@ -48,16 +48,16 @@ class IntensionController extends Controller
     public function download($id)
     {
         $intension = Intension::findOrFail($id);
+        $fileName = 'intension_images.zip';
 
-        if(is_file(public_path('/intension_images.zip')))
+        if(is_file(storage_path('app/public/'.$fileName)))
         {
-            unlink(public_path('/intension_images.zip'));
+            unlink(storage_path('app/public/'.$fileName));
         }
 
    
-        $fileName = 'intension_images.zip';
         $zip = new ZipArchive;
-        if ($zip->open($fileName, ZipArchive::CREATE) === TRUE)
+        if ($zip->open(storage_path('app/public/'.$fileName), ZipArchive::CREATE) === TRUE)
         {
 
             if($intension->type == 1)
@@ -73,9 +73,9 @@ class IntensionController extends Controller
 
         }
     
-        if(is_file(public_path('/intension_images.zip')))
+        if(is_file(storage_path('app/public/'.$fileName)))
         {
-            return response()->download($fileName);   
+            return response()->download(storage_path('app/public/'.$fileName));   
         }else{
             return redirect()->back()->with('error','There is no file for download!');
         }
