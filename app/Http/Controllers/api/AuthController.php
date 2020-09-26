@@ -265,10 +265,16 @@ class AuthController extends BaseController
                 return $validation;
             }
 
-            // $user->name = $request->name;
-            $user->phone = $request->phone;
-            // $user->email = $request->email;
-            $user->save();
+            if($request->phone != '')
+            {
+                $user->phone = $request->phone;
+                $user->save();
+            }
+            if($request->email != '')
+            {
+                $user->email = $request->email;
+                $user->save();
+            }
 
             $token =  $user->createToken('Customer')->accessToken;
 
