@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderStatus;
+use App\Intension;
 
 class OrderController extends Controller
 {
@@ -13,6 +14,12 @@ class OrderController extends Controller
     {
         $orders = Order::paginate(10);
         return view('backend.orders.index', compact('orders'));
+    }
+
+    public function filter()
+    {
+        $orders = Order::paginate(10);
+        return view('backend.orders.filter', compact('orders'));
     }
 
     public function show($id)
@@ -34,7 +41,7 @@ class OrderController extends Controller
         $order->remark = $request->remark;
         $order->order_status_id = $request->order_status_id;
         $order->update();
-        return redirect()->route('orders.index');
+        return view('backend.orders.show', compact('order'));
     }
 
     public function search(Request $request)
@@ -52,5 +59,81 @@ class OrderController extends Controller
 
 
         return view('backend.orders.index', compact('orders'));
+    }
+
+    public function filterOrder(Request $request)
+    {
+        $order_type = $request->order_type;
+        $from_date = $request->start_date;
+        $to_date = $request->end_date;
+        $orders = null;
+        if($order_type == 1)
+        {
+            $orders = Order::where(function ($query) use ($from_date,$to_date){
+                                    $query->whereDate('created_at', '>=' ,$from_date)
+                                        ->whereDate('created_at', '<=', $to_date);
+                                })->get()->map(function($order){
+                                    return [
+                                        'id' => $order->id,
+                                        'no' => 1,
+                                        'order_no' => $order->order_no,
+                                        'customer_name' => $order->user->name,
+                                        'phone' => $order->user->phone,
+                                        'order_status' => $order->order_status->name,
+                                        'total_item' => $order->item_count,
+                                        'total_price' => $order->total_amount,
+                                        'date' => date('d/m/Y h:i a', strtotime($order->created_at)),
+                                        'order_type' => 1
+                                    ];
+                                });
+        }
+        elseif($order_type == 2)
+        {
+            $orders = Intension::where(function ($query) use ($from_date,$to_date){
+                                    $query->whereDate('created_at', '>=' ,$from_date)
+                                        ->whereDate('created_at', '<=', $to_date);
+                                })->where('type',1)
+                                ->get()->map(function($order){
+                                    return [
+                                        'id' => $order->id,
+                                        'no' => 1,
+                                        'order_no' => $order->order_no,
+                                        'customer_name' => $order->name,
+                                        'phone' => $order->phone,
+                                        'order_status' => $order->order_status->name,
+                                        'total_item' => 1,
+                                        'total_price' => null,
+                                        'date' => date('d/m/Y h:i a', strtotime($order->created_at)),
+                                        'order_type' => 2
+                                    ];
+                                });
+        }else{
+            $orders = Intension::where(function ($query) use ($from_date,$to_date){
+                                    $query->whereDate('created_at', '>=' ,$from_date)
+                                        ->whereDate('created_at', '<=', $to_date);
+                                })->where('type',2)
+                                ->get()->map(function($order){
+                                    return [
+                                        'id' => $order->id,
+                                        'no' => 1,
+                                        'order_no' => $order->order_no,
+                                        'customer_name' => $order->name,
+                                        'phone' => $order->phone,
+                                        'order_status' => $order->order_status->name,
+                                        'total_item' => 1,
+                                        'total_price' => null,
+                                        'date' => date('d/m/Y h:i a', strtotime($order->created_at)),
+                                        'order_type' => 3
+                                    ];
+                                });
+        }
+
+        $responseBody = [
+            'status' => 1,
+            'message' => "Successfully retrieve orders",
+            'data' => $orders,
+        ];
+
+        return response()->json($responseBody);
     }
 }

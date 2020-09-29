@@ -101,6 +101,10 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 		Route::get('/{id}/edit','OrderController@edit')->name('orders.edit');
 		Route::put('/update/{id}','OrderController@update')->name('orders.update');
 	});
+	
+	//filter
+	Route::get('/order-filter','OrderController@filter')->name('orders.filter');
+	Route::get('/order-filter/filtering','OrderController@filterOrder');
 
 	//order statuses
 	Route::resource('order_statuses', 'OrderStatusController');

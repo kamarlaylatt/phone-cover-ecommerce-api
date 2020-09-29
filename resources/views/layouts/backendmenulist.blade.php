@@ -117,6 +117,8 @@
 					</ul>
 				</div>
 			</li>
+			<li class="m-menu__item  m-menu__item--submenu {{ request()->is('admin/order-filter') ||  request()->is('admin/order-filter/*')? 'm-menu__item--active' : '' }}" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('orders.filter')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Filtering Orders</span></a>
+			</li>
 		</ul>
 	</div>
 

@@ -14,6 +14,14 @@ import ImageUploader from 'vue-image-upload-resize'
 import VueLazyload from 'vue-lazyload'
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import CKEditor from '@ckeditor/ckeditor5-vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 Vue.use( CKEditor ); 
 Vue.use(VueLazyload);
@@ -39,6 +47,7 @@ Vue.component('product_create-component', require('./components/product/ProductC
 Vue.component('product_edit-component', require('./components/product/ProductEditComponent.vue').default);
 Vue.component('recruitment_create-component', require('./components/recruitment/RecruitmentCreateComponent.vue').default);
 Vue.component('recruitment_edit-component', require('./components/recruitment/RecruitmentEditComponent.vue').default);
+Vue.component('filter_order-component', require('./components/order/FilterComponent.vue').default);
 
 
 
