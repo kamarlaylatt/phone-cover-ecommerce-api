@@ -1,44 +1,41 @@
 <template>
   <div>
-    <div class="row mb-2">
-        <div class="col-xl-3"></div>
-        <div class="col-xl-8 text-center">
-            <div class="row vertical-center-row">
-              <b-card bg-variant="light">
-                <b-form inline>
-                  <b-form-select class="mr-2" v-model="order_type" :options="options"></b-form-select>
-                  <b-form-datepicker
-                    v-model="start_date"
-                    id="datepicker-buttons"
-                    today-button
-                    reset-button
-                    close-button
-                    locale="en"
-                    class="mb-2 mr-sm-2 mb-sm-0"
-                    placeholder="Start Date"
-                  ></b-form-datepicker>
-                  <span class="mr-2 small">to</span>
-                  <b-form-datepicker
-                    v-model="end_date"
-                    id="datepicker-buttons2"
-                    today-button
-                    reset-button
-                    close-button
-                    locale="en"
-                    class="mb-2 mr-sm-2 mb-sm-0"
-                    placeholder="End Date"
-                  ></b-form-datepicker>
-                  <VueLoadingButton 
-                  @click.native="find"
-                  class="btn btn-primary"
-                  :loading="isLoading"
-                  ><small>Find</small>
-                  </VueLoadingButton>
-                </b-form>
-              </b-card>
-            </div>
-          </div>
-    </div>
+
+    <b-container fluid class="row justify-content-md-center mb-2">
+      <b-card bg-variant="light">
+        <b-form inline>
+          <b-form-select class="mr-2" v-model="order_type" :options="options"></b-form-select>
+          <b-form-datepicker
+            v-model="start_date"
+            id="datepicker-buttons"
+            today-button
+            reset-button
+            close-button
+            locale="en"
+            class="mb-2 mr-sm-2 mb-sm-0"
+            placeholder="Start Date"
+          ></b-form-datepicker>
+          <span class="mr-2 small">to</span>
+          <b-form-datepicker
+            v-model="end_date"
+            id="datepicker-buttons2"
+            today-button
+            reset-button
+            close-button
+            locale="en"
+            class="mb-2 mr-sm-2 mb-sm-0"
+            placeholder="End Date"
+          ></b-form-datepicker>
+          <VueLoadingButton 
+          @click.native="find"
+          class="btn btn-primary"
+          :loading="isLoading"
+          ><small>Find</small>
+          </VueLoadingButton>
+        </b-form>
+      </b-card>
+    </b-container>
+
     
     <b-container fluid class="filter-font mb-2">
       <!-- User Interface controls -->

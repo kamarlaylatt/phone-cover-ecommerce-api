@@ -6838,9 +6838,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['base_url'],
@@ -114257,89 +114254,85 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "row mb-2" }, [
-        _c("div", { staticClass: "col-xl-3" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-8 text-center" }, [
+      _c(
+        "b-container",
+        {
+          staticClass: "row justify-content-md-center mb-2",
+          attrs: { fluid: "" }
+        },
+        [
           _c(
-            "div",
-            { staticClass: "row vertical-center-row" },
+            "b-card",
+            { attrs: { "bg-variant": "light" } },
             [
               _c(
-                "b-card",
-                { attrs: { "bg-variant": "light" } },
+                "b-form",
+                { attrs: { inline: "" } },
                 [
+                  _c("b-form-select", {
+                    staticClass: "mr-2",
+                    attrs: { options: _vm.options },
+                    model: {
+                      value: _vm.order_type,
+                      callback: function($$v) {
+                        _vm.order_type = $$v
+                      },
+                      expression: "order_type"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("b-form-datepicker", {
+                    staticClass: "mb-2 mr-sm-2 mb-sm-0",
+                    attrs: {
+                      id: "datepicker-buttons",
+                      "today-button": "",
+                      "reset-button": "",
+                      "close-button": "",
+                      locale: "en",
+                      placeholder: "Start Date"
+                    },
+                    model: {
+                      value: _vm.start_date,
+                      callback: function($$v) {
+                        _vm.start_date = $$v
+                      },
+                      expression: "start_date"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "mr-2 small" }, [_vm._v("to")]),
+                  _vm._v(" "),
+                  _c("b-form-datepicker", {
+                    staticClass: "mb-2 mr-sm-2 mb-sm-0",
+                    attrs: {
+                      id: "datepicker-buttons2",
+                      "today-button": "",
+                      "reset-button": "",
+                      "close-button": "",
+                      locale: "en",
+                      placeholder: "End Date"
+                    },
+                    model: {
+                      value: _vm.end_date,
+                      callback: function($$v) {
+                        _vm.end_date = $$v
+                      },
+                      expression: "end_date"
+                    }
+                  }),
+                  _vm._v(" "),
                   _c(
-                    "b-form",
-                    { attrs: { inline: "" } },
-                    [
-                      _c("b-form-select", {
-                        staticClass: "mr-2",
-                        attrs: { options: _vm.options },
-                        model: {
-                          value: _vm.order_type,
-                          callback: function($$v) {
-                            _vm.order_type = $$v
-                          },
-                          expression: "order_type"
+                    "VueLoadingButton",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { loading: _vm.isLoading },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.find($event)
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("b-form-datepicker", {
-                        staticClass: "mb-2 mr-sm-2 mb-sm-0",
-                        attrs: {
-                          id: "datepicker-buttons",
-                          "today-button": "",
-                          "reset-button": "",
-                          "close-button": "",
-                          locale: "en",
-                          placeholder: "Start Date"
-                        },
-                        model: {
-                          value: _vm.start_date,
-                          callback: function($$v) {
-                            _vm.start_date = $$v
-                          },
-                          expression: "start_date"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "mr-2 small" }, [_vm._v("to")]),
-                      _vm._v(" "),
-                      _c("b-form-datepicker", {
-                        staticClass: "mb-2 mr-sm-2 mb-sm-0",
-                        attrs: {
-                          id: "datepicker-buttons2",
-                          "today-button": "",
-                          "reset-button": "",
-                          "close-button": "",
-                          locale: "en",
-                          placeholder: "End Date"
-                        },
-                        model: {
-                          value: _vm.end_date,
-                          callback: function($$v) {
-                            _vm.end_date = $$v
-                          },
-                          expression: "end_date"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "VueLoadingButton",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { loading: _vm.isLoading },
-                          nativeOn: {
-                            click: function($event) {
-                              return _vm.find($event)
-                            }
-                          }
-                        },
-                        [_c("small", [_vm._v("Find")])]
-                      )
-                    ],
-                    1
+                      }
+                    },
+                    [_c("small", [_vm._v("Find")])]
                   )
                 ],
                 1
@@ -114347,8 +114340,9 @@ var render = function() {
             ],
             1
           )
-        ])
-      ]),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "b-container",
