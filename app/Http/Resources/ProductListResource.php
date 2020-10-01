@@ -34,6 +34,9 @@ class ProductListResource extends JsonResource
             'thumbnail' => $image_url,
             'price' => $this->price,
             'discount_price' => $this->discount_price,
+            'qty' => $this->qty,
+            'min_order' => $this->min_order,
+            'max_order' => $this->max_order,
             'categories' => CategoryListResource::collection($this->categories),
         ];
     }
