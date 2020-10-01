@@ -49,19 +49,6 @@ class BannerController extends Controller
            'myanmar_subtitle' => 'required|string',
         //    'myanmar_button_text' => 'required|string',
         ]);
-        if($request->english_button_text == '')
-        {
-            $english_button_text = 'null';
-        }else{
-            $english_button_text = $request->english_button_text;
-        }
-
-        if($request->myanmar_button_text == '')
-        {
-            $myanmar_button_text = 'null';
-        }else{
-            $myanmar_button_text = $request->myanmar_button_text;
-        }
 
         $banner = Banner::Create([
             'link' => $request['link'],
@@ -81,7 +68,7 @@ class BannerController extends Controller
         BannerInfo::Create([
             'title' => $request['english_title'],
             'subtitle' => $request['english_subtitle'],
-            'button_text' => $english_button_text,
+            'button_text' => $request->english_button_text,
             'banner_id' => $banner->id,
             'language_id' => 1,
         ]);
@@ -89,7 +76,7 @@ class BannerController extends Controller
         BannerInfo::Create([
             'title' => $request['myanmar_title'],
             'subtitle' => $request['myanmar_subtitle'],
-            'button_text' => $myanmar_button_text,
+            'button_text' => $request->myanmar_button_text,
             'banner_id' => $banner->id,
             'language_id' => 2,
         ]);

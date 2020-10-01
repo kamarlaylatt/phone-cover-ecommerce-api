@@ -104,12 +104,7 @@
                                     </td>
                                     <td class="align-middle">{{$banner->infos[0]->title}}</td>
                                     <td class="align-middle">{{$banner->infos[0]->subtitle}}</td>
-                                    <td class="align-middle">
-                                        @if($banner->infos[0]->button_text == 'null')
-                                        @else
-                                        {{$banner->infos[0]->button_text}}
-                                        @endif
-                                    </td>
+                                    <td class="align-middle">{{$banner->infos[0]->button_text}}</td>
                                     <td class="text-center align-middle">
                                         @if($banner->show_status == 1)
                                             <h5><span class="badge badge-pill badge-info">On</span></h5>

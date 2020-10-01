@@ -80,6 +80,7 @@
                     </div>
                 </div>   
                 @endif
+                @if($intension->intension_images->count() > 0)         
                 <div class="row mb-2">
                     <div class="col-xl-2 h5"><strong>Images</strong></div>
                     <div class="col-xl-1 h5"><strong>-</strong></div>
@@ -97,6 +98,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
                 <div class="row mb-2">
                     <a href="{{route('intensions.download', $intension->id)}}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                         <span>

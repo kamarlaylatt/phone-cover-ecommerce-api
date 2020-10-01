@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-4"></div>
-                <div class="col-xl-4 card-title text-center mt-4 h3">Filtering Order</div>
+                <div class="col-xl-4 card-title text-center mt-4 h3">Filtering Orders</div>
             </div>
 
             <div class="card-body">

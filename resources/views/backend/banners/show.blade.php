@@ -52,9 +52,9 @@
                         <th> Show Status </th>
                         <td> 
                             @if($banner->show_status == 1)
-                                <span style="color:green;"><b>On</b></span>
+                                <h5><span class="badge badge-pill badge-info">On</span></h5>
                             @else
-                                <span style="color:red;"><b>Off</b></span>
+                                <h5><span class="badge badge-pill badge-danger">Off</span></h5>
                             @endif
                         </td>
                     </tr>                     

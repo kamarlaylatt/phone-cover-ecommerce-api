@@ -133,11 +133,11 @@
                         </a>
                     </div>
                     <div class="m-widget1__item">
-                        <a style="color: #525672;" href="{{route('orders.index')}}">
+                        <a style="color: #525672;" href="{{route('orders.filter')}}">
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
-                                    <h3 class="m-widget1__title">Customer Order</h3>
-                                    <span class="m-widget1__desc">List of customer orders</span>
+                                    <h3 class="m-widget1__title">Filtering Orders</h3>
+                                    <span class="m-widget1__desc">Filtering Orders</span>
                                 </div>
                                 <div class="col m--align-right">
                                     <span style="font-size: 40px" class="flaticon-users-1"></span>
