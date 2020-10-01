@@ -93,7 +93,8 @@
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig">{{english.description}}</ckeditor>
+                                    <vue-editor v-model="english.description" />					
+                                    <!-- <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig">{{english.description}}</ckeditor> -->
                                 </div>
                                 <!--english addition fields -->
                                 <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
@@ -121,7 +122,8 @@
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>
+                                    <vue-editor v-model="myanmar.description" />					
+                                    <!-- <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor> -->
                                 </div>
                                 <!--myanmar addition fields -->
                                 <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
@@ -223,6 +225,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { VueEditor } from "vue2-editor";
 
 export default {
     props: ['categories','base_url'],
@@ -336,11 +339,11 @@ export default {
             formData.append('fb_pixel', this.fb_pixel);
             formData.append('recommend', this.recommend);
             formData.append('english_name', this.english.name);
-            formData.append('english_short_description', this.english.description);
+            formData.append('english_short_description', this.english.short_description);
             formData.append('english_description', this.english.description);
             formData.append('english_additions', JSON.stringify(this.english.additions));
             formData.append('myanmar_name', this.myanmar.name);
-            formData.append('myanmar_short_description', this.myanmar.description);
+            formData.append('myanmar_short_description', this.myanmar.short_description);
             formData.append('myanmar_description', this.myanmar.description);
             formData.append('myanmar_additions', JSON.stringify(this.myanmar.additions));
 

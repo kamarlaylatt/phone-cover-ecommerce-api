@@ -130,7 +130,7 @@
                     </tr>
                     <tr>
                         <th> English Description </th>
-                        <td>{{$product->infos->where('language_id',1)->first()->description}}</td>
+                        <td>{!!$product->infos->where('language_id',1)->first()->description!!}</td>
                     </tr>
                     @foreach($product->additions->where('language_id',1) as $addition)
                         <tr>
@@ -153,7 +153,7 @@
                     </tr>
                     <tr>
                         <th> Myanmar Description </th>
-                        <td>{{$product->infos->where('language_id',2)->first()->description}}</td>
+                        <td>{!!$product->infos->where('language_id',2)->first()->description!!}</td>
                     </tr>
                     @foreach($product->additions->where('language_id',2) as $addition)
                         <tr>

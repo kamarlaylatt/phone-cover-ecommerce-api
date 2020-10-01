@@ -31,39 +31,39 @@
 
             <div class="card-body">
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>No</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>#{{$order->order_no}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>No</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>#{{$order->order_no}}</strong></div>
                 </div> 
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Ordered at</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$order->created_at->format('d/M/Y h:i A')}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Ordered at</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$order->created_at->format('d/M/Y h:i A')}}</strong></div>
                 </div> 
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Status</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$order->order_status->name}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Status</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong><span class="badge badge-pill badge-info">{{$order->order_status->name}}</span></strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Customer Name</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$order->user->name}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Customer Name</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$order->user->name}}</strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Total Item</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$order->item_count}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Total Item</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$order->item_count}}</strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Total Amount</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$order->total_amount}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Total Amount</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$order->total_amount}}</strong></div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-2 h5"><strong>Remark</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$order->remark}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Remark</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$order->remark}}</strong></div>
                 </div>
                 <br>
                 <h4>Order Items</h4>

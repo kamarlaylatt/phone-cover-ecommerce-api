@@ -31,44 +31,44 @@
 
             <div class="card-body">
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>No</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>#{{$intension->order_no}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>No</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>#{{$intension->order_no}}</strong></div>
                 </div> 
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Ordered at</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$intension->created_at->format('d/M/Y h:i A')}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Ordered at</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->created_at->format('d/M/Y h:i A')}}</strong></div>
                 </div> 
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Status</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$intension->order_status->name}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Status</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong><span class="badge badge-pill badge-info">{{$intension->order_status->name}}</span></strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Customer Name</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$intension->name}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Customer Name</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->name}}</strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Total Item</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>1</strong></div>
+                    <div class="col-sm-3 h5"><strong>Total Item</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>1</strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Total Amount</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$intension->price}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Total Amount</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->price}}</strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Remark</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5"><strong>{{$intension->remark}}</strong></div>
+                    <div class="col-sm-3 h5"><strong>Remark</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->remark}}</strong></div>
                 </div>         
                 <div class="row mb-2">
-                    <div class="col-xl-2 h5"><strong>Preview</strong></div>
-                    <div class="col-xl-1 h5"><strong>-</strong></div>
-                    <div class="col-xl-9 h5">
+                    <div class="col-sm-3 h5"><strong>Preview</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5">
                         @if(is_file(\Storage::path('public/orders/images/'.$intension->preview)))
                             <img src="{{url(\Storage::url('orders/images/'.$intension->preview))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="100" height="100">
                         @else

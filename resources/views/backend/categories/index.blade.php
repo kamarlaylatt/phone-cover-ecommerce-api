@@ -30,6 +30,22 @@
             </div>
         </div>
         <div class="m-portlet__body">
+
+            <!-- Tree Dialog Start -->
+            <div class="row">
+                <div class="mb-4 mr-4">
+                    <a href="{{route('categories.tree')}}"  type="button" class="btn btn-primary">Tree View</a>
+                </div>
+                <div class="mb-4">
+                    <a href="{{route('categories.create')}}" class="btn btn-success">
+                        <span>
+                            <i class="la la-plus"></i>
+                            <span>Create</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <!-- Tree Dialog End -->
             
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-20">
@@ -55,7 +71,7 @@
                             </div>                           
                         </div>
                     </div>
-                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                    {{-- <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                         <a href="{{route('categories.create')}}" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                             <span>
                                 <i class="la la-plus"></i>
@@ -63,19 +79,12 @@
                             </span>
                         </a>
                         <div class="m-separator m-separator--dashed d-xl-none"></div>
-                    </div>
+                    </div> --}}
                 </div>
                 </form>
             </div>
 
             <!--end: Search Form -->
-
-
-            <!-- Tree Dialog Start -->
-            <div class="mb-4">
-                <a href="{{route('categories.tree')}}"  type="button" class="btn btn-primary">Tree View</a>
-            </div>
-            <!-- Tree Dialog End -->
 
             <!--begin: Datatable -->
             <div class="table-responsive">

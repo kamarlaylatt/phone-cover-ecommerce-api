@@ -17,6 +17,9 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Vue2Editor from "vue2-editor";
+
+Vue.use(Vue2Editor);
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)

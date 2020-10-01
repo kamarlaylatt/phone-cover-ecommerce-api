@@ -51,7 +51,8 @@
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
                                     <!-- <br><small>Use Shitf+Enter for Line Breaking</small> -->
-                                    <ckeditor class="form-control" :editor="editor" v-model="form.english.description" :config="editorConfig" tag-name="textarea"></ckeditor>
+                                    <vue-editor v-model="form.english.description" />					
+                                    <!-- <ckeditor class="form-control" :editor="editor" v-model="form.english.description" :config="editorConfig" tag-name="textarea"></ckeditor> -->
 									<!-- <textarea v-model="form.english.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
 							</div>
@@ -62,7 +63,8 @@
 								</div>
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
-                                    <ckeditor class="form-control" :editor="editor" v-model="form.myanmar.description" :config="editorConfig"></ckeditor>
+                                    <vue-editor v-model="form.myanmar.description" />					
+                                    <!-- <ckeditor class="form-control" :editor="editor" v-model="form.myanmar.description" :config="editorConfig"></ckeditor> -->
 									<!-- <textarea v-model="form.myanmar.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
 							</div>
@@ -93,6 +95,7 @@
 import ImageUploader from 'vue-image-upload-resize'
 import VueLoadingButton from 'vue-loading-button';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { VueEditor } from "vue2-editor";
 export default {
 	props: ['base_url','recruitment','recruitment_infos','img_url'],
     data(){

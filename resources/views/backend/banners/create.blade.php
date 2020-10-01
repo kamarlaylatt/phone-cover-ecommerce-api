@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-group m-form__group">
                             <label>Link</label>
-                            <input type="text" name="link" class="form-control m-input m-input--air" placeholder="Enter link" value="{{ old('link') }}"  required autocomplete="link">
+                            <input type="text" name="link" class="form-control m-input m-input--air" placeholder="Enter link" value="{{ old('link') }}"  autocomplete="link">
                         </div>
                         <div class="form-group m-form__group">
                             <label>Text Color</label>
@@ -95,7 +95,7 @@
                                 </div>                                
                                 <div class="form-group m-form__group">
                                     <label>Button Text</label>
-                                    <input type="text" name="english_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('english_button_text') }}"  required autocomplete="button_text">
+                                    <input type="text" name="english_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('english_button_text') }}"  autocomplete="button_text">
                                 </div>
                             </div>
                             <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>Button Text</label>
-                                    <input type="text" name="myanmar_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('myanmar_button_text') }}"  required autocomplete="button_text">
+                                    <input type="text" name="myanmar_button_text" class="form-control m-input m-input--air" placeholder="Enter button text" value="{{ old('myanmar_button_text') }}"  autocomplete="button_text">
                                 </div>
                             </div>
                         </div>

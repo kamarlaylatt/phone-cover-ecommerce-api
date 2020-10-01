@@ -48,7 +48,7 @@
                         <div v-if="nav_bar.general==true" class="tab-content">
                             <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
                                 <div class="form-group m-form__group">
-                                    <label>Name</label>
+                                    <label><span class="text-danger">*</span>Name</label>
                                     <input v-model="english.name" type="text" class="form-control" placeholder="Enter Name" required>
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
@@ -56,8 +56,9 @@
                                     <textarea v-model="english.short_description" class="form-control" rows="3" id="comment"></textarea>
                                 </div>
                                 <div class="form-group m-form__group">
-                                    <label for="comment">Description</label>
-                                    <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig" tag-name="textarea"></ckeditor>
+                                    <label for="comment"><span class="text-danger">*</span>Description</label>
+                                    <vue-editor v-model="english.description" />
+                                    <!-- <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig" tag-name="textarea"></ckeditor> -->
                                 </div>
                                 <!--english addition fields -->
                                 <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
@@ -76,7 +77,7 @@
                             </div>
                             <div v-if="nav_bar.general==true" class="tab-pane" id="m_tabs_1_2" role="tabpanel">
                                 <div class="form-group m-form__group">
-                                    <label>Name</label>
+                                    <label><span class="text-danger">*</span>Name</label>
                                     <input v-model="myanmar.name" type="text" class="form-control" placeholder="Enter Name" required>
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
@@ -84,8 +85,9 @@
                                     <textarea v-model="myanmar.short_description" class="form-control" rows="3" id="comment"></textarea>
                                 </div>
                                 <div class="form-group m-form__group">
-                                    <label for="comment">Description</label>
-                                    <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>                                  
+                                    <label for="comment"><span class="text-danger">*</span>Description</label>
+                                    <vue-editor v-model="myanmar.description" />
+                                    <!-- <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>                                   -->
                                 </div>
                                 <!--myanmar addition fields -->
                                 <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
@@ -111,7 +113,7 @@
                     </div>
 
                     <div class="form-group m-form__group" v-if="nav_bar.images==true">
-                        <label>Thumbnail</label>
+                        <label><span class="text-danger">*</span>Thumbnail</label>
                         <div class="col-md-3" v-if="show_image">
                             <img :src="show_image" class="img-rounded img-thumbnail" height="120" width="120">
                         </div>
@@ -139,7 +141,7 @@
 
                     <div class="form-group m-form__group row">
                         <div v-if="nav_bar.data==true" class="col-md-6">
-                            <label>Categories</label>
+                            <label><span class="text-danger">*</span>Categories</label>
                             <treeselect 
                                 v-model="category_array" 
                                 :multiple="true" 
@@ -150,29 +152,29 @@
                             />
                         </div>
                         <div v-if="nav_bar.data==true" class="col-md-6">
-                            <label>Code Number</label>
+                            <label><span class="text-danger">*</span>Code Number</label>
                             <input v-model="code_number" type="text" class="form-control" placeholder="Enter Code Number" required>
                         </div>
                     </div>
 
                     <div class="form-group m-form__group row">
                         <div v-if="nav_bar.data==true" class="col-md-6">
-                            <label>Price</label>
+                            <label><span class="text-danger">*</span>Price</label>
                             <input v-model="price" type="number" class="form-control" placeholder="Enter Price" required>
                         </div>
                         <div v-if="nav_bar.data==true" class="col-md-6">
-                            <label>Quantity</label>
+                            <label><span class="text-danger">*</span>Quantity</label>
                             <input v-model="quantity" type="number" class="form-control" placeholder="Enter Quantity" required>
                         </div>
                     </div>
 
                     <div class="form-group m-form__group row">
                         <div v-if="nav_bar.data==true" class="col-md-6">
-                            <label>Minimum Order</label>
+                            <label><span class="text-danger">*</span>Minimum Order</label>
                             <input v-model="minimum_order" type="number" class="form-control" placeholder="Enter Minimum Order" required>
                         </div>
                         <div v-if="nav_bar.data==true" class="col-md-6">
-                            <label>Maximum Order</label>
+                            <label><span class="text-danger">*</span>Maximum Order</label>
                             <input v-model="maximum_order" type="number" class="form-control" placeholder="Enter Maximum Order" required>
                         </div>
                     </div>
@@ -216,6 +218,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { VueEditor } from "vue2-editor";
 
 export default {
     props: ['base_url','edit_images','categories','product','product_infos','selected_categories','product_additions','thumbnail_url'],

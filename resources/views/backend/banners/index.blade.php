@@ -104,16 +104,17 @@
                                     </td>
                                     <td class="align-middle">{{$banner->infos[0]->title}}</td>
                                     <td class="align-middle">{{$banner->infos[0]->subtitle}}</td>
-                                    <td class="align-middle">{{$banner->infos[0]->button_text}}</td>
+                                    <td class="align-middle">
+                                        @if($banner->infos[0]->button_text == 'null')
+                                        @else
+                                        {{$banner->infos[0]->button_text}}
+                                        @endif
+                                    </td>
                                     <td class="text-center align-middle">
                                         @if($banner->show_status == 1)
-                                            <button type="button" class="btn btn-primary m-btn m-btn--pill m-btn--air">
-                                                On
-                                            </button>
+                                            <h5><span class="badge badge-pill badge-info">On</span></h5>
                                         @else
-                                            <button type="button" class="btn btn-outline-primary m-btn m-btn--pill m-btn--air">
-                                                Off
-                                            </button>
+                                            <h5><span class="badge badge-pill badge-danger">Off</span></h5>
                                         @endif
                                     </td>                                    
                                     <td class="text-center align-middle">

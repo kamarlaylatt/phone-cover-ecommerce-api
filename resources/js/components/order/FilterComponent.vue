@@ -63,8 +63,10 @@
               </b-input-group>
             </b-form-group>
           </b-col>
-
           <b-col lg="6" class="my-1">
+          </b-col>
+
+          <!-- <b-col lg="6" class="my-1">
             <b-form-group
               label="Initial sort"
               label-cols-sm="3"
@@ -80,7 +82,7 @@
                 :options="['asc', 'desc', 'last']"
               ></b-form-select>
             </b-form-group>
-          </b-col>
+          </b-col> -->
 
           <b-col lg="6" class="my-1">
             <b-form-group
@@ -99,7 +101,7 @@
                   placeholder="Type to Search"
                 ></b-form-input>
                 <b-input-group-append>
-                  <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                  <b-button :disabled="!filter" variant="primary" @click="filter = ''">Clear</b-button>
                 </b-input-group-append>
               </b-input-group>
             </b-form-group>
@@ -191,6 +193,14 @@
           </b-form-checkbox> -->
         </template>
 
+        <template v-slot:cell(no)="data">
+          {{ ((currentPage*perPage)+data.index + 1)-perPage }}
+        </template>
+
+        <template v-slot:cell(order_status)="data">
+          <h5><b-badge>{{ data.item.order_status }}</b-badge></h5>
+        </template>
+
         <template v-slot:row-details="row">
           <b-card>
             <b-row class="mb-2">
@@ -205,7 +215,7 @@
 
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-right"><b>Order Status:</b></b-col>
-              <b-col>{{ row.item.order_status }}</b-col>
+              <b-col><h5><span class="badge badge-pill badge-info">{{ row.item.order_status }}</span></h5></b-col>
             </b-row>
 
             <b-row class="mb-2">
@@ -265,7 +275,7 @@ import VueLoadingButton from 'vue-loading-button';
           {
             key: 'order_status',
             label: 'Order Status',
-            sortable: true,
+            // sortable: true,
           },
           {
             key: 'show_details',
@@ -275,7 +285,7 @@ import VueLoadingButton from 'vue-loading-button';
         totalRows: 1,
         currentPage: 1,
         perPage: 5,
-        pageOptions: [5, 10, 15],
+        pageOptions: [5, 10, 15, 20, 30, 50],
         sortBy: '',
         sortDesc: false,
         sortDirection: 'asc',
