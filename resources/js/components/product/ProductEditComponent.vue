@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="comment">Description</label>
-                                    <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
+                                    <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig" tag-name="textarea"></ckeditor>
                                 </div>
                                 <!--english addition fields -->
                                 <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="comment">Description</label>
-                                    <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
+                                    <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>                                  
                                 </div>
                                 <!--myanmar addition fields -->
                                 <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
@@ -215,6 +215,8 @@ import VueLoadingButton from 'vue-loading-button';
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 export default {
     props: ['base_url','edit_images','categories','product','product_infos','selected_categories','product_additions','thumbnail_url'],
     
@@ -259,6 +261,21 @@ export default {
                 addition_ids: [],
             },
 
+            editor: ClassicEditor,
+             editorConfig: {
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'link',
+                        'undo',
+                        'redo',
+                        'copy',
+                        'Strike',
+                    ]
+                }
+            },
+
             errors: '',
             disabled_status: false,
             show_image: this.base_url+'/images/default.png',
@@ -282,7 +299,7 @@ export default {
         VueUploadMultipleImage,Treeselect,VueLoadingButton,
       },
 
-    mounted()
+    created()
     {
         this.edit();
     },

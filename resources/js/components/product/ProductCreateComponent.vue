@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <textarea v-model="english.description" class="form-control" rows="5" id="comment"></textarea>
+                                    <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig">{{english.description}}</ckeditor>
                                 </div>
                                 <!--english addition fields -->
                                 <div class="form-row form-group m-form__group mb-negative" v-for="(addition,index) in english.additions" :key="index">
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <textarea v-model="myanmar.description" class="form-control" rows="5" id="comment"></textarea>
+                                    <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>
                                 </div>
                                 <!--myanmar addition fields -->
                                 <div class="form-row m-form__group mb-negative" v-for="(addition,index) in myanmar.additions" :key="index">
@@ -137,8 +137,6 @@
                                         <button @click="delete_addition(index)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </div>
                                 </div>
-
-
                             </div>              
                         </div>
                         <div v-if="nav_bar.general==true" class="form-group m-form__group">
@@ -224,6 +222,8 @@ import VueLoadingButton from 'vue-loading-button';
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 export default {
     props: ['categories','base_url'],
     
@@ -258,6 +258,21 @@ export default {
                 data: false,
                 general: true,
                 images: false,
+            },
+
+            editor: ClassicEditor,
+            editorConfig: {
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'link',
+                        'undo',
+                        'redo',
+                        'copy',
+                        'Strike',
+                    ]
+                }
             },
 
 

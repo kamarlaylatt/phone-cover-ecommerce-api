@@ -6990,6 +6990,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @riophae/vue-treeselect/dist/vue-treeselect.css */ "./node_modules/@riophae/vue-treeselect/dist/vue-treeselect.css");
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -7209,8 +7211,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
 
 
 
@@ -7246,6 +7247,12 @@ __webpack_require__.r(__webpack_exports__);
         data: false,
         general: true,
         images: false
+      },
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4___default.a,
+      editorConfig: {
+        toolbar: {
+          items: ['bold', 'italic', 'link', 'undo', 'redo', 'copy', 'Strike']
+        }
       },
       errors: '',
       disabled_status: false,
@@ -7416,6 +7423,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @riophae/vue-treeselect/dist/vue-treeselect.css */ "./node_modules/@riophae/vue-treeselect/dist/vue-treeselect.css");
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -7628,6 +7637,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -7671,6 +7681,12 @@ __webpack_require__.r(__webpack_exports__);
         images_ids: [],
         addition_ids: []
       },
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_4___default.a,
+      editorConfig: {
+        toolbar: {
+          items: ['bold', 'italic', 'link', 'undo', 'redo', 'copy', 'Strike']
+        }
+      },
       errors: '',
       disabled_status: false,
       show_image: this.base_url + '/images/default.png',
@@ -7691,7 +7707,7 @@ __webpack_require__.r(__webpack_exports__);
     Treeselect: _riophae_vue_treeselect__WEBPACK_IMPORTED_MODULE_2___default.a,
     VueLoadingButton: vue_loading_button__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
+  created: function created() {
     this.edit();
   },
   methods: {
@@ -8042,7 +8058,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       },
       editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2___default.a,
-      editorConfig: {},
+      editorConfig: {
+        toolbar: {
+          items: ['bold', 'italic', 'link', 'undo', 'redo', 'copy', 'Strike']
+        }
+      },
       image: this.base_url + '/images/default.png',
       errors: '',
       hasImage: false,
@@ -115222,32 +115242,30 @@ var render = function() {
                               [
                                 _vm._m(6),
                                 _vm._v(" "),
-                                _c("textarea", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
+                                _c(
+                                  "ckeditor",
+                                  {
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      editor: _vm.editor,
+                                      config: _vm.editorConfig
+                                    },
+                                    model: {
                                       value: _vm.english.description,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.english,
+                                          "description",
+                                          $$v
+                                        )
+                                      },
                                       expression: "english.description"
                                     }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { rows: "5", id: "comment" },
-                                  domProps: { value: _vm.english.description },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.english,
-                                        "description",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]
+                                  },
+                                  [_vm._v(_vm._s(_vm.english.description))]
+                                )
+                              ],
+                              1
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.english.additions, function(
@@ -115457,34 +115475,26 @@ var render = function() {
                                   [
                                     _vm._m(9),
                                     _vm._v(" "),
-                                    _c("textarea", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.myanmar.description,
-                                          expression: "myanmar.description"
-                                        }
-                                      ],
+                                    _c("ckeditor", {
                                       staticClass: "form-control",
-                                      attrs: { rows: "5", id: "comment" },
-                                      domProps: {
-                                        value: _vm.myanmar.description
+                                      attrs: {
+                                        editor: _vm.editor,
+                                        config: _vm.editorConfig
                                       },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
+                                      model: {
+                                        value: _vm.myanmar.description,
+                                        callback: function($$v) {
                                           _vm.$set(
                                             _vm.myanmar,
                                             "description",
-                                            $event.target.value
+                                            $$v
                                           )
-                                        }
+                                        },
+                                        expression: "myanmar.description"
                                       }
                                     })
-                                  ]
+                                  ],
+                                  1
                                 ),
                                 _vm._v(" "),
                                 _vm._l(_vm.myanmar.additions, function(
@@ -116395,32 +116405,23 @@ var render = function() {
                                   _vm._v("Description")
                                 ]),
                                 _vm._v(" "),
-                                _c("textarea", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.english.description,
-                                      expression: "english.description"
-                                    }
-                                  ],
+                                _c("ckeditor", {
                                   staticClass: "form-control",
-                                  attrs: { rows: "5", id: "comment" },
-                                  domProps: { value: _vm.english.description },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.english,
-                                        "description",
-                                        $event.target.value
-                                      )
-                                    }
+                                  attrs: {
+                                    editor: _vm.editor,
+                                    config: _vm.editorConfig,
+                                    "tag-name": "textarea"
+                                  },
+                                  model: {
+                                    value: _vm.english.description,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.english, "description", $$v)
+                                    },
+                                    expression: "english.description"
                                   }
                                 })
-                              ]
+                              ],
+                              1
                             ),
                             _vm._v(" "),
                             _vm._l(_vm.english.additions, function(
@@ -116627,34 +116628,26 @@ var render = function() {
                                       _vm._v("Description")
                                     ]),
                                     _vm._v(" "),
-                                    _c("textarea", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.myanmar.description,
-                                          expression: "myanmar.description"
-                                        }
-                                      ],
+                                    _c("ckeditor", {
                                       staticClass: "form-control",
-                                      attrs: { rows: "5", id: "comment" },
-                                      domProps: {
-                                        value: _vm.myanmar.description
+                                      attrs: {
+                                        editor: _vm.editor,
+                                        config: _vm.editorConfig
                                       },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
+                                      model: {
+                                        value: _vm.myanmar.description,
+                                        callback: function($$v) {
                                           _vm.$set(
                                             _vm.myanmar,
                                             "description",
-                                            $event.target.value
+                                            $$v
                                           )
-                                        }
+                                        },
+                                        expression: "myanmar.description"
                                       }
                                     })
-                                  ]
+                                  ],
+                                  1
                                 ),
                                 _vm._v(" "),
                                 _vm._l(_vm.myanmar.additions, function(

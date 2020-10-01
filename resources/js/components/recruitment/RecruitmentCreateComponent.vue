@@ -114,7 +114,18 @@ export default {
 
             editor: ClassicEditor,
             editorConfig: {
-                },
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'link',
+                        'undo',
+                        'redo',
+                        'copy',
+                        'Strike',
+                    ]
+                }
+            },
 
             image: this.base_url+'/images/default.png',
 
