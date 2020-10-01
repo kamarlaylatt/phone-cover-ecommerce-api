@@ -48,7 +48,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Customer Name</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
-                    <div class="col-sm-8 h5"><strong>{{$order->user->name}}</strong></div>
+                    <div class="col-sm-8 h5"><a href="{{route('users.show', $order->user->id)}}"><strong>{{$order->user->name}}</strong></a></div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Total Item</strong></div>

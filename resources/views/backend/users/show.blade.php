@@ -43,6 +43,15 @@
                         <th> Phone </th>
                         <td> {{$user->phone}} </td>
                     </tr>
+                    @if($user->provider_id)
+                     @php
+                         $facebook_url = "https://www.facebook.com/".$user->provider_id;
+                     @endphp
+                    <tr>
+                        <th> Facebook </th>
+                        <td> <a href="{{$facebook_url}}" class="fa fa-facebook">Facebook</a></td>
+                    </tr>
+                    @endif
                     <tr>
                         <th> Address </th>
                         <td> {{$user->address}} </td>
