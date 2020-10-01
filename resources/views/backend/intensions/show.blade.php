@@ -60,11 +60,14 @@
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5"><strong>{{$intension->price}}</strong></div>
                 </div>
+                @if($intension->remark)   
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Remark</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5"><strong>{{$intension->remark}}</strong></div>
-                </div>         
+                </div>
+                @endif
+                @if($intension->preview)         
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Preview</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
@@ -76,6 +79,7 @@
                         @endif
                     </div>
                 </div>   
+                @endif
                 <div class="row mb-2">
                     <div class="col-xl-2 h5"><strong>Images</strong></div>
                     <div class="col-xl-1 h5"><strong>-</strong></div>
@@ -83,6 +87,10 @@
                         @foreach($intension->intension_images as $image)
                         @if(is_file(\Storage::path('public/orders/images/'.$image->image)))
                             <img src="{{url(\Storage::url('orders/images/'.$image->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="100" height="100">
+                        @elseif(is_file(\Storage::path('public/uploads/charlet_imgs/'.$image->image)))
+                            <img src="{{url(\Storage::url('uploads/charlet_imgs/'.$image->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="100" height="100">
+                        @elseif(is_file(\Storage::path('public/uploads/mask_imgs/'.$image->image)))
+                            <img src="{{url(\Storage::url('uploads/mask_imgs/'.$image->image))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="100" height="100">
                         @else
                             <img src="{{asset('/images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="200" height="150"> 
                         @endif

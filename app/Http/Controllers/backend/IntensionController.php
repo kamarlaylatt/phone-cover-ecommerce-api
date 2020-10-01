@@ -8,6 +8,7 @@ use App\Intension;
 use App\OrderStatus;
 use File;
 use ZipArchive;
+use Storage;
 
 class IntensionController extends Controller
 {
@@ -59,14 +60,26 @@ class IntensionController extends Controller
         $zip = new ZipArchive;
         if ($zip->open(storage_path('app/public/'.$fileName), ZipArchive::CREATE) === TRUE)
         {
+            
 
-            if($intension->type == 1)
+            if(is_file(Storage::path('public/orders/images/'.$intension->preview)))
             {
                 $zip->addFile(storage_path('app/public/orders/images/'.$intension->preview), $intension->preview);
             }
+            
             foreach ($intension->intension_images as $image) {
-
-                $zip->addFile(storage_path('app/public/orders/images/'.$image->image), $image->image);
+                if(is_file(Storage::path('public/orders/images/'.$image->image)))
+                {
+                    $zip->addFile(storage_path('app/public/orders/images/'.$image->image), $image->image);
+                }
+                else if(is_file(Storage::path('public/uploads/charlet_imgs/'.$image->image)))
+                {
+                    $zip->addFile(storage_path('app/public/uploads/charlet_imgs/'.$image->image), $image->image);
+                }
+                else if(is_file(Storage::path('public/uploads/mask_imgs/'.$image->image)))
+                {
+                    $zip->addFile(storage_path('app/public/uploads/mask_imgs/'.$image->image), $image->image);
+                }
             }
              
             $zip->close();
