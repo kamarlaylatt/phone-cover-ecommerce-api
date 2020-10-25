@@ -3,10 +3,28 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Intension extends Model
 {
+    use Sortable;
+
     protected $fillable = [
+        'user_id',
+        'name',
+        'phone',
+        'address',
+        'order_no',
+        'type',
+        'phone_model_id',
+        'shell_material_id',
+        'preview',
+        'price',
+        'order_status_id',
+        'remark',
+    ];
+
+    public $sortable = [
         'user_id',
         'name',
         'phone',

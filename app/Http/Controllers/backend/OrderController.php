@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::paginate(10);
+        $orders = Order::sortable()->orderBy('created_at','desc')->paginate(10);
         return view('backend.orders.index', compact('orders'));
     }
 
@@ -25,7 +25,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
-        return view('backend.orders.show', compact('order'));
+        $order_statuses = OrderStatus::all();
+        return view('backend.orders.show', compact('order','order_statuses'));
     }
 
     public function edit($id)
@@ -40,8 +41,28 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->remark = $request->remark;
         $order->order_status_id = $request->order_status_id;
-        $order->update();
+        $order->save();
         return view('backend.orders.show', compact('order'));
+    }
+
+    public function updateShow(Request $request,$id)
+    {
+        
+        $order = Order::findOrFail($id);
+        $order->remark = $request->remark;
+        $order->delivery_cost = $request->delivery_cost;
+        $order->total_net = $request->delivery_cost+$order->total_amount;
+        $order->pay_amount = $request->pay_amount;
+        $order->remain_amount= $request->remain_amount;
+        $order->order_status_id = $request->order_status_id;
+
+        $order->update();
+        return response()->json([
+            'status' => 200,
+            'message' => "Successfully Update Order",
+            'data' => $order,
+            'order_status' => $order->order_status->name,
+        ]);
     }
 
     public function search(Request $request)

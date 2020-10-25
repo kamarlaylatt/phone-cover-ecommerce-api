@@ -19,6 +19,7 @@
 
 
 @section('content')
+        <div id='app'>
             <category_edit-component 
                 :img_url="{{json_encode($img_url)}}" 
                 :category="{{json_encode($category)}}" 
@@ -27,5 +28,6 @@
                 :base_url="{{json_encode(URL::to('/'))}}"
             >
             </category_edit-component>
+        </div>
 
 @endsection

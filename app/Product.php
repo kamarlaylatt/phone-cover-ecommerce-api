@@ -10,6 +10,7 @@ use App\ProductImage;
 use Storage;
 use Image;
 use File;
+use DB;
 
 class Product extends Model
 {
@@ -44,81 +45,79 @@ class Product extends Model
 
     public function storeProduct($request)
     {
-    	$product = Product::Create([
-    		'code_number' => $request['code_number'],
-            'price' => $request['price'],
-            'discount_price' => $request['discount_price'],
-    		'qty' => $request['quantity'],
-    		'min_order' => $request['minimum_order'],
-            'max_order' => $request['maximum_order'],
-            'fb_pixel' => $request['fb_pixel'],
-    		'recommend' => $request['recommend'],
-    	]);
-
-        $category = Category::find(json_decode($request['category_array']));
-        $product->categories()->attach($category);
-
-        $filepath = storage_path('app/public/uploads/product_imgs/images/');
-
-        if (!file_exists($filepath)) {
-            File::makeDirectory($filepath);
-        }
-
-        $images = json_decode($request['images']);
-
-        foreach ($images as $key => $image) {
-            $filename = uniqid().'_'.$image->name;
-            
-            Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
-
-            
-            $product_image = ProductImage::Create([
-                'product_id' => $product->id,
-                'image' => $filename,
-                'sort_no' => $key+1,
+        $product = DB::transaction(function () use($request){
+            $product = Product::Create([
+                'code_number' => $request['code_number'],
+                'price' => $request['price'],
+                'discount_price' => $request['discount_price'],
+                'qty' => $request['quantity'],
+                'min_order' => $request['minimum_order'],
+                'max_order' => $request['maximum_order'],
+                'fb_pixel' => $request['fb_pixel'],
+                'recommend' => $request['recommend'],
             ]);
-
-
-            
-        }
-
-        ProductInfo::Create([
-            'product_id' => $product->id,
-            'language_id' => 1,
-            'name' => $request['english_name'],
-            'short_description' => $request['english_short_description'],
-            'description' => $request['english_description'],
-        ]);
-
-        ProductInfo::Create([
-            'product_id' => $product->id,
-            'language_id' => 2,
-            'name' => $request['myanmar_name'],
-            'short_description' => $request['myanmar_short_description'],
-            'description' => $request['myanmar_description'],
-        ]);
-
-        $english_additions = json_decode($request['english_additions']);
-        foreach ($english_additions as $addition) {
-            ProductAddition::Create([
+    
+            $category = Category::find(json_decode($request['category_array']));
+            $product->categories()->attach($category);
+    
+            $filepath = storage_path('app/public/uploads/product_imgs/images/');
+    
+            if (!file_exists($filepath)) {
+                File::makeDirectory($filepath);
+            }
+    
+            $images = json_decode($request['images']);
+    
+            foreach ($images as $key => $image) {
+                $filename = uniqid().'_'.$image->name;
+                
+                Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
+                $product_image = ProductImage::Create([
+                    'product_id' => $product->id,
+                    'image' => $filename,
+                    'sort_no' => $key+1,
+                ]);
+            }
+    
+            ProductInfo::Create([
                 'product_id' => $product->id,
                 'language_id' => 1,
-                'key' => $addition->key,
-                'value' => $addition->value,
+                'name' => $request['english_name'],
+                'short_description' => $request['english_short_description'],
+                'description' => $request['english_description'],
             ]);
-        }
-
-        $myanmar_additions = json_decode($request['myanmar_additions']);
-        foreach ($myanmar_additions as $addition) {
-            ProductAddition::Create([
+    
+            ProductInfo::Create([
                 'product_id' => $product->id,
                 'language_id' => 2,
-                'key' => $addition->key,
-                'value' => $addition->value,
+                'name' => $request['myanmar_name'],
+                'short_description' => $request['myanmar_short_description'],
+                'description' => $request['myanmar_description'],
             ]);
-        }
+    
+            $english_additions = json_decode($request['english_additions']);
+            foreach ($english_additions as $addition) {
+                ProductAddition::Create([
+                    'product_id' => $product->id,
+                    'language_id' => 1,
+                    'key' => $addition->key,
+                    'value' => $addition->value,
+                ]);
+            }
+    
+            $myanmar_additions = json_decode($request['myanmar_additions']);
+            foreach ($myanmar_additions as $addition) {
+                ProductAddition::Create([
+                    'product_id' => $product->id,
+                    'language_id' => 2,
+                    'key' => $addition->key,
+                    'value' => $addition->value,
+                ]);
+            }
 
-
+            return $product;
+        });
+    	
     	return [
             'success' => true,
             'product_id' => $product->id,
@@ -127,121 +126,123 @@ class Product extends Model
 
     public function updateProduct($request,$id)
     {
-        $product = Product::find($id);
+        DB::transaction(function () use($request,$id){
+            $product = Product::find($id);
 
-        //product
-        $product->code_number = $request['code_number'];
-        $product->price = $request['price'];
-        $product->discount_price = $request['discount_price'];
-        $product->qty = $request['quantity'];
-        $product->min_order = $request['minimum_order'];
-        $product->max_order = $request['maximum_order'];
-        $product->fb_pixel = $request['fb_pixel'];
-        $product->recommend = $request['recommend'];
-        $product->save();
+            //product
+            $product->code_number = $request['code_number'];
+            $product->price = $request['price'];
+            $product->discount_price = $request['discount_price'];
+            $product->qty = $request['quantity'];
+            $product->min_order = $request['minimum_order'];
+            $product->max_order = $request['maximum_order'];
+            $product->fb_pixel = $request['fb_pixel'];
+            $product->recommend = $request['recommend'];
+            $product->save();
 
-        //product_category
-        $old_category = Category::find(json_decode($request['old_category_array']));
-        $product->categories()->detach($old_category);
-        $new_category = Category::find(json_decode($request['category_array']));
-        $product->categories()->attach($new_category);
+            //product_category
+            $old_category = Category::find(json_decode($request['old_category_array']));
+            $product->categories()->detach($old_category);
+            $new_category = Category::find(json_decode($request['category_array']));
+            $product->categories()->attach($new_category);
 
-        //product_info
-        $english_info = ProductInfo::find($request['english_id']);
-        $myanmar_info = ProductInfo::find($request['myanmar_id']); 
-        $english_info->name = $request['english_name'];
-        $english_info->short_description = $request['english_short_description'];
-        $english_info->description = $request['english_description'];
-        $myanmar_info->name = $request['myanmar_name'];
-        $myanmar_info->short_description = $request['myanmar_short_description'];
-        $myanmar_info->description = $request['myanmar_description'];
-        $english_info->save();
-        $myanmar_info->save();
+            //product_info
+            $english_info = ProductInfo::find($request['english_id']);
+            $myanmar_info = ProductInfo::find($request['myanmar_id']); 
+            $english_info->name = $request['english_name'];
+            $english_info->short_description = $request['english_short_description'];
+            $english_info->description = $request['english_description'];
+            $myanmar_info->name = $request['myanmar_name'];
+            $myanmar_info->short_description = $request['myanmar_short_description'];
+            $myanmar_info->description = $request['myanmar_description'];
+            $english_info->save();
+            $myanmar_info->save();
 
-        //product additions
-        $english_additions = json_decode($request['english_additions']);
-        foreach ($english_additions as $addition) {
-            if($addition->create_status == 1)
-            {
-                ProductAddition::Create([
-                    'product_id' => $product->id,
-                    'language_id' => 1,
-                    'key' => $addition->key,
-                    'value' => $addition->value,
-                ]);
+            //product additions
+            $english_additions = json_decode($request['english_additions']);
+            foreach ($english_additions as $addition) {
+                if($addition->create_status == 1)
+                {
+                    ProductAddition::Create([
+                        'product_id' => $product->id,
+                        'language_id' => 1,
+                        'key' => $addition->key,
+                        'value' => $addition->value,
+                    ]);
+                }
+                
+                if($addition->update_status == 1)
+                {
+                    $product_addition = ProductAddition::find($addition->id);
+                    $product_addition->key = $addition->key;
+                    $product_addition->value = $addition->value;
+                    $product_addition->save();
+                }            
             }
-            
-            if($addition->update_status == 1)
-            {
-                $product_addition = ProductAddition::find($addition->id);
-                $product_addition->key = $addition->key;
-                $product_addition->value = $addition->value;
-                $product_addition->save();
-            }            
-        }
-        $myanmar_additions = json_decode($request['myanmar_additions']);
-        foreach ($myanmar_additions as $addition) {
-            if($addition->create_status == 1)
-            {
-                ProductAddition::Create([
-                    'product_id' => $product->id,
-                    'language_id' => 2,
-                    'key' => $addition->key,
-                    'value' => $addition->value,
-                ]);
+            $myanmar_additions = json_decode($request['myanmar_additions']);
+            foreach ($myanmar_additions as $addition) {
+                if($addition->create_status == 1)
+                {
+                    ProductAddition::Create([
+                        'product_id' => $product->id,
+                        'language_id' => 2,
+                        'key' => $addition->key,
+                        'value' => $addition->value,
+                    ]);
+                }
+                
+                if($addition->update_status == 1)
+                {
+                    $product_addition = ProductAddition::find($addition->id);
+                    $product_addition->key = $addition->key;
+                    $product_addition->value = $addition->value;
+                    $product_addition->save();
+                }            
             }
-            
-            if($addition->update_status == 1)
+            $destroy_additions = json_decode($request['destroy_additions']);
+            foreach ($destroy_additions as $addition_id)
             {
-                $product_addition = ProductAddition::find($addition->id);
-                $product_addition->key = $addition->key;
-                $product_addition->value = $addition->value;
-                $product_addition->save();
-            }            
-        }
-        $destroy_additions = json_decode($request['destroy_additions']);
-        foreach ($destroy_additions as $addition_id)
-        {
-            $product_addition = ProductAddition::find($addition_id);
-            $product_addition->delete();
-        }
-
-        //product images
-        $images = json_decode($request['images']);
-        foreach ($images as $key => $image) {
-            if($image->create_status == 1)
-            {
-                $filename = uniqid().'_'.$image->name;            
-                Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
-                $product_image = ProductImage::Create([
-                    'product_id' => $product->id,
-                    'image' => $filename,
-                    'sort_no' => $image->sort_no,
-                ]);
+                $product_addition = ProductAddition::find($addition_id);
+                $product_addition->delete();
             }
-            else{
-                $product_image = ProductImage::find($image->id);
-                $product_image->sort_no = $image->sort_no;
-                $product_image->save();
 
-                if($image->update_status == 1)
-                {              
-                    Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
+            //product images
+            $images = json_decode($request['images']);
+            foreach ($images as $key => $image) {
+                if($image->create_status == 1)
+                {
                     $filename = uniqid().'_'.$image->name;            
                     Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
-                    $product_image->image = $filename;
-                    $product_image->save();
+                    $product_image = ProductImage::Create([
+                        'product_id' => $product->id,
+                        'image' => $filename,
+                        'sort_no' => $image->sort_no,
+                    ]);
                 }
-            }           
+                else{
+                    $product_image = ProductImage::find($image->id);
+                    $product_image->sort_no = $image->sort_no;
+                    $product_image->save();
 
-        }
-        $destroy_images = json_decode($request['destroy_images']);
-        foreach ($destroy_images as $image_id)
-        {
-            $product_image = ProductImage::find($image_id);
-            Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
-            $product_image->delete();
-        }
+                    if($image->update_status == 1)
+                    {              
+                        Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
+                        $filename = uniqid().'_'.$image->name;            
+                        Image::make($image->path)->encode()->save(storage_path('app/public/uploads/product_imgs/images/').$filename);
+                        $product_image->image = $filename;
+                        $product_image->save();
+                    }
+                }           
+
+            }
+            $destroy_images = json_decode($request['destroy_images']);
+            foreach ($destroy_images as $image_id)
+            {
+                $product_image = ProductImage::find($image_id);
+                Storage::delete('public/uploads/product_imgs/images/'.$product_image->image); 
+                $product_image->delete();
+            }
+        });
 
         return [
             'success' =>true,

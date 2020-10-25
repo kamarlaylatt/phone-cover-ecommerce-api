@@ -23,7 +23,7 @@
 
 
 <!--begin::Portlet-->
-    <div class="container" style="max-width:800px">
+    <div class="container" style="max-width:800px" id='app'>
         {{-- <div class="m-portlet m-portlet--tab"> --}}
             {{-- <div class="m-portlet__head">
                 <div class="m-portlet__head-caption">

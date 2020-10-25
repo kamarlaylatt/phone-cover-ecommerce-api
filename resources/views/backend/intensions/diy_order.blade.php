@@ -77,10 +77,10 @@
                        <thead>
                             <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
-                                <th title="Field #2" data-field="Name">Order No</th>
-                                <th title="Field #3" data-field="Email">Customer Name</th>
-                                <th title="Field #3" data-field="Role">Phone No</th>
-                                <th title="Field #3" data-field="Role">Order Status</th>
+                                <th title="Field #2" data-field="Name">@sortablelink('order_no','Order No')</th>
+                                <th title="Field #3" data-field="Email">@sortablelink('name','Customer Name')</th>
+                                <th title="Field #3" data-field="Role">@sortablelink('phone','Phone No')</th>
+                                <th title="Field #3" data-field="Role">@sortablelink('order_status.name','Order Status')</th>
                                 <th title="Field #4" data-field="Action">Action</th>
                             </tr>
                         </thead>
@@ -104,7 +104,8 @@
                             @endforeach
                         </tbody> 
                     </table>         
-                    {{ $intensions->links() }}     
+                    {!! $intensions->appends(\Request::except('page'))->render() !!} 
+                    {{-- {{ $intensions->links() }}      --}}
                 </div>
 
                 <!--end: Datatable -->

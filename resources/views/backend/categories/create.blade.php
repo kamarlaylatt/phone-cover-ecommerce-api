@@ -19,9 +19,11 @@
 
 
 @section('content')
+        <div id='app'>
             <category_create-component 
                 :categories="{{json_encode($category_array)}}"
                 :base_url="{{json_encode(URL::to('/'))}}"
             ></category_create-component>
+        </div>
 
 @endsection

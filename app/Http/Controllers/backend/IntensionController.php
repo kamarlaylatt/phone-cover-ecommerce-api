@@ -14,13 +14,13 @@ class IntensionController extends Controller
 {
     public function diyOrder()
     {
-        $intensions = Intension::where('type',1)->paginate(10);
+        $intensions = Intension::sortable()->where('type',1)->orderBy('created_at','desc')->paginate(10);
         return view('backend.intensions.diy_order', compact('intensions'));
     }
 
     public function helpOrder()
     {
-        $intensions = Intension::where('type',2)->paginate(10);
+        $intensions = Intension::sortable()->where('type',2)->orderBy('created_at','desc')->paginate(10);
         return view('backend.intensions.help_order', compact('intensions'));
     }
 

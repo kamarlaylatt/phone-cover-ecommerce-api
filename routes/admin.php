@@ -100,6 +100,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 		Route::post('/search','OrderController@search')->name('orders.search');
 		Route::get('/{id}/edit','OrderController@edit')->name('orders.edit');
 		Route::put('/update/{id}','OrderController@update')->name('orders.update');
+		Route::put('/update/show/{id}','OrderController@updateShow')->name('orders.update');
 	});
 	
 	//filter

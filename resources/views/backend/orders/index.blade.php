@@ -77,10 +77,10 @@
                        <thead>
                             <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
-                                <th title="Field #2" data-field="Name">Order No</th>
-                                <th title="Field #3" data-field="Email">Total Amount</th>
-                                <th title="Field #3" data-field="Role">Customer Name</th>
-                                <th title="Field #3" data-field="Role">Order Status</th>
+                                <th title="Field #2" data-field="Name">@sortablelink('order_no','Order No')</th>
+                                <th title="Field #3" data-field="Email">@sortablelink('total_amount','Total Amount')</th>
+                                <th title="Field #3" data-field="Role">@sortablelink('name','Customer Name')</th>
+                                <th title="Field #3" data-field="Role">@sortablelink('order_status.name','Order Status')</th>
                                 <th title="Field #4" data-field="Action">Action</th>
                             </tr>
                         </thead>
@@ -97,14 +97,15 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-edit"></i></a>
+                                        {{-- <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.edit', $order->id)}}"><i class="fa fa-edit"></i></a> --}}
 
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody> 
-                    </table>         
-                    {{ $orders->links() }}     
+                    </table>   
+                    {!! $orders->appends(\Request::except('page'))->render() !!}      
+                    {{-- {{ $orders->links() }}      --}}
                 </div>
 
                 <!--end: Datatable -->

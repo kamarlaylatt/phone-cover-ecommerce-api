@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-<div class="box">
+<div class="box" id="app">
     <div class="m-portlet m-portlet--mobile">
         <div class="m-portlet__head">
             <div class="m-portlet__head-caption">

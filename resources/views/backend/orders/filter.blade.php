@@ -13,7 +13,7 @@
 
 
 @section('content')
-<div class="container col-md-12">
+<div class="container col-md-12" id='app'>
     <div class="card">
         <div class="container">
             <div class="row">

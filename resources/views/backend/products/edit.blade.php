@@ -19,7 +19,7 @@
 
 
 @section('content')
-
+        <div id='app'>
         <!-- <p>{{json_encode($product->categories)}}</p> -->
             <product_edit-component 
                 :base_url = "{{json_encode(url('/'))}}"
