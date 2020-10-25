@@ -202,6 +202,7 @@
                     //     this.delivery_cost = 0;
                     // }
                     this.total_amount = parseFloat(this.product_cost) + parseFloat(this.delivery_cost);
+                    this.remain_amount = this.total_amount - this.pay_amount;
                 },
 
                 pay_keyup: function(){
