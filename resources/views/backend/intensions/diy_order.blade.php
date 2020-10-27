@@ -97,7 +97,7 @@
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('intensions.edit', $intension->id)}}"><i class="fa fa-edit"></i></a>
+                                        {{-- <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('intensions.edit', $intension->id)}}"><i class="fa fa-edit"></i></a> --}}
 
                                     </td>
                                 </tr>
