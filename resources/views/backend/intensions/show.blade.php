@@ -18,14 +18,17 @@
 @endsection
 
 @section('content')
-<div class="container col-md-12">
+<div class="container col-md-12" id="intension-order">
     <div class="card">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4"></div>
                 <div class="col-xl-4 card-title text-center mt-4 h3">Intension Detail</div>
                 <div class="col-xl-4 m--align-right">
-                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('intensions.edit', $intension->id)}}"><i class="fa fa-edit"></i></a>
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" v-on:click="edit()" v-if="edit_mode == false"><i class="fa fa-edit"></i></a>
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" v-on:click="cancel()" v-if="edit_mode == true && is_loading == false"><i class="fa fa-times"></i></a>
+                    <a class="mt-3 btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" v-on:click="save()" v-if="edit_mode == true && is_loading == false"><i class="fa fa-check"></i></a>
+                    <a class="mt-3 buttonload btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" v-if="is_loading == true"><i class="fas fa-sync fa-spin"></i></a>
                 </div>
             </div>
 
@@ -43,7 +46,14 @@
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Status</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
-                    <div class="col-sm-8 h5"><strong><span class="badge badge-pill badge-info">{{$intension->order_status->name}}</span></strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong><span class="badge badge-pill badge-info">@{{order_status}}</span></strong></div>
+                    <div class="col-sm-4 h5" v-if="edit_mode == true">
+                        <select v-model="selected_order_status" class="form-control" id="exampleFormControlSelect1">
+                            <option v-for="option in order_statuses" v-bind:value="option.id">
+                                @{{ option.name }}
+                              </option>
+                          </select>
+                    </div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Customer Name</strong></div>
@@ -56,17 +66,52 @@
                     <div class="col-sm-8 h5"><strong>1</strong></div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-sm-3 h5"><strong>Total Amount</strong></div>
+                    <div class="col-sm-3 h5"><strong>Product Cost</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5"><strong>{{$intension->price}}</strong></div>
                 </div>
-                @if($intension->remark)   
                 <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Delivery Cost</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong>@{{formatPrice(delivery_cost)}}</strong></div>
+                    <div class="col-sm-4 h5" v-if="edit_mode == true">
+                        <input v-on:keyup="delivery_keyup" type="number" v-model="delivery_cost" class="form-control" placeholder="Enter Delivery Cost" required>
+                    </div>
+                </div>
+                <div class="row mb-2" style="color: blue">
+                    <div class="col-sm-3 h5"><strong>Total Amount</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong>@{{formatPrice(total_amount)}}</strong></div>
+                    <div class="col-sm-4 h5" v-if="edit_mode == true">
+                        <input type="number" v-model="total_amount" class="form-control" placeholder="Enter Total Amount" disabled>
+                    </div>
+                </div>
+                <div class="row mb-2" style="color: green">
+                    <div class="col-sm-3 h5"><strong>Pay Amount</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong>@{{formatPrice(pay_amount)}}</strong></div>
+                    <div class="col-sm-4 h5" v-if="edit_mode == true">
+                        <input v-on:keyup="pay_keyup" type="number" v-model="pay_amount" class="form-control" placeholder="Enter Pay Amount" required>
+                    </div>
+                </div>
+                <div class="row mb-2" style="color: red">
+                    <div class="col-sm-3 h5"><span><strong>Remain Amount</strong></span></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong>@{{formatPrice(remain_amount)}}</strong></div>
+                    <div class="col-sm-4 h5" v-if="edit_mode == true">
+                        <input type="number" v-model="remain_amount" class="form-control" placeholder="Enter Remain Amount" disabled>
+                    </div>
+                </div>
+                <div class="row mb-4">
                     <div class="col-sm-3 h5"><strong>Remark</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
-                    <div class="col-sm-8 h5"><strong>{{$intension->remark}}</strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><i>@{{remark}}</i></div>
+                    <div class="col-sm-4 h5" v-if="edit_mode == true">
+                        <div class="form-group">
+                            <textarea v-model="remark" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                    </div>
                 </div>
-                @endif
                 @if($intension->preview)         
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Preview</strong></div>
@@ -111,4 +156,107 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script>
+        new Vue({
+            el: '#intension-order',
+            data: {
+                message: 'Hello Vue!',
+                edit_mode: false,
+                order_status: {!! json_encode($intension->order_status->name) !!},
+                selected_order_status: {!! json_encode($intension->order_status_id) !!},
+                order_statuses: {!! json_encode($order_statuses) !!},
+                product_cost: {!! json_encode($intension->price) !!},
+                delivery_cost: {!! json_encode($intension->delivery_cost) !!},
+                total_amount: {!! json_encode($intension->total_net) !!},
+                pay_amount: {!! json_encode($intension->pay_amount) !!},
+                remain_amount: {!! json_encode($intension->remain_amount) !!},
+                remark: {!! json_encode($intension->remark) !!},
+                base_url: '',
+                is_loading: false,
+            },
+            mounted() {
+                this.getTotalAmount();
+            },
+            methods: {
+                formatPrice(value) {
+                    let val = (value/1).toFixed(0).replace(',', '.')
+                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                },
+                
+                getTotalAmount(){
+                    this.total_amount = parseFloat(this.delivery_cost)+parseFloat(this.product_cost);
+                },
+
+                edit: function(){
+                    this.edit_mode = true;
+                },
+
+                cancel: function(){
+                    this.remark = {!! json_encode($intension->remark) !!};
+                    this.delivery_cost = {!! json_encode($intension->delivery_cost) !!};
+                    this.pay_amount = {!! json_encode($intension->pay_amount) !!};
+                    this.remain_amount = {!! json_encode($intension->remain_amount) !!};
+                    this.total_amount = {!! json_encode($intension->total_net) !!};
+                    this.selected_order_status = {!! json_encode($intension->selected_order_status) !!};
+                    this.edit_mode = false;
+                },
+
+                delivery_keyup: function(event){
+                    // if(this.delivery_cost == '')
+                    // {
+                    //     this.delivery_cost = 0;
+                    // }
+                    this.total_amount = parseFloat(this.product_cost) + parseFloat(this.delivery_cost);
+                    this.remain_amount = this.total_amount - this.pay_amount;
+                },
+
+                pay_keyup: function(){
+                    // if(this.pay_amount == '')
+                    // {
+                    //     this.pay_amount = 0;
+                    // }
+
+                    this.remain_amount = this.total_amount - this.pay_amount;
+                },
+
+                save: function(){
+                    if(this.delivery_cost == '' || this.pay_amount == '' )
+                    {
+                        alert('Please fill all field');
+                    }
+                    else{
+                        this.is_loading = true;
+                        axios
+                        .put(this.base_url+'/admin/intensions/update/show/'+ {!! json_encode($intension->id) !!},
+                        {
+                            delivery_cost: this.delivery_cost,
+                            pay_amount: this.pay_amount,
+                            remain_amount: this.remain_amount,
+                            remark: this.remark,
+                            order_status_id: this.selected_order_status,
+                        }
+                        )
+                        .then(response => {
+                            if(response.data.status == 200)
+                            {
+                                this.remark = response.data.data.remark;
+                                this.delivery_cost = response.data.data.delivery_cost;
+                                this.pay_amount = response.data.data.pay_amount;
+                                this.remain_amount = response.data.data.remain_amount;
+                                this.total_amount = response.data.data.total_net;
+                                this.order_status = response.data.order_status;
+                                this.is_loading = false;
+                                this.edit_mode = false;
+                            }
+                        })
+                    }
+                    
+                    
+                }
+            },
+        })
+    </script>
 @endsection

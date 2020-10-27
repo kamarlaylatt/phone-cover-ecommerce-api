@@ -27,7 +27,8 @@ class IntensionController extends Controller
     public function show($id)
     {
         $intension = Intension::findOrFail($id);
-        return view('backend.intensions.show', compact('intension'));
+        $order_statuses = OrderStatus::all();
+        return view('backend.intensions.show', compact('intension','order_statuses'));
     }
 
     public function edit($id)
@@ -44,6 +45,26 @@ class IntensionController extends Controller
         $intension->order_status_id = $request->order_status_id;
         $intension->update();
         return redirect()->route('intensions.show', $intension->id);
+    }
+
+    public function updateShow(Request $request,$id)
+    {
+        
+        $intension = Intension::findOrFail($id);
+        $intension->remark = $request->remark;
+        $intension->delivery_cost = $request->delivery_cost;
+        $intension->total_net = $request->delivery_cost+$intension->price;
+        $intension->pay_amount = $request->pay_amount;
+        $intension->remain_amount= $request->remain_amount;
+        $intension->order_status_id = $request->order_status_id;
+
+        $intension->update();
+        return response()->json([
+            'status' => 200,
+            'message' => "Successfully Update Intension",
+            'data' => $intension,
+            'order_status' => $intension->order_status->name,
+        ]);
     }
 
     public function download($id)

@@ -100,7 +100,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 		Route::post('/search','OrderController@search')->name('orders.search');
 		Route::get('/{id}/edit','OrderController@edit')->name('orders.edit');
 		Route::put('/update/{id}','OrderController@update')->name('orders.update');
-		Route::put('/update/show/{id}','OrderController@updateShow')->name('orders.update');
+		Route::put('/update/show/{id}','OrderController@updateShow');
 	});
 	
 	//filter
@@ -132,6 +132,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 		Route::get('/{id}/edit','IntensionController@edit')->name('intensions.edit');
 		Route::put('/update/{id}','IntensionController@update')->name('intensions.update');
 		Route::get('/{id}/download-images','IntensionController@download')->name('intensions.download');
+		Route::put('/update/show/{id}','IntensionController@updateShow');
 	});
 	Route::get('/help-order','IntensionController@helpOrder')->name('intensions.help');
 	Route::post('help-order/search','IntensionController@helpSearch')->name('intensions.help.search');

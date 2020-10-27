@@ -107,7 +107,7 @@
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5" v-if="edit_mode == false"><i>@{{remark}}</i></div>
                     <div class="col-sm-4 h5" v-if="edit_mode == true">
-                        <input type="text" v-model="remark" class="form-control" placeholder="Enter Remark">
+                        <textarea v-model="remark" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                 </div>
                 <br>

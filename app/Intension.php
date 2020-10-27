@@ -22,6 +22,10 @@ class Intension extends Model
         'price',
         'order_status_id',
         'remark',
+        'delivery_cost',
+        'total_net',
+        'pay_amount',
+        'remain_amount'
     ];
 
     public $sortable = [
