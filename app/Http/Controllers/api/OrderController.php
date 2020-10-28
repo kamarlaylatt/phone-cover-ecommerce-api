@@ -92,6 +92,7 @@ class OrderController extends BaseController
                 'user_id' => Auth::user()->id,
                 'item_count' => $item_count,
                 'total_amount' => $total_amount,
+                'total_net' => $total_amount,
                 'order_no' => $order_no,
             ]);
 
@@ -123,6 +124,7 @@ class OrderController extends BaseController
             'orderNo' => $order_transaction->order_no,
             'item_count' => $order_transaction->item_count,
             'total_amount' => $order_transaction->total_amount,
+            'total_net' => $order_transaction->total_amount,
             'order_status' => $order_transaction->order_status->name,
             'orderDate' => $order_transaction->created_at->format('d/m/Y'),
             'orderTime' => $order_transaction->created_at->format('H:i A'),
@@ -245,6 +247,7 @@ class OrderController extends BaseController
             'shell_material_id' => $request->shell_material_id,
             'preview' => $request->preview,
             'price' => $shell_material->price,
+            'total_net' => $shell_material->price,
             'order_status_id' => 1,
         ]);
         
@@ -269,7 +272,8 @@ class OrderController extends BaseController
             'type' => $intension->type,  
             'phone_model' => $intension->phone_model->name,
             'shell_material' => $intension->shell_material->name, 
-            'price' => $intension->price,    
+            'price' => $intension->price,
+            'total_net' => $intension->price,    
             'order_status' => $intension->order_status->name,   
         ];
 
