@@ -156,11 +156,11 @@ class OrderController extends BaseController
 
     public function orderList()
     {
-        $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),DB::raw('"intension" as type'),'price as total_amount','created_at')
+        $intensions = Intension::select('id','user_id','order_status_id','order_no',DB::raw('1 as item_count'),DB::raw('"intension" as type'),'price as total_amount','delivery_cost','total_net','created_at')
                                 ->where('user_id', Auth::user()->id)
                                 ->with('order_status','user');
 
-        $orders = Order::select('id','user_id','order_status_id','order_no','item_count',DB::raw('"order" as type'),'total_amount','created_at')
+        $orders = Order::select('id','user_id','order_status_id','order_no','item_count',DB::raw('"order" as type'),'total_amount','delivery_cost','total_net','created_at')
                                 ->where('user_id', Auth::user()->id)
                                 ->with('order_status','user');
 

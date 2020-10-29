@@ -187,13 +187,7 @@
                 },
 
                 cancel: function(){
-                    this.remark = {!! json_encode($order->remark) !!};
-                    this.delivery_cost = {!! json_encode($order->delivery_cost) !!};
-                    this.pay_amount = {!! json_encode($order->pay_amount) !!};
-                    this.remain_amount = {!! json_encode($order->remain_amount) !!};
-                    this.total_amount = {!! json_encode($order->total_net) !!};
-                    this.selected_order_status = {!! json_encode($order->order_status_id) !!};
-                    this.edit_mode = false;
+                    location.reload()
                 },
 
                 delivery_keyup: function(event){

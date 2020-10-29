@@ -195,13 +195,7 @@
                 },
 
                 cancel: function(){
-                    this.remark = {!! json_encode($intension->remark) !!};
-                    this.delivery_cost = {!! json_encode($intension->delivery_cost) !!};
-                    this.pay_amount = {!! json_encode($intension->pay_amount) !!};
-                    this.remain_amount = {!! json_encode($intension->remain_amount) !!};
-                    this.total_amount = {!! json_encode($intension->total_net) !!};
-                    this.selected_order_status = {!! json_encode($intension->selected_order_status) !!};
-                    this.edit_mode = false;
+                    location.reload()
                 },
 
                 delivery_keyup: function(event){
