@@ -101,9 +101,9 @@
                                     </td>
                                     <td class="align-middle">{{$mask->tab->name}}</td>                      
                                     <td class="text-center align-middle">
-                                        <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('masks.show', $mask->id)}}">
+                                        {{-- <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('masks.show', $mask->id)}}">
                                             <i class="fa fa-eye"></i>
-                                        </a>
+                                        </a> --}}
 
                                         <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('masks.edit', $mask->id)}}"><i class="fa fa-edit"></i></a>
 

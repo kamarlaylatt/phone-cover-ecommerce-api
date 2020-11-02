@@ -87,11 +87,11 @@
                             <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
                                 <div class="form-group m-form__group">
                                     <label>Title</label>
-                                    <input type="text" name="english_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('english_title') }}"  required autocomplete="title">
+                                    <input type="text" name="english_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('english_title') }}"   autocomplete="title">
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>Sub Title</label>
-                                    <input type="text" name="english_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('english_subtitle') }}"  required autocomplete="subtitle">
+                                    <input type="text" name="english_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('english_subtitle') }}"  autocomplete="subtitle">
                                 </div>                                
                                 <div class="form-group m-form__group">
                                     <label>Button Text</label>
@@ -101,11 +101,11 @@
                             <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
                                 <div class="form-group m-form__group">
                                     <label>Title</label>
-                                    <input type="text" name="myanmar_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('myanmar_title') }}"  required autocomplete="title">
+                                    <input type="text" name="myanmar_title" class="form-control m-input m-input--air" placeholder="Enter title" value="{{ old('myanmar_title') }}"  autocomplete="title">
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>Sub Title</label>
-                                    <input type="text" name="myanmar_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('myanmar_subtitle') }}"  required autocomplete="subtitle">
+                                    <input type="text" name="myanmar_subtitle" class="form-control m-input m-input--air" placeholder="Enter sub title" value="{{ old('myanmar_subtitle') }}"  autocomplete="subtitle">
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>Button Text</label>

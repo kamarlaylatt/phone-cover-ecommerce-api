@@ -41,17 +41,10 @@ class BannerController extends Controller
     {
         $request->validate([
            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-        //    'link' => 'required|string', 
-           'english_title' => 'required|string',
-           'english_subtitle' => 'required|string',
-        //    'english_button_text' => 'required|string',
-           'myanmar_title' => 'required|string',
-           'myanmar_subtitle' => 'required|string',
-        //    'myanmar_button_text' => 'required|string',
         ]);
 
         $banner = Banner::Create([
-            'link' => $request['link'],
+            'link' => !empty($request['link'])? $request['link']:'',
             'text_color' => $request['text_color'],
             'show_status' => isset($request->show_status[0]) ? 1 : 0,
         ]);
@@ -66,17 +59,17 @@ class BannerController extends Controller
         }
 
         BannerInfo::Create([
-            'title' => $request['english_title'],
-            'subtitle' => $request['english_subtitle'],
-            'button_text' => $request->english_button_text,
+            'title' => isset($request['english_title'])? $request['english_title']: '',
+            'subtitle' => isset($request['english_subtitle'])? $request['english_subtitle']: '',
+            'button_text' => isset($request->english_button_text)? $request->english_button_text: '',
             'banner_id' => $banner->id,
             'language_id' => 1,
         ]);
 
         BannerInfo::Create([
-            'title' => $request['myanmar_title'],
-            'subtitle' => $request['myanmar_subtitle'],
-            'button_text' => $request->myanmar_button_text,
+            'title' => isset($request['myanmar_title'])? $request['myanmar_title']: '',
+            'subtitle' => isset($request['myanmar_subtitle'])? $request['myanmar_subtitle']: '',
+            'button_text' => isset($request->myanmar_button_text)? $request->myanmar_button_text: '',
             'banner_id' => $banner->id,
             'language_id' => 2,
         ]);
@@ -119,28 +112,15 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             // 'link' => 'required|string', 
-            'english_title' => 'required|string',
-            'english_subtitle' => 'required|string',
+            // 'english_title' => 'required|string',
+            // 'english_subtitle' => 'required|string',
             // 'english_button_text' => 'required|string',
-            'myanmar_title' => 'required|string',
-            'myanmar_subtitle' => 'required|string',
+            // 'myanmar_title' => 'required|string',
+            // 'myanmar_subtitle' => 'required|string',
             // 'myanmar_button_text' => 'required|string',
          ]);
-
-         if($request->english_button_text == '')
-        {
-            $english_button_text = 'null';
-        }else{
-            $english_button_text = $request->english_button_text;
-        }
-
-        if($request->myanmar_button_text == '')
-        {
-            $myanmar_button_text = 'null';
-        }else{
-            $myanmar_button_text = $request->myanmar_button_text;
-        }
 
          $banner = Banner::find($id);
 
@@ -155,20 +135,20 @@ class BannerController extends Controller
             $banner->save();
          }
 
-        $banner->link = $request['link'];
+        $banner->link = isset($request['link'])?$request['link']:'';
         $banner->text_color = $request['text_color'];
         $banner->show_status = isset($request->show_status[0]) ? 1 : 0;
  
         $eng_banner = $banner->infos->where('language_id',1)->first();
         $myan_banner = $banner->infos->where('language_id',2)->first();
 
-        $eng_banner->title = $request['english_title'];
-        $eng_banner->subtitle = $request['english_subtitle'];
-        $eng_banner->button_text = $english_button_text;
+        $eng_banner->title = isset($request['english_title'])? $request['english_title']: '';
+        $eng_banner->subtitle = isset($request['english_subtitle'])? $request['english_subtitle']: '';
+        $eng_banner->button_text = isset($request->english_button_text)? $request->english_button_text:'';
 
-        $myan_banner->title = $request['myanmar_title'];
-        $myan_banner->subtitle = $request['myanmar_subtitle'];
-        $myan_banner->button_text = $myanmar_button_text;
+        $myan_banner->title = isset($request['myanmar_title'])?$request['myanmar_title']: '';
+        $myan_banner->subtitle = isset($request['myanmar_subtitle'])?$request['myanmar_subtitle']: '';
+        $myan_banner->button_text = isset($request->myanmar_button_text)? $request->myanmar_button_text: '';
 
         $banner->save();
         $eng_banner->save();

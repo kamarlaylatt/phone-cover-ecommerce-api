@@ -93,9 +93,9 @@
                                     <td class="align-middle">{{ $key+ $tabs->firstItem() }}</td>
                                     <td class="align-middle">{{$tab->name}}</td>                         
                                     <td class="text-center align-middle">
-                                        <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('tabs.show', $tab->id)}}">
+                                        {{-- <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('tabs.show', $tab->id)}}">
                                             <i class="fa fa-eye"></i>
-                                        </a>
+                                        </a> --}}
 
                                         <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('tabs.edit', $tab->id)}}"><i class="fa fa-edit"></i></a>
 
