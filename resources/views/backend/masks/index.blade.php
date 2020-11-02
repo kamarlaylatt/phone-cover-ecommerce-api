@@ -79,7 +79,8 @@
                             <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
                                 <th class="text-center align-middle"> Image </th>
-                                <th> Tab </th>
+                                <th class="text-center"> Tab </th>
+                                <th class="text-center"> Sort Index </th>                            
                                 <th class="text-center"> Actions </th>
                             </tr>
                         </thead>
@@ -99,7 +100,8 @@
                                             <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
                                         @endif
                                     </td>
-                                    <td class="align-middle">{{$mask->tab->name}}</td>                      
+                                    <td class="align-middle text-center">{{$mask->tab->name}}</td>    
+                                    <td class="align-middle text-center">{{$mask->sort_index}}</td>                    
                                     <td class="text-center align-middle">
                                         {{-- <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('masks.show', $mask->id)}}">
                                             <i class="fa fa-eye"></i>

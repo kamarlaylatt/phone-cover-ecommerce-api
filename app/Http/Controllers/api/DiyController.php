@@ -77,7 +77,7 @@ class DiyController extends BaseController
 
     public function getTabList()
     {
-        $tabs = Tab::select('id as tabId','name')->get();
+        $tabs = Tab::select('id as tabId','name')->orderBy('sort_index')->get();
 
         $responseBody = [
             'tabList' => $tabs,
@@ -88,7 +88,7 @@ class DiyController extends BaseController
     public function getCharletList()
     {
         $responseBody = [
-            'charletList' => CharletListResource::collection(Charlet::all()),
+            'charletList' => CharletListResource::collection(Charlet::orderBy('sort_index')->get()),
         ];
         return $this->successResponse($responseBody,'Successfully retrieve Charlet List.');
     }
@@ -96,7 +96,7 @@ class DiyController extends BaseController
     public function getMaskList()
     {
         $responseBody = [
-            'maskList' => MaskListResource::collection(Mask::all()),
+            'maskList' => MaskListResource::collection(Mask::orderBy('sort_index')->get()),
         ];
         return $this->successResponse($responseBody,'Successfully retrieve Mask List.');
     }

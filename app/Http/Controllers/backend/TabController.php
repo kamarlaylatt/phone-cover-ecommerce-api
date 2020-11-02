@@ -16,7 +16,7 @@ class TabController extends Controller
      */
     public function index()
     {
-        $tabs = Tab::paginate(10);
+        $tabs = Tab::orderBy('sort_index')->paginate(10);
         return view('backend.tabs.index', compact('tabs'));
     }
 
@@ -40,10 +40,12 @@ class TabController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'sort_index' => 'required|numeric',
         ]);
 
         $tab = Tab::create([
             'name' => $request['name'],
+            'sort_index' => $request['sort_index'],
         ]);
 
         return redirect()->route('tabs.index')->with('success','Successfully Create Tab');
@@ -85,9 +87,11 @@ class TabController extends Controller
         $tab = Tab::find($id);
         $request->validate([
             'name' => 'required|string|max:255',
+            'sort_index' => 'required|numeric',
         ]);         
         
         $tab->name = $request['name'];
+        $tab->sort_index = $request['sort_index'];
 
         $tab->update();
 

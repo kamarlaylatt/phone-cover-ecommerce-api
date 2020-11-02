@@ -59,6 +59,10 @@
                             <label>Name</label>
                             <input type="text" name="name" class="form-control m-input m-input--air" placeholder="Enter name" value="{{ $tab->name }}"  required autocomplete="name">
                         </div>
+                        <div class="form-group m-form__group">
+                            <label>Sort Index</label>
+                            <input type="number" name="sort_index" class="form-control m-input m-input--air" placeholder="Enter sort index" value="{{ $tab->sort_index }}"  required autocomplete="sort_index">
+                        </div>
                     </div>
 
                     <div class="m-portlet__foot m-portlet__foot--fit">

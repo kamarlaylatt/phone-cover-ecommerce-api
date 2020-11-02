@@ -41,7 +41,7 @@ class CharletController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required',
+            'image' => 'required|image',
             'tab_id' => 'required',
             'sort_index' => 'required|numeric'
         ]);
@@ -99,8 +99,9 @@ class CharletController extends Controller
     {
         $charlet = Charlet::find($id);
         $request->validate([
+            'image' => 'image',
             'tab_id' => 'required',
-            'sort_index' => 'required',
+            'sort_index' => 'required|numeric',
         ]);         
 
         $charlet->tab_id = $request['tab_id'];

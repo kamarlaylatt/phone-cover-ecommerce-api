@@ -17,7 +17,7 @@ class MaskController extends Controller
      */
     public function index()
     {
-        $masks = Mask::paginate(10);
+        $masks = Mask::orderBy('sort_index')->paginate(10);
         return view('backend.masks.index', compact('masks'));
     }
 
@@ -41,12 +41,14 @@ class MaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required',
+            'image' => 'required|image',
             'tab_id' => 'required',
+            'sort_index' => 'required|numeric'
         ]);
 
         $mask = Mask::create([
             'tab_id'=> $request['tab_id'],
+            'sort_index' => $request['sort_index'],
         ]);
 
         if($request->file('image'))
@@ -97,10 +99,13 @@ class MaskController extends Controller
     {
         $mask = Mask::find($id);
         $request->validate([
+            'image' => 'image',
             'tab_id' => 'required',
+            'sort_index' => 'required|numeric',
         ]);         
 
         $mask->tab_id = $request['tab_id'];
+        $mask->sort_index = $request['sort_index'];
 
         if($request->file('image'))
         {

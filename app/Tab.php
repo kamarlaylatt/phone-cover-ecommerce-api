@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tab extends Model
 {
     protected $fillable = [
-        'name',
+        'name','sort_index'
     ];
 }

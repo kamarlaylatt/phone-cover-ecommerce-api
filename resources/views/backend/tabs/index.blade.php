@@ -78,7 +78,8 @@
                         <thead>
                             <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
-                                <th> Name </th>
+                                <th class="text-center"> Name </th>
+                                <th class="text-center"> Sort Index </th>
                                 <th class="text-center"> Actions </th>
                             </tr>
                         </thead>
@@ -91,7 +92,8 @@
                             @foreach($tabs as $key=>$tab)
                                 <tr>
                                     <td class="align-middle">{{ $key+ $tabs->firstItem() }}</td>
-                                    <td class="align-middle">{{$tab->name}}</td>                         
+                                    <td class="align-middle text-center">{{$tab->name}}</td>                   
+                                    <td class="align-middle text-center">{{$tab->sort_index}}</td>         
                                     <td class="text-center align-middle">
                                         {{-- <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('tabs.show', $tab->id)}}">
                                             <i class="fa fa-eye"></i>
