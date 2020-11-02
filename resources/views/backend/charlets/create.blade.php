@@ -63,6 +63,10 @@
                             </select>
                         </div>
                         <div class="form-group m-form__group">
+                            <label>Sort Index</label>
+                            <input type="number" name="sort_index" class="form-control m-input m-input--air" placeholder="Enter sort index" value="{{ old('sort_index') }}"  required autocomplete="sort_index">
+                        </div>
+                        <div class="form-group m-form__group">
                             <label>Image</label><br>
                             <div class="col-md-12 mb-2">
                                 <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{ asset('images/default.png') }}"

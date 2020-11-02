@@ -15,7 +15,7 @@ class ShellMaterialController extends Controller
      */
     public function index()
     {
-        $shell_materials = ShellMaterial::paginate(10);
+        $shell_materials = ShellMaterial::orderBy('sort_index')->paginate(10);
         return view('backend.shell_materials.index', compact('shell_materials'));
     }
 

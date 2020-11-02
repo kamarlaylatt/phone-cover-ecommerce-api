@@ -17,7 +17,7 @@ class CharletController extends Controller
      */
     public function index()
     {
-        $charlets = Charlet::paginate(10);
+        $charlets = Charlet::orderBy('sort_index')->paginate(10);
         return view('backend.charlets.index', compact('charlets'));
     }
 
@@ -43,10 +43,12 @@ class CharletController extends Controller
         $request->validate([
             'image' => 'required',
             'tab_id' => 'required',
+            'sort_index' => 'required|numeric'
         ]);
 
         $charlet = Charlet::create([
             'tab_id'=> $request['tab_id'],
+            'sort_index' => $request['sort_index'],
         ]);
 
         if($request->file('image'))
@@ -98,9 +100,11 @@ class CharletController extends Controller
         $charlet = Charlet::find($id);
         $request->validate([
             'tab_id' => 'required',
+            'sort_index' => 'required',
         ]);         
 
         $charlet->tab_id = $request['tab_id'];
+        $charlet->sort_index = $request['sort_index'];
 
         if($request->file('image'))
         {

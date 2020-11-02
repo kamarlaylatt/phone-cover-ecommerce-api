@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mask extends Model
 {
     protected $fillable = [
-        'image','tab_id'
+        'image','tab_id','sort_index'
     ];
 
     public function tab()
