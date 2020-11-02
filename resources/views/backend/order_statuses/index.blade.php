@@ -78,9 +78,9 @@
                         <thead>
                             <tr class="table-font">
                                 <th title="Field #1" data-field="No">No</th>
-                                <th class="text-center align-middle"> Image </th>
+                                <th class="text-center align-middle"> Color </th>
                                 <th class="text-center"> Name </th>
-                                <th class="text-center"> Sort Index </th>>
+                                <th class="text-center"> Sort Index </th>
                                 <th> Description </th>
                                 <th class="text-center"> Actions </th>
                             </tr>
@@ -94,20 +94,23 @@
                             @foreach($order_statuses as $key=>$order_status)
                                 <tr>
                                     <td class="align-middle">{{ $key+ $order_statuses->firstItem() }}</td>
-                                    <td class="text-center align-middle">
+                                    {{-- <td class="text-center align-middle">
                                         @if(is_file(\Storage::path('public/uploads/order_status_imgs/'.$order_status->icon)))
                                             <img src="{{url(Storage::url('public/uploads/order_status_imgs/'.$order_status->icon))}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">
                                         @else
                                             <img src="{{asset('images/default.png')}}" class="img-rounded img-thumbnail" alt="Cinque Terre" width="60" height="60">                                           
                                         @endif
-                                    </td>
+                                    </td> --}}
+                                    <td class="align-middle text-center" style="background-color: {{$order_status->color}}">
+                                        
+                                    </td>  
                                     <td class="align-middle text-center">{{$order_status->name}}</td>   
                                     <td class="align-middle text-center">{{$order_status->sort_index}}</td>
                                     <td class="align-middle">{{$order_status->description}}</td>                      
                                     <td class="text-center align-middle">
-                                        <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('order_statuses.show', $order_status->id)}}">
+                                        {{-- <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('order_statuses.show', $order_status->id)}}">
                                             <i class="fa fa-eye"></i>
-                                        </a>
+                                        </a> --}}
 
                                         <a class="btn btn-outline-info m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('order_statuses.edit', $order_status->id)}}"><i class="fa fa-edit"></i></a>
 

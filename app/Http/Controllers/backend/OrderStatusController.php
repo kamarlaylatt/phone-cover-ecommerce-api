@@ -16,7 +16,7 @@ class OrderStatusController extends Controller
      */
     public function index()
     {
-        $order_statuses = OrderStatus::paginate(10);
+        $order_statuses = OrderStatus::orderBy('sort_index')->paginate(10);
         return view('backend.order_statuses.index', compact('order_statuses'));
     }
 
@@ -41,23 +41,25 @@ class OrderStatusController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'sort_index' => 'required',
-            'icon' => 'required|image',
+            // 'icon' => 'required|image',
+            'color' => 'required'
         ]);
 
         $order_status = OrderStatus::create([
             'name' => $request['name'],
             'sort_index' => $request['sort_index'],
             'description' => $request['description'],
+            'color' => $request['color']
         ]);
 
-        if($request->file('icon'))
-        {
-                $file = $request->file('icon');
-                $filename = uniqid().'_'.$file->getClientOriginalName();
-                Storage::disk('public')->putFileAs('/uploads/order_status_imgs/', $file, $filename);
-                $order_status->icon = $filename;
-                $order_status->save();
-        }
+        // if($request->file('icon'))
+        // {
+        //         $file = $request->file('icon');
+        //         $filename = uniqid().'_'.$file->getClientOriginalName();
+        //         Storage::disk('public')->putFileAs('/uploads/order_status_imgs/', $file, $filename);
+        //         $order_status->icon = $filename;
+        //         $order_status->save();
+        // }
 
         return redirect()->route('order_statuses.index')->with('success','Successfully Create Order Status');
     }
@@ -104,15 +106,16 @@ class OrderStatusController extends Controller
         $order_status->name = $request['name'];
         $order_status->sort_index = $request['sort_index'];
         $order_status->description = $request['description'];
-        if($request->file('icon'))
-        {
-            Storage::delete('public/uploads/order_status_imgs/'.$order_status->icon); 
-            $file = $request->file('icon');
-            $filename = uniqid().'_'.$file->getClientOriginalName();
-            Storage::disk('public')->putFileAs('/uploads/order_status_imgs/', $file, $filename);
-            $order_status->icon = $filename;
-            $order_status->save();
-        }
+        $order_status->color = $request['color'];
+        // if($request->file('icon'))
+        // {
+        //     Storage::delete('public/uploads/order_status_imgs/'.$order_status->icon); 
+        //     $file = $request->file('icon');
+        //     $filename = uniqid().'_'.$file->getClientOriginalName();
+        //     Storage::disk('public')->putFileAs('/uploads/order_status_imgs/', $file, $filename);
+        //     $order_status->icon = $filename;
+        //     $order_status->save();
+        // }
 
         $order_status->update();
 

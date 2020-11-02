@@ -68,13 +68,17 @@
                             <textarea name="description" class="form-control m-input m-input--air" rows="5" id="comment"> {{$order_status->description}}</textarea>
                         </div>
                         <div class="form-group m-form__group">
+                            <label>Color</label>
+                            <input type="color" value="{{$order_status->color}}"  name="color" class="col-lg-2 form-control" placeholder="Enter color code"  required autocomplete="color">
+                        </div>
+                        {{-- <div class="form-group m-form__group">
                             <label>Image</label><br>
                             <div class="col-md-12 mb-2">
                                 <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{url(\Storage::url('uploads/order_status_imgs/'.$order_status->icon))}}"
                                     alt="preview image" style="max-height: 150px;">
                             </div>
                             <input type="file" name="icon" id="image">
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="m-portlet__foot m-portlet__foot--fit">

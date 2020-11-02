@@ -51,7 +51,7 @@
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
                                     <!-- <br><small>Use Shitf+Enter for Line Breaking</small> -->
-                                    <vue-editor v-model="form.english.description" />					
+                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="form.english.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="form.english.description" :config="editorConfig"></ckeditor> -->
 									<!-- <textarea v-model="form.english.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
@@ -63,7 +63,7 @@
 								</div>
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
-                                    <vue-editor v-model="form.myanmar.description" />					
+                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="form.myanmar.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="form.myanmar.description" :config="editorConfig"></ckeditor> -->
 									<!-- <textarea v-model="form.myanmar.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
@@ -94,11 +94,23 @@
 import ImageUploader from 'vue-image-upload-resize'
 import VueLoadingButton from 'vue-loading-button';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { VueEditor } from "vue2-editor";
+import { VueEditor,Quill } from "vue2-editor";
+import ImageResize from "quill-image-resize-vue";
+import VideoResize from 'quill-video-resize-module';
+Quill.register("modules/imageResize", ImageResize);
+Quill.register("modules/videoResize", VideoResize);
+
 export default {
 	props: ['base_url'],
     data(){
         return{
+            editorSettings: {
+                modules: {
+                // imageDrop: true,
+                imageResize: {},
+                videoResize: {}
+                }
+            },
             form: {
                 id: '',
                 image: '',
@@ -214,4 +226,8 @@ export default {
   .ck-editor__editable {
     min-height: 300px;
    }
+
+   .quill-editor iframe {
+        pointer-events: none;
+    }
 </style>

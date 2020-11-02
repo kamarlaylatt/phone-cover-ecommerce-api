@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <vue-editor v-model="english.description" />					
+                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="english.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig">{{english.description}}</ckeditor> -->
                                 </div>
                                 <!--english addition fields -->
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="form-group m-form__group col-md-12">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <vue-editor v-model="myanmar.description" />					
+                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="myanmar.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor> -->
                                 </div>
                                 <!--myanmar addition fields -->
@@ -142,7 +142,7 @@
                             </div>              
                         </div>
                         <div v-if="nav_bar.general==true" class="form-group m-form__group">
-                            <button @click="add_addition" type="button" class="btn btn-primary">Add Attribues</button>
+                            <button @click="add_addition" type="button" class="btn btn-primary">Add Attributes</button>
                         </div>
                     </div>
 
@@ -225,7 +225,11 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { VueEditor } from "vue2-editor";
+import { VueEditor,Quill } from "vue2-editor";
+import ImageResize from "quill-image-resize-vue";
+import VideoResize from 'quill-video-resize-module';
+Quill.register("modules/imageResize", ImageResize);
+Quill.register("modules/videoResize", VideoResize);
 
 export default {
     props: ['categories','base_url'],
@@ -244,6 +248,13 @@ export default {
             maximum_order: '',
             fb_pixel: '',
             recommend: false,
+            editorSettings: {
+                modules: {
+                // imageDrop: true,
+                imageResize: {},
+                videoResize: {}
+                }
+            },
             english: {
                 name: '',
                 short_description: '',
@@ -464,5 +475,9 @@ export default {
 <style type="text/css">
     .mb-negative {
         margin-bottom: -20px !important;
+    }
+
+    .quill-editor iframe {
+        pointer-events: none;
     }
 </style>

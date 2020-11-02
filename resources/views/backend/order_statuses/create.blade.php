@@ -67,13 +67,17 @@
                             <textarea name="description" class="form-control m-input m-input--air" rows="5" id="comment"></textarea>
                         </div>
                         <div class="form-group m-form__group">
+                            <label>Color</label>
+                            <input type="color" name="color" class="col-lg-2 form-control m-input m-input--air" placeholder="Enter color code" value="{{ old('color') }}"  required autocomplete="text_color">
+                        </div>
+                        {{-- <div class="form-group m-form__group">
                             <label>Icon</label><br>
                             <div class="col-md-12 mb-2">
                                 <img class="img-rounded img-thumbnail" id="image_preview_container" src="{{ asset('images/default.png') }}"
                                     alt="preview image" style="max-height: 150px;">
                             </div>
                             <input type="file" name="icon" id="image">
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="m-portlet__foot m-portlet__foot--fit">

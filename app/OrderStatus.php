@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderStatus extends Model
 {
     protected $fillable = [
-        'name','sort_index','icon','description'
+        'name','sort_index','icon','description','color'
     ];
 
     public function orders()

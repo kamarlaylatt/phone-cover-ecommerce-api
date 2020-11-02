@@ -19,7 +19,7 @@ class RecruitmentController extends Controller
      */
     public function index()
     {
-        $recruitments = Recruitment::paginate(10);
+        $recruitments = Recruitment::orderBy('sort_index')->paginate(10);
         return view('backend.recruitments.index', compact('recruitments'));
     }
 
