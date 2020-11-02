@@ -61,7 +61,7 @@ class OrderController extends Controller
             'status' => 200,
             'message' => "Successfully Update Order",
             'data' => $order,
-            'order_status' => $order->order_status->name,
+            'order_status' => $order->order_status,
         ]);
     }
 
@@ -101,6 +101,7 @@ class OrderController extends Controller
                                         'customer_name' => $order->user->name,
                                         'phone' => $order->user->phone,
                                         'order_status' => $order->order_status->name,
+                                        'order_status_color' => $order->order_status->color,
                                         'total_item' => $order->item_count,
                                         'total_price' => $order->total_amount,
                                         'date' => date('d/m/Y h:i a', strtotime($order->created_at)),
@@ -122,6 +123,7 @@ class OrderController extends Controller
                                         'customer_name' => $order->name,
                                         'phone' => $order->phone,
                                         'order_status' => $order->order_status->name,
+                                        'order_status_color' => $order->order_status->color,
                                         'total_item' => 1,
                                         'total_price' => null,
                                         'date' => date('d/m/Y h:i a', strtotime($order->created_at)),
@@ -141,6 +143,7 @@ class OrderController extends Controller
                                         'customer_name' => $order->name,
                                         'phone' => $order->phone,
                                         'order_status' => $order->order_status->name,
+                                        'order_status_color' => $order->order_status->color,
                                         'total_item' => 1,
                                         'total_price' => null,
                                         'date' => date('d/m/Y h:i a', strtotime($order->created_at)),

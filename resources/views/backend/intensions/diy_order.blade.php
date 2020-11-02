@@ -91,7 +91,7 @@
                                     <td>{{$intension->order_no}}</td>
                                     <td>{{$intension->name}}</td>
                                     <td>{{$intension->phone}}</td>
-                                    <td class="text-center"><h5><span class="badge badge-pill badge-info">{{$intension->order_status->name}}</span></h5></td>
+                                    <td class="text-center"><h5><span style="background-color: {{$intension->order_status->color}}" class="badge badge-pill text-white">{{$intension->order_status->name}}</span></h5></td>
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('intensions.show', $intension->id)}}">
                                             <i class="fa fa-eye"></i>

@@ -91,7 +91,7 @@
                                     <td>{{$order->order_no}}</td>
                                     <td>{{$order->total_amount}}</td>
                                     <td>{{$order->user->name}}</td>
-                                    <td class="text-center"><h5><span class="badge badge-pill badge-info">{{$order->order_status->name}}</span></h5></td>
+                                    <td class="text-center"><h5><span style="background-color: {{$order->order_status->color}}" class="badge badge-pill text-white">{{$order->order_status->name}}</span></h5></td>
                                     <td>
                                         <a class="btn btn-outline-success m-btn m-btn--icon m-btn--icon-only m-btn--outline-2x m-btn--pill m-btn--air" href="{{route('orders.show', $order->id)}}">
                                             <i class="fa fa-eye"></i>

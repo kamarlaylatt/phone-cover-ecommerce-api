@@ -198,7 +198,7 @@
         </template>
 
         <template v-slot:cell(order_status)="data">
-          <h5><b-badge>{{ data.item.order_status }}</b-badge></h5>
+          <h5><b-badge :style="{backgroundColor: data.item.order_status_color}">{{ data.item.order_status }}</b-badge></h5>
         </template>
 
         <template v-slot:row-details="row">
@@ -215,7 +215,7 @@
 
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-right"><b>Order Status:</b></b-col>
-              <b-col><h5><span class="badge badge-pill badge-info">{{ row.item.order_status }}</span></h5></b-col>
+              <b-col><h5><span class="badge badge-pill text-white" :style="{backgroundColor: row.item.order_status_color}">{{ row.item.order_status }}</span></h5></b-col>
             </b-row>
 
             <b-row class="mb-2">

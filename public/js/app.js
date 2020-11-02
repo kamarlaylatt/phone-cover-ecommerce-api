@@ -145985,7 +145985,17 @@ var render = function() {
                   return [
                     _c(
                       "h5",
-                      [_c("b-badge", [_vm._v(_vm._s(data.item.order_status))])],
+                      [
+                        _c(
+                          "b-badge",
+                          {
+                            style: {
+                              backgroundColor: data.item.order_status_color
+                            }
+                          },
+                          [_vm._v(_vm._s(data.item.order_status))]
+                        )
+                      ],
                       1
                     )
                   ]
@@ -146052,7 +146062,11 @@ var render = function() {
                                 _c(
                                   "span",
                                   {
-                                    staticClass: "badge badge-pill badge-info"
+                                    staticClass: "badge badge-pill text-white",
+                                    style: {
+                                      backgroundColor:
+                                        row.item.order_status_color
+                                    }
                                   },
                                   [_vm._v(_vm._s(row.item.order_status))]
                                 )

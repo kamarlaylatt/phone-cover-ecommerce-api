@@ -63,7 +63,7 @@ class IntensionController extends Controller
             'status' => 200,
             'message' => "Successfully Update Intension",
             'data' => $intension,
-            'order_status' => $intension->order_status->name,
+            'order_status' => $intension->order_status,
         ]);
     }
 

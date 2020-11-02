@@ -46,7 +46,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Status</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
-                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong><span class="badge badge-pill badge-info">@{{order_status}}</span></strong></div>
+                    <div class="col-sm-8 h5" v-if="edit_mode == false"><strong><span class="badge badge-pill text-white" :style="order_status_style">@{{order_status}}</span></strong></div>
                     <div class="col-sm-4 h5" v-if="edit_mode == true">
                         <select v-model="selected_order_status" class="form-control" id="exampleFormControlSelect1">
                             <option v-for="option in order_statuses" v-bind:value="option.id">
@@ -168,6 +168,9 @@
                 remark: {!! json_encode($order->remark) !!},
                 base_url: {!!json_encode(url('/'))!!},
                 is_loading: false,
+                order_status_style: {
+                    backgroundColor: {!! json_encode($order->order_status->color) !!},
+                },
             },
             mounted() {
                 this.getTotalAmount();
@@ -233,7 +236,8 @@
                                 this.pay_amount = response.data.data.pay_amount;
                                 this.remain_amount = response.data.data.remain_amount;
                                 this.total_amount = response.data.data.total_net;
-                                this.order_status = response.data.order_status;
+                                this.order_status = response.data.order_status.name;
+                                this.order_status_style.backgroundColor = response.data.order_status.color;
                                 this.is_loading = false;
                                 this.edit_mode = false;
                             }
