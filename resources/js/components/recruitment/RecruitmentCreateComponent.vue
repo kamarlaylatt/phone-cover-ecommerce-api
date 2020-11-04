@@ -51,7 +51,7 @@
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
                                     <!-- <br><small>Use Shitf+Enter for Line Breaking</small> -->
-                                    <vue-editor useCustomImageHandler class="quill-editor" @image-added="handleImageAdded" :editorOptions="editorSettings" v-model="form.english.description" />					
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor"  :editorOptions="editorSettings" v-model="form.english.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="form.english.description" :config="editorConfig"></ckeditor> -->
 									<!-- <textarea v-model="form.english.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
@@ -63,7 +63,7 @@
 								</div>
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
-                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="form.myanmar.description" />					
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded"  class="quill-editor" :editorOptions="editorSettings" v-model="form.myanmar.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="form.myanmar.description" :config="editorConfig"></ckeditor> -->
 									<!-- <textarea v-model="form.myanmar.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
@@ -234,7 +234,7 @@ export default {
                 data: formData
             })
             .then(response => {
-            let url = result.data.data.img_url; // Get url from response
+            let url = response.data.data.img_url; // Get url from response
             Editor.insertEmbed(cursorLocation, "image", url);
             resetUploader();
             })

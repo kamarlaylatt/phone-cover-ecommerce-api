@@ -7436,6 +7436,25 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
         this.nav_bar.data = false;
         this.nav_bar.images = true;
       }
+    },
+    handleImageAdded: function handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      // An example of using FormData
+      // NOTE: Your key could be different such as:
+      // formData.append('file', file)
+      var formData = new FormData();
+      formData.append("image", file);
+      axios({
+        url: this.base_url + "/admin/image-upload",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        var url = response.data.data.img_url; // Get url from response
+
+        Editor.insertEmbed(cursorLocation, "image", url);
+        resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -7978,6 +7997,25 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
         this.nav_bar.data = false;
         this.nav_bar.images = true;
       }
+    },
+    handleImageAdded: function handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      // An example of using FormData
+      // NOTE: Your key could be different such as:
+      // formData.append('file', file)
+      var formData = new FormData();
+      formData.append("image", file);
+      axios({
+        url: this.base_url + "/admin/image-upload",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        var url = response.data.data.img_url; // Get url from response
+
+        Editor.insertEmbed(cursorLocation, "image", url);
+        resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -8210,7 +8248,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
         method: "POST",
         data: formData
       }).then(function (response) {
-        var url = result.data.data.img_url; // Get url from response
+        var url = response.data.data.img_url; // Get url from response
 
         Editor.insertEmbed(cursorLocation, "image", url);
         resetUploader();
@@ -8455,6 +8493,25 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
     },
     cancel: function cancel() {
       window.location.href = this.base_url + '/admin/recruitments';
+    },
+    handleImageAdded: function handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      // An example of using FormData
+      // NOTE: Your key could be different such as:
+      // formData.append('file', file)
+      var formData = new FormData();
+      formData.append("image", file);
+      axios({
+        url: this.base_url + "/admin/image-upload",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        var url = response.data.data.img_url; // Get url from response
+
+        Editor.insertEmbed(cursorLocation, "image", url);
+        resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -146534,7 +146591,11 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("vue-editor", {
                                   staticClass: "quill-editor",
-                                  attrs: { editorOptions: _vm.editorSettings },
+                                  attrs: {
+                                    useCustomImageHandler: "",
+                                    editorOptions: _vm.editorSettings
+                                  },
+                                  on: { "image-added": _vm.handleImageAdded },
                                   model: {
                                     value: _vm.english.description,
                                     callback: function($$v) {
@@ -146757,7 +146818,11 @@ var render = function() {
                                     _c("vue-editor", {
                                       staticClass: "quill-editor",
                                       attrs: {
+                                        useCustomImageHandler: "",
                                         editorOptions: _vm.editorSettings
+                                      },
+                                      on: {
+                                        "image-added": _vm.handleImageAdded
                                       },
                                       model: {
                                         value: _vm.myanmar.description,
@@ -147683,7 +147748,11 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("vue-editor", {
                                   staticClass: "quill-editor",
-                                  attrs: { editorOptions: _vm.editorSettings },
+                                  attrs: {
+                                    useCustomImageHandler: "",
+                                    editorOptions: _vm.editorSettings
+                                  },
+                                  on: { "image-added": _vm.handleImageAdded },
                                   model: {
                                     value: _vm.english.description,
                                     callback: function($$v) {
@@ -147901,7 +147970,11 @@ var render = function() {
                                     _c("vue-editor", {
                                       staticClass: "quill-editor",
                                       attrs: {
+                                        useCustomImageHandler: "",
                                         editorOptions: _vm.editorSettings
+                                      },
+                                      on: {
+                                        "image-added": _vm.handleImageAdded
                                       },
                                       model: {
                                         value: _vm.myanmar.description,
@@ -148886,7 +148959,11 @@ var render = function() {
                           _vm._v(" "),
                           _c("vue-editor", {
                             staticClass: "quill-editor",
-                            attrs: { editorOptions: _vm.editorSettings },
+                            attrs: {
+                              useCustomImageHandler: "",
+                              editorOptions: _vm.editorSettings
+                            },
+                            on: { "image-added": _vm.handleImageAdded },
                             model: {
                               value: _vm.form.myanmar.description,
                               callback: function($$v) {
@@ -149150,7 +149227,11 @@ var render = function() {
                           _vm._v(" "),
                           _c("vue-editor", {
                             staticClass: "quill-editor",
-                            attrs: { editorOptions: _vm.editorSettings },
+                            attrs: {
+                              useCustomImageHandler: "",
+                              editorOptions: _vm.editorSettings
+                            },
+                            on: { "image-added": _vm.handleImageAdded },
                             model: {
                               value: _vm.form.english.description,
                               callback: function($$v) {
@@ -149216,7 +149297,11 @@ var render = function() {
                           _vm._v(" "),
                           _c("vue-editor", {
                             staticClass: "quill-editor",
-                            attrs: { editorOptions: _vm.editorSettings },
+                            attrs: {
+                              useCustomImageHandler: "",
+                              editorOptions: _vm.editorSettings
+                            },
+                            on: { "image-added": _vm.handleImageAdded },
                             model: {
                               value: _vm.form.myanmar.description,
                               callback: function($$v) {

@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="english.description" />
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor" :editorOptions="editorSettings" v-model="english.description" />
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig" tag-name="textarea"></ckeditor> -->
                                 </div>
                                 <!--english addition fields -->
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <vue-editor class="quill-editor" :editorOptions="editorSettings" v-model="myanmar.description" />
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor" :editorOptions="editorSettings" v-model="myanmar.description" />
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>                                   -->
                                 </div>
                                 <!--myanmar addition fields -->
@@ -561,6 +561,30 @@ export default {
                 this.nav_bar.images = true;
 
             }
+        },
+
+        handleImageAdded(file, Editor, cursorLocation, resetUploader) 
+        {
+            // An example of using FormData
+            // NOTE: Your key could be different such as:
+            // formData.append('file', file)
+
+            var formData = new FormData();
+            formData.append("image", file);
+
+            axios({
+                url: this.base_url+"/admin/image-upload",
+                method: "POST",
+                data: formData
+            })
+            .then(response => {
+            let url = response.data.data.img_url; // Get url from response
+            Editor.insertEmbed(cursorLocation, "image", url);
+            resetUploader();
+            })
+            .catch(err => {
+            console.log(err);
+            });
         }
     },
 }
