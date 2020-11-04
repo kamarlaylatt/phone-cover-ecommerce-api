@@ -61,6 +61,16 @@
                     <div class="col-sm-8 h5"><a href="{{route('users.show', $intension->user->id)}}"><strong>{{$intension->name}}</strong></a></div>
                 </div>
                 <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Phone</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->phone}}</strong></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Address</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->address}}</strong></div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Total Item</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5"><strong>1</strong></div>

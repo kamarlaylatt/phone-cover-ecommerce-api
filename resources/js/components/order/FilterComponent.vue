@@ -229,6 +229,11 @@
             </b-row>
 
             <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Address:</b></b-col>
+              <b-col>{{ row.item.address }}</b-col>
+            </b-row>
+
+            <b-row class="mb-2">
               <b-col sm="3" class="text-sm-right"><b>Total Item:</b></b-col>
               <b-col>{{ row.item.total_item }}</b-col>
             </b-row>

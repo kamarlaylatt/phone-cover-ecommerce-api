@@ -22,6 +22,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 
 	//dashboard
 	Route::get('/dashboard','DashboardController@index')->name('admins.dashboard');
+	Route::post('/image-upload','DashboardController@imageUpload');
 
 	//admin profile
 	Route::get('/profile', 'AdminController@profile')->name('admins.profile');

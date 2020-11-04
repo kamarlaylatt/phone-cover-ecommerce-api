@@ -24,6 +24,8 @@ class OrderController extends BaseController
     {
         $rules = [
             'order_items' => 'required',
+            'phone' => 'string|max:20',
+            'address' => 'string|max:191'
         ];
         $validation = $this->validateResponse($request->all(), $rules);
         if($validation['validate_status'] == 1)
@@ -85,7 +87,7 @@ class OrderController extends BaseController
         //end check
 
 
-        $order_transaction = DB::transaction(function () use($order_items,$item_count,$total_amount,$order_no) {
+        $order_transaction = DB::transaction(function () use($order_items,$item_count,$total_amount,$order_no,$request) {
 
             $order = Order::Create([
                 'order_status_id' => 1,
@@ -94,6 +96,9 @@ class OrderController extends BaseController
                 'total_amount' => $total_amount,
                 'total_net' => $total_amount,
                 'order_no' => $order_no,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'total_net' => $total_amount,
             ]);
 
             foreach($order_items as $item)
@@ -122,6 +127,8 @@ class OrderController extends BaseController
         $responseBody = [
             'orderId' => $order_transaction->id,
             'orderNo' => $order_transaction->order_no,
+            'phone' => $order_transaction->phone,
+            'address' => $order_transaction->address,
             'item_count' => $order_transaction->item_count,
             'total_amount' => $order_transaction->total_amount,
             'total_net' => $order_transaction->total_amount,

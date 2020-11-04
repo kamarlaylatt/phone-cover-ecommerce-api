@@ -6848,6 +6848,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['base_url'],
@@ -8193,6 +8198,25 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
     },
     cancel: function cancel() {
       window.location.href = this.base_url + '/admin/recruitments';
+    },
+    handleImageAdded: function handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      // An example of using FormData
+      // NOTE: Your key could be different such as:
+      // formData.append('file', file)
+      var formData = new FormData();
+      formData.append("image", file);
+      axios({
+        url: this.base_url + "/admin/image-upload",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        var url = result.data.data.img_url; // Get url from response
+
+        Editor.insertEmbed(cursorLocation, "image", url);
+        resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -146124,6 +146148,24 @@ var render = function() {
                                 staticClass: "text-sm-right",
                                 attrs: { sm: "3" }
                               },
+                              [_c("b", [_vm._v("Address:")])]
+                            ),
+                            _vm._v(" "),
+                            _c("b-col", [_vm._v(_vm._s(row.item.address))])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-row",
+                          { staticClass: "mb-2" },
+                          [
+                            _c(
+                              "b-col",
+                              {
+                                staticClass: "text-sm-right",
+                                attrs: { sm: "3" }
+                              },
                               [_c("b", [_vm._v("Total Item:")])]
                             ),
                             _vm._v(" "),
@@ -148774,7 +148816,11 @@ var render = function() {
                           _vm._v(" "),
                           _c("vue-editor", {
                             staticClass: "quill-editor",
-                            attrs: { editorOptions: _vm.editorSettings },
+                            attrs: {
+                              useCustomImageHandler: "",
+                              editorOptions: _vm.editorSettings
+                            },
+                            on: { "image-added": _vm.handleImageAdded },
                             model: {
                               value: _vm.form.english.description,
                               callback: function($$v) {

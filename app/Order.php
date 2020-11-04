@@ -10,7 +10,7 @@ class Order extends Model
     use Sortable;
 
     protected $fillable = [
-        'order_status_id','user_id','item_count','total_amount','remark','order_no','delivery_cost','total_net','pay_amount','remain_amount'
+        'order_status_id','user_id','phone','address','item_count','total_amount','remark','order_no','delivery_cost','total_net','pay_amount','remain_amount'
     ];
 
     public $sortable = [
