@@ -47,7 +47,10 @@
             </div>
             <!-- Tree Dialog End -->
 
-            <tree-component :categories="{{json_encode($category_array)}}"></tree-component>
+            <tree-component 
+                :base_url="{{json_encode(URL::to('/'))}}"
+                :categories="{{json_encode($category_array)}}"
+            ></tree-component>
 
         </div>
         

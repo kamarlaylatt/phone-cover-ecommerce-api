@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    props: ['categories'],
+    props: ['categories','base_url'],
     data() {
       return {
         node: '',
@@ -31,7 +31,7 @@
         this.node = node.model.id;
         if(this.node != 0)
         { 
-          window.location.href = '/admin/categories/'+this.node+'/show';
+          window.location.href = this.base_url+'/admin/categories/'+this.node+'/show';
         }
       },
 
