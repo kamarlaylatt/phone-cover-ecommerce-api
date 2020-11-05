@@ -6,13 +6,14 @@
 							<span class="m-menu__link-badge">
 								{{-- <span class="m-badge m-badge--danger">2</span> --}}
 							</span> </span></span></a></li>
-			<li class="m-menu__section ">
-				<h4 class="m-menu__section-text">Adminstration</h4>
-				<i class="m-menu__section-icon flaticon-more-v2"></i>
-			</li>
-
+			
 			<!-- user admin management -->
 			@if(Auth::user()->admin_role_id == 1)
+				<li class="m-menu__section ">
+					<h4 class="m-menu__section-text">Adminstration</h4>
+					<i class="m-menu__section-icon flaticon-more-v2"></i>
+				</li>
+
 				<li style="margin-top: -5px" class="m-menu__item {{ request()->is('admin/admins') || request()->is('admin/admins/*') || request()->is('admin/admin_roles') || request()->is('admin/admin_roles/*') || request()->is('admin/users') || request()->is('admin/users/*') || request()->is('admin/block_list') || request()->is('admin/block_list/*') ? 'm-menu__item--open m-menu__item--active':''}} m-menu__item--submenu" 
 					aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-users-1"></i><span class="m-menu__link-text">User Management</span><i
 						class="m-menu__ver-arrow la la-angle-right" style="color: white"></i></a>
