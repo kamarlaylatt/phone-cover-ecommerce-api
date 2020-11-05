@@ -177,7 +177,11 @@ class AdminController extends Controller
         
         $admin->name = $request['name'];
         $admin->email = $request['email'];
-        $admin->admin_role_id = $request['role'];
+
+        if(Auth::user()->admin_role_id == 1)
+        {
+            $admin->admin_role_id = $request['role'];
+        }
         $admin->update();
 
         return redirect()->route('admins.profile')->with('success','Successfully update your profile.');
