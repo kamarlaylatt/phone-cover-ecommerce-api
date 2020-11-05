@@ -7247,6 +7247,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
   props: ['categories', 'base_url'],
   data: function data() {
     return {
+      editor_disabled: false,
       image: '',
       images: [],
       category_array: null,
@@ -7452,6 +7453,29 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
 
         Editor.insertEmbed(cursorLocation, "image", url);
         resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    handleImageRemoved: function handleImageRemoved(image) {
+      var _this2 = this;
+
+      this.editor_disabled = true;
+      var img_url = image;
+      var arr = img_url.split("/");
+      var filename = arr[arr.length - 1];
+      var formData = new FormData();
+      formData.append("filename", filename);
+      axios({
+        url: this.base_url + "/admin/image-remove",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        if (response.data.status == 200) {
+          _this2.editor_disabled = false;
+        }
+
+        console.log(response);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -7711,6 +7735,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
   props: ['base_url', 'edit_images', 'categories', 'product', 'product_infos', 'selected_categories', 'product_additions', 'thumbnail_url'],
   data: function data() {
     return {
+      editor_disabled: false,
       image: '',
       images: [],
       category_array: [],
@@ -8016,6 +8041,29 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    handleImageRemoved: function handleImageRemoved(image) {
+      var _this2 = this;
+
+      this.editor_disabled = true;
+      var img_url = image;
+      var arr = img_url.split("/");
+      var filename = arr[arr.length - 1];
+      var formData = new FormData();
+      formData.append("filename", filename);
+      axios({
+        url: this.base_url + "/admin/image-remove",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        if (response.data.status == 200) {
+          _this2.editor_disabled = false;
+        }
+
+        console.log(response);
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -8145,6 +8193,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
   props: ['base_url'],
   data: function data() {
     return {
+      editor_disabled: false,
       editorSettings: {
         modules: {
           // imageDrop: true,
@@ -8252,6 +8301,29 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
 
         Editor.insertEmbed(cursorLocation, "image", url);
         resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    handleImageRemoved: function handleImageRemoved(image) {
+      var _this2 = this;
+
+      this.editor_disabled = true;
+      var img_url = image;
+      var arr = img_url.split("/");
+      var filename = arr[arr.length - 1];
+      var formData = new FormData();
+      formData.append("filename", filename);
+      axios({
+        url: this.base_url + "/admin/image-remove",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        if (response.data.status == 200) {
+          _this2.editor_disabled = false;
+        }
+
+        console.log(response);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -8385,6 +8457,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
   props: ['base_url', 'recruitment', 'recruitment_infos', 'img_url'],
   data: function data() {
     return {
+      editor_disabled: false,
       editorSettings: {
         modules: {
           // imageDrop: true,
@@ -8509,6 +8582,29 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_3__["Quill"].register("modules/videoResize"
 
         Editor.insertEmbed(cursorLocation, "image", url);
         resetUploader();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    handleImageRemoved: function handleImageRemoved(image) {
+      var _this2 = this;
+
+      this.editor_disabled = true;
+      var img_url = image;
+      var arr = img_url.split("/");
+      var filename = arr[arr.length - 1];
+      var formData = new FormData();
+      formData.append("filename", filename);
+      axios({
+        url: this.base_url + "/admin/image-remove",
+        method: "POST",
+        data: formData
+      }).then(function (response) {
+        if (response.data.status == 200) {
+          _this2.editor_disabled = false;
+        }
+
+        console.log(response);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -146593,6 +146689,7 @@ var render = function() {
                                   staticClass: "quill-editor",
                                   attrs: {
                                     useCustomImageHandler: "",
+                                    disabled: _vm.editor_disabled,
                                     editorOptions: _vm.editorSettings
                                   },
                                   on: { "image-added": _vm.handleImageAdded },
@@ -146819,6 +146916,7 @@ var render = function() {
                                       staticClass: "quill-editor",
                                       attrs: {
                                         useCustomImageHandler: "",
+                                        disabled: _vm.editor_disabled,
                                         editorOptions: _vm.editorSettings
                                       },
                                       on: {
@@ -147750,6 +147848,7 @@ var render = function() {
                                   staticClass: "quill-editor",
                                   attrs: {
                                     useCustomImageHandler: "",
+                                    disabled: _vm.editor_disabled,
                                     editorOptions: _vm.editorSettings
                                   },
                                   on: { "image-added": _vm.handleImageAdded },
@@ -147971,6 +148070,7 @@ var render = function() {
                                       staticClass: "quill-editor",
                                       attrs: {
                                         useCustomImageHandler: "",
+                                        disabled: _vm.editor_disabled,
                                         editorOptions: _vm.editorSettings
                                       },
                                       on: {
@@ -148891,6 +148991,7 @@ var render = function() {
                             staticClass: "quill-editor",
                             attrs: {
                               useCustomImageHandler: "",
+                              disabled: _vm.editor_disabled,
                               editorOptions: _vm.editorSettings
                             },
                             on: { "image-added": _vm.handleImageAdded },
@@ -148961,6 +149062,7 @@ var render = function() {
                             staticClass: "quill-editor",
                             attrs: {
                               useCustomImageHandler: "",
+                              disabled: _vm.editor_disabled,
                               editorOptions: _vm.editorSettings
                             },
                             on: { "image-added": _vm.handleImageAdded },
@@ -149229,6 +149331,7 @@ var render = function() {
                             staticClass: "quill-editor",
                             attrs: {
                               useCustomImageHandler: "",
+                              disabled: _vm.editor_disabled,
                               editorOptions: _vm.editorSettings
                             },
                             on: { "image-added": _vm.handleImageAdded },
@@ -149299,6 +149402,7 @@ var render = function() {
                             staticClass: "quill-editor",
                             attrs: {
                               useCustomImageHandler: "",
+                              disabled: _vm.editor_disabled,
                               editorOptions: _vm.editorSettings
                             },
                             on: { "image-added": _vm.handleImageAdded },

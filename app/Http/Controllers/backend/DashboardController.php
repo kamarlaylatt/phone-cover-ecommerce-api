@@ -38,4 +38,17 @@ class DashboardController extends Controller
              ] 
          ]);
     }
+
+    public function imageRemove(Request $request){
+        if(is_file(Storage::path('public/uploads/editor_imgs/'.$request->filename)))
+        {
+            Storage::delete('public/uploads/editor_imgs/'.$request->filename);
+        }
+
+        return response()->json([
+            'status' => 200,
+            'message' => "Successfully Delete Image",
+            'data' => (object)[],
+        ]);
+    }
 }

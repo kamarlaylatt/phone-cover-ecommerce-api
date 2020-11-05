@@ -51,7 +51,7 @@
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
                                     <!-- <br><small>Use Shitf+Enter for Line Breaking</small> -->
-                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor" :editorOptions="editorSettings" v-model="form.english.description" />					
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded"  :disabled="editor_disabled" class="quill-editor" :editorOptions="editorSettings" v-model="form.english.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="form.english.description" :config="editorConfig" tag-name="textarea"></ckeditor> -->
 									<!-- <textarea v-model="form.english.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
@@ -63,7 +63,7 @@
 								</div>
 								<div class="form-group m-form__group">
 									<label for="comment">Description:</label>
-                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor" :editorOptions="editorSettings" v-model="form.myanmar.description" />					
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded"  :disabled="editor_disabled" class="quill-editor" :editorOptions="editorSettings" v-model="form.myanmar.description" />					
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="form.myanmar.description" :config="editorConfig"></ckeditor> -->
 									<!-- <textarea v-model="form.myanmar.description" class="form-control" rows="5" id="comment"></textarea> -->
 								</div>
@@ -104,6 +104,7 @@ export default {
 	props: ['base_url','recruitment','recruitment_infos','img_url'],
     data(){
         return{
+            editor_disabled: false,
             editorSettings: {
                 modules: {
                 // imageDrop: true,
@@ -261,6 +262,33 @@ export default {
             let url = response.data.data.img_url; // Get url from response
             Editor.insertEmbed(cursorLocation, "image", url);
             resetUploader();
+            })
+            .catch(err => {
+            console.log(err);
+            });
+        },
+
+        handleImageRemoved(image)
+        {
+            this.editor_disabled = true;
+            var img_url = image;
+            var arr = img_url.split("/");
+            var filename = arr[arr.length-1];
+
+            var formData = new FormData();
+            formData.append("filename", filename);
+
+            axios({
+                url: this.base_url+"/admin/image-remove",
+                method: "POST",
+                data: formData
+            })
+            .then(response => {
+                if(response.data.status == 200)
+                {
+                    this.editor_disabled = false;
+                }
+                console.log(response)
             })
             .catch(err => {
             console.log(err);

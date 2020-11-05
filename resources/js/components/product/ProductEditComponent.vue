@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor" :editorOptions="editorSettings" v-model="english.description" />
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" :disabled="editor_disabled" class="quill-editor" :editorOptions="editorSettings" v-model="english.description" />
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="english.description" :config="editorConfig" tag-name="textarea"></ckeditor> -->
                                 </div>
                                 <!--english addition fields -->
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="comment"><span class="text-danger">*</span>Description</label>
-                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded" class="quill-editor" :editorOptions="editorSettings" v-model="myanmar.description" />
+                                    <vue-editor useCustomImageHandler @image-added="handleImageAdded"  :disabled="editor_disabled" class="quill-editor" :editorOptions="editorSettings" v-model="myanmar.description" />
                                     <!-- <ckeditor class="form-control" :editor="editor" v-model="myanmar.description" :config="editorConfig"></ckeditor>                                   -->
                                 </div>
                                 <!--myanmar addition fields -->
@@ -229,7 +229,7 @@ export default {
     
     data(){
         return{
-
+            editor_disabled: false,
             image: '',
             images: [],
             category_array: [],
@@ -581,6 +581,33 @@ export default {
             let url = response.data.data.img_url; // Get url from response
             Editor.insertEmbed(cursorLocation, "image", url);
             resetUploader();
+            })
+            .catch(err => {
+            console.log(err);
+            });
+        },
+
+        handleImageRemoved(image)
+        {
+            this.editor_disabled = true;
+            var img_url = image;
+            var arr = img_url.split("/");
+            var filename = arr[arr.length-1];
+
+            var formData = new FormData();
+            formData.append("filename", filename);
+
+            axios({
+                url: this.base_url+"/admin/image-remove",
+                method: "POST",
+                data: formData
+            })
+            .then(response => {
+                if(response.data.status == 200)
+                {
+                    this.editor_disabled = false;
+                }
+                console.log(response)
             })
             .catch(err => {
             console.log(err);

@@ -68,20 +68,21 @@
                     <label>Address</label>
                     <input type="text" value="{{$admin->address}}" name="address" class="form-control m-input m-input--air" placeholder="Enter Address" value="{{ old('name') }}" autocomplete="name">
                 </div>
-                <div class="form-group m-form__group">
-                    <label for="exampleSelect1">Select Role</label>
-                    <select name="role" class="form-control m-input m-input--air">
-                        @foreach($roles as $role)
-                            <option value="{{$role->id}}"
-                                @if($role->id == $admin->admin_role->id)
-                                selected="selected"
-                                @endif
-                            >
-                                {{$role->name}}
-                            </option>
-                        @endforeach    
-                    </select>
-                </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleSelect1">Select Role</label>
+                        <select {{ ($admin->admin_role_id != 1)? "disabled": '' }}  name="role" class="form-control m-input m-input--air">
+                            @foreach($roles as $role)
+                                <option value="{{$role->id}}"
+                                    @if($role->id == $admin->admin_role->id)
+                                    selected="selected"
+                                    @endif
+                                >
+                                    {{$role->name}}
+                                </option>
+                            @endforeach    
+                        </select>
+                    </div>
+                
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions text-center">
