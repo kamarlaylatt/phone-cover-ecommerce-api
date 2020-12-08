@@ -70,6 +70,14 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::resource('banners', 'BannerController');
 	Route::post('banners/search','BannerController@search')->name('banners.search');
 
+	//regions
+	Route::resource('regions', 'RegionController');
+	Route::post('regions/search','RegionController@search')->name('regions.search');
+
+	//townships
+	Route::resource('townships', 'TownshipController');
+	Route::post('townships/search','TownshipController@search')->name('townships.search');
+
 	//categories
 	Route::prefix('categories')->group(function(){
 		Route::get('/','CategoryController@index')->name('categories.index');
