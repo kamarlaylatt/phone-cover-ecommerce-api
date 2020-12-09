@@ -17,9 +17,9 @@ class CreateRegionInfosTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('region_id');
-            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->timestamps();
         });
     }
