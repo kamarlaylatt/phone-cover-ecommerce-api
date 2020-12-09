@@ -64,6 +64,9 @@ Route::namespace('api')->middleware('check_app')->group(function(){
     Route::get('/charlet-list', 'DiyController@getCharletList');
     Route::get('/mask-list', 'DiyController@getMaskList');
 
+    Route::get('/region-list', 'RegionController@getRegionList');
+    Route::get('/township-list', 'RegionController@getTownshipList');
+
     Route::middleware(['auth:api','is_active'])->group(function(){
         //logout
         Route::get('/logout', 'AuthController@logout');

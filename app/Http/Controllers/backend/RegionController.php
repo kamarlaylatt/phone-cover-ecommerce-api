@@ -40,6 +40,12 @@ class RegionController extends Controller
         return view('backend.regions.show', compact('region'));
     }
 
+    public function edit($id)
+    {
+        $region = Region::find($id);
+        return view('backend.regions.edit', compact('region'));
+    }
+
     public function update(Request $request, $id)
     {
         $region = Region::find($id);

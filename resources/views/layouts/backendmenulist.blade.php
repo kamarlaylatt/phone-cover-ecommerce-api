@@ -33,6 +33,19 @@
 			@endif
 
 			<li class="m-menu__section " style="margin-top: -5px">
+				<h4 class="m-menu__section-text">Location</h4>
+				<i class="m-menu__section-icon flaticon-more-v2"></i>
+			</li>
+
+			<!-- Location -->
+			<li class="m-menu__item  m-menu__item--submenu {{ request()->is('admin/regions') ||  request()->is('admin/regions/*')? 'm-menu__item--active' : '' }}" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('regions.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-paper-plane-1"></i><span class="m-menu__link-text">Region</span></a>
+			</li>
+
+			<li class="m-menu__item  m-menu__item--submenu {{ request()->is('admin/townships') ||  request()->is('admin/townships/*')? 'm-menu__item--active' : '' }}" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="{{route('townships.index')}}" class="m-menu__link m-menu__toggle"><i class="m-menu__link-icon flaticon-placeholder"></i><span class="m-menu__link-text">Township</span></a>
+			</li>
+			
+
+			<li class="m-menu__section " style="margin-top: -5px">
 				<h4 class="m-menu__section-text">DIY Related</h4>
 				<i class="m-menu__section-icon flaticon-more-v2"></i>
 			</li>

@@ -19,7 +19,7 @@ class TownshipController extends Controller
     public function create()
     {
         $regions = Region::all();
-        return view('backend.townships.create', compact('region'));
+        return view('backend.townships.create', compact('regions'));
     }
 
     public function store(Request $request)
@@ -42,6 +42,13 @@ class TownshipController extends Controller
     {
         $township = Township::find($id);
         return view('backend.townships.show', compact('township'));
+    }
+
+    public function edit($id)
+    {
+        $township = Township::find($id);
+        $regions = Region::all();
+        return view('backend.townships.edit', compact('township','regions'));
     }
 
     public function update(Request $request, $id)
@@ -84,7 +91,9 @@ class TownshipController extends Controller
                                 $query->where('name','like', '%' .$search. '%');
                             })
                             ->orWhereHas('region', function ($query) use ($search){
-                                $query->where('name','like', '%' .$search. '%');
+                                $query->whereHas('region_infos', function ($query) use ($search){
+                                    $query->where('name','like', '%' .$search. '%');
+                                });
                             })
                             ->orWhere('delivery_price', $search)
                             ->orderBy('id', 'asc')

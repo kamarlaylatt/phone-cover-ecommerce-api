@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TownshipInfo extends Model
 {
-    protected $fillable = ['name','language_id'];
+    protected $fillable = ['name','language_id','township_id'];
 }
