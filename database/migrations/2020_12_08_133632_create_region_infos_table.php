@@ -18,8 +18,8 @@ class CreateRegionInfosTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('region_id');
             $table->unsignedBigInteger('language_id');
-            $table->foreignId('language_id')->constrained('languages');
             $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+            $table->foreign('language_id')->references('id')->on('languages');
             $table->timestamps();
         });
     }
