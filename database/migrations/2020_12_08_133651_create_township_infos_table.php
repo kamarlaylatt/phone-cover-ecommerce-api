@@ -17,8 +17,7 @@ class CreateTownshipInfosTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('township_id');
-            $table->unsignedBigInteger('language_id');
-            $table->foreign('language_id')->references('id')->on('languages');
+            $table->bigInteger('language_id');
             $table->foreign('township_id')->references('id')->on('townships')->onDelete('cascade');
             $table->timestamps();
         });
