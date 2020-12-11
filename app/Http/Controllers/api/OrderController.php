@@ -99,6 +99,8 @@ class OrderController extends BaseController
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'total_net' => $total_amount,
+                'delivery_cost' => $request->delivery_amount,
+                'payment_method' => $request->payment_method,
             ]);
 
             foreach($order_items as $item)
@@ -136,6 +138,8 @@ class OrderController extends BaseController
             'orderDate' => $order_transaction->created_at->format('d/m/Y'),
             'orderTime' => $order_transaction->created_at->format('H:i A'),
             'order_time' => date($order_transaction->created_at),
+            'delivery_amount' => $order_transaction->delivery_cost,
+            'payment_method' => $order_transaction->payment_method,
         ];
 
         return $this->successResponse($responseBody, 'Success Order');
