@@ -76,6 +76,11 @@
                     <div class="col-sm-8 h5"><strong>{{$order->item_count}}</strong></div>
                 </div>
                 <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Payment Method</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$order->payment_method}}</strong></div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Product Cost</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5"><strong>{{number_format($order->total_amount)}}</strong></div>
