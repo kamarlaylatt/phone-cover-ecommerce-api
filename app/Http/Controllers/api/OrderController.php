@@ -98,7 +98,7 @@ class OrderController extends BaseController
                 'order_no' => $order_no,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'total_net' => $total_amount,
+                'total_net' => $total_amount+$request->delivery_amount,
                 'delivery_cost' => $request->delivery_amount,
                 'payment_method' => $request->payment_method,
             ]);
@@ -133,7 +133,7 @@ class OrderController extends BaseController
             'address' => $order_transaction->address,
             'item_count' => $order_transaction->item_count,
             'total_amount' => $order_transaction->total_amount,
-            'total_net' => $order_transaction->total_amount,
+            'total_net' => $order_transaction->total_net,
             'order_status' => $order_transaction->order_status->name,
             'orderDate' => $order_transaction->created_at->format('d/m/Y'),
             'orderTime' => $order_transaction->created_at->format('H:i A'),
