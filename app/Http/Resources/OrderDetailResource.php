@@ -26,6 +26,7 @@ class OrderDetailResource extends JsonResource
             'net_amount' => $this->total_net,
             'pay_amount' => $this->pay_amount,
             'remain_amount' => $this->remain_amount,
+            'payment_method' => $this->payment_method,
             'order_time' => date($this->created_at),
             'order_items' => OrderItemListResource::collection(OrderItem::where('order_id',$this->id)->get()),
         ];
