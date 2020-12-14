@@ -6902,7 +6902,7 @@ __webpack_require__.r(__webpack_exports__);
       }],
       totalRows: 1,
       currentPage: 1,
-      perPage: 5,
+      perPage: 10,
       pageOptions: [5, 10, 15, 20, 30, 50],
       sortBy: '',
       sortDesc: false,
@@ -7813,9 +7813,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
       this.code_number = this.product.code_number;
       this.price = this.product.price;
 
-      if (this.discount_price == '') {
-        this.discount_price = 0.00;
-      } else {
+      if (this.product.discount_price != '') {
         this.discount_price = this.product.discount_price;
       }
 

@@ -323,12 +323,12 @@ export default {
             this.show_image = this.thumbnail_url;
             this.code_number = this.product.code_number;
             this.price = this.product.price;
-            if(this.discount_price == '')
+
+            if(this.product.discount_price != '')
             {
-                this.discount_price = 0.00;
-            }else{
                 this.discount_price = this.product.discount_price;
             }
+
             this.quantity = this.product.qty;
             this.minimum_order = this.product.min_order;
             this.maximum_order = this.product.max_order;

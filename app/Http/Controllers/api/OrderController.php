@@ -143,7 +143,6 @@ class OrderController extends BaseController
         ];
 
         return $this->successResponse($responseBody, 'Success Order');
-
     }
 
     public function confirmOrder(Request $request)

@@ -289,7 +289,7 @@ import VueLoadingButton from 'vue-loading-button';
         ],
         totalRows: 1,
         currentPage: 1,
-        perPage: 5,
+        perPage: 10,
         pageOptions: [5, 10, 15, 20, 30, 50],
         sortBy: '',
         sortDesc: false,
