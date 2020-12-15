@@ -131,7 +131,6 @@
                 $('#frame_preview_container').attr('src', e.target.result); 
             }
             reader.readAsDataURL(this.files[0]); 
-    
         });
     </script>
     

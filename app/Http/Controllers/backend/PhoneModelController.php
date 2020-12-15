@@ -30,6 +30,7 @@ class PhoneModelController extends Controller
     public function create()
     {
         $phone_brands = PhoneBrand::all();
+        \Session::put('previous_url', url()->previous());
         return view('backend.phone_models.create', compact('phone_brands'));
     }
 
@@ -73,7 +74,7 @@ class PhoneModelController extends Controller
                 $phone_model->save();
         }
 
-        return redirect()->route('phone_models.index')->with('success','Successfully Create Phone Model');
+        return redirect(\Session::get('previous_url'))->with('success','Successfully Create Phone Model');
     }
 
     /**
@@ -98,6 +99,7 @@ class PhoneModelController extends Controller
     {
         $phone_brands = PhoneBrand::all();
         $phone_model = PhoneModel::find($id);
+        \Session::put('previous_url', url()->previous());
         return view('backend.phone_models.edit', compact('phone_model','phone_brands'));
     }
 
@@ -141,8 +143,7 @@ class PhoneModelController extends Controller
         }
 
         $phone_model->update();
-
-        return redirect()->route('phone_models.index')->with('success','Successfully Update Phone Model');
+        return redirect(\Session::get('previous_url'))->with('success','Successfully Update Phone Model');
     }
 
     /**

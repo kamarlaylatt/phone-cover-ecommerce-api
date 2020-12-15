@@ -172,8 +172,7 @@
                 reader.readAsDataURL(file);
             },
 
-			update()
-			{	
+			update(){
 				this.isLoading = true;
 
 				let formData = new FormData();
@@ -205,9 +204,8 @@
 						setTimeout(()=>{
 
 						},2000)
-						var currentUrl = window.location.pathname;
-						// window.location.href = currentUrl;
-						window.location.href = this.base_url+'/admin/categories';
+						window.location.href = document.referrer;
+
 					}
 					else{
 						window.scrollTo(0,0);

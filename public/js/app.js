@@ -6292,9 +6292,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/admin/categories/store', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
-          var currentUrl = window.location.pathname; // window.location.href = currentUrl;
-
-          window.location.href = _this.base_url + '/admin/categories';
+          window.location.href = document.referrer;
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -6514,9 +6512,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/admin/categories/update', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
-          var currentUrl = window.location.pathname; // window.location.href = currentUrl;
-
-          window.location.href = _this.base_url + '/admin/categories';
+          window.location.href = document.referrer;
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -7350,9 +7346,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
       axios.post('/admin/products/store', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
-          var currentUrl = window.location.pathname; // window.location.href = currentUrl;
-
-          window.location.href = _this.base_url + '/admin/products';
+          window.location.href = document.referrer;
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
@@ -7917,9 +7911,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_5__["Quill"].register("modules/videoResize"
       axios.post('/admin/products/' + this.product.id + '/update', formData, config).then(function (response) {
         if (response.data.validation == true) {
           setTimeout(function () {}, 2000);
-          var currentUrl = window.location.pathname; // window.location.href = currentUrl;
-
-          window.location.href = _this.base_url + '/admin/products';
+          window.location.href = document.referrer;
         } else {
           window.scrollTo(0, 0);
           _this.errors = response.data.errors;
