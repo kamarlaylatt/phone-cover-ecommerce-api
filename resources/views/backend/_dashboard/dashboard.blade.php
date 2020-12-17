@@ -13,40 +13,40 @@
                 <!--begin:: Widgets/Stats2-1 -->
                 <div class="m-widget1">
                     <div class="m-widget1__item">
-                        <a style="color: #525672;" href="{{route('admins.profile')}}">
+                        <a style="color: #525672;" href="{{route('orders.index')}}">
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
-                                    <h3 class="m-widget1__title">User Profile</h3>
-                                    <span class="m-widget1__desc">User account management</span>
+                                    <h3 class="m-widget1__title">Product Orders</h3>
+                                    <span class="m-widget1__desc">Product Order Lists</span>
                                 </div>
                                 <div class="col m--align-right">
-                                    <span style="font-size: 40px" class="fa fa-user"></span>
+                                    <span style="font-size: 40px" class="flaticon-clipboard"></span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="m-widget1__item">
-                        <a style="color: #525672;" href="{{route('phone_brands.index')}}">
+                        <a style="color: #525672;" href="{{route('intensions.diy')}}">
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
-                                    <h3 class="m-widget1__title">Phone Brands</h3>
-                                    <span class="m-widget1__desc">Phone Brand Lists</span>
+                                    <h3 class="m-widget1__title">DIY Orders</h3>
+                                    <span class="m-widget1__desc">DIY Order Lists</span>
                                 </div>
                                 <div class="col m--align-right">
-                                    <span style="font-size: 40px" class="flaticon-responsive"></span>
+                                    <span style="font-size: 40px" class="flaticon-clipboard"></span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="m-widget1__item">
-                        <a style="color: #525672;" href="{{route('phone_models.index')}}">
+                        <a style="color: #525672;" href="{{route('intensions.help')}}">
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
-                                    <h3 class="m-widget1__title">Phone Models</h3>
-                                    <span class="m-widget1__desc">Phone Model Lists</span>
+                                    <h3 class="m-widget1__title">Help Me Disign Orders</h3>
+                                    <span class="m-widget1__desc">Help Me Design Order Lists</span>
                                 </div>
                                 <div class="col m--align-right">
-                                    <span style="font-size: 40px" class="flaticon-responsive"></span>
+                                    <span style="font-size: 40px" class="flaticon-clipboard"></span>
                                 </div>
                             </div>
                         </a>
@@ -59,6 +59,19 @@
 
                 <!--begin:: Widgets/Stats2-2 -->
                 <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <a style="color: #525672;" href="{{route('orders.filter')}}">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Filtering Orders</h3>
+                                    <span class="m-widget1__desc">Filtering Orders</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span style="font-size: 40px" class="flaticon-users-1"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                     <div class="m-widget1__item">
                         <a style="color: #525672;" href="{{route('categories.index')}}">
                             <div class="row m-row--no-padding align-items-center">
@@ -85,7 +98,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="m-widget1__item">
+                    {{-- <div class="m-widget1__item">
                         <a style="color: #525672;" href="{{route('banners.index')}}">
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
@@ -97,7 +110,7 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!--begin:: Widgets/Stats2-2 -->
@@ -133,14 +146,14 @@
                         </a>
                     </div>
                     <div class="m-widget1__item">
-                        <a style="color: #525672;" href="{{route('orders.filter')}}">
+                        <a style="color: #525672;" href="{{route('admins.profile')}}">
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
-                                    <h3 class="m-widget1__title">Filtering Orders</h3>
-                                    <span class="m-widget1__desc">Filtering Orders</span>
+                                    <h3 class="m-widget1__title">User Profile</h3>
+                                    <span class="m-widget1__desc">User account management</span>
                                 </div>
                                 <div class="col m--align-right">
-                                    <span style="font-size: 40px" class="flaticon-users-1"></span>
+                                    <span style="font-size: 40px" class="fa fa-user"></span>
                                 </div>
                             </div>
                         </a>
