@@ -35,7 +35,7 @@
                 
                 <!--begin: Search Form -->
                 <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-                    <form method="POST" action="{{route('shell_materials.search')}}">
+                    <form method="get" action="{{route('shell_materials.search')}}">
                         <div class="row align-items-center">
                             <div class="col-xl-8 order-2 order-xl-1">
                                 <div class="form-group m-form__group row align-items-center">

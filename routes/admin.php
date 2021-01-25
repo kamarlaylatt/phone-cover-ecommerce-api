@@ -35,48 +35,48 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 	Route::middleware('check_admin')->group(function(){
 		//admin_roles	
 		Route::resource('admin_roles', 'AdminRoleController');
-		Route::post('admin_roles/search', 'AdminRoleController@search')->name('admin_roles.search');
+		Route::get('admin_role/search', 'AdminRoleController@search')->name('admin_roles.search');
 		
 		//admins	
 		Route::resource('admins', 'AdminController');
-		Route::post('admins/search','AdminController@search')->name('admins.search');
+		Route::get('admin/search','AdminController@search')->name('admins.search');
 
 		//users
 		Route::resource('users', 'UserController');
 		Route::get('block_list', 'UserController@block_list')->name('users.block_list');
 		Route::post('users/{id}/block', 'UserController@block')->name('users.block');
 		Route::post('users/{id}/unblock', 'UserController@unblock')->name('users.unblock');
-		Route::post('users/search','UserController@search')->name('users.search');
+		Route::get('user/search','UserController@search')->name('users.search');
 		Route::post('users/block_search','UserController@block_search')->name('users.block_search');
 	});	
 
 	//shell_materials
 	Route::resource('shell_materials', 'ShellMaterialController');
-	Route::post('shell_materials/search','ShellMaterialController@search')->name('shell_materials.search');
+	Route::get('shell_material/search','ShellMaterialController@search')->name('shell_materials.search');
 
 	//phone_brands
 	Route::resource('phone_brands', 'PhoneBrandController');
-	Route::post('phone_brands/search','PhoneBrandController@search')->name('phone_brands.search');
+	Route::get('phone_brand/search','PhoneBrandController@search')->name('phone_brands.search');
 
 	//phone_models
 	Route::resource('phone_models', 'PhoneModelController');
-	Route::post('phone_models/search','PhoneModelController@search')->name('phone_models.search');
+	Route::get('phone_model/search','PhoneModelController@search')->name('phone_models.search');
 
 	//recruitments
 	Route::resource('recruitments', 'RecruitmentController');
-	Route::post('recruitments/search', 'RecruitmentController@search')->name('recruitments.search');
+	Route::get('recruitment/search', 'RecruitmentController@search')->name('recruitments.search');
 
 	//banners
 	Route::resource('banners', 'BannerController');
-	Route::post('banners/search','BannerController@search')->name('banners.search');
+	Route::get('banner/search','BannerController@search')->name('banners.search');
 
 	//regions
 	Route::resource('regions', 'RegionController');
-	Route::post('regions/search','RegionController@search')->name('regions.search');
+	Route::get('region/search','RegionController@search')->name('regions.search');
 
 	//townships
 	Route::resource('townships', 'TownshipController');
-	Route::post('townships/search','TownshipController@search')->name('townships.search');
+	Route::get('township/search','TownshipController@search')->name('townships.search');
 
 	//categories
 	Route::prefix('categories')->group(function(){
@@ -100,7 +100,7 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 		Route::post('/{id}/update', 'ProductController@update')->name('products.update');
 		Route::get('/{id}/show', 'ProductController@show')->name('products.show');
 		Route::delete('/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
-		Route::post('/search', 'ProductController@search')->name('products.search');
+		Route::get('/search', 'ProductController@search')->name('products.search');
 	});
 
 	//orders
@@ -119,19 +119,19 @@ Route::namespace('backend')->middleware('auth:admin')->group(function(){
 
 	//order statuses
 	Route::resource('order_statuses', 'OrderStatusController');
-	Route::post('order_statuses/search','OrderStatusController@search')->name('order_statuses.search');
+	Route::get('order_status/search','OrderStatusController@search')->name('order_statuses.search');
 
 	//tabs
 	Route::resource('tabs', 'TabController');
-	Route::post('tabs/search','TabController@search')->name('tabs.search');
+	Route::get('tab/search','TabController@search')->name('tabs.search');
 
 	//charlets
 	Route::resource('charlets', 'CharletController');
-	Route::post('charlets/search','CharletController@search')->name('charlets.search');
+	Route::get('charlet/search','CharletController@search')->name('charlets.search');
 
 	//masks
 	Route::resource('masks', 'MaskController');
-	Route::post('masks/search','MaskController@search')->name('masks.search');
+	Route::get('mask/search','MaskController@search')->name('masks.search');
 
 	//intensions
 	Route::prefix('intensions')->group(function(){

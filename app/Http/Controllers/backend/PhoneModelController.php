@@ -170,7 +170,7 @@ class PhoneModelController extends Controller
                         ->orWhereHas('phone_brand',function ($query) use ($search){
                             $query->where('name','like', '%'.$search.'%');
                         })
-                        ->orderBy('id', 'asc')->paginate(20);
+                        ->orderBy('id', 'asc')->paginate(10);
 
 
         return view('backend.phone_models.index', compact('phone_models'));

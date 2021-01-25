@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::sortable()->orderBy('created_at','desc')->paginate(10);
+        $orders = Order::with('user')->has('user')->sortable()->orderBy('created_at','desc')->paginate(10);
         return view('backend.orders.index', compact('orders'));
     }
 
