@@ -118,6 +118,7 @@ class TabController extends Controller
 
         $tabs = Tab::where('name', 'like','%'.$search.'%')
                         ->orderBy('id', 'asc')->paginate(20);
+        $tabs->appends(['search'=> $request->search]);      
 
 
         return view('backend.tabs.index', compact('tabs'));

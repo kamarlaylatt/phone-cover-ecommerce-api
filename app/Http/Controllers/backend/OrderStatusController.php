@@ -149,7 +149,7 @@ class OrderStatusController extends Controller
                         ->orWhere('description','like','%'.$search.'%')
                         ->orWhere('sort_index','like','%'.$search.'%')
                         ->orderBy('id', 'asc')->paginate(20);
-
+        $order_statuses->appends(['search'=> $request->search]);      
 
         return view('backend.order_statuses.index', compact('order_statuses'));
     }

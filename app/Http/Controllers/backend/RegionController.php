@@ -80,6 +80,7 @@ class RegionController extends Controller
                             $query->where('name','like', '%' .$search. '%');
                             })->orderBy('id', 'asc')->paginate(20);
 
+        $regions->appends(['search'=> $request->search]);      
 
         return view('backend.regions.index', compact('regions'));
     }

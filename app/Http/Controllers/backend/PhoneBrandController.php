@@ -135,7 +135,7 @@ class PhoneBrandController extends Controller
         $phone_brands = PhoneBrand::where('name', 'like','%'.$search.'%')
                         ->orderBy('id', 'asc')->paginate(20);
 
-
+        $phone_brands->appends(['search'=> $request->search]);      
         return view('backend.phone_brands.index', compact('phone_brands'));
     }
 }

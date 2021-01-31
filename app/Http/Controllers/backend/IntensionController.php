@@ -132,7 +132,7 @@ class IntensionController extends Controller
                         ->orWhere('name','like','%'.$search.'%')
                         ->orWhere('phone','like','%'.$search.'%')
                         ->orderBy('id', 'asc')->paginate(20);
-
+        $intensions->appends(['search'=> $request->search]);        
 
         return view('backend.intensions.help_order', compact('intensions'));
 

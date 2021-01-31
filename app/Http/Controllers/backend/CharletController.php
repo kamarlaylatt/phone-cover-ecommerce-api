@@ -145,7 +145,7 @@ class CharletController extends Controller
                             $query->where('name','like', '%'.$search.'%');
                         })
                         ->orderBy('id', 'asc')->paginate(20);
-
+        $charlets->appends(['search'=> $request->search]);        
 
         return view('backend.charlets.index', compact('charlets'));
     }

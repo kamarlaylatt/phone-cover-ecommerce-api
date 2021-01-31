@@ -146,7 +146,7 @@ class MaskController extends Controller
                         })
                         ->orderBy('id', 'asc')->paginate(20);
 
-
+        $masks->appends(['search'=> $request->search]);      
         return view('backend.masks.index', compact('masks'));
     }
 }

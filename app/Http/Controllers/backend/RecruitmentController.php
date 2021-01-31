@@ -253,7 +253,7 @@ class RecruitmentController extends Controller
                             $query->where('title','like', '%' .$search. '%')
                                     ->orwhere('description','like', '%' .$search. '%');
                             })->orderBy('id', 'asc')->paginate(20);
-
+        $recruitments->appends(['search'=> $request->search]);      
 
         return view('backend.recruitments.index', compact('recruitments'));
     }

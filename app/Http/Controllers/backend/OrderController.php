@@ -77,7 +77,7 @@ class OrderController extends Controller
                             $query->where('name','like', '%'.$search.'%');
                         })
                         ->orderBy('id', 'asc')->paginate(20);
-
+        $orders->appends(['search'=> $request->search]);      
 
         return view('backend.orders.index', compact('orders'));
     }

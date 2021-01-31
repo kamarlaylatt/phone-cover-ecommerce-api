@@ -185,6 +185,7 @@ class UserController extends Controller
                         ->orWhere('phone', 'like', '%'.$search.'%')
                         ->where('active_status',0)
                         ->paginate(10);
+        $users->appends(['search'=> $request->search]);      
 
         return view('backend.users.block_list', compact('users'));
     }

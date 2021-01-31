@@ -188,6 +188,7 @@ class ProductController extends BaseController
                                     ->orWhere('description', 'like', '%'.$search.'%');
                             })
                             ->orderBy('id','asc')->paginate(10);
+        $products->appends(['search'=> $request->search]);      
 
         return view('backend.products.index', compact('products'));
         

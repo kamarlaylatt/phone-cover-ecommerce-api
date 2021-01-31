@@ -125,6 +125,8 @@ class AdminRoleController extends Controller
                         ->orwhere('description', 'like', '%'.$search.'%')
                         ->paginate(10);
 
+        $admin_roles->appends(['search'=> $request->search]);
+
         return view('backend.admin_roles.index', compact('admin_roles'));
     }
 }

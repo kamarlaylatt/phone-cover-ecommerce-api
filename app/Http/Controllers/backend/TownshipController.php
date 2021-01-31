@@ -99,6 +99,7 @@ class TownshipController extends Controller
                             ->orderBy('id', 'asc')
                             ->paginate(20);
 
+        $townships->appends(['search'=> $request->search]);      
 
         return view('backend.townships.index', compact('townships'));
     }

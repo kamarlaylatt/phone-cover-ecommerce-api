@@ -267,6 +267,7 @@ class CategoryController extends Controller
                                     ->orwhere('description','like', '%' .$search. '%');
                             })->orderBy('id', 'asc')->paginate(20);
 
+        $categories->appends(['search'=> $request->search]);        
 
         return view('backend.categories.index', compact('categories','category_array'));
     }

@@ -123,6 +123,7 @@ class ShellMaterialController extends Controller
                         ->orWhere('price', 'like', '%'.$search.'%')
                         ->orWhere('sort_index', 'like', '%'.$search.'%')
                         ->orderBy('id', 'asc')->paginate(20);
+        $shell_materials->appends(['search'=> $request->search]);      
 
         return view('backend.shell_materials.index', compact('shell_materials'));
     }

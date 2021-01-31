@@ -71,6 +71,21 @@
                     <div class="col-sm-8 h5"><strong>{{$intension->address}}</strong></div>
                 </div>
                 <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Phone Brand</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->phone_model->phone_brand->name}}</strong></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Phone Model</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->phone_model->name}}</strong></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-3 h5"><strong>Shell Material</strong></div>
+                    <div class="col-sm-1 h5"><strong>-</strong></div>
+                    <div class="col-sm-8 h5"><strong>{{$intension->shell_material->name}}</strong></div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-sm-3 h5"><strong>Total Item</strong></div>
                     <div class="col-sm-1 h5"><strong>-</strong></div>
                     <div class="col-sm-8 h5"><strong>1</strong></div>

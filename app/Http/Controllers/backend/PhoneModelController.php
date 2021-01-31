@@ -172,6 +172,8 @@ class PhoneModelController extends Controller
                         })
                         ->orderBy('id', 'asc')->paginate(10);
 
+        $phone_models->appends(['search'=> $request->search]);
+
 
         return view('backend.phone_models.index', compact('phone_models'));
     }

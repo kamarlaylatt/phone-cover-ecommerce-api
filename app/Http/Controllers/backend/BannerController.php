@@ -183,6 +183,7 @@ class BannerController extends Controller
                                     ->orwhere('button_text','like', '%' .$search. '%');
                             })->orderBy('id', 'asc')->paginate(20);
 
+        $banners->appends(['search'=> $request->search]);        
 
         return view('backend.banners.index', compact('banners'));
     }
